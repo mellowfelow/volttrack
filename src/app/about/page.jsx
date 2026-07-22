@@ -86,7 +86,7 @@ export default function AboutPage() {
             </div></div>
             <div className="card"><div className="card-body">
               <h3>📋 Fully Compliant</h3>
-              <p className="muted">Products clearly labelled off-road or street-legal. Transparent about US OHV laws including California Section 436.1.</p>
+              <p className="muted">Products clearly labeled off-road or street-legal. Transparent about US OHV laws including California Section 436.1.</p>
             </div></div>
           </div>
 

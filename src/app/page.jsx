@@ -144,7 +144,7 @@ export default function Home() {
             </div></div>
             <div className="card"><div className="card-body">
               <h3>📋 Fully Compliant</h3>
-              <p className="muted">Every product is clearly labelled off-road or street-legal. We&rsquo;re transparent about US OHV laws, including California Section 436.1.</p>
+              <p className="muted">Every product is clearly labeled off-road or street-legal. We&rsquo;re transparent about US OHV laws, including California Section 436.1.</p>
             </div></div>
           </div>
           <p style={{ marginTop: 18 }}><Link href="/about/" className="btn btn-ghost">About VoltTrack</Link></p>
