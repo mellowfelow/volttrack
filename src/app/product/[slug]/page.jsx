@@ -20,6 +20,7 @@ export function generateMetadata({ params }) {
     description: p.short,
     path: `/product/${p.slug}/`,
     type: 'product',
+    image: p.images && p.images[0] ? url(`/images/${p.images[0]}`) : undefined,
   })
 }
 
