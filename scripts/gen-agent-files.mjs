@@ -33,6 +33,7 @@ const j = (rel, obj) => w(rel, JSON.stringify(obj, null, 2) + '\n')
 w('robots.txt', `User-agent: *
 Allow: /
 Disallow: /cart/
+Disallow: /checkout/
 Disallow: /search/
 
 # AI crawlers — welcome to index product & content pages

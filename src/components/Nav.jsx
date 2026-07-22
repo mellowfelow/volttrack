@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { SITE, CATEGORIES } from '@/config/site'
+import CartCount from '@/components/CartCount'
 
 export default function Nav() {
   const [open, setOpen] = useState(false)
@@ -21,7 +22,7 @@ export default function Nav() {
             <Link href="/about/">About</Link>
             <Link href="/contact/">Contact</Link>
             <Link href="/search/" aria-label="Search">🔍</Link>
-            <Link href="/cart/" className="nav-cart" aria-label="Cart">🛒 Cart</Link>
+            <CartCount />
           </div>
           <button
             className="hamburger"

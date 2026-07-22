@@ -92,6 +92,25 @@ p{margin:0 0 1em}
 /* breadcrumbs */
 .crumbs{font-size:.85rem;color:var(--muted);padding:14px 0}
 .crumbs a{color:var(--muted)}
+/* faq accordion */
+.faq-accordion{max-width:760px}
+.faq-item{border:1px solid var(--line);border-radius:10px;margin-bottom:10px;background:#fff;overflow:hidden}
+.faq-item summary{cursor:pointer;padding:16px 18px;font-weight:700;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;min-height:44px}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"+";font-size:1.4rem;color:var(--brand);font-weight:800;flex:0 0 auto}
+.faq-item[open] summary::after{content:"–"}
+.faq-item[open] summary{border-bottom:1px solid var(--line)}
+.faq-answer{padding:14px 18px}
+.faq-answer p{margin:0}
+/* checkout */
+.pay-options{display:flex;flex-direction:column;gap:10px;margin:8px 0 4px}
+.pay-option{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;font-weight:600}
+.pay-option input{width:18px;height:18px}
+.pay-option.selected{border-color:var(--brand);background:#eff6ff}
+.order-summary{background:var(--bg-soft);border:1px solid var(--line);border-radius:12px;padding:18px}
+.order-row{display:flex;justify-content:space-between;padding:6px 0}
+.order-row.total{border-top:1px solid var(--line);margin-top:8px;padding-top:12px;font-weight:800;font-size:1.15rem}
+.order-row.discount{color:#15803d;font-weight:700}
 /* misc */
 .pill-row{display:flex;flex-wrap:wrap;gap:10px}
 .pill{background:var(--bg-soft);border:1px solid var(--line);border-radius:999px;padding:8px 15px;font-weight:600;font-size:.9rem;color:var(--ink)}

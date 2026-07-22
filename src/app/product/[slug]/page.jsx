@@ -6,6 +6,7 @@ import {
 } from '@/config/site'
 import Breadcrumbs from '@/components/Breadcrumbs'
 import ProductCard from '@/components/ProductCard'
+import AddToCart from '@/components/AddToCart'
 import { buildMetadata, JsonLd, url } from '@/lib/seo'
 
 export function generateStaticParams() {
@@ -77,8 +78,8 @@ export default function ProductPage({ params }) {
               </p>
               <p>{p.description}</p>
               <div className="hero-cta">
-                <Link href="/contact/" className="btn">Enquire &amp; Order</Link>
-                <Link href="/shop/" className="btn btn-ghost">Compare bikes</Link>
+                <AddToCart product={p} className="btn" label="Add to cart" />
+                <Link href="/contact/" className="btn btn-ghost">Ask an expert</Link>
               </div>
               <p className="form-note" style={{ marginTop: 16 }}>
                 {SITE.financing}. {SITE.freeShippingText}. Off-road use only unless a street-legal

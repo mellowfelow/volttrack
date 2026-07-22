@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { SITE, CATEGORIES, BRANDS, PRODUCTS, POSTS, FAQS, priceRange } from '@/config/site'
 import ProductCard from '@/components/ProductCard'
+import FaqAccordion from '@/components/FaqAccordion'
 import { JsonLd, url, buildMetadata } from '@/lib/seo'
 
 export const metadata = buildMetadata({
@@ -171,13 +172,8 @@ export default function Home() {
       <section className="section">
         <div className="container prose">
           <h2>Frequently Asked Questions</h2>
-          {FAQS.map((f) => (
-            <div key={f.q} style={{ marginBottom: 16 }}>
-              <h3>{f.q}</h3>
-              <p className="muted">{f.a}</p>
-            </div>
-          ))}
-          <p><Link href="/contact/" className="btn">Not sure which bike? Ask us</Link></p>
+          <FaqAccordion items={FAQS} />
+          <p style={{ marginTop: 20 }}><Link href="/contact/" className="btn">Not sure which bike? Ask us</Link></p>
         </div>
       </section>
     </>
