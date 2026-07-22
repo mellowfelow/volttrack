@@ -118,6 +118,75 @@ for (const f of ['llms.txt', 'auth.md']) {
 }
 pass('compliance scan')
 
+// ---------------------------------------------------------------------------
+// 41. Visual design quality (v9-style bar; implemented against v8 standards)
+// ---------------------------------------------------------------------------
+const css = read(resolve(root, 'src/styles/globals.css'))
+const home = read(resolve(root, 'src/app/page.jsx'))
+const srcFile = (p) => read(resolve(root, p))
+
+// 41a. Single design-token set present (one radius, one shadow, one spacing scale, surface tint)
+for (const tok of ['--radius:', '--shadow:', '--space:', '--bg-soft:']) {
+  if (!css.includes(tok)) fail(`41 design tokens: missing ${tok} in globals.css`)
+}
+pass('41 design tokens present (radius/shadow/space/surface)')
+
+// 41b. Cards use the shared shadow token (cohesive depth, not ad-hoc shadows)
+if (!/\.card\{[^}]*box-shadow:var\(--shadow\)/.test(css)) fail('41 depth: .card does not use var(--shadow)')
+else pass('41 depth: cards use shared shadow token')
+
+// 41c. Single hero, NOT a carousel/autoplay (per pages.md + "no carousels/autoplay")
+if (existsSync(resolve(root, 'src/components/HeroSlider.jsx'))) fail('41 hero: HeroSlider (carousel) still present')
+if (!existsSync(resolve(root, 'src/components/Hero.jsx'))) fail('41 hero: single Hero.jsx missing')
+for (const c of ['src/components/Hero.jsx', 'src/components/AnnounceBar.jsx']) {
+  if (existsSync(resolve(root, c)) && /setInterval\s*\(/.test(srcFile(c))) fail(`41 motion: autoplay timer (setInterval) found in ${c}`)
+}
+pass('41 hero: single hero, no carousel/autoplay')
+
+// 41d. Homepage rhythm: >=6 sections with alternating tinted surfaces
+const sectionCount = (home.match(/<section/g) || []).length
+const softCount = (home.match(/section-soft/g) || []).length
+if (sectionCount < 6) fail(`41 rhythm: only ${sectionCount} homepage sections (need >=6)`)
+if (softCount < 3) fail(`41 rhythm: only ${softCount} tinted sections (need alternating white/tint)`)
+if (sectionCount >= 6 && softCount >= 3) pass(`41 rhythm: ${sectionCount} sections, ${softCount} tinted (alternating)`)
+
+// 41e. Motion gated behind prefers-reduced-motion
+if (!/@media \(prefers-reduced-motion:reduce\)/.test(css)) fail('41 motion: no prefers-reduced-motion guard in CSS')
+else pass('41 motion: reduced-motion respected')
+
+// 41f. Reveal must not hide content without JS: only a `.js-anim`-gated rule may set opacity:0
+if (/(?<!\.js-anim )\.reveal\{[^}]*opacity:\s*0/.test(css)) fail('41 no-JS: ungated .reveal hides content without JS (use .js-anim gate)')
+else pass('41 no-JS: reveal content visible without JS')
+
+// ---------------------------------------------------------------------------
+// Accessibility static checks (per pages.md → Accessibility)
+// ---------------------------------------------------------------------------
+const qty = existsSync(resolve(root, 'src/components/QtyStepper.jsx')) ? srcFile('src/components/QtyStepper.jsx') : ''
+if (!qty) fail('a11y: QtyStepper.jsx missing')
+else {
+  if (!/type="button"/.test(qty)) fail('a11y: QtyStepper buttons missing type="button"')
+  if ((qty.match(/aria-label=/g) || []).length < 2) fail('a11y: QtyStepper − / + buttons need aria-label')
+  else pass('a11y: QtyStepper buttons labelled + type=button')
+}
+// icon-only buttons carry aria-label
+const iconBtns = [
+  ['src/components/Nav.jsx', 'hamburger'],
+  ['src/components/CartCount.jsx', 'cart'],
+  ['src/components/ChatHub.jsx', 'chat toggle'],
+]
+for (const [f, what] of iconBtns) {
+  if (existsSync(resolve(root, f)) && !/aria-label/.test(srcFile(f))) fail(`a11y: ${what} icon control missing aria-label (${f})`)
+}
+pass('a11y: icon-only controls have aria-label')
+// checkout inputs are labelled
+const checkout = existsSync(resolve(root, 'src/app/checkout/CheckoutClient.jsx')) ? srcFile('src/app/checkout/CheckoutClient.jsx') : ''
+if (checkout && (checkout.match(/htmlFor=/g) || []).length < 4) fail('a11y: checkout inputs missing <label htmlFor>')
+else pass('a11y: form inputs labelled')
+// FAQ is a native details/summary accordion
+const faqc = existsSync(resolve(root, 'src/components/FaqAccordion.jsx')) ? srcFile('src/components/FaqAccordion.jsx') : ''
+if (!/<details/.test(faqc) || !/<summary/.test(faqc)) fail('a11y: FAQ not a native <details>/<summary> accordion')
+else pass('a11y: FAQ uses native details/summary')
+
 console.log(`\ncrosscheck: ${passes} passed, ${fails} failed`)
 if (fails > 0) { console.error('CROSSCHECK FAILED'); process.exit(1) }
 console.log('CROSSCHECK PASSED')

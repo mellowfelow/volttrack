@@ -6,7 +6,7 @@ import {
 } from '@/config/site'
 import Breadcrumbs from '@/components/Breadcrumbs'
 import ProductCard from '@/components/ProductCard'
-import AddToCart from '@/components/AddToCart'
+import ProductBuy from '@/components/ProductBuy'
 import { buildMetadata, JsonLd, url } from '@/lib/seo'
 
 export function generateStaticParams() {
@@ -86,10 +86,10 @@ export default function ProductPage({ params }) {
                 {SITE.currencySymbol}{p.price.toLocaleString('en-US')}
               </p>
               <p>{p.description}</p>
-              <div className="hero-cta">
-                <AddToCart product={p} className="btn" label="Add to cart" />
+              <ProductBuy product={p} />
+              <p style={{ marginTop: 12 }}>
                 <Link href="/contact/" className="btn btn-ghost">Ask an expert</Link>
-              </div>
+              </p>
               <p className="form-note" style={{ marginTop: 16 }}>
                 {SITE.financing}. {SITE.freeShippingText}. Off-road use only unless a street-legal
                 path is stated. Prices are estimates and may change due to import tariff conditions.

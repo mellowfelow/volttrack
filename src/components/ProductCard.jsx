@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { SITE, brandName } from '@/config/site'
-import AddToCart from '@/components/AddToCart'
+import CardBuy from '@/components/CardBuy'
 
 export default function ProductCard({ p, eager = false }) {
   const img = p.images && p.images[0]
@@ -35,10 +35,8 @@ export default function ProductCard({ p, eager = false }) {
           </ul>
         ) : null}
         <span className="price">{SITE.currencySymbol}{p.price.toLocaleString('en-US')}</span>
-        <div style={{ display: 'flex', gap: 8, marginTop: 12 }}>
-          <AddToCart product={p} className="btn" label="Add to cart" />
-          <Link href={`/product/${p.slug}/`} className="btn btn-ghost" style={{ padding: '13px 14px' }}>Details</Link>
-        </div>
+        <CardBuy product={p} />
+        <Link href={`/product/${p.slug}/`} className="btn btn-ghost btn-block" style={{ marginTop: 8 }}>View details</Link>
       </div>
     </div>
   )

@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { SITE, CATEGORIES, BRANDS, PRODUCTS, POSTS, FAQS, priceRange } from '@/config/site'
 import ProductCard from '@/components/ProductCard'
-import HeroSlider from '@/components/HeroSlider'
+import Hero from '@/components/Hero'
 import FaqAccordion from '@/components/FaqAccordion'
 import Reveal from '@/components/Reveal'
 import { JsonLd, url, buildMetadata } from '@/lib/seo'
@@ -53,7 +53,7 @@ export default function Home() {
   const faqLd = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: FAQS.slice(0, 4).map((f) => ({
+    mainEntity: FAQS.map((f) => ({
       '@type': 'Question',
       name: f.q,
       acceptedAnswer: { '@type': 'Answer', text: f.a },
@@ -66,7 +66,7 @@ export default function Home() {
       <JsonLd data={websiteLd} />
       <JsonLd data={faqLd} />
 
-      <HeroSlider />
+      <Hero />
 
       <section className="section">
         <div className="container">

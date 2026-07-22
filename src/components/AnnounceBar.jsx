@@ -1,23 +1,19 @@
-'use client'
-import { useEffect, useState } from 'react'
 import { SITE } from '@/config/site'
 
-const SLIDES = [
-  `🚚 ${SITE.freeShippingText}`,
-  `💳 ${SITE.financing}`,
-  `₿ Save ${Math.round(SITE.cryptoDiscount * 100)}% paying with crypto (BTC/USDT)`,
-  '✅ Authorized US Dealer — genuine manufacturer warranties',
-]
-
+// Static announcement bar (no autoplay / no carousel): key promos on one line,
+// wrapping to a compact list on small screens.
 export default function AnnounceBar() {
-  const [i, setI] = useState(0)
-  useEffect(() => {
-    const t = setInterval(() => setI((x) => (x + 1) % SLIDES.length), 4000)
-    return () => clearInterval(t)
-  }, [])
+  const items = [
+    `🚚 ${SITE.freeShippingText}`,
+    `₿ Save ${Math.round(SITE.cryptoDiscount * 100)}% with crypto`,
+    `💳 ${SITE.financing}`,
+    '✅ Authorized US Dealer',
+  ]
   return (
-    <div className="announce" role="status" aria-live="polite">
-      {SLIDES[i]}
+    <div className="announce" role="note">
+      {items.map((t, i) => (
+        <span key={i} className="announce-item">{t}</span>
+      ))}
     </div>
   )
 }
