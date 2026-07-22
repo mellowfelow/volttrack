@@ -1,0 +1,49 @@
+User-agent: *
+Allow: /
+Disallow: /cart/
+Disallow: /search/
+
+# AI crawlers — welcome to index product & content pages
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+Sitemap: https://volttrack.com/sitemap.xml
+
+# Agent-readable resources
+# llms.txt: https://volttrack.com/llms.txt
+# API Catalog: https://volttrack.com/.well-known/api-catalog
+# Agent Skills: https://volttrack.com/.well-known/agent-skills/index.json
+# MCP Server Card: https://volttrack.com/.well-known/mcp/server-card.json

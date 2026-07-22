@@ -1,0 +1,58 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/server-card/v1.json",
+  "serverInfo": {
+    "name": "VoltTrack",
+    "version": "1.0.0",
+    "description": "VoltTrack is a US-based authorized dealer for the world's leading electric dirt bike brands — Sur-Ron, Stark Future, Talaria, STACYC, Razor, KTM, Segway and more. Founded by US off-road riders, VoltTrack offers honest expert advice, transparent legal and tariff information, fast shipping to the Lower 48, and real post-purchase support.",
+    "homepage": "https://volttrack.com",
+    "contact": {
+      "email": "hello@volttrack.com"
+    }
+  },
+  "transport": {
+    "type": "http",
+    "endpoint": "https://volttrack.com"
+  },
+  "capabilities": {
+    "resources": [
+      {
+        "name": "product-catalog",
+        "description": "Full electric dirt bike catalog",
+        "uri": "https://volttrack.com/shop/"
+      },
+      {
+        "name": "brands",
+        "description": "Bikes by brand",
+        "uri": "https://volttrack.com/brands/"
+      },
+      {
+        "name": "guides",
+        "description": "Buying guides",
+        "uri": "https://volttrack.com/guides/"
+      },
+      {
+        "name": "blog",
+        "description": "Educational content",
+        "uri": "https://volttrack.com/blog/"
+      }
+    ],
+    "commerce": {
+      "ordering": "human-assisted via contact page",
+      "payment": [
+        "bank-transfer",
+        "crypto-BTC",
+        "crypto-USDT",
+        "financing"
+      ],
+      "currency": "USD",
+      "minimumOrder": 0,
+      "freeShipping": "Free US Shipping (Lower 48)",
+      "ships": "US (Lower 48 states)"
+    }
+  },
+  "legal": {
+    "ageRestriction": "None (off-road vehicles; local OHV / street-legal rules apply)",
+    "productType": "Electric dirt bikes (off-road / OHV)",
+    "compliance": "Most vehicles are off-road / private-land use only and not street legal without specific federal/state certification. California: Vehicle Code Section 436.1 OHV registration applies."
+  }
+}

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1200" viewBox="0 0 1600 1200" role="img" aria-label="VoltTrack electric dirt bike">
+<rect width="1600" height="1200" fill="#ffffff"/>
+<g fill="none" stroke="#2563eb" stroke-width="10">
+<circle cx="520" cy="760" r="190"/><circle cx="1080" cy="760" r="190"/>
+<path d="M520 760 L720 560 L980 560 L1080 760" stroke-width="14"/>
+<path d="M720 560 L640 760" /><path d="M980 560 L900 420 L1040 420"/>
+</g>
+<text x="800" y="1050" font-family="Inter,Arial,sans-serif" font-size="70" font-weight="800" fill="#2563eb" text-anchor="middle">⚡ VoltTrack</text>
+<text x="800" y="1120" font-family="Inter,Arial,sans-serif" font-size="38" fill="#475569" text-anchor="middle">Electric Dirt Bike</text>
+</svg>

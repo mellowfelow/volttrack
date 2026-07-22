@@ -1,0 +1,55 @@
+{
+  "ucp": "1.0",
+  "protocol_version": "1.0",
+  "spec": "https://ucp.dev/specification/overview/",
+  "schema": "https://ucp.dev/schema/v1.json",
+  "site": "https://volttrack.com",
+  "name": "VoltTrack",
+  "description": "VoltTrack is a US-based authorized dealer for the world's leading electric dirt bike brands — Sur-Ron, Stark Future, Talaria, STACYC, Razor, KTM, Segway and more. Founded by US off-road riders, VoltTrack offers honest expert advice, transparent legal and tariff information, fast shipping to the Lower 48, and real post-purchase support.",
+  "services": [
+    {
+      "id": "product-catalog",
+      "type": "catalog",
+      "url": "https://volttrack.com/shop/",
+      "description": "Full electric dirt bike catalog"
+    },
+    {
+      "id": "order",
+      "type": "commerce",
+      "url": "https://volttrack.com/contact/",
+      "description": "Place orders (human-assisted) via the contact page"
+    },
+    {
+      "id": "brands",
+      "type": "catalog",
+      "url": "https://volttrack.com/brands/",
+      "description": "Browse by brand"
+    }
+  ],
+  "capabilities": [
+    "browse",
+    "inquiry",
+    "content"
+  ],
+  "endpoints": {
+    "catalog": "https://volttrack.com/shop/",
+    "contact": "https://volttrack.com/contact/",
+    "agent_skills": "https://volttrack.com/.well-known/agent-skills/index.json",
+    "mcp_server_card": "https://volttrack.com/.well-known/mcp/server-card.json",
+    "api_catalog": "https://volttrack.com/.well-known/api-catalog",
+    "llms_txt": "https://volttrack.com/llms.txt"
+  },
+  "currency": "USD",
+  "minimum_order_usd": 0,
+  "payment_methods": [
+    "bank-transfer",
+    "crypto-BTC",
+    "crypto-USDT",
+    "financing"
+  ],
+  "legal": {
+    "age_restriction": "None (off-road vehicles; local OHV / street-legal rules apply)",
+    "product_type": "Electric dirt bikes (off-road / OHV)",
+    "compliance": "Most vehicles are off-road / private-land use only and not street legal without specific federal/state certification. California: Vehicle Code Section 436.1 OHV registration applies."
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "protocol": {
+    "name": "acp",
+    "version": "0.1.0"
+  },
+  "name": "VoltTrack",
+  "description": "VoltTrack is a US-based authorized dealer for the world's leading electric dirt bike brands — Sur-Ron, Stark Future, Talaria, STACYC, Razor, KTM, Segway and more. Founded by US off-road riders, VoltTrack offers honest expert advice, transparent legal and tariff information, fast shipping to the Lower 48, and real post-purchase support.",
+  "api_base_url": "https://volttrack.com",
+  "homepage": "https://volttrack.com",
+  "transports": [
+    "https"
+  ],
+  "capabilities": {
+    "services": [
+      "product-catalog",
+      "brands",
+      "guides",
+      "blog",
+      "faq"
+    ],
+    "ordering": "human-assisted",
+    "payment_methods": [
+      "bank-transfer",
+      "crypto-BTC",
+      "crypto-USDT",
+      "financing"
+    ],
+    "currency": "USD",
+    "minimum_order_usd": 0
+  },
+  "contact": {
+    "email": "hello@volttrack.com"
+  },
+  "legal": {
+    "age_restriction": "None (off-road vehicles; local OHV / street-legal rules apply)",
+    "region": "United States",
+    "ships_to": "US (Lower 48 states)",
+    "product_type": "Electric dirt bikes (off-road / OHV)",
+    "compliance": "Most vehicles are off-road / private-land use only and not street legal without specific federal/state certification. California: Vehicle Code Section 436.1 OHV registration applies."
+  }
+}

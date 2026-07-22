@@ -1,0 +1,11 @@
+node_modules/
+.next/
+out/
+dist/
+.env
+.env.local
+.DS_Store
+npm-debug.log*
+
+# Content source only — not part of the deploy
+_source/

@@ -1,0 +1,28 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://volttrack.com/",
+      "https://www.iana.org/assignments/link-relations/service-doc": [
+        {
+          "href": "https://volttrack.com/faq/"
+        }
+      ],
+      "title": "VoltTrack — America's Electric Dirt Bike Experts"
+    },
+    {
+      "anchor": "https://volttrack.com/shop/",
+      "type": "text/html",
+      "title": "VoltTrack Product Catalog"
+    },
+    {
+      "anchor": "https://volttrack.com/brands/",
+      "type": "text/html",
+      "title": "VoltTrack Brands"
+    },
+    {
+      "anchor": "https://volttrack.com/guides/",
+      "type": "text/html",
+      "title": "VoltTrack Buying Guides"
+    }
+  ]
+}
