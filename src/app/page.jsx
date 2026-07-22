@@ -3,6 +3,7 @@ import { SITE, CATEGORIES, BRANDS, PRODUCTS, POSTS, FAQS, priceRange } from '@/c
 import ProductCard from '@/components/ProductCard'
 import HeroSlider from '@/components/HeroSlider'
 import FaqAccordion from '@/components/FaqAccordion'
+import Reveal from '@/components/Reveal'
 import { JsonLd, url, buildMetadata } from '@/lib/seo'
 
 export const metadata = buildMetadata({
@@ -69,50 +70,68 @@ export default function Home() {
 
       <section className="section">
         <div className="container">
-          <div className="trust">
-            <div>🚚 {SITE.freeShippingText}</div>
-            <div>✅ Authorized US Dealer</div>
-            <div>🔧 Expert Aftercare</div>
-            <div>💳 {SITE.financing}</div>
-          </div>
+          <Reveal>
+            <div className="stats">
+              <div className="stat"><b>{BRANDS.length}</b><span>Brands stocked</span></div>
+              <div className="stat"><b>{PRODUCTS.length}+</b><span>Models available</span></div>
+              <div className="stat"><b>Lower 48</b><span>{SITE.freeShippingText}</span></div>
+              <div className="stat"><b>{Math.round(SITE.cryptoDiscount * 100)}%</b><span>Off with crypto</span></div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
       <section className="section section-soft">
         <div className="container">
-          <h2>Shop by Category</h2>
-          <div className="grid cols-4" style={{ marginTop: 20 }}>
-            {CATEGORIES.map((c) => (
-              <Link key={c.slug} href={`/shop/${c.slug}/`} className="card" style={{ color: 'inherit' }}>
-                <div className="product-frame">
+          <div className="section-head">
+            <span className="eyebrow">Find your ride</span>
+            <h2>Shop by Category</h2>
+            <p>From a toddler&rsquo;s first STACYC to a race-spec Stark — choose where you ride.</p>
+          </div>
+          <Reveal>
+            <div className="cat-grid">
+              {CATEGORIES.map((c) => (
+                <Link key={c.slug} href={`/shop/${c.slug}/`} className="tile">
                   <img
                     src={c.image ? `/images/${c.image}` : '/images/placeholder-bike.svg'}
                     alt={`${c.name} category`}
-                    width={1600}
-                    height={1200}
+                    width={1280}
+                    height={960}
                     loading="lazy"
                   />
-                </div>
-                <div className="card-body">
-                  <h3>{c.name}</h3>
-                  <p className="muted" style={{ fontSize: '.92rem' }}>{c.short}</p>
-                  <span className="price" style={{ fontSize: '.95rem', color: 'var(--brand)' }}>Shop now →</span>
-                </div>
+                  <span className="tile-overlay">
+                    <h3>{c.name}</h3>
+                    <p>{c.short}</p>
+                    <span className="tile-go">Shop now →</span>
+                  </span>
+                </Link>
+              ))}
+              <Link href="/shop/" className="tile tile-cta">
+                <span className="tile-overlay">
+                  <h3>Shop All Bikes</h3>
+                  <p>Browse the full VoltTrack lineup.</p>
+                  <span className="tile-go">View all →</span>
+                </span>
               </Link>
-            ))}
-          </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
       <section className="section">
         <div className="container">
-          <h2>Bestselling Electric Dirt Bikes</h2>
-          <div className="grid cols-4" style={{ marginTop: 20 }}>
-            {featured.map((p, i) => (
-              <ProductCard key={p.slug} p={p} eager={i === 0} />
-            ))}
+          <div className="section-head">
+            <span className="eyebrow">Rider favorites</span>
+            <h2>Bestselling Electric Dirt Bikes</h2>
           </div>
-          <p style={{ marginTop: 20 }}>
+          <Reveal>
+            <div className="grid cols-4">
+              {featured.map((p, i) => (
+                <ProductCard key={p.slug} p={p} eager={i === 0} />
+              ))}
+            </div>
+          </Reveal>
+          <p style={{ marginTop: 24, textAlign: 'center' }}>
             <Link href="/shop/" className="btn btn-ghost">See all bikes</Link>
           </p>
         </div>
@@ -120,58 +139,79 @@ export default function Home() {
 
       <section className="section section-soft">
         <div className="container">
-          <h2>The Brands We Carry</h2>
-          <div className="pill-row" style={{ marginTop: 16 }}>
-            {BRANDS.map((b) => (
-              <Link key={b.slug} href={`/brands/${b.slug}/`} className="pill">{b.name}</Link>
-            ))}
+          <div className="section-head">
+            <span className="eyebrow">Authorized US dealer</span>
+            <h2>The Brands We Carry</h2>
+            <p>Genuine manufacturer warranties on every bike we sell.</p>
           </div>
+          <Reveal>
+            <div className="pill-row" style={{ justifyContent: 'center' }}>
+              {BRANDS.map((b) => (
+                <Link key={b.slug} href={`/brands/${b.slug}/`} className="pill">{b.name}</Link>
+              ))}
+            </div>
+          </Reveal>
         </div>
       </section>
 
       <section className="section">
         <div className="container">
-          <h2>Built by Riders, For Riders</h2>
-          <div className="authority-grid" style={{ marginTop: 18 }}>
-            <div className="card"><div className="card-body">
-              <h3>✅ Authorized US Dealer</h3>
-              <p className="muted">Official dealer for Sur-Ron, Stark Future, STACYC, Talaria and more — genuine US manufacturer warranties on every bike.</p>
-            </div></div>
-            <div className="card"><div className="card-body">
-              <h3>🏍️ Riders, Not Salespeople</h3>
-              <p className="muted">Our team rides electric dirt bikes. Advice comes from experience, not commission structures.</p>
-            </div></div>
-            <div className="card"><div className="card-body">
-              <h3>📋 Fully Compliant</h3>
-              <p className="muted">Every product is clearly labeled off-road or street-legal. We&rsquo;re transparent about US OHV laws, including California Section 436.1.</p>
-            </div></div>
+          <div className="section-head">
+            <span className="eyebrow">Why VoltTrack</span>
+            <h2>Built by Riders, For Riders</h2>
           </div>
-          <p style={{ marginTop: 18 }}><Link href="/about/" className="btn btn-ghost">About VoltTrack</Link></p>
+          <Reveal>
+            <div className="authority-grid">
+              <div className="card"><div className="card-body" style={{ textAlign: 'center' }}>
+                <h3>✅ Authorized US Dealer</h3>
+                <p className="muted">Official dealer for Sur-Ron, Stark Future, STACYC, Talaria and more — genuine US manufacturer warranties on every bike.</p>
+              </div></div>
+              <div className="card"><div className="card-body" style={{ textAlign: 'center' }}>
+                <h3>🏍️ Riders, Not Salespeople</h3>
+                <p className="muted">Our team rides electric dirt bikes. Advice comes from experience, not commission structures.</p>
+              </div></div>
+              <div className="card"><div className="card-body" style={{ textAlign: 'center' }}>
+                <h3>📋 Fully Compliant</h3>
+                <p className="muted">Every product is clearly labeled off-road or street-legal. We&rsquo;re transparent about US OHV laws, including California Section 436.1.</p>
+              </div></div>
+            </div>
+          </Reveal>
+          <p style={{ marginTop: 24, textAlign: 'center' }}><Link href="/about/" className="btn btn-ghost">About VoltTrack</Link></p>
         </div>
       </section>
 
       <section className="section section-soft">
         <div className="container">
-          <h2>New Bikes, Deals &amp; Riding Guides</h2>
-          <div className="grid cols-3" style={{ marginTop: 20 }}>
-            {POSTS.map((post) => (
-              <Link key={post.slug} href={`/blog/${post.slug}/`} className="card" style={{ color: 'inherit' }}>
-                <div className="card-body">
-                  <h3>{post.title}</h3>
-                  <p className="muted" style={{ fontSize: '.9rem' }}>{post.excerpt}</p>
-                  <span className="price" style={{ fontSize: '.95rem', color: 'var(--brand)' }}>Read more →</span>
-                </div>
-              </Link>
-            ))}
+          <div className="section-head">
+            <span className="eyebrow">From the blog</span>
+            <h2>New Bikes, Deals &amp; Riding Guides</h2>
           </div>
+          <Reveal>
+            <div className="grid cols-3">
+              {POSTS.map((post) => (
+                <Link key={post.slug} href={`/blog/${post.slug}/`} className="card" style={{ color: 'inherit' }}>
+                  <div className="card-body">
+                    <h3>{post.title}</h3>
+                    <p className="muted" style={{ fontSize: '.9rem' }}>{post.excerpt}</p>
+                    <span className="price" style={{ fontSize: '.95rem', color: 'var(--brand)' }}>Read more →</span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </Reveal>
         </div>
       </section>
 
       <section className="section">
-        <div className="container prose">
-          <h2>Frequently Asked Questions</h2>
-          <FaqAccordion items={FAQS} />
-          <p style={{ marginTop: 20 }}><Link href="/contact/" className="btn">Not sure which bike? Ask us</Link></p>
+        <div className="container">
+          <div className="section-head">
+            <span className="eyebrow">Questions?</span>
+            <h2>Frequently Asked Questions</h2>
+          </div>
+          <div style={{ maxWidth: 760, margin: '0 auto' }}>
+            <FaqAccordion items={FAQS} />
+            <p style={{ marginTop: 24, textAlign: 'center' }}><Link href="/contact/" className="btn">Not sure which bike? Ask us</Link></p>
+          </div>
         </div>
       </section>
     </>

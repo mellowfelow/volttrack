@@ -25,6 +25,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        {/* Enable reveal animations only when JS is active (before paint → no flash) */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js-anim')" }} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link
