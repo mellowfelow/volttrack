@@ -70,7 +70,7 @@ export const HERO = [
     ctaHref: '/shop/',
     cta2Text: 'Read the Buying Guides',
     cta2Href: '/guides/',
-    image: '',
+    image: 'homepage-hero.webp',
   },
   {
     eyebrow: 'Lightweight Legends',
@@ -80,7 +80,7 @@ export const HERO = [
     ctaHref: '/brands/sur-ron/',
     cta2Text: 'Sur-Ron vs Talaria',
     cta2Href: '/guides/sur-ron-vs-talaria/',
-    image: '',
+    image: 'adult-dirt-bike.webp',
   },
   {
     eyebrow: 'For Every Rider',
@@ -90,7 +90,7 @@ export const HERO = [
     ctaHref: '/shop/youth-electric-dirt-bikes/',
     cta2Text: 'Best Bikes for Kids',
     cta2Href: '/guides/best-electric-dirt-bikes-for-kids/',
-    image: '',
+    image: 'beginners-guide.webp',
   },
   {
     eyebrow: 'Buy With Confidence',
@@ -100,7 +100,7 @@ export const HERO = [
     ctaHref: '/shop/',
     cta2Text: 'About VoltTrack',
     cta2Href: '/about/',
-    image: '',
+    image: 'enduro.webp',
   },
 ]
 
@@ -116,7 +116,7 @@ export const CATEGORIES = [
     description:
       'Full-size, full-performance electric dirt bikes for adult riders — from trail-ready Sur-Ron builds to race-spec Stark and Talaria machines. Off-road use unless certified street-legal.',
     keyword: 'adult electric dirt bikes',
-    image: '',
+    image: 'adult-dirt-bike.webp',
   },
   {
     slug: 'youth-electric-dirt-bikes',
@@ -125,7 +125,7 @@ export const CATEGORIES = [
     description:
       'Right-sized electric dirt bikes for kids and teens, with adjustable power and ride modes for a safe way to learn. STACYC and Razor lead our youth lineup.',
     keyword: 'youth electric dirt bikes',
-    image: '',
+    image: 'youth-kids.webp',
   },
   {
     slug: 'electric-motocross-bikes',
@@ -134,7 +134,7 @@ export const CATEGORIES = [
     description:
       'Track-focused electric motocross bikes built for closed-course racing — high power, full suspension travel and competition geometry. Off-road / closed-course use only.',
     keyword: 'electric motocross bikes',
-    image: '',
+    image: 'motocross.webp',
   },
   {
     slug: 'electric-trail-bikes',
@@ -143,7 +143,7 @@ export const CATEGORIES = [
     description:
       'Electric trail and enduro bikes tuned for range and rideability on OHV trails and private land. Some models offer street-legal certification — check each listing.',
     keyword: 'electric trail bikes',
-    image: '',
+    image: 'enduro.webp',
   },
   {
     slug: 'electric-pit-bikes',
@@ -152,7 +152,7 @@ export const CATEGORIES = [
     description:
       'Compact, playful electric pit bikes — perfect for the pit lane, the yard and newer riders building confidence. Off-road use only.',
     keyword: 'electric pit bikes',
-    image: '',
+    image: 'pit-bikes.webp',
   },
 ]
 
