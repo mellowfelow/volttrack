@@ -42,10 +42,10 @@
   "currency": "USD",
   "minimum_order_usd": 0,
   "payment_methods": [
-    "bank-transfer",
     "crypto-BTC",
     "crypto-USDT",
-    "financing"
+    "bank-transfer",
+    "credit-card"
   ],
   "legal": {
     "age_restriction": "None (off-road vehicles; local OHV / street-legal rules apply)",

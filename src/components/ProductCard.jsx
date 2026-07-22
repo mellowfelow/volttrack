@@ -26,6 +26,14 @@ export default function ProductCard({ p, eager = false }) {
           <Link href={`/product/${p.slug}/`} style={{ color: 'inherit' }}>{p.name}</Link>
         </h3>
         <p className="muted" style={{ fontSize: '.9rem' }}>{p.short}</p>
+        {p.specs ? (
+          <ul className="spec-chips" aria-label="Key specifications">
+            <li><span aria-hidden="true">⚡</span> {p.specs.topSpeed}</li>
+            <li><span aria-hidden="true">📏</span> {p.specs.range}</li>
+            <li><span aria-hidden="true">🔋</span> {p.specs.battery}</li>
+            <li><span aria-hidden="true">⚖️</span> {p.specs.weight}</li>
+          </ul>
+        ) : null}
         <span className="price">{SITE.currencySymbol}{p.price.toLocaleString('en-US')}</span>
         <div style={{ display: 'flex', gap: 8, marginTop: 12 }}>
           <AddToCart product={p} className="btn" label="Add to cart" />

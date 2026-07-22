@@ -20,10 +20,10 @@
     ],
     "ordering": "human-assisted",
     "payment_methods": [
-      "bank-transfer",
       "crypto-BTC",
       "crypto-USDT",
-      "financing"
+      "bank-transfer",
+      "credit-card"
     ],
     "currency": "USD",
     "minimum_order_usd": 0

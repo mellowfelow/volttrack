@@ -227,7 +227,7 @@ const serverCard = {
     ],
     commerce: {
       ordering: 'human-assisted via contact page',
-      payment: ['bank-transfer', 'crypto-BTC', 'crypto-USDT', 'financing'],
+      payment: ['crypto-BTC', 'crypto-USDT', 'bank-transfer', 'credit-card'],
       currency: SITE.currency,
       minimumOrder: SITE.minOrder,
       freeShipping: SITE.freeShippingText,
@@ -305,7 +305,7 @@ j('.well-known/acp.json', {
   capabilities: {
     services: ['product-catalog', 'brands', 'guides', 'blog', 'faq'],
     ordering: 'human-assisted',
-    payment_methods: ['bank-transfer', 'crypto-BTC', 'crypto-USDT', 'financing'],
+    payment_methods: ['crypto-BTC', 'crypto-USDT', 'bank-transfer', 'credit-card'],
     currency: SITE.currency,
     minimum_order_usd: SITE.minOrder,
   },
@@ -344,7 +344,7 @@ j('.well-known/ucp', {
   },
   currency: SITE.currency,
   minimum_order_usd: SITE.minOrder,
-  payment_methods: ['bank-transfer', 'crypto-BTC', 'crypto-USDT', 'financing'],
+  payment_methods: ['crypto-BTC', 'crypto-USDT', 'bank-transfer', 'credit-card'],
   legal: {
     age_restriction: AGE,
     product_type: 'Electric dirt bikes (off-road / OHV)',

@@ -10,6 +10,7 @@ export default function CheckoutClient() {
   const formRef = useRef(null)
   const [items, setItems] = useState([])
   const [method, setMethod] = useState(SITE.paymentMethods[0].id)
+  const [plan, setPlan] = useState(SITE.paymentPlans[0].id)
   const [error, setError] = useState('')
   const keyPending = FORMS.provider === 'web3forms' && (!FORMS.web3formsKey || FORMS.web3formsKey.startsWith('YOUR-'))
 
@@ -21,6 +22,9 @@ export default function CheckoutClient() {
   const selected = SITE.paymentMethods.find((m) => m.id === method) || {}
   const isCrypto = !!selected.crypto
   const t = totals(items, isCrypto)
+  const payIn4 = plan === 'pay-in-4'
+  const installment = Math.round(t.total / 4)
+  const selectedPlan = SITE.paymentPlans.find((p) => p.id === plan) || {}
 
   const orderText = items
     .map((i) => `${i.qty}× ${i.name} @ ${SITE.currencySymbol}${i.price.toLocaleString('en-US')}`)
@@ -72,6 +76,7 @@ export default function CheckoutClient() {
           <input type="hidden" name="replyto" value="" />
           <input type="hidden" name="order" value={orderText} />
           <input type="hidden" name="payment_method" value={selected.label || method} />
+          <input type="hidden" name="payment_plan" value={selectedPlan.label || plan} />
           <input type="hidden" name="subtotal_usd" value={t.subtotal} />
           <input type="hidden" name="crypto_discount_usd" value={t.discount} />
           <input type="hidden" name="total_usd" value={t.total} />
@@ -114,6 +119,20 @@ export default function CheckoutClient() {
                   </label>
                 ))}
               </div>
+
+              <h2 style={{ fontSize: '1.2rem', marginTop: 18 }}>Payment plan</h2>
+              <p className="form-note" style={{ marginTop: 0 }}>Available with any payment method above.</p>
+              <div className="pay-options">
+                {SITE.paymentPlans.map((pl) => (
+                  <label key={pl.id} className={`pay-option${plan === pl.id ? ' selected' : ''}`}>
+                    <input
+                      type="radio" name="payment_plan_choice" value={pl.id}
+                      checked={plan === pl.id} onChange={() => setPlan(pl.id)}
+                    />
+                    <span>{pl.label}{pl.id === 'pay-in-4' ? ` — 4 × ${SITE.currencySymbol}${installment.toLocaleString('en-US')}` : ''}</span>
+                  </label>
+                ))}
+              </div>
             </div>
 
             <div className="order-summary">
@@ -135,6 +154,11 @@ export default function CheckoutClient() {
                 <div className="order-row muted"><span>Crypto discount</span><span>pay with BTC/USDT to save {Math.round(SITE.cryptoDiscount * 100)}%</span></div>
               )}
               <div className="order-row total"><span>Total</span><span>{SITE.currencySymbol}{t.total.toLocaleString('en-US')}</span></div>
+              {payIn4 ? (
+                <div className="order-row" style={{ color: 'var(--brand)', fontWeight: 700 }}>
+                  <span>Pay in 4</span><span>4 × {SITE.currencySymbol}{installment.toLocaleString('en-US')}</span>
+                </div>
+              ) : null}
 
               {error ? <p style={{ color: '#b91c1c', fontWeight: 600 }}>{error}</p> : null}
               <button type="submit" className="btn" style={{ width: '100%' }}>Place order</button>

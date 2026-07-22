@@ -39,10 +39,10 @@
     "commerce": {
       "ordering": "human-assisted via contact page",
       "payment": [
-        "bank-transfer",
         "crypto-BTC",
         "crypto-USDT",
-        "financing"
+        "bank-transfer",
+        "credit-card"
       ],
       "currency": "USD",
       "minimumOrder": 0,

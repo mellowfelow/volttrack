@@ -41,6 +41,15 @@ export default function ProductPage({ params }) {
     image: [url(img)],
     brand: { '@type': 'Brand', name: brandName(p.brand) },
     category: cat ? cat.name : undefined,
+    ...(p.specs && {
+      additionalProperty: [
+        { '@type': 'PropertyValue', name: 'Top speed', value: p.specs.topSpeed },
+        { '@type': 'PropertyValue', name: 'Range', value: p.specs.range },
+        { '@type': 'PropertyValue', name: 'Battery', value: p.specs.battery },
+        { '@type': 'PropertyValue', name: 'Weight', value: p.specs.weight },
+        { '@type': 'PropertyValue', name: 'Motor power', value: p.specs.power },
+      ],
+    }),
     offers: {
       '@type': 'Offer',
       priceCurrency: SITE.currency,
@@ -87,6 +96,22 @@ export default function ProductPage({ params }) {
               </p>
             </div>
           </div>
+
+          {p.specs ? (
+            <div style={{ marginTop: 48 }}>
+              <h2>Technical Specifications</h2>
+              <div className="spec-table-wrap">
+                <table className="spec-table">
+                  <tbody>
+                    <tr><th>⚡ Top speed</th><td>{p.specs.topSpeed}</td><th>🏍️ Motor / power</th><td>{p.specs.power}</td></tr>
+                    <tr><th>📏 Range</th><td>{p.specs.range}</td><th>🔋 Battery</th><td>{p.specs.battery}</td></tr>
+                    <tr><th>⚖️ Weight</th><td>{p.specs.weight}</td><th>🏁 Use</th><td>{cat ? cat.name : 'Off-road'}</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <p className="form-note">Specifications are indicative and may vary by model year and configuration. Confirm current manufacturer specs with us before purchase.</p>
+            </div>
+          ) : null}
 
           {related.length ? (
             <div style={{ marginTop: 48 }}>
