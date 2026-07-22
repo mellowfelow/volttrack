@@ -3,14 +3,13 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { SITE, CATEGORIES } from '@/config/site'
 import CartCount from '@/components/CartCount'
+import AnnounceBar from '@/components/AnnounceBar'
 
 export default function Nav() {
   const [open, setOpen] = useState(false)
   return (
     <header className="site-header">
-      <div className="announce">
-        🚚 {SITE.freeShippingText} · 💳 {SITE.financing} · ✅ Authorized US Dealer
-      </div>
+      <AnnounceBar />
       <div className="container">
         <nav className="nav" aria-label="Primary">
           <Link href="/" className="brand-logo">⚡ {SITE.name}</Link>

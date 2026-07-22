@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { SITE, CATEGORIES, BRANDS, PRODUCTS, POSTS, FAQS, priceRange } from '@/config/site'
 import ProductCard from '@/components/ProductCard'
+import HeroSlider from '@/components/HeroSlider'
 import FaqAccordion from '@/components/FaqAccordion'
 import { JsonLd, url, buildMetadata } from '@/lib/seo'
 
@@ -64,19 +65,7 @@ export default function Home() {
       <JsonLd data={websiteLd} />
       <JsonLd data={faqLd} />
 
-      <section className="hero">
-        <div className="container">
-          <span className="eyebrow">America&rsquo;s Electric Dirt Bike Experts</span>
-          <h1>The Best Electric Dirt Bikes in the USA</h1>
-          <p className="lead">
-            {SITE.entityStatement}
-          </p>
-          <div className="hero-cta">
-            <Link href="/shop/" className="btn">Shop All Bikes</Link>
-            <Link href="/guides/" className="btn btn-ghost">Read the Buying Guides</Link>
-          </div>
-        </div>
-      </section>
+      <HeroSlider />
 
       <section className="section">
         <div className="container">
@@ -95,6 +84,15 @@ export default function Home() {
           <div className="grid cols-4" style={{ marginTop: 20 }}>
             {CATEGORIES.map((c) => (
               <Link key={c.slug} href={`/shop/${c.slug}/`} className="card" style={{ color: 'inherit' }}>
+                <div className="product-frame">
+                  <img
+                    src={c.image ? `/images/${c.image}` : '/images/placeholder-bike.svg'}
+                    alt={`${c.name} category`}
+                    width={1600}
+                    height={1200}
+                    loading="lazy"
+                  />
+                </div>
                 <div className="card-body">
                   <h3>{c.name}</h3>
                   <p className="muted" style={{ fontSize: '.92rem' }}>{c.short}</p>

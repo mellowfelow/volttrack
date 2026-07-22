@@ -58,7 +58,55 @@ export const CHAT = {
 }
 
 // ----------------------------------------------------------------------------
+// HERO SLIDES (homepage slider). First slide carries the single <h1>.
+// `image`: filename in /public/images/ (optional) — falls back to brand gradient.
+// ----------------------------------------------------------------------------
+export const HERO = [
+  {
+    eyebrow: "America's Electric Dirt Bike Experts",
+    heading: 'The Best Electric Dirt Bikes in the USA',
+    sub: 'Sur-Ron, Stark Future, Talaria, STACYC, KTM and more — with honest advice, fast US shipping and financing. Founded by riders, for riders.',
+    ctaText: 'Shop All Bikes',
+    ctaHref: '/shop/',
+    cta2Text: 'Read the Buying Guides',
+    cta2Href: '/guides/',
+    image: '',
+  },
+  {
+    eyebrow: 'Lightweight Legends',
+    heading: 'Sur-Ron & Talaria, In Stock',
+    sub: 'The bikes that started the movement. Light Bee X, Ultra Bee HP and the Talaria Sting range — trail-ready and endlessly upgradeable.',
+    ctaText: 'Shop Sur-Ron',
+    ctaHref: '/brands/sur-ron/',
+    cta2Text: 'Sur-Ron vs Talaria',
+    cta2Href: '/guides/sur-ron-vs-talaria/',
+    image: '',
+  },
+  {
+    eyebrow: 'For Every Rider',
+    heading: 'Youth & Kids Electric Dirt Bikes',
+    sub: 'From a first STACYC to a KTM SX-E, age-appropriate power and ride modes that grow with your rider.',
+    ctaText: 'Shop Youth & Kids',
+    ctaHref: '/shop/youth-electric-dirt-bikes/',
+    cta2Text: 'Best Bikes for Kids',
+    cta2Href: '/guides/best-electric-dirt-bikes-for-kids/',
+    image: '',
+  },
+  {
+    eyebrow: 'Buy With Confidence',
+    heading: 'Financing, Fast Shipping & Real Aftercare',
+    sub: 'Pay in 4 on eligible bikes, free US shipping to the Lower 48, and genuine post-purchase support from people who actually ride.',
+    ctaText: 'Start Shopping',
+    ctaHref: '/shop/',
+    cta2Text: 'About VoltTrack',
+    cta2Href: '/about/',
+    image: '',
+  },
+]
+
+// ----------------------------------------------------------------------------
 // CATEGORIES (shop by rider/use)
+// `image`: filename in /public/images/ (optional) — falls back to placeholder.
 // ----------------------------------------------------------------------------
 export const CATEGORIES = [
   {
@@ -68,6 +116,7 @@ export const CATEGORIES = [
     description:
       'Full-size, full-performance electric dirt bikes for adult riders — from trail-ready Sur-Ron builds to race-spec Stark and Talaria machines. Off-road use unless certified street-legal.',
     keyword: 'adult electric dirt bikes',
+    image: '',
   },
   {
     slug: 'youth-electric-dirt-bikes',
@@ -76,6 +125,7 @@ export const CATEGORIES = [
     description:
       'Right-sized electric dirt bikes for kids and teens, with adjustable power and ride modes for a safe way to learn. STACYC and Razor lead our youth lineup.',
     keyword: 'youth electric dirt bikes',
+    image: '',
   },
   {
     slug: 'electric-motocross-bikes',
@@ -84,6 +134,7 @@ export const CATEGORIES = [
     description:
       'Track-focused electric motocross bikes built for closed-course racing — high power, full suspension travel and competition geometry. Off-road / closed-course use only.',
     keyword: 'electric motocross bikes',
+    image: '',
   },
   {
     slug: 'electric-trail-bikes',
@@ -92,6 +143,7 @@ export const CATEGORIES = [
     description:
       'Electric trail and enduro bikes tuned for range and rideability on OHV trails and private land. Some models offer street-legal certification — check each listing.',
     keyword: 'electric trail bikes',
+    image: '',
   },
   {
     slug: 'electric-pit-bikes',
@@ -100,6 +152,7 @@ export const CATEGORIES = [
     description:
       'Compact, playful electric pit bikes — perfect for the pit lane, the yard and newer riders building confidence. Off-road use only.',
     keyword: 'electric pit bikes',
+    image: '',
   },
 ]
 
