@@ -7,6 +7,7 @@ import {
 import Breadcrumbs from '@/components/Breadcrumbs'
 import ProductCard from '@/components/ProductCard'
 import ProductBuy from '@/components/ProductBuy'
+import SmartImage from '@/components/SmartImage'
 import { buildMetadata, JsonLd, url } from '@/lib/seo'
 
 export function generateStaticParams() {
@@ -74,7 +75,7 @@ export default function ProductPage({ params }) {
         <div className="container">
           <div className="grid cols-2" style={{ alignItems: 'start' }}>
             <div className="product-frame" style={{ borderRadius: 'var(--radius)', border: '1px solid var(--line)' }}>
-              <img src={img} alt={`${p.name} electric dirt bike`} width={1600} height={1200} loading="eager" />
+              <SmartImage src={img} alt={`${p.name} electric dirt bike`} width={1600} height={1200} loading="eager" />
             </div>
             <div>
               {p.badge ? <span className="badge">{p.badge}</span> : null}

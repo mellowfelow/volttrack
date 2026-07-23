@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { SITE, CATEGORIES, BRANDS, PRODUCTS, POSTS, FAQS, priceRange } from '@/config/site'
 import ProductCard from '@/components/ProductCard'
 import Hero from '@/components/Hero'
+import SmartImage from '@/components/SmartImage'
 import FaqAccordion from '@/components/FaqAccordion'
 import Reveal from '@/components/Reveal'
 import { JsonLd, url, buildMetadata } from '@/lib/seo'
@@ -92,7 +93,7 @@ export default function Home() {
             <div className="cat-grid">
               {CATEGORIES.map((c) => (
                 <Link key={c.slug} href={`/shop/${c.slug}/`} className="tile">
-                  <img
+                  <SmartImage
                     src={c.image ? `/images/${c.image}` : '/images/placeholder-bike.svg'}
                     alt={`${c.name} category`}
                     width={1280}

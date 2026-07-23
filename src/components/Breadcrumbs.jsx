@@ -14,15 +14,19 @@ export default function Breadcrumbs({ items }) {
       item: url(it.href),
     })),
   }
+  const lastIdx = all.length - 1
   return (
-    <div className="crumbs container" aria-label="Breadcrumb">
+    <nav className="crumbs container" aria-label="Breadcrumb">
       <JsonLd data={ld} />
-      {all.map((it, i) => (
-        <span key={it.href}>
-          {i > 0 ? ' / ' : ''}
-          {i < all.length - 1 ? <Link href={it.href}>{it.name}</Link> : <span>{it.name}</span>}
-        </span>
-      ))}
-    </div>
+      <ol className="crumbs-list">
+        {all.map((it, i) => (
+          <li key={it.href}>
+            {i < lastIdx
+              ? <><Link href={it.href}>{it.name}</Link><span className="crumbs-sep" aria-hidden="true"> / </span></>
+              : <span aria-current="page">{it.name}</span>}
+          </li>
+        ))}
+      </ol>
+    </nav>
   )
 }

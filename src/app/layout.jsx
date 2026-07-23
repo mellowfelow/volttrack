@@ -36,8 +36,9 @@ export default function RootLayout({ children }) {
         <script src="/js/webmcp.js" defer></script>
       </head>
       <body>
+        <a href="#main" className="skip-link">Skip to main content</a>
         <Nav />
-        <main>{children}</main>
+        <main id="main">{children}</main>
         <Footer />
         <ChatHub />
       </body>

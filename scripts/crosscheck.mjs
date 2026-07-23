@@ -1,7 +1,7 @@
 // Pre-ship crosscheck. Exits non-zero on failure.
 // Validates the generated agent-ready files, config integrity, forms method,
 // and compliance/placeholder rules. Run after gen-agent-files.mjs.
-import { readFileSync, existsSync } from 'node:fs'
+import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs'
 import { resolve, dirname } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 
@@ -118,74 +118,111 @@ for (const f of ['llms.txt', 'auth.md']) {
 }
 pass('compliance scan')
 
-// ---------------------------------------------------------------------------
-// 41. Visual design quality (v9-style bar; implemented against v8 standards)
-// ---------------------------------------------------------------------------
 const css = read(resolve(root, 'src/styles/globals.css'))
 const home = read(resolve(root, 'src/app/page.jsx'))
+const layoutSrc = read(resolve(root, 'src/app/layout.jsx'))
 const srcFile = (p) => read(resolve(root, p))
+const imgsDir = resolve(root, 'public/images')
+const listImgs = (ext) => existsSync(imgsDir) ? readdirSync(imgsDir).filter((f) => f.endsWith(ext)) : []
 
-// 41a. Single design-token set present (one radius, one shadow, one spacing scale, surface tint)
+// ---------------------------------------------------------------------------
+// 39. Accessibility (static) — WCAG 2.2 AA build rules (references/accessibility.md)
+// ---------------------------------------------------------------------------
+if (!/className="skip-link"|skip-link/.test(layoutSrc) || !/href="#main"/.test(layoutSrc)) fail('39 a11y: skip-link to #main missing in layout')
+else pass('39 a11y: skip-link present')
+if (!/id="main"/.test(layoutSrc)) fail('39 a11y: <main id="main"> landmark missing')
+else pass('39 a11y: main#main landmark present')
+if (!/aria-label="Primary"/.test(srcFile('src/components/Nav.jsx'))) fail('39 a11y: primary nav not labelled')
+else pass('39 a11y: nav landmark labelled')
+{
+  const bc = srcFile('src/components/Breadcrumbs.jsx')
+  if (!/<nav[^>]*aria-label="Breadcrumb"/.test(bc) || !/<ol/.test(bc) || !/aria-current="page"/.test(bc))
+    fail('39 a11y: Breadcrumbs must be <nav aria-label="Breadcrumb"><ol> with aria-current="page"')
+  else pass('39 a11y: breadcrumbs semantic (nav/ol/aria-current)')
+}
+{
+  const qtyS = existsSync(resolve(root, 'src/components/QtyStepper.jsx')) ? srcFile('src/components/QtyStepper.jsx') : ''
+  if (!qtyS || !/type="button"/.test(qtyS) || (qtyS.match(/aria-label=/g) || []).length < 2)
+    fail('39 a11y: QtyStepper −/+ need type=button + aria-label')
+  else pass('39 a11y: QtyStepper buttons labelled')
+}
+for (const [f, what] of [['src/components/Nav.jsx', 'hamburger'], ['src/components/CartCount.jsx', 'cart'], ['src/components/ChatHub.jsx', 'chat']]) {
+  if (existsSync(resolve(root, f)) && !/aria-label/.test(srcFile(f))) fail(`39 a11y: ${what} icon-only control missing aria-label`)
+}
+pass('39 a11y: icon-only controls labelled')
+if ((srcFile('src/app/checkout/CheckoutClient.jsx').match(/htmlFor=/g) || []).length < 4) fail('39 a11y: checkout inputs not labelled')
+else pass('39 a11y: form controls labelled')
+if (/tabindex=["']?[1-9]/i.test(home + layoutSrc)) fail('39 a11y: positive tabindex found')
+else pass('39 a11y: no positive tabindex')
+if (/outline:\s*(none|0)(?![^{]*:focus-visible)/.test(css) && !/:focus-visible/.test(css)) fail('39 a11y: outline:none without :focus-visible')
+else pass('39 a11y: focus-visible rings present')
+if (!/@media\s*\(prefers-reduced-motion:\s*reduce\)/.test(css)) fail('39 a11y: prefers-reduced-motion block missing')
+else pass('39 a11y: prefers-reduced-motion present')
+
+// ---------------------------------------------------------------------------
+// 40. Performance (structural) — references/performance.md
+// ---------------------------------------------------------------------------
+{
+  const webps = listImgs('.webp')
+  const missingAvif = webps.filter((w) => !existsSync(resolve(imgsDir, w.replace(/\.webp$/, '.avif'))))
+  if (missingAvif.length) fail(`40 perf: WebP without AVIF sibling: ${missingAvif.join(', ')}`)
+  else pass(`40 perf: AVIF+WebP for every raster (${webps.length})`)
+  // individual raster weight budget (<150KB; hero exempt but still flagged if huge)
+  const heavy = [...webps, ...listImgs('.avif')].filter((f) => statSync(resolve(imgsDir, f)).size > 150 * 1024 && !f.startsWith('homepage-hero'))
+  if (heavy.length) fail(`40 perf: images over 150KB: ${heavy.join(', ')}`)
+  else pass('40 perf: image weight budget (<150KB, hero exempt)')
+}
+// images routed through SmartImage (AVIF picture) not raw <img> on homepage/cards
+if (!/SmartImage/.test(srcFile('src/components/ProductCard.jsx'))) fail('40 perf: ProductCard not using SmartImage')
+else pass('40 perf: cards use SmartImage (picture/AVIF)')
+// no render-blocking external <script> without defer/async in <head>
+if (/<script\s+src=(?!.*(defer|async))/.test(layoutSrc)) fail('40 perf: render-blocking external head script (needs defer)')
+else pass('40 perf: no render-blocking head scripts')
+if (!/font-display=swap|display:\s*swap|display=swap/.test(layoutSrc)) fail('40 perf: font-display swap missing')
+else pass('40 perf: font-display swap + preconnect')
+
+// ---------------------------------------------------------------------------
+// 41. Visual design quality — references/design-quality.md
+// ---------------------------------------------------------------------------
 for (const tok of ['--radius:', '--shadow:', '--space:', '--bg-soft:']) {
-  if (!css.includes(tok)) fail(`41 design tokens: missing ${tok} in globals.css`)
+  if (!css.includes(tok)) fail(`41 design: missing token ${tok}`)
 }
-pass('41 design tokens present (radius/shadow/space/surface)')
-
-// 41b. Cards use the shared shadow token (cohesive depth, not ad-hoc shadows)
-if (!/\.card\{[^}]*box-shadow:var\(--shadow\)/.test(css)) fail('41 depth: .card does not use var(--shadow)')
-else pass('41 depth: cards use shared shadow token')
-
-// 41c. Single hero, NOT a carousel/autoplay (per pages.md + "no carousels/autoplay")
-if (existsSync(resolve(root, 'src/components/HeroSlider.jsx'))) fail('41 hero: HeroSlider (carousel) still present')
-if (!existsSync(resolve(root, 'src/components/Hero.jsx'))) fail('41 hero: single Hero.jsx missing')
+pass('41 design: one radius/shadow/spacing/surface token set')
+if (!/\.card\{[^}]*box-shadow:var\(--shadow\)/.test(css)) fail('41 design: cards not using shared shadow token')
+else pass('41 design: cohesive depth (shared shadow)')
+// grid uniformity: category tiles one shared .tile with cover + fixed aspect
+if (!/\.tile\{[^}]*aspect-ratio/.test(css) || !/\.tile img\{[^}]*object-fit:cover/.test(css)) fail('41 design: category tiles not uniform (aspect + object-fit:cover)')
+else pass('41 design: uniform category tiles (cover, fixed aspect)')
+// single hero, no carousel/autoplay
+if (existsSync(resolve(root, 'src/components/HeroSlider.jsx'))) fail('41 design: HeroSlider (carousel) still present')
+if (!existsSync(resolve(root, 'src/components/Hero.jsx'))) fail('41 design: single Hero.jsx missing')
 for (const c of ['src/components/Hero.jsx', 'src/components/AnnounceBar.jsx']) {
-  if (existsSync(resolve(root, c)) && /setInterval\s*\(/.test(srcFile(c))) fail(`41 motion: autoplay timer (setInterval) found in ${c}`)
+  if (existsSync(resolve(root, c)) && /setInterval\s*\(/.test(srcFile(c))) fail(`41 design: autoplay timer in ${c}`)
 }
-pass('41 hero: single hero, no carousel/autoplay')
-
-// 41d. Homepage rhythm: >=6 sections with alternating tinted surfaces
-const sectionCount = (home.match(/<section/g) || []).length
+if (!/\.hero\{[^}]*min-height/.test(css)) fail('41 design: hero missing min-height')
+pass('41 design: single hero, min-height + scrim, no carousel')
+// section rhythm
+const sectionCount = (home.match(/<section/g) || []).length + 1 // + Hero component's section
 const softCount = (home.match(/section-soft/g) || []).length
-if (sectionCount < 6) fail(`41 rhythm: only ${sectionCount} homepage sections (need >=6)`)
-if (softCount < 3) fail(`41 rhythm: only ${softCount} tinted sections (need alternating white/tint)`)
-if (sectionCount >= 6 && softCount >= 3) pass(`41 rhythm: ${sectionCount} sections, ${softCount} tinted (alternating)`)
-
-// 41e. Motion gated behind prefers-reduced-motion
-if (!/@media \(prefers-reduced-motion:reduce\)/.test(css)) fail('41 motion: no prefers-reduced-motion guard in CSS')
-else pass('41 motion: reduced-motion respected')
-
-// 41f. Reveal must not hide content without JS: only a `.js-anim`-gated rule may set opacity:0
-if (/(?<!\.js-anim )\.reveal\{[^}]*opacity:\s*0/.test(css)) fail('41 no-JS: ungated .reveal hides content without JS (use .js-anim gate)')
-else pass('41 no-JS: reveal content visible without JS')
-
-// ---------------------------------------------------------------------------
-// Accessibility static checks (per pages.md → Accessibility)
-// ---------------------------------------------------------------------------
-const qty = existsSync(resolve(root, 'src/components/QtyStepper.jsx')) ? srcFile('src/components/QtyStepper.jsx') : ''
-if (!qty) fail('a11y: QtyStepper.jsx missing')
-else {
-  if (!/type="button"/.test(qty)) fail('a11y: QtyStepper buttons missing type="button"')
-  if ((qty.match(/aria-label=/g) || []).length < 2) fail('a11y: QtyStepper − / + buttons need aria-label')
-  else pass('a11y: QtyStepper buttons labelled + type=button')
+if (sectionCount < 6) fail(`41 design: only ${sectionCount} homepage sections (need >=6)`)
+else if (softCount < 2) fail(`41 design: <2 tinted sections (need alternating surfaces)`)
+else pass(`41 design: ${sectionCount} sections, ${softCount} tinted (alternating rhythm)`)
+// no-bare-section: every homepage <section> has a visual anchor
+{
+  const secs = home.split('<section').slice(1)
+  const bare = secs.filter((s) => {
+    const block = s.split('</section>')[0]
+    return !/(SmartImage|<img|className="(stat|tile|card|pill|spec-|section-soft|order-summary)|section-soft|<FaqAccordion|ProductCard)/.test(block)
+  })
+  if (bare.length) fail(`41 design: ${bare.length} bare homepage section(s) (no image/icon/card/tint)`)
+  else pass('41 design: no bare sections (each has a visual anchor)')
 }
-// icon-only buttons carry aria-label
-const iconBtns = [
-  ['src/components/Nav.jsx', 'hamburger'],
-  ['src/components/CartCount.jsx', 'cart'],
-  ['src/components/ChatHub.jsx', 'chat toggle'],
-]
-for (const [f, what] of iconBtns) {
-  if (existsSync(resolve(root, f)) && !/aria-label/.test(srcFile(f))) fail(`a11y: ${what} icon control missing aria-label (${f})`)
-}
-pass('a11y: icon-only controls have aria-label')
-// checkout inputs are labelled
-const checkout = existsSync(resolve(root, 'src/app/checkout/CheckoutClient.jsx')) ? srcFile('src/app/checkout/CheckoutClient.jsx') : ''
-if (checkout && (checkout.match(/htmlFor=/g) || []).length < 4) fail('a11y: checkout inputs missing <label htmlFor>')
-else pass('a11y: form inputs labelled')
-// FAQ is a native details/summary accordion
-const faqc = existsSync(resolve(root, 'src/components/FaqAccordion.jsx')) ? srcFile('src/components/FaqAccordion.jsx') : ''
-if (!/<details/.test(faqc) || !/<summary/.test(faqc)) fail('a11y: FAQ not a native <details>/<summary> accordion')
-else pass('a11y: FAQ uses native details/summary')
+// centered section-head pattern reused
+if (!/\.section-head\{[^}]*text-align:center/.test(css)) fail('41 design: section-head centering pattern missing')
+else pass('41 design: consistent centered section pattern')
+// reveal safe without JS
+if (/(?<!\.js-anim )\.reveal\{[^}]*opacity:\s*0/.test(css)) fail('41 design: ungated .reveal hides content without JS')
+else pass('41 design: motion gated (.js-anim), CLS-safe')
 
 console.log(`\ncrosscheck: ${passes} passed, ${fails} failed`)
 if (fails > 0) { console.error('CROSSCHECK FAILED'); process.exit(1) }

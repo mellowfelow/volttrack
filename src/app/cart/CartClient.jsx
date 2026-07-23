@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { SITE } from '@/config/site'
 import { getCart, setQty, removeItem, subscribe, totals } from '@/lib/cart'
 import QtyStepper from '@/components/QtyStepper'
+import SmartImage from '@/components/SmartImage'
 
 const money = (n) => `${SITE.currencySymbol}${n.toLocaleString('en-US')}`
 
@@ -35,7 +36,7 @@ export default function CartClient() {
                 return (
                   <div className="cart-row" key={i.slug}>
                     <Link href={`/product/${i.slug}/`} className="cart-thumb" aria-label={i.name}>
-                      <img src={img} alt={`${i.name} electric dirt bike`} width={160} height={120} loading="lazy" />
+                      <SmartImage src={img} alt={`${i.name} electric dirt bike`} width={160} height={120} loading="lazy" />
                     </Link>
                     <div className="cart-info">
                       <Link href={`/product/${i.slug}/`} className="cart-name">{i.name}</Link>

@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { SITE, brandName } from '@/config/site'
 import CardBuy from '@/components/CardBuy'
+import SmartImage from '@/components/SmartImage'
 
 export default function ProductCard({ p, eager = false }) {
   const img = p.images && p.images[0]
@@ -10,7 +11,7 @@ export default function ProductCard({ p, eager = false }) {
     <div className="card">
       <Link href={`/product/${p.slug}/`} style={{ color: 'inherit' }} aria-label={p.name}>
         <div className="product-frame">
-          <img
+          <SmartImage
             src={img}
             alt={`${p.name} electric dirt bike`}
             width={1600}
