@@ -217,231 +217,340 @@
 | P4 | STACYC 20hDRIVE | `/product/stacyc-20h-drive/` | ~$1,399 | Heavy-duty variant — confirm separate SKU | Verify with STACYC distributor |
 | P5 | Altis Delta S | `/product/altis-delta-s/` | ~$2,299 | Youth variant — confirm separate SKU | Verify with Altis dealer |
 | P6 | Zero FXE 2025 | `/product/zero-fxe/` | $12,495 | Supermoto/street — verify relevance to dirt audience | Low priority |
-| P7 | KTM Freeride E-XC *(supply check only)* | Already in Section 1 | $11,499 | Product confirmed. Verify US KTM dealer network is active before publishing — Pierer group financial restructuring may affect supply. Page exists in confirmed list; hold publishing until supply verified. | Confirm with active KTM US dealer before going live |
-| P8 | Talaria Dragon *(US availability check)* | Already in Section 1 | $7,649 | Specs confirmed, Dragon is in confirmed product table. US stock timeline needs verification with Talaria US distributor before publishing page. | Confirm US availability and lead time before going live |
+| P7 | KTM Freeride E-XC *(supply check only)* | `/product/ktm-freeride-exc/` *(in Section 1)* | $11,499 | Product confirmed. Verify US KTM dealer network is active before publishing — Pierer group financial restructuring may affect supply. Page exists in confirmed list; hold publishing until supply verified. | Confirm with active KTM US dealer before going live |
+| P8 | Talaria Dragon *(US availability check)* | `/product/talaria-dragon/` *(in Section 1)* | $7,649 | Specs confirmed, Dragon is in confirmed product table. US stock timeline needs verification with Talaria US distributor before publishing page. | Confirm US availability and lead time before going live |
 
 ---
 
 ## SECTION 3 — ACCESSORIES & PARTS
 
-### 3A — BATTERIES & CHARGERS
-**URL:** `/parts-accessories/batteries-chargers/` | **Priority:** 🔴 HIGH
+**Architecture:** Mirrors the bike shop exactly.
+- Hub: `/parts-accessories/` (like `/shop/`)
+- Category pages: `/parts-accessories/[category]/` (like `/shop/[category]/`)
+- Individual product pages: `/parts/[product-slug]/` (like `/product/[slug]/`)
+- Every individual product has its own URL, product schema, price, SKU, Add to Cart
+- Category pages list all products in that category — same `<ProductCard>` component as bikes
+- Breadcrumb on every parts product: Home → Parts & Accessories → [Category] → [Product]
 
-#### SUR-RON BATTERIES
-
-| Product | Fits | Price |
-|---|---|---|
-| Sur-Ron LBX OEM 60V/40Ah Replacement | Light Bee X | ~$1,499 |
-| Sur-Ron Hyper Bee OEM 50.4V Replacement | Hyper Bee | ~$799 |
-| Sur-Ron Ultra Bee OEM 74V/60Ah Replacement | Ultra Bee HP/MX | ~$1,799 |
-| Sur-Ron Storm Bee OEM 84V Battery | Storm Bee | ~$2,299 |
-| Chi Battery Systems Gladiator 60 Max (60V/60Ah) | LBX | ~$1,600 |
-| Chi Battery Systems Gladiator 60 Touring (60V/70Ah) | LBX | ~$1,899 |
-| Chi Battery Systems Gladiator X60 Compact (60V/51Ah) | LBX | ~$1,299 |
-| Chi Battery Systems Gladiator X72 Compact (72V/38Ah) | LBX | ~$1,499 |
-| eWatt 60V/53Ah Long Range Battery | LBX | ~$1,600 |
-| eWatt 72V Race Battery v5 (28kW, QS8) | LBX | ~$1,755 |
-| DHS GT 72V/50Ah Battery | LBX | ~$1,999 |
-| EBMX 81V Ultra Bee Performance Pack + lid + charger | Ultra Bee | ~$3,224 |
-| eWatt Ultra Bee 80V/76Ah Bundle + lid + charger | Ultra Bee | ~$3,500 |
-
-*72V/81V upgrade requires aftermarket controller (e.g. EBMX X-9000 ~$499). For range only — keep 60V. For speed + power — go 72V.*
-
-#### TALARIA BATTERIES
-
-| Product | Fits | Price |
-|---|---|---|
-| Talaria MX3/MX4 OEM 60V/38–45Ah Replacement | MX3, MX4 | ~$799 |
-| Talaria MX5 Pro OEM 72V/40Ah Replacement | MX5 Pro | ~$999 |
-| Talaria XXX OEM 60V Battery Replacement | XXX | ~$899 |
-| eWatt 60V/53Ah Long Range Battery | MX3, MX4 | ~$1,600 |
-| eWatt 72V/42Ah Race Battery (28kW) | MX3, MX4 | ~$2,000 |
-| eWatt 72V/63Ah Race Battery | MX3, MX4 | ~$3,000 |
-| Chi Battery Systems Titan X 72V | XXX | ~$1,599 |
-| eWatt 74V/44Ah Battery for XXX | XXX | ~$2,000 |
-| EBMX 74V/44Ah Battery for XXX + lid + harness | XXX | ~$2,199 |
-
-*72V/74V XXX upgrades require aftermarket controller. Entry 72V packs: ~$1,500. Premium 74V: $2,000–$2,200.*
-
-#### STACYC BATTERIES & ADAPTERS
-
-| Product | Fits | Price |
-|---|---|---|
-| STACYC OEM 20V Battery (Standard) | 12eDRIVE, 16eDRIVE | ~$199 |
-| STACYC OEM 20V Battery (5Ah High Capacity) | All STACYC | ~$249 |
-| STACYC OEM Charger | All STACYC | ~$49 |
-| Milwaukee M18 Battery Adapter | 12eDRIVE, 16eDRIVE | ~$75–$80 |
-| DeWalt 20V Battery Adapter | 12eDRIVE, 16eDRIVE | ~$75 |
-| Makita 18V Battery Adapter | 12eDRIVE, 16eDRIVE | ~$80 |
-| STACYC Spare Battery Mount/Holder | 12eDRIVE, 16eDRIVE | ~$50 |
-
-*⚠️ Power tool adapters: aftermarket mod, voids STACYC warranty on electrical components. Max 5Ah batteries. Do not leave on bike overnight. Not an official STACYC product.*
-
-#### E-RIDE PRO BATTERIES
-
-| Product | Fits | Price |
-|---|---|---|
-| E-Ride Pro SS 72V/40Ah OEM Battery | SS 2.0, SS 3.0 | ~$699 |
-| E-Ride Pro SR 72V/50Ah OEM Battery | SR | ~$899 |
-| E-Ride Pro S 72V/30Ah Battery + Charger | S models | ~$1,849 |
-| E-Ride Pro OEM 2nd Gen Charger | SS, SR | ~$296 |
-
-#### RAZOR BATTERIES
-
-| Product | Fits | Price |
-|---|---|---|
-| Razor MX350 24V Replacement Battery | MX350 | ~$49 |
-| Razor MX650 36V Replacement Battery | MX650 | ~$69 |
-| Razor MX350 OEM Charger | MX350 | ~$29 |
-| Razor MX650 OEM Charger | MX650 | ~$35 |
-
-#### CHARGERS (AFTERMARKET & UNIVERSAL)
-
-| Product | Fits | Price |
-|---|---|---|
-| Fast Charger for eWatt / EBMX / CCW packs | LBX, Talaria upgrade packs | ~$160–$200 |
-| 60V Standard Aftermarket Charger | LBX, Talaria MX3/MX4 stock | ~$45–$79 |
-| 72V Standard Aftermarket Charger | 72V upgrade packs | ~$79–$129 |
-| 74V Charger for EBMX/eWatt XXX packs | Talaria XXX 74V | ~$149 |
-| Sur-Ron OEM Charger (60V) | LBX | ~$89 |
-| Sur-Ron OEM Charger (74V) | Ultra Bee HP/MX | ~$119 |
+**SKU convention:** `VT-[CATEGORY-CODE]-[NUMBER]` e.g. `VT-BAT-001`
 
 ---
 
-### 3B — BIKE PARTS & UPGRADES
-**URL:** `/parts-accessories/parts-upgrades/` | **Priority:** 🔴 HIGH
+### CATEGORY 1: BATTERIES & CHARGERS
+**Category URL:** `/parts-accessories/batteries-chargers/`
+**Individual products URL pattern:** `/parts/[product-slug]/`
 
-| Sub-Category | Key Products | Price Range |
-|---|---|---|
-| Sur-Ron Drivetrain | Controller replacement, EBMX X-9000 controller (aftermarket), throttle, chain, sprockets | $79–$499 |
-| Sur-Ron Brakes | Brake pads front/rear, rotors, master cylinder, lever sets | $19–$149 |
-| Sur-Ron Suspension | Fork seals, fork oil, rear shock upgrade | $29–$299 |
-| Sur-Ron Wheels | Rims, spoke sets, hub sets | $89–$299 |
-| Sur-Ron Body | Front fender, rear fender, seat, seat cover, plastics set | $29–$249 |
-| Sur-Ron Electronics | Headlight, taillight, display unit, speedometer | $25–$149 |
-| Sur-Ron Ergonomics | Handlebars, grips, footpegs, pedal kit (L1e), bar ends | $19–$129 |
-| Sur-Ron Performance | Skid plate, frame guard, chain guide, sprocket upgrade | $29–$149 |
-| Talaria Drivetrain | Controller, throttle, gearbox oil | $49–$399 |
-| Talaria Brakes | Brake pads, 220x3mm rotors, master cylinder | $29–$179 |
-| Talaria Body | Fenders, frame guards, seat cover | $29–$199 |
-| Talaria Accessories | Pedal kit, display/screen, key fob kit, frame protectors | $39–$179 |
-| E-Ride Pro Parts | Brakes, display, fender, stem direct mount | $29–$249 |
-| STACYC Parts | Motor (12/16 eDRIVE), throttle, foot pegs, kickstand | $29–$199 |
-| Razor Parts | Chain, brake pads, battery cables | $9–$49 |
+#### 1A — SUR-RON BATTERIES
 
----
+| # | Product | URL | SKU | Price | Fits |
+|---|---|---|---|---|---|
+| 1 | Sur-Ron LBX OEM 60V/40Ah Replacement Battery | `/parts/surron-lbx-oem-60v-battery/` | VT-BAT-001 | ~$1,499 | Light Bee X |
+| 2 | Sur-Ron Hyper Bee OEM 50.4V Replacement Battery | `/parts/surron-hyper-bee-oem-battery/` | VT-BAT-002 | ~$799 | Hyper Bee |
+| 3 | Sur-Ron Ultra Bee OEM 74V/60Ah Replacement Battery | `/parts/surron-ultra-bee-oem-74v-battery/` | VT-BAT-003 | ~$1,799 | Ultra Bee HP/MX |
+| 4 | Sur-Ron Storm Bee OEM 84V Battery | `/parts/surron-storm-bee-oem-84v-battery/` | VT-BAT-004 | ~$2,299 | Storm Bee |
+| 5 | Chi Battery Systems Gladiator 60 Max (60V/60Ah) | `/parts/cbs-gladiator-60-max/` | VT-BAT-005 | ~$1,600 | LBX |
+| 6 | Chi Battery Systems Gladiator 60 Touring (60V/70Ah) | `/parts/cbs-gladiator-60-touring/` | VT-BAT-006 | ~$1,899 | LBX |
+| 7 | Chi Battery Systems Gladiator X60 Compact (60V/51Ah) | `/parts/cbs-gladiator-x60-compact/` | VT-BAT-007 | ~$1,299 | LBX |
+| 8 | Chi Battery Systems Gladiator X72 Compact (72V/38Ah) | `/parts/cbs-gladiator-x72-compact/` | VT-BAT-008 | ~$1,499 | LBX |
+| 9 | eWatt 60V/53Ah Long Range Battery for LBX | `/parts/ewatt-60v-53ah-lbx/` | VT-BAT-009 | ~$1,600 | LBX |
+| 10 | eWatt 72V Race Battery v5 for LBX (28kW) | `/parts/ewatt-72v-race-battery-lbx/` | VT-BAT-010 | ~$1,755 | LBX |
+| 11 | DHS GT 72V/50Ah Battery for LBX | `/parts/dhs-gt-72v-50ah-lbx/` | VT-BAT-011 | ~$1,999 | LBX |
+| 12 | EBMX 81V Ultra Bee Performance Pack + Lid + Charger | `/parts/ebmx-81v-ultra-bee-pack/` | VT-BAT-012 | ~$3,224 | Ultra Bee |
+| 13 | eWatt Ultra Bee 80V/76Ah Bundle + Lid + Charger | `/parts/ewatt-80v-ultra-bee-bundle/` | VT-BAT-013 | ~$3,500 | Ultra Bee |
 
-### 3C — GRAPHICS KITS & COSMETICS
-**URL:** `/parts-accessories/graphics-kits/` | **Priority:** 🟡 MEDIUM
-
-| Product | Price |
-|---|---|
-| Sur-Ron LBX Full Graphics Kit | ~$129–$179 |
-| Sur-Ron Ultra Bee Graphics Kit | ~$149–$199 |
-| Sur-Ron Husqvarna-Style Graphics (Ultra Bee) | ~$149 |
-| Sur-Ron Custom Vinyl Wrap | ~$199–$349 |
-| Sur-Ron Number Plate | ~$29–$49 |
-| Stark Varg MX Graphics Kit | ~$179–$249 |
-| Stark Varg EX Graphics Kit | ~$179–$249 |
-| Stark Varg Sticker Set | ~$49–$89 |
-| Talaria X3 Graphics Kit | ~$129–$169 |
-| Talaria MX4 Graphics Kit | ~$129–$169 |
-| Talaria Number Plate | ~$29–$49 |
-| STACYC 12eDRIVE Graphics Kit | ~$69–$99 |
-| STACYC 16eDRIVE Graphics Kit | ~$69–$99 |
-| KTM SX-E 5 Graphics Kit | ~$99–$149 |
-| GasGas MC-E 5 Graphics Kit | ~$99–$149 |
+*⚠️ Note on all product pages for 72V+ upgrades: "72V and 81V batteries require an aftermarket controller (e.g. EBMX X-9000 ~$499). For range only — stay 60V. For speed + power — upgrade to 72V. Contact us for a full upgrade consultation."*
 
 ---
 
-### 3D — HELMETS & PROTECTION
-**URL:** `/parts-accessories/helmets-protection/` | **Priority:** 🟡 MEDIUM
+#### 1B — TALARIA BATTERIES
 
-| Product | Price |
-|---|---|
-| Full-Face MX Helmet (Adult) | ~$89–$349 |
-| Full-Face MX Helmet (Youth) | ~$59–$179 |
-| Full-Face MX Helmet (Kids/Mini) | ~$49–$99 |
-| Off-Road Goggles (Adult) | ~$29–$89 |
-| Off-Road Goggles (Youth/Kids) | ~$19–$49 |
-| Chest Protector (Adult) | ~$49–$149 |
-| Chest Protector (Youth) | ~$39–$99 |
-| Knee/Shin Guards | ~$29–$89 |
-| Elbow Pads | ~$19–$49 |
-| Neck Brace | ~$99–$349 |
-| Gloves (Adult MX) | ~$19–$79 |
-| Gloves (Youth/Kids) | ~$14–$39 |
+| # | Product | URL | SKU | Price | Fits |
+|---|---|---|---|---|---|
+| 14 | Talaria MX3/MX4 OEM 60V/38–45Ah Replacement | `/parts/talaria-mx3-mx4-oem-60v-battery/` | VT-BAT-014 | ~$799 | MX3, MX4 |
+| 15 | Talaria MX5 Pro OEM 72V/40Ah Replacement | `/parts/talaria-mx5-pro-oem-72v-battery/` | VT-BAT-015 | ~$999 | MX5 Pro |
+| 16 | Talaria XXX OEM 60V Battery Replacement | `/parts/talaria-xxx-oem-60v-battery/` | VT-BAT-016 | ~$899 | XXX |
+| 17 | eWatt 60V/53Ah Long Range Battery for Talaria Sting | `/parts/ewatt-60v-53ah-talaria-sting/` | VT-BAT-017 | ~$1,600 | MX3, MX4 |
+| 18 | eWatt 72V/42Ah Race Battery for Talaria Sting | `/parts/ewatt-72v-42ah-talaria-sting/` | VT-BAT-018 | ~$2,000 | MX3, MX4 |
+| 19 | eWatt 72V/63Ah Long Range Race Battery for Talaria | `/parts/ewatt-72v-63ah-talaria-sting/` | VT-BAT-019 | ~$3,000 | MX3, MX4 |
+| 20 | Chi Battery Systems Titan X 72V for Talaria XXX | `/parts/cbs-titan-x-72v-talaria-xxx/` | VT-BAT-020 | ~$1,599 | XXX |
+| 21 | eWatt 74V/44Ah Battery for Talaria XXX | `/parts/ewatt-74v-44ah-talaria-xxx/` | VT-BAT-021 | ~$2,000 | XXX |
+| 22 | EBMX 74V/44Ah Battery for Talaria XXX + Lid + Harness | `/parts/ebmx-74v-talaria-xxx-pack/` | VT-BAT-022 | ~$2,199 | XXX |
+
+*⚠️ Note on 72V/74V XXX pages: "72V and 74V upgrades require an aftermarket controller. Entry 72V packs from ~$1,500. Premium 74V packs from eWatt or EBMX: $2,000–$2,200. Add ~$150 for a compatible charger."*
 
 ---
 
-### 3E — RIDING GEAR & CLOTHING
-**URL:** `/parts-accessories/riding-gear/` | **Priority:** 🟡 MEDIUM
+#### 1C — STACYC BATTERIES & ADAPTERS
 
-| Product | Price |
-|---|---|
-| MX Jersey + Pants Combo (Adult) | ~$69–$199 |
-| MX Jersey + Pants Combo (Youth/Kids) | ~$49–$129 |
-| Off-Road Boots (Adult) | ~$99–$349 |
-| Off-Road Boots (Youth) | ~$59–$149 |
-| Hydration Pack | ~$39–$99 |
-| Neck Gaiter / Balaclava | ~$14–$29 |
+| # | Product | URL | SKU | Price | Fits |
+|---|---|---|---|---|---|
+| 23 | STACYC OEM 20V Battery (Standard) | `/parts/stacyc-oem-20v-battery-standard/` | VT-BAT-023 | ~$199 | 12eDRIVE, 16eDRIVE |
+| 24 | STACYC OEM 20V Battery (5Ah High Capacity) | `/parts/stacyc-oem-20v-battery-5ah/` | VT-BAT-024 | ~$249 | All STACYC |
+| 25 | STACYC OEM Battery Charger | `/parts/stacyc-oem-charger/` | VT-CHG-001 | ~$49 | All STACYC |
+| 26 | STACYC Milwaukee M18 Battery Adapter | `/parts/stacyc-milwaukee-m18-adapter/` | VT-BAT-025 | ~$75 | 12eDRIVE, 16eDRIVE |
+| 27 | STACYC DeWalt 20V Battery Adapter | `/parts/stacyc-dewalt-20v-adapter/` | VT-BAT-026 | ~$75 | 12eDRIVE, 16eDRIVE |
+| 28 | STACYC Makita 18V Battery Adapter | `/parts/stacyc-makita-18v-adapter/` | VT-BAT-027 | ~$80 | 12eDRIVE, 16eDRIVE |
+| 29 | STACYC Spare Battery Mount/Holder | `/parts/stacyc-spare-battery-mount/` | VT-BAT-028 | ~$50 | 12eDRIVE, 16eDRIVE |
 
----
-
-### 3F — TYRES & WHEELS
-**URL:** `/parts-accessories/tyres-wheels/` | **Priority:** 🟡 MEDIUM
-
-| Product | Price |
-|---|---|
-| Sur-Ron LBX Front Tyre 19" Knobbly | ~$39–$65 |
-| Sur-Ron LBX Rear Tyre (18" or 16") | ~$39–$59 |
-| Sur-Ron Ultra Bee Rear Tyre 16" | ~$45–$69 |
-| Talaria Sting Front Tyre 19" | ~$39–$65 |
-| Talaria Sting Rear Tyre (16" or 18") | ~$39–$59 |
-| Inner Tubes 18"/19" | ~$12–$19 |
-| Inner Tubes 16" | ~$12–$17 |
-| Sur-Ron Wheel Set Upgrade | ~$249–$449 |
-| Talaria Wheel Set Upgrade | ~$249–$399 |
+*⚠️ Required disclaimer on all STACYC adapter product pages: "Power tool battery adapters are an aftermarket modification that voids the STACYC manufacturer warranty on electrical components. Do not exceed 5Ah batteries. Do not leave on the bike overnight. This is not an official STACYC product. Use at your own discretion."*
 
 ---
 
-### 3G — STANDS & MAINTENANCE
-**URL:** `/parts-accessories/stands-maintenance/` | **Priority:** 🟢 LOW
+#### 1D — E-RIDE PRO BATTERIES
 
-| Product | Price |
-|---|---|
-| Paddock / Rear Stand | ~$39–$79 |
-| STACYC Bike Stand | ~$50 |
-| Centre Stand (Sur-Ron compatible) | ~$59–$99 |
-| Bike Wash / Cleaner Spray | ~$14–$29 |
-| Chain Lube / Drivetrain Lube | ~$9–$19 |
-| Basic Tool Kit (hex, torx, spanners) | ~$29–$59 |
-| Torque Wrench | ~$39–$99 |
-| Puncture Repair Kit | ~$9–$19 |
-| Battery Terminal Protector Spray | ~$9–$14 |
+| # | Product | URL | SKU | Price | Fits |
+|---|---|---|---|---|---|
+| 30 | E-Ride Pro SS 72V/40Ah OEM Battery | `/parts/e-ride-pro-ss-72v-40ah-battery/` | VT-BAT-029 | ~$699 | SS 2.0, SS 3.0 |
+| 31 | E-Ride Pro SR 72V/50Ah OEM Battery | `/parts/e-ride-pro-sr-72v-50ah-battery/` | VT-BAT-030 | ~$899 | SR |
+| 32 | E-Ride Pro S 72V/30Ah Battery + Charger Bundle | `/parts/e-ride-pro-s-battery-charger-bundle/` | VT-BAT-031 | ~$1,849 | S models |
+| 33 | E-Ride Pro OEM 2nd Gen Charger | `/parts/e-ride-pro-oem-charger-2nd-gen/` | VT-CHG-002 | ~$296 | SS, SR |
 
 ---
 
-### 3H — TRANSPORT & STORAGE
-**URL:** `/parts-accessories/transport-storage/` | **Priority:** 🟢 LOW
+#### 1E — RAZOR BATTERIES
 
-| Product | Price |
-|---|---|
-| Dirt Bike Tie-Down Straps (x4) | ~$19–$39 |
-| Aluminium Loading Ramp | ~$99–$199 |
-| Waterproof Bike Cover | ~$29–$49 |
-| Fireproof LiPo Battery Storage Bag | ~$19–$49 |
-| Padded Transport Bag (STACYC) | ~$39–$69 |
+| # | Product | URL | SKU | Price | Fits |
+|---|---|---|---|---|---|
+| 34 | Razor MX350 24V Replacement Battery | `/parts/razor-mx350-24v-battery/` | VT-BAT-032 | ~$49 | MX350 |
+| 35 | Razor MX650 36V Replacement Battery | `/parts/razor-mx650-36v-battery/` | VT-BAT-033 | ~$69 | MX650 |
+| 36 | Razor MX350 OEM Charger | `/parts/razor-mx350-oem-charger/` | VT-CHG-003 | ~$29 | MX350 |
+| 37 | Razor MX650 OEM Charger | `/parts/razor-mx650-oem-charger/` | VT-CHG-004 | ~$35 | MX650 |
+
+---
+
+#### 1F — AFTERMARKET & UNIVERSAL CHARGERS
+
+| # | Product | URL | SKU | Price | Fits |
+|---|---|---|---|---|---|
+| 38 | Fast Charger for eWatt / EBMX / CCW Battery Packs | `/parts/fast-charger-ewatt-ebmx-ccw/` | VT-CHG-005 | ~$160–$200 | LBX + Talaria upgrade packs |
+| 39 | 60V Standard Aftermarket Charger | `/parts/60v-standard-aftermarket-charger/` | VT-CHG-006 | ~$45–$79 | LBX, Talaria MX3/MX4 stock |
+| 40 | 72V Standard Aftermarket Charger | `/parts/72v-standard-aftermarket-charger/` | VT-CHG-007 | ~$79–$129 | All 72V upgrade packs |
+| 41 | 74V Charger for EBMX/eWatt XXX Packs | `/parts/74v-charger-talaria-xxx/` | VT-CHG-008 | ~$149 | Talaria XXX 74V upgrades |
+| 42 | Sur-Ron OEM Charger 60V | `/parts/surron-oem-charger-60v/` | VT-CHG-009 | ~$89 | LBX stock battery |
+| 43 | Sur-Ron OEM Charger 74V | `/parts/surron-oem-charger-74v/` | VT-CHG-010 | ~$119 | Ultra Bee HP/MX |
+
+**Batteries & Chargers total: 43 individual product pages**
+
+---
+
+### CATEGORY 2: BIKE PARTS & UPGRADES
+**Category URL:** `/parts-accessories/parts-upgrades/`
+
+#### 2A — SUR-RON PARTS
+
+| # | Product | URL | SKU | Price |
+|---|---|---|---|---|
+| 44 | Sur-Ron Stock Controller Replacement | `/parts/surron-stock-controller/` | VT-PRT-001 | ~$149 |
+| 45 | EBMX X-9000 Aftermarket Controller | `/parts/ebmx-x9000-controller/` | VT-PRT-002 | ~$499 |
+| 46 | Sur-Ron Throttle Replacement | `/parts/surron-throttle/` | VT-PRT-003 | ~$39 |
+| 47 | Sur-Ron Chain + Sprocket Kit | `/parts/surron-chain-sprocket-kit/` | VT-PRT-004 | ~$59 |
+| 48 | Sur-Ron Brake Pads (Front) | `/parts/surron-brake-pads-front/` | VT-PRT-005 | ~$19 |
+| 49 | Sur-Ron Brake Pads (Rear) | `/parts/surron-brake-pads-rear/` | VT-PRT-006 | ~$19 |
+| 50 | Sur-Ron Brake Rotor (Front 203mm) | `/parts/surron-brake-rotor-front/` | VT-PRT-007 | ~$39 |
+| 51 | Sur-Ron Brake Rotor (Rear 180mm) | `/parts/surron-brake-rotor-rear/` | VT-PRT-008 | ~$35 |
+| 52 | Sur-Ron Fork Seals Kit | `/parts/surron-fork-seals/` | VT-PRT-009 | ~$29 |
+| 53 | Sur-Ron Rear Shock Upgrade | `/parts/surron-rear-shock-upgrade/` | VT-PRT-010 | ~$199–$299 |
+| 54 | Sur-Ron Front Rim | `/parts/surron-front-rim/` | VT-PRT-011 | ~$119 |
+| 55 | Sur-Ron Rear Rim | `/parts/surron-rear-rim/` | VT-PRT-012 | ~$99 |
+| 56 | Sur-Ron Front Fender | `/parts/surron-front-fender/` | VT-PRT-013 | ~$29 |
+| 57 | Sur-Ron Rear Fender | `/parts/surron-rear-fender/` | VT-PRT-014 | ~$29 |
+| 58 | Sur-Ron Seat | `/parts/surron-seat/` | VT-PRT-015 | ~$79 |
+| 59 | Sur-Ron Seat Cover | `/parts/surron-seat-cover/` | VT-PRT-016 | ~$35 |
+| 60 | Sur-Ron Handlebars | `/parts/surron-handlebars/` | VT-PRT-017 | ~$69 |
+| 61 | Sur-Ron Grips | `/parts/surron-grips/` | VT-PRT-018 | ~$19 |
+| 62 | Sur-Ron Foot Pegs | `/parts/surron-foot-pegs/` | VT-PRT-019 | ~$39 |
+| 63 | Sur-Ron Pedal Kit (L1e Road Legal) | `/parts/surron-pedal-kit/` | VT-PRT-020 | ~$79 |
+| 64 | Sur-Ron Skid Plate | `/parts/surron-skid-plate/` | VT-PRT-021 | ~$49 |
+| 65 | Sur-Ron Frame Guard Set | `/parts/surron-frame-guard-set/` | VT-PRT-022 | ~$39 |
+| 66 | Sur-Ron Headlight | `/parts/surron-headlight/` | VT-PRT-023 | ~$49 |
+| 67 | Sur-Ron Display / Speedometer | `/parts/surron-display/` | VT-PRT-024 | ~$89 |
+| 68 | Sur-Ron Fork (Front Suspension Assembly) | `/parts/surron-fork/` | VT-PRT-025 | ~$199–$299 |
+| 69 | Sur-Ron Motor | `/parts/surron-motor/` | VT-PRT-026 | ~$349 |
+
+---
+
+#### 2B — TALARIA PARTS
+
+| # | Product | URL | SKU | Price |
+|---|---|---|---|---|
+| 70 | Talaria Controller Replacement | `/parts/talaria-controller/` | VT-PRT-027 | ~$199 |
+| 71 | Talaria Throttle | `/parts/talaria-throttle/` | VT-PRT-028 | ~$39 |
+| 72 | Talaria Brake Pads (Front) | `/parts/talaria-brake-pads-front/` | VT-PRT-029 | ~$29 |
+| 73 | Talaria Brake Pads (Rear) | `/parts/talaria-brake-pads-rear/` | VT-PRT-030 | ~$29 |
+| 74 | Talaria Brake Rotor 220x3mm | `/parts/talaria-brake-rotor-220/` | VT-PRT-031 | ~$49 |
+| 75 | Talaria Front Fender | `/parts/talaria-front-fender/` | VT-PRT-032 | ~$29 |
+| 76 | Talaria Rear Fender | `/parts/talaria-rear-fender/` | VT-PRT-033 | ~$29 |
+| 77 | Talaria Frame Guard Set | `/parts/talaria-frame-guards/` | VT-PRT-034 | ~$49 |
+| 78 | Talaria Seat Cover | `/parts/talaria-seat-cover/` | VT-PRT-035 | ~$35 |
+| 79 | Talaria Pedal Kit | `/parts/talaria-pedal-kit/` | VT-PRT-036 | ~$79 |
+| 80 | Talaria Display Screen | `/parts/talaria-display-screen/` | VT-PRT-037 | ~$89 |
+| 81 | Talaria Key Fob Kit | `/parts/talaria-key-fob-kit/` | VT-PRT-038 | ~$59 |
+| 82 | Talaria X3 Upgrade Kit | `/parts/talaria-x3-upgrade-kit/` | VT-PRT-039 | ~$199 |
+
+---
+
+#### 2C — E-RIDE PRO PARTS
+
+| # | Product | URL | SKU | Price |
+|---|---|---|---|---|
+| 83 | E-Ride Pro Brake Pads (Front + Rear Set) | `/parts/e-ride-pro-brake-pads/` | VT-PRT-040 | ~$39 |
+| 84 | E-Ride Pro Rear Fender | `/parts/e-ride-pro-rear-fender/` | VT-PRT-041 | ~$29 |
+| 85 | E-Ride Pro Display Unit | `/parts/e-ride-pro-display/` | VT-PRT-042 | ~$89 |
+| 86 | E-Ride Pro Direct Mount Stem Upgrade | `/parts/e-ride-pro-direct-mount-stem/` | VT-PRT-043 | ~$79 |
+
+---
+
+#### 2D — STACYC PARTS
+
+| # | Product | URL | SKU | Price |
+|---|---|---|---|---|
+| 87 | STACYC 12eDRIVE Motor Replacement | `/parts/stacyc-12edrive-motor/` | VT-PRT-044 | ~$149 |
+| 88 | STACYC 16eDRIVE Motor Replacement | `/parts/stacyc-16edrive-motor/` | VT-PRT-045 | ~$149 |
+| 89 | STACYC Throttle | `/parts/stacyc-throttle/` | VT-PRT-046 | ~$29 |
+| 90 | STACYC Foot Pegs | `/parts/stacyc-foot-pegs/` | VT-PRT-047 | ~$39 |
+| 91 | STACYC Kickstand | `/parts/stacyc-kickstand/` | VT-PRT-048 | ~$29 |
+
+---
+
+#### 2E — RAZOR PARTS
+
+| # | Product | URL | SKU | Price |
+|---|---|---|---|---|
+| 92 | Razor Dirt Bike Chain | `/parts/razor-dirt-bike-chain/` | VT-PRT-049 | ~$14 |
+| 93 | Razor Dirt Bike Brake Pads | `/parts/razor-dirt-bike-brake-pads/` | VT-PRT-050 | ~$12 |
+| 94 | Razor Battery Cables | `/parts/razor-battery-cables/` | VT-PRT-051 | ~$19 |
+
+**Bike Parts & Upgrades total: 51 individual product pages**
+
+---
+
+### CATEGORY 3: GRAPHICS KITS & COSMETICS
+**Category URL:** `/parts-accessories/graphics-kits/`
+
+| # | Product | URL | SKU | Price |
+|---|---|---|---|---|
+| 95 | Sur-Ron LBX Full Graphics Kit | `/parts/surron-lbx-graphics-kit/` | VT-GFX-001 | ~$129–$179 |
+| 96 | Sur-Ron Ultra Bee Graphics Kit | `/parts/surron-ultra-bee-graphics-kit/` | VT-GFX-002 | ~$149–$199 |
+| 97 | Sur-Ron Ultra Bee Husqvarna-Style Graphics | `/parts/surron-ultra-bee-husqvarna-graphics/` | VT-GFX-003 | ~$149 |
+| 98 | Sur-Ron LBX Custom Vinyl Wrap | `/parts/surron-lbx-vinyl-wrap/` | VT-GFX-004 | ~$199–$349 |
+| 99 | Sur-Ron Number Plate | `/parts/surron-number-plate/` | VT-GFX-005 | ~$29–$49 |
+| 100 | Stark Varg MX Graphics Kit | `/parts/stark-varg-mx-graphics-kit/` | VT-GFX-006 | ~$179–$249 |
+| 101 | Stark Varg EX Graphics Kit | `/parts/stark-varg-ex-graphics-kit/` | VT-GFX-007 | ~$179–$249 |
+| 102 | Stark Varg Sticker Set | `/parts/stark-varg-sticker-set/` | VT-GFX-008 | ~$49–$89 |
+| 103 | Talaria X3 Graphics Kit | `/parts/talaria-x3-graphics-kit/` | VT-GFX-009 | ~$129–$169 |
+| 104 | Talaria MX4 Graphics Kit | `/parts/talaria-mx4-graphics-kit/` | VT-GFX-010 | ~$129–$169 |
+| 105 | Talaria Number Plate | `/parts/talaria-number-plate/` | VT-GFX-011 | ~$29–$49 |
+| 106 | STACYC 12eDRIVE Graphics Kit | `/parts/stacyc-12edrive-graphics-kit/` | VT-GFX-012 | ~$69–$99 |
+| 107 | STACYC 16eDRIVE Graphics Kit | `/parts/stacyc-16edrive-graphics-kit/` | VT-GFX-013 | ~$69–$99 |
+| 108 | KTM SX-E 5 Graphics Kit | `/parts/ktm-sx-e-5-graphics-kit/` | VT-GFX-014 | ~$99–$149 |
+| 109 | GasGas MC-E 5 Graphics Kit | `/parts/gasgas-mc-e-5-graphics-kit/` | VT-GFX-015 | ~$99–$149 |
+
+**Graphics Kits total: 15 individual product pages**
+
+---
+
+### CATEGORY 4: HELMETS & PROTECTION
+**Category URL:** `/parts-accessories/helmets-protection/`
+
+| # | Product | URL | SKU | Price |
+|---|---|---|---|---|
+| 110 | Full-Face MX Helmet (Adult) | `/parts/full-face-mx-helmet-adult/` | VT-HLM-001 | ~$89–$349 |
+| 111 | Full-Face MX Helmet (Youth) | `/parts/full-face-mx-helmet-youth/` | VT-HLM-002 | ~$59–$179 |
+| 112 | Full-Face MX Helmet (Kids/Mini) | `/parts/full-face-mx-helmet-kids/` | VT-HLM-003 | ~$49–$99 |
+| 113 | Off-Road Goggles (Adult) | `/parts/off-road-goggles-adult/` | VT-HLM-004 | ~$29–$89 |
+| 114 | Off-Road Goggles (Youth/Kids) | `/parts/off-road-goggles-youth/` | VT-HLM-005 | ~$19–$49 |
+| 115 | Chest Protector (Adult) | `/parts/chest-protector-adult/` | VT-HLM-006 | ~$49–$149 |
+| 116 | Chest Protector (Youth) | `/parts/chest-protector-youth/` | VT-HLM-007 | ~$39–$99 |
+| 117 | Knee / Shin Guards | `/parts/knee-shin-guards/` | VT-HLM-008 | ~$29–$89 |
+| 118 | Elbow Pads | `/parts/elbow-pads/` | VT-HLM-009 | ~$19–$49 |
+| 119 | Neck Brace | `/parts/neck-brace/` | VT-HLM-010 | ~$99–$349 |
+| 120 | MX Gloves (Adult) | `/parts/mx-gloves-adult/` | VT-HLM-011 | ~$19–$79 |
+| 121 | MX Gloves (Youth/Kids) | `/parts/mx-gloves-youth/` | VT-HLM-012 | ~$14–$39 |
+
+**Helmets & Protection total: 12 individual product pages**
+
+---
+
+### CATEGORY 5: RIDING GEAR & CLOTHING
+**Category URL:** `/parts-accessories/riding-gear/`
+
+| # | Product | URL | SKU | Price |
+|---|---|---|---|---|
+| 122 | MX Jersey + Pants Combo (Adult) | `/parts/mx-jersey-pants-adult/` | VT-GER-001 | ~$69–$199 |
+| 123 | MX Jersey + Pants Combo (Youth/Kids) | `/parts/mx-jersey-pants-youth/` | VT-GER-002 | ~$49–$129 |
+| 124 | Off-Road Boots (Adult) | `/parts/off-road-boots-adult/` | VT-GER-003 | ~$99–$349 |
+| 125 | Off-Road Boots (Youth) | `/parts/off-road-boots-youth/` | VT-GER-004 | ~$59–$149 |
+| 126 | Hydration Pack | `/parts/hydration-pack/` | VT-GER-005 | ~$39–$99 |
+| 127 | Neck Gaiter / Balaclava | `/parts/neck-gaiter-balaclava/` | VT-GER-006 | ~$14–$29 |
+
+**Riding Gear total: 6 individual product pages**
+
+---
+
+### CATEGORY 6: TYRES & WHEELS
+**Category URL:** `/parts-accessories/tyres-wheels/`
+
+| # | Product | URL | SKU | Price |
+|---|---|---|---|---|
+| 128 | Sur-Ron LBX Front Tyre 19" Knobbly | `/parts/surron-lbx-front-tyre-19/` | VT-TYR-001 | ~$39–$65 |
+| 129 | Sur-Ron LBX Rear Tyre 16" Knobbly | `/parts/surron-lbx-rear-tyre-16/` | VT-TYR-002 | ~$39–$59 |
+| 130 | Sur-Ron LBX Rear Tyre 18" Knobbly | `/parts/surron-lbx-rear-tyre-18/` | VT-TYR-003 | ~$39–$59 |
+| 131 | Sur-Ron Ultra Bee Rear Tyre 16" | `/parts/surron-ultra-bee-rear-tyre-16/` | VT-TYR-004 | ~$45–$69 |
+| 132 | Talaria Sting Front Tyre 19" | `/parts/talaria-sting-front-tyre-19/` | VT-TYR-005 | ~$39–$65 |
+| 133 | Talaria Sting Rear Tyre 16" | `/parts/talaria-sting-rear-tyre-16/` | VT-TYR-006 | ~$39–$59 |
+| 134 | Talaria Sting Rear Tyre 18" | `/parts/talaria-sting-rear-tyre-18/` | VT-TYR-007 | ~$39–$59 |
+| 135 | Inner Tube 18" / 19" | `/parts/inner-tube-18-19/` | VT-TYR-008 | ~$12–$19 |
+| 136 | Inner Tube 16" | `/parts/inner-tube-16/` | VT-TYR-009 | ~$12–$17 |
+| 137 | Sur-Ron Wheel Set Upgrade (Front + Rear) | `/parts/surron-wheel-set-upgrade/` | VT-TYR-010 | ~$249–$449 |
+| 138 | Talaria Wheel Set Upgrade (Front + Rear) | `/parts/talaria-wheel-set-upgrade/` | VT-TYR-011 | ~$249–$399 |
+
+**Tyres & Wheels total: 11 individual product pages**
+
+---
+
+### CATEGORY 7: STANDS & MAINTENANCE
+**Category URL:** `/parts-accessories/stands-maintenance/`
+
+| # | Product | URL | SKU | Price |
+|---|---|---|---|---|
+| 139 | Paddock / Rear Stand | `/parts/paddock-rear-stand/` | VT-MNT-001 | ~$39–$79 |
+| 140 | STACYC Bike Stand | `/parts/stacyc-bike-stand/` | VT-MNT-002 | ~$50 |
+| 141 | Centre Stand (Sur-Ron compatible) | `/parts/centre-stand-surron/` | VT-MNT-003 | ~$59–$99 |
+| 142 | Bike Wash / Cleaner Spray | `/parts/bike-wash-cleaner/` | VT-MNT-004 | ~$14–$29 |
+| 143 | Chain Lube / Drivetrain Lube | `/parts/chain-lube/` | VT-MNT-005 | ~$9–$19 |
+| 144 | Basic Tool Kit (Hex, Torx, Spanners) | `/parts/basic-tool-kit/` | VT-MNT-006 | ~$29–$59 |
+| 145 | Torque Wrench | `/parts/torque-wrench/` | VT-MNT-007 | ~$39–$99 |
+| 146 | Puncture Repair Kit | `/parts/puncture-repair-kit/` | VT-MNT-008 | ~$9–$19 |
+| 147 | Battery Terminal Protector Spray | `/parts/battery-terminal-protector/` | VT-MNT-009 | ~$9–$14 |
+
+**Stands & Maintenance total: 9 individual product pages**
+
+---
+
+### CATEGORY 8: TRANSPORT & STORAGE
+**Category URL:** `/parts-accessories/transport-storage/`
+
+| # | Product | URL | SKU | Price |
+|---|---|---|---|---|
+| 148 | Dirt Bike Tie-Down Straps (Set of 4) | `/parts/dirt-bike-tie-down-straps/` | VT-TRN-001 | ~$19–$39 |
+| 149 | Aluminium Loading Ramp | `/parts/aluminium-loading-ramp/` | VT-TRN-002 | ~$99–$199 |
+| 150 | Waterproof Bike Cover | `/parts/waterproof-bike-cover/` | VT-TRN-003 | ~$29–$49 |
+| 151 | Fireproof LiPo Battery Storage Bag | `/parts/lipo-battery-storage-bag/` | VT-TRN-004 | ~$19–$49 |
+| 152 | Padded Transport Bag (STACYC size) | `/parts/stacyc-transport-bag/` | VT-TRN-005 | ~$39–$69 |
+
+**Transport & Storage total: 5 individual product pages**
 
 ---
 
 ## SECTION 4 — PAGE COUNT SUMMARY
 
-| Brand / Section | Product Pages | Notes |
+### BIKE PRODUCT PAGES
+
+| Brand | Pages | Notes |
 |---|---|---|
 | Sur-Ron | 7 | 6 products + 1 redirect |
 | Talaria | 8 | All separate pages |
-| Stark Varg | 3 | MX/EX/SM — Standard+Alpha as variant on each |
+| Stark Varg | 3 | MX/EX/SM — Standard+Alpha variant selector on each |
 | KTM Electric | 4 | All separate |
 | STACYC | 4 | All separate |
 | E-Ride Pro | 4 | Mini + S (variant) + SS (variant) + SR |
@@ -451,7 +560,30 @@
 | Segway | 5 | Xaber 300 + Xyber + Xafari + 2 redirects |
 | GasGas | 2 | MC-E 2, MC-E 5 |
 | **TOTAL BIKE PAGES** | **46** | |
-| **Accessory category pages** | **8** | 3A–3H |
-| **Parts hub** | **1** | `/parts-accessories/` |
-| **TOTAL PRODUCT/ACCESSORY PAGES** | **55** | |
+
+### ACCESSORY & PARTS PAGES
+
+| Section | Category Pages | Individual Product Pages | Notes |
+|---|---|---|---|
+| Hub | 1 | — | `/parts-accessories/` |
+| Batteries & Chargers | 1 | 43 | SKUs VT-BAT-001 to VT-BAT-033, VT-CHG-001 to VT-CHG-010 |
+| Bike Parts & Upgrades | 1 | 51 | SKUs VT-PRT-001 to VT-PRT-051 |
+| Graphics Kits | 1 | 15 | SKUs VT-GFX-001 to VT-GFX-015 |
+| Helmets & Protection | 1 | 12 | SKUs VT-HLM-001 to VT-HLM-012 |
+| Riding Gear | 1 | 6 | SKUs VT-GER-001 to VT-GER-006 |
+| Tyres & Wheels | 1 | 11 | SKUs VT-TYR-001 to VT-TYR-011 |
+| Stands & Maintenance | 1 | 9 | SKUs VT-MNT-001 to VT-MNT-009 |
+| Transport & Storage | 1 | 5 | SKUs VT-TRN-001 to VT-TRN-005 |
+| **ACCESSORY TOTALS** | **9 category pages** | **152 individual product pages** | |
+
+### FULL SITE TOTALS
+
+| Type | Count |
+|---|---|
+| Bike product pages | 46 |
+| Accessory category pages | 9 |
+| Individual parts product pages | 152 |
+| **TOTAL PRODUCT PAGES** | **207** |
+
+*Note: Individual parts pages live at `/parts/[slug]/`, not `/product/[slug]/`. This keeps bike and parts routes clearly separated in the Next.js App Router — `app/product/[slug]/page.jsx` for bikes, `app/parts/[slug]/page.jsx` for accessories.*
 

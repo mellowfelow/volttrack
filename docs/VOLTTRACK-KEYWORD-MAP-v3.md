@@ -28,7 +28,7 @@
 ### 1.1 Homepage `/`
 **Primary KW:** electric dirt bike | 74,000 | KD 22 | C
 **Supporting:** electric dirt bikes (14,800/KD19), best electric dirt bike (4,400/KD17), electric dirt bikes for sale (1,900/KD19), electric dirt bike for adults (14,800/KD18), electric dirt bike for kids (9,900/KD31), Sur-Ron Stark Varg Talaria STACYC GasGas [brand signals]
-**Schema:** Organization + WebSite + SiteLinksSearchBox
+**Schema:** Organization + WebSite + SearchAction *(emit SearchAction ONLY if `/search/` route exists — deprecated by Google Nov 2024 for sitelinks, but still valid for agents. If VoltTrack has no `/search/` page, omit SearchAction entirely.)* + FAQPage (for the 4 FAQ items on homepage)
 **Priority:** 🔴 High
 
 ---
@@ -404,68 +404,306 @@
 
 ---
 
-## SECTION 5 — ACCESSORIES PAGES
+## SECTION 5 — ACCESSORIES & PARTS PAGES
 
-### 5.1 Parts Hub `/parts-accessories/`
+**Architecture note:** Two route types.
+- Category pages: `/parts-accessories/[category]/` — collection page, lists all products in that category
+- Individual product pages: `/parts/[product-slug]/` — own URL, own keyword, own Product schema, Add to Cart
+- This mirrors the bike shop exactly: `/shop/[category]/` → `/product/[slug]/`
+
+---
+
+### 5.0 — PARTS HUB `/parts-accessories/`
 **Primary KW:** electric dirt bike parts | 170 | KD 10 | C
 **Supporting:** surron parts (1,600/KD16), surron upgrades (590/KD13), talaria parts (480/KD11), stacyc parts (210/KD8), electric dirt bike battery (260/KD4), electric dirt bike helmets (110/KD8), surron accessories (320/KD15)
+**Schema:** CollectionPage + ItemList of all 8 sub-category pages (the hub itself is the 9th page in the parts section)
 **Priority:** 🟡 Medium
 
 ---
 
-### 5.2 Batteries & Chargers `/parts-accessories/batteries-chargers/`
+### 5.1 — BATTERIES & CHARGERS CATEGORY `/parts-accessories/batteries-chargers/`
 **Primary KW:** surron battery | 6,600 | KD 8 | C
-**Supporting:** surron battery 72v (880/KD6), 72v surron battery (880/KD6), surron battery 60v (480/KD3), 60v surron battery (480/KD1), surron charger (480/KD7), surron lbx battery (260/KD0), surron ultra bee battery (390/KD4), talaria x3 battery (480/KD1), talaria battery (390/KD3), talaria xxx battery (260/KD5), talaria xxx battery upgrade (1,000/KD2), stacyc battery (880/KD27), stacyc battery adapter (260/KD25), electric dirt bike battery (260/KD4), electric dirt bike charger (170/KD4), 72v electric dirt bike (390/KD10), razor dirt bike battery (590/KD27), razor dirt bike charger (590/KD24)
-**Priority:** 🔴 HIGH — KD 0–8 across the core cluster. Strongest accessory opportunity on the site.
+**Supporting:** surron battery 72v (880/KD6), 72v surron battery (880/KD6), surron battery 60v (480/KD3), 60v surron battery (480/KD1), surron charger (480/KD7), talaria x3 battery (480/KD1), talaria xxx battery upgrade (1,000/KD2), stacyc battery (880/KD27), stacyc battery adapter (260/KD25), electric dirt bike battery (260/KD4), razor dirt bike battery (590/KD27)
+**Schema:** CollectionPage + BreadcrumbList
+**Priority:** 🔴 HIGH
+
+#### Individual Battery & Charger Product Pages
+
+| # | Product | URL | Primary KW | Vol | KD |
+|---|---|---|---|---|---|
+| 1 | Sur-Ron LBX OEM 60V/40Ah Battery | `/parts/surron-lbx-oem-60v-battery/` | surron lbx battery | 260 | 0 |
+| 2 | Sur-Ron Hyper Bee OEM Battery | `/parts/surron-hyper-bee-oem-battery/` | surron hyper bee battery | — | low |
+| 3 | Sur-Ron Ultra Bee OEM 74V Battery | `/parts/surron-ultra-bee-oem-74v-battery/` | surron ultra bee battery | 390 | 4 |
+| 4 | Sur-Ron Storm Bee OEM 84V Battery | `/parts/surron-storm-bee-oem-84v-battery/` | surron storm bee battery | — | low |
+| 5 | Chi Battery Systems Gladiator 60 Max | `/parts/cbs-gladiator-60-max/` | chi battery systems surron | — | low |
+| 6 | Chi Battery Systems Gladiator 60 Touring | `/parts/cbs-gladiator-60-touring/` | surron 60v battery upgrade | — | low |
+| 7 | Chi Battery Systems Gladiator X60 Compact | `/parts/cbs-gladiator-x60-compact/` | surron lbx 60v upgrade battery | — | low |
+| 8 | Chi Battery Systems Gladiator X72 Compact | `/parts/cbs-gladiator-x72-compact/` | surron 72v battery | 880 | 6 |
+| 9 | eWatt 60V/53Ah Long Range for LBX | `/parts/ewatt-60v-53ah-lbx/` | ewatt surron battery | — | low |
+| 10 | eWatt 72V Race Battery v5 for LBX | `/parts/ewatt-72v-race-battery-lbx/` | surron 72v race battery | — | low |
+| 11 | DHS GT 72V/50Ah for LBX | `/parts/dhs-gt-72v-50ah-lbx/` | 72v surron battery | 880 | 6 |
+| 12 | EBMX 81V Ultra Bee Performance Pack | `/parts/ebmx-81v-ultra-bee-pack/` | ebmx ultra bee battery | — | low |
+| 13 | eWatt Ultra Bee 80V/76Ah Bundle | `/parts/ewatt-80v-ultra-bee-bundle/` | surron ultra bee battery upgrade | — | low |
+| 14 | Talaria MX3/MX4 OEM 60V Battery | `/parts/talaria-mx3-mx4-oem-60v-battery/` | talaria battery | 390 | 3 |
+| 15 | Talaria MX5 Pro OEM 72V Battery | `/parts/talaria-mx5-pro-oem-72v-battery/` | talaria mx5 battery | 170 | 2 |
+| 16 | Talaria XXX OEM 60V Battery | `/parts/talaria-xxx-oem-60v-battery/` | talaria xxx battery | 260 | 5 |
+| 17 | eWatt 60V/53Ah for Talaria Sting | `/parts/ewatt-60v-53ah-talaria-sting/` | talaria sting battery upgrade | — | low |
+| 18 | eWatt 72V/42Ah Race for Talaria Sting | `/parts/ewatt-72v-42ah-talaria-sting/` | talaria 72v battery | — | low |
+| 19 | eWatt 72V/63Ah Long Range for Talaria | `/parts/ewatt-72v-63ah-talaria-sting/` | talaria long range battery | — | low |
+| 20 | Chi Battery Systems Titan X 72V for XXX | `/parts/cbs-titan-x-72v-talaria-xxx/` | talaria xxx battery upgrade | 1,000 | 2 |
+| 21 | eWatt 74V/44Ah for Talaria XXX | `/parts/ewatt-74v-44ah-talaria-xxx/` | talaria xxx 74v battery | — | low |
+| 22 | EBMX 74V/44Ah for Talaria XXX | `/parts/ebmx-74v-talaria-xxx-pack/` | ebmx talaria xxx battery | — | low |
+| 23 | STACYC OEM 20V Battery (Standard) | `/parts/stacyc-oem-20v-battery-standard/` | stacyc battery | 880 | 27 |
+| 24 | STACYC OEM 20V Battery (5Ah High Cap) | `/parts/stacyc-oem-20v-battery-5ah/` | stacyc bike battery | 210 | 11 |
+| 25 | STACYC OEM Battery Charger | `/parts/stacyc-oem-charger/` | stacyc charger | 90 | 14 |
+| 26 | STACYC Milwaukee M18 Adapter | `/parts/stacyc-milwaukee-m18-adapter/` | stacyc milwaukee adapter | 110 | 12 |
+| 27 | STACYC DeWalt 20V Adapter | `/parts/stacyc-dewalt-20v-adapter/` | stacyc dewalt adapter | 90 | 12 |
+| 28 | STACYC Makita 18V Adapter | `/parts/stacyc-makita-18v-adapter/` | stacyc battery adapter | 260 | 25 |
+| 29 | STACYC Spare Battery Mount | `/parts/stacyc-spare-battery-mount/` | stacyc spare battery | — | low |
+| 30 | E-Ride Pro SS 72V/40Ah OEM Battery | `/parts/e-ride-pro-ss-72v-40ah-battery/` | e ride pro battery | 110 | 2 |
+| 31 | E-Ride Pro SR 72V/50Ah OEM Battery | `/parts/e-ride-pro-sr-72v-50ah-battery/` | e ride pro sr battery | — | low |
+| 32 | E-Ride Pro S Battery + Charger Bundle | `/parts/e-ride-pro-s-battery-charger-bundle/` | e ride pro s battery | — | low |
+| 33 | E-Ride Pro OEM 2nd Gen Charger | `/parts/e-ride-pro-oem-charger-2nd-gen/` | e ride pro charger | 90 | 9 |
+| 34 | Razor MX350 24V Replacement Battery | `/parts/razor-mx350-24v-battery/` | razor dirt bike battery | 590 | 27 |
+| 35 | Razor MX650 36V Replacement Battery | `/parts/razor-mx650-36v-battery/` | razor mx650 battery | — | low |
+| 36 | Razor MX350 OEM Charger | `/parts/razor-mx350-oem-charger/` | razor dirt bike charger | 590 | 24 |
+| 37 | Razor MX650 OEM Charger | `/parts/razor-mx650-oem-charger/` | razor electric dirt bike charger | 210 | 23 |
+| 38 | Fast Charger for eWatt/EBMX/CCW | `/parts/fast-charger-ewatt-ebmx-ccw/` | fast charger electric dirt bike | — | low |
+| 39 | 60V Standard Aftermarket Charger | `/parts/60v-standard-aftermarket-charger/` | 60v electric dirt bike charger | — | low |
+| 40 | 72V Standard Aftermarket Charger | `/parts/72v-standard-aftermarket-charger/` | 72v electric dirt bike charger | — | low |
+| 41 | 74V Charger for Talaria XXX | `/parts/74v-charger-talaria-xxx/` | talaria xxx charger | — | low |
+| 42 | Sur-Ron OEM Charger 60V | `/parts/surron-oem-charger-60v/` | surron charger | 480 | 7 |
+| 43 | Sur-Ron OEM Charger 74V | `/parts/surron-oem-charger-74v/` | surron ultra bee charger | — | low |
+
+**Schema per product:** Product + Offer (price, InStock) + Brand + BreadcrumbList (Home → Parts → Batteries & Chargers → [Product])
+**Cross-link requirement:** Every battery product page must link to the compatible bike's product page. e.g. Sur-Ron LBX OEM battery → links to `/product/sur-ron-light-bee-x/`
 
 ---
 
-### 5.3 Bike Parts & Upgrades `/parts-accessories/parts-upgrades/`
+### 5.2 — BIKE PARTS & UPGRADES CATEGORY `/parts-accessories/parts-upgrades/`
 **Primary KW:** surron upgrades | 590 | KD 13 | C
-**Supporting:** surron ultra bee upgrades (260/KD0), surron ultra bee parts (320/KD0), surron mods (590/KD5), surron frame (1,900/KD8), surron controller (1,000/KD6), surron motor (1,600/KD15), surron seat (880/KD7), surron handlebars (390/KD4), surron forks (590/KD1), surron brakes (720/KD4), surron wheels (390/KD1), surron tires (260/KD4), surron suspension (260/KD2), surron pedal kit (320/KD3), talaria x3 upgrades (390/KD8), talaria x3 parts (320/KD0), talaria mx4 parts (210/KD0), talaria mx4 upgrades (140/KD1), talaria upgrades (170/KD2), e ride pro parts (170/KD10), e ride pro ss upgrades (140/KD0)
-**Priority:** 🔴 HIGH — surron ultra bee upgrades KD 0, talaria x3 parts KD 0, surron wheels KD 1, surron forks KD 1
+**Supporting:** surron ultra bee upgrades (260/KD0), surron ultra bee parts (320/KD0), surron mods (590/KD5), surron frame (1,900/KD8), surron controller (1,000/KD6), surron motor (1,600/KD15), surron forks (590/KD1), surron brakes (720/KD4), surron wheels (390/KD1), surron tires (260/KD4), surron suspension (260/KD2), surron pedal kit (320/KD3), talaria x3 parts (320/KD0), talaria mx4 parts (210/KD0), talaria upgrades (170/KD2), e ride pro parts (170/KD10)
+**Schema:** CollectionPage + BreadcrumbList
+**Priority:** 🔴 HIGH
+
+#### Individual Parts Product Pages — Sur-Ron
+
+| # | Product | URL | Primary KW | Vol | KD |
+|---|---|---|---|---|---|
+| 44 | Sur-Ron Stock Controller | `/parts/surron-stock-controller/` | surron controller | 1,000 | 6 |
+| 45 | EBMX X-9000 Aftermarket Controller | `/parts/ebmx-x9000-controller/` | ebmx controller surron | — | low |
+| 46 | Sur-Ron Throttle | `/parts/surron-throttle/` | surron throttle | 3,600 | 6 |
+| 47 | Sur-Ron Chain + Sprocket Kit | `/parts/surron-chain-sprocket-kit/` | surron chain | — | low |
+| 48 | Sur-Ron Brake Pads (Front) | `/parts/surron-brake-pads-front/` | surron brakes | 720 | 4 |
+| 49 | Sur-Ron Brake Pads (Rear) | `/parts/surron-brake-pads-rear/` | surron brake pads | — | low |
+| 50 | Sur-Ron Brake Rotor Front 203mm | `/parts/surron-brake-rotor-front/` | surron brake rotor | — | low |
+| 51 | Sur-Ron Brake Rotor Rear 180mm | `/parts/surron-brake-rotor-rear/` | surron rear brake | — | low |
+| 52 | Sur-Ron Fork Seals Kit | `/parts/surron-fork-seals/` | surron fork seals | — | low |
+| 53 | Sur-Ron Rear Shock Upgrade | `/parts/surron-rear-shock-upgrade/` | surron suspension | 260 | 2 |
+| 54 | Sur-Ron Front Rim | `/parts/surron-front-rim/` | surron wheels | 390 | 1 |
+| 55 | Sur-Ron Rear Rim | `/parts/surron-rear-rim/` | surron rims | — | low |
+| 56 | Sur-Ron Front Fender | `/parts/surron-front-fender/` | surron front fender | 260 | 3 |
+| 57 | Sur-Ron Rear Fender | `/parts/surron-rear-fender/` | surron rear fender | — | low |
+| 58 | Sur-Ron Seat | `/parts/surron-seat/` | surron seat | 880 | 7 |
+| 59 | Sur-Ron Seat Cover | `/parts/surron-seat-cover/` | surron seat cover | 320 | 5 |
+| 60 | Sur-Ron Handlebars | `/parts/surron-handlebars/` | surron handlebars | 390 | 4 |
+| 61 | Sur-Ron Grips | `/parts/surron-grips/` | surron grips | — | low |
+| 62 | Sur-Ron Foot Pegs | `/parts/surron-foot-pegs/` | surron pegs | 260 | 4 |
+| 63 | Sur-Ron Pedal Kit (L1e) | `/parts/surron-pedal-kit/` | surron pedal kit | 320 | 3 |
+| 64 | Sur-Ron Skid Plate | `/parts/surron-skid-plate/` | surron skid plate | — | low |
+| 65 | Sur-Ron Frame Guard Set | `/parts/surron-frame-guard-set/` | surron frame guard | — | low |
+| 66 | Sur-Ron Headlight | `/parts/surron-headlight/` | surron headlight | 320 | 5 |
+| 67 | Sur-Ron Display / Speedometer | `/parts/surron-display/` | surron display | — | low |
+| 68 | Sur-Ron Fork Assembly | `/parts/surron-fork/` | surron fork | 260 | 5 |
+| 69 | Sur-Ron Motor | `/parts/surron-motor/` | surron motor | 1,600 | 15 |
+
+#### Individual Parts Product Pages — Talaria
+
+| # | Product | URL | Primary KW | Vol | KD |
+|---|---|---|---|---|---|
+| 70 | Talaria Controller | `/parts/talaria-controller/` | talaria controller | 170 | 3 |
+| 71 | Talaria Throttle | `/parts/talaria-throttle/` | talaria throttle | 210 | 4 |
+| 72 | Talaria Brake Pads (Front) | `/parts/talaria-brake-pads-front/` | talaria brakes | 210 | 3 |
+| 73 | Talaria Brake Pads (Rear) | `/parts/talaria-brake-pads-rear/` | talaria brake pads | — | low |
+| 74 | Talaria Brake Rotor 220x3mm | `/parts/talaria-brake-rotor-220/` | talaria brake rotor | — | low |
+| 75 | Talaria Front Fender | `/parts/talaria-front-fender/` | talaria front fender | 170 | 0 |
+| 76 | Talaria Rear Fender | `/parts/talaria-rear-fender/` | talaria rear fender | 170 | 2 |
+| 77 | Talaria Frame Guard Set | `/parts/talaria-frame-guards/` | talaria frame guards | — | low |
+| 78 | Talaria Seat Cover | `/parts/talaria-seat-cover/` | talaria seat cover | 140 | 0 |
+| 79 | Talaria Pedal Kit | `/parts/talaria-pedal-kit/` | talaria pedal kit | 260 | 15 |
+| 80 | Talaria Display Screen | `/parts/talaria-display-screen/` | talaria display | 260 | 16 |
+| 81 | Talaria Key Fob Kit | `/parts/talaria-key-fob-kit/` | talaria xxx key fob kit | 210 | 4 |
+| 82 | Talaria X3 Upgrade Kit | `/parts/talaria-x3-upgrade-kit/` | talaria x3 upgrades | 390 | 8 |
+
+#### Individual Parts Product Pages — E-Ride Pro, STACYC, Razor
+
+| # | Product | URL | Primary KW | Vol | KD |
+|---|---|---|---|---|---|
+| 83 | E-Ride Pro Brake Pads Set | `/parts/e-ride-pro-brake-pads/` | e ride pro brakes | 70 | 1 |
+| 84 | E-Ride Pro Rear Fender | `/parts/e-ride-pro-rear-fender/` | e ride pro rear fender | 110 | 3 |
+| 85 | E-Ride Pro Display Unit | `/parts/e-ride-pro-display/` | e ride pro display | 70 | 9 |
+| 86 | E-Ride Pro Direct Mount Stem | `/parts/e-ride-pro-direct-mount-stem/` | e ride pro upgrade | 70 | 0 |
+| 87 | STACYC 12eDRIVE Motor | `/parts/stacyc-12edrive-motor/` | stacyc 12 motor | 70 | 13 |
+| 88 | STACYC 16eDRIVE Motor | `/parts/stacyc-16edrive-motor/` | stacyc 16 motor | 90 | 14 |
+| 89 | STACYC Throttle | `/parts/stacyc-throttle/` | stacyc throttle | 70 | 10 |
+| 90 | STACYC Foot Pegs | `/parts/stacyc-foot-pegs/` | stacyc foot pegs | 90 | 0 |
+| 91 | STACYC Kickstand | `/parts/stacyc-kickstand/` | stacyc stand | 70 | 0 |
+| 92 | Razor Dirt Bike Chain | `/parts/razor-dirt-bike-chain/` | razor dirt bike chain | — | low |
+| 93 | Razor Dirt Bike Brake Pads | `/parts/razor-dirt-bike-brake-pads/` | razor dirt bike brakes | — | low |
+| 94 | Razor Battery Cables | `/parts/razor-battery-cables/` | razor dirt bike parts | — | low |
 
 ---
 
-### 5.4 Graphics Kits `/parts-accessories/graphics-kits/`
-**Primary KW:** surron graphics | 390 | KD 2 | I
-**Supporting:** surron light bee graphics kit (260/KD0), surron light bee graphics (260/KD1), surron wrap (260/KD1), surron ultra bee husqvarna graphics (320/KD0), stark varg graphics kit (390/KD0), stark varg graphics kits (260/KD0), stark varg sticker (590/KD5), talaria graphics kit (140/KD0), talaria mx4 graphics kit (140/KD2), stacyc graphics (140/KD6), stacyc graphics kit (90/KD5)
-**Priority:** 🟡 Medium — exceptional KD 0 cluster across multiple terms
+### 5.3 — GRAPHICS KITS CATEGORY `/parts-accessories/graphics-kits/`
+**Primary KW:** surron graphics | 390 | KD 2 | C
+**Supporting:** surron light bee graphics kit (260/KD0), stark varg graphics kit (390/KD0), talaria graphics kit (140/KD0), stacyc graphics (140/KD6), surron wrap (260/KD1)
+**Schema:** CollectionPage + BreadcrumbList
+**Priority:** 🟡 Medium
+
+#### Individual Graphics Product Pages
+
+| # | Product | URL | Primary KW | Vol | KD |
+|---|---|---|---|---|---|
+| 95 | Sur-Ron LBX Full Graphics Kit | `/parts/surron-lbx-graphics-kit/` | surron light bee graphics kit | 260 | 0 |
+| 96 | Sur-Ron Ultra Bee Graphics Kit | `/parts/surron-ultra-bee-graphics-kit/` | surron ultra bee husqvarna graphics | 320 | 0 |
+| 97 | Sur-Ron Ultra Bee Husqvarna-Style Graphics | `/parts/surron-ultra-bee-husqvarna-graphics/` | surron graphics kit | — | low |
+| 98 | Sur-Ron LBX Custom Vinyl Wrap | `/parts/surron-lbx-vinyl-wrap/` | surron wrap | 260 | 1 |
+| 99 | Sur-Ron Number Plate | `/parts/surron-number-plate/` | surron number plate | 390 | 25 |
+| 100 | Stark Varg MX Graphics Kit | `/parts/stark-varg-mx-graphics-kit/` | stark varg graphics kit | 390 | 0 |
+| 101 | Stark Varg EX Graphics Kit | `/parts/stark-varg-ex-graphics-kit/` | stark varg graphics kits | 260 | 0 |
+| 102 | Stark Varg Sticker Set | `/parts/stark-varg-sticker-set/` | stark varg sticker | 590 | 5 |
+| 103 | Talaria X3 Graphics Kit | `/parts/talaria-x3-graphics-kit/` | talaria graphics kit | 140 | 0 |
+| 104 | Talaria MX4 Graphics Kit | `/parts/talaria-mx4-graphics-kit/` | talaria mx4 graphics kit | 140 | 2 |
+| 105 | Talaria Number Plate | `/parts/talaria-number-plate/` | talaria number plate | — | low |
+| 106 | STACYC 12eDRIVE Graphics Kit | `/parts/stacyc-12edrive-graphics-kit/` | stacyc graphics kit | 90 | 5 |
+| 107 | STACYC 16eDRIVE Graphics Kit | `/parts/stacyc-16edrive-graphics-kit/` | stacyc graphics | 140 | 6 |
+| 108 | KTM SX-E 5 Graphics Kit | `/parts/ktm-sx-e-5-graphics-kit/` | ktm graphics kit | — | low |
+| 109 | GasGas MC-E 5 Graphics Kit | `/parts/gasgas-mc-e-5-graphics-kit/` | gasgas graphics | 170 | 0 |
 
 ---
 
-### 5.5 Helmets & Protection `/parts-accessories/helmets-protection/`
+### 5.4 — HELMETS & PROTECTION CATEGORY `/parts-accessories/helmets-protection/`
 **Primary KW:** electric dirt bike helmets | 110 | KD 8 | C
-**Supporting:** surron helmet (390/KD5), stacyc helmet (70/KD11), dirt bike helmet (broader), off road helmet, motocross helmet
-**Priority:** 🟡 Medium
+**Supporting:** surron helmet (390/KD5), stacyc helmet (70/KD11), motocross helmet, off road helmet, dirt bike goggles
+
+#### Individual Helmets & Protection Product Pages
+
+| # | Product | URL | Primary KW | Vol | KD |
+|---|---|---|---|---|---|
+| 110 | Full-Face MX Helmet (Adult) | `/parts/full-face-mx-helmet-adult/` | electric dirt bike helmets | 110 | 8 |
+| 111 | Full-Face MX Helmet (Youth) | `/parts/full-face-mx-helmet-youth/` | youth dirt bike helmet | — | low |
+| 112 | Full-Face MX Helmet (Kids/Mini) | `/parts/full-face-mx-helmet-kids/` | kids dirt bike helmet | — | low |
+| 113 | Off-Road Goggles (Adult) | `/parts/off-road-goggles-adult/` | off road goggles | — | low |
+| 114 | Off-Road Goggles (Youth/Kids) | `/parts/off-road-goggles-youth/` | kids dirt bike goggles | — | low |
+| 115 | Chest Protector (Adult) | `/parts/chest-protector-adult/` | dirt bike chest protector | — | low |
+| 116 | Chest Protector (Youth) | `/parts/chest-protector-youth/` | youth dirt bike protection | — | low |
+| 117 | Knee / Shin Guards | `/parts/knee-shin-guards/` | dirt bike knee guards | — | low |
+| 118 | Elbow Pads | `/parts/elbow-pads/` | dirt bike elbow pads | — | low |
+| 119 | Neck Brace | `/parts/neck-brace/` | dirt bike neck brace | — | low |
+| 120 | MX Gloves (Adult) | `/parts/mx-gloves-adult/` | motocross gloves adult | — | low |
+| 121 | MX Gloves (Youth/Kids) | `/parts/mx-gloves-youth/` | motocross gloves kids | — | low |
 
 ---
 
-### 5.6 Riding Gear `/parts-accessories/riding-gear/`
+### 5.5 — RIDING GEAR CATEGORY `/parts-accessories/riding-gear/`
 **Primary KW:** enduro dirt bike boots | 70 | KD 8 | C
-**Supporting:** dirt bike riding gear, motocross gear, off road gloves
-**Priority:** 🟡 Medium
+
+#### Individual Riding Gear Product Pages
+
+| # | Product | URL | Primary KW | Vol | KD |
+|---|---|---|---|---|---|
+| 122 | MX Jersey + Pants Combo (Adult) | `/parts/mx-jersey-pants-adult/` | motocross jersey pants | — | low |
+| 123 | MX Jersey + Pants Combo (Youth/Kids) | `/parts/mx-jersey-pants-youth/` | kids motocross gear | — | low |
+| 124 | Off-Road Boots (Adult) | `/parts/off-road-boots-adult/` | enduro dirt bike boots | 70 | 8 |
+| 125 | Off-Road Boots (Youth) | `/parts/off-road-boots-youth/` | youth dirt bike boots | — | low |
+| 126 | Hydration Pack | `/parts/hydration-pack/` | dirt bike hydration pack | — | low |
+| 127 | Neck Gaiter / Balaclava | `/parts/neck-gaiter-balaclava/` | dirt bike balaclava | — | low |
 
 ---
 
-### 5.7 Tyres & Wheels `/parts-accessories/tyres-wheels/`
+### 5.6 — TYRES & WHEELS CATEGORY `/parts-accessories/tyres-wheels/`
 **Primary KW:** surron tires | 260 | KD 4 | C
-**Supporting:** enduro dirt bike tires (70/KD4), surron wheels (390/KD1), off road knobbly tyres
-**Priority:** 🟡 Medium
+**Supporting:** surron wheels (390/KD1), enduro dirt bike tires (70/KD4), surron lbx tyre
+
+#### Individual Tyre & Wheel Product Pages
+
+| # | Product | URL | Primary KW | Vol | KD |
+|---|---|---|---|---|---|
+| 128 | Sur-Ron LBX Front Tyre 19" | `/parts/surron-lbx-front-tyre-19/` | surron tires | 260 | 4 |
+| 129 | Sur-Ron LBX Rear Tyre 16" | `/parts/surron-lbx-rear-tyre-16/` | surron rear tire | — | low |
+| 130 | Sur-Ron LBX Rear Tyre 18" | `/parts/surron-lbx-rear-tyre-18/` | surron 18 inch tire | — | low |
+| 131 | Sur-Ron Ultra Bee Rear Tyre 16" | `/parts/surron-ultra-bee-rear-tyre-16/` | surron ultra bee tire | — | low |
+| 132 | Talaria Sting Front Tyre 19" | `/parts/talaria-sting-front-tyre-19/` | talaria tires | — | low |
+| 133 | Talaria Sting Rear Tyre 16" | `/parts/talaria-sting-rear-tyre-16/` | talaria mx5 tire | — | low |
+| 134 | Talaria Sting Rear Tyre 18" | `/parts/talaria-sting-rear-tyre-18/` | talaria rear tire | — | low |
+| 135 | Inner Tube 18" / 19" | `/parts/inner-tube-18-19/` | dirt bike inner tube 19 | — | low |
+| 136 | Inner Tube 16" | `/parts/inner-tube-16/` | dirt bike inner tube 16 | — | low |
+| 137 | Sur-Ron Wheel Set Upgrade | `/parts/surron-wheel-set-upgrade/` | surron wheels | 390 | 1 |
+| 138 | Talaria Wheel Set Upgrade | `/parts/talaria-wheel-set-upgrade/` | talaria wheel upgrade | — | low |
 
 ---
 
-### 5.8 Stands & Maintenance `/parts-accessories/stands-maintenance/`
+### 5.7 — STANDS & MAINTENANCE CATEGORY `/parts-accessories/stands-maintenance/`
 **Primary KW:** stacyc stand | 70 | KD 0 | C
-**Supporting:** electric dirt bike stand, paddock stand
-**Priority:** 🟢 Low
+
+#### Individual Stands & Maintenance Product Pages
+
+| # | Product | URL | Primary KW | Vol | KD |
+|---|---|---|---|---|---|
+| 139 | Paddock / Rear Stand | `/parts/paddock-rear-stand/` | electric dirt bike stand | — | low |
+| 140 | STACYC Bike Stand | `/parts/stacyc-bike-stand/` | stacyc stand | 70 | 0 |
+| 141 | Centre Stand (Sur-Ron) | `/parts/centre-stand-surron/` | surron centre stand | — | low |
+| 142 | Bike Wash / Cleaner | `/parts/bike-wash-cleaner/` | electric bike cleaner | — | low |
+| 143 | Chain Lube | `/parts/chain-lube/` | dirt bike chain lube | — | low |
+| 144 | Basic Tool Kit | `/parts/basic-tool-kit/` | electric dirt bike tool kit | — | low |
+| 145 | Torque Wrench | `/parts/torque-wrench/` | torque wrench dirt bike | — | low |
+| 146 | Puncture Repair Kit | `/parts/puncture-repair-kit/` | dirt bike puncture repair | — | low |
+| 147 | Battery Terminal Protector Spray | `/parts/battery-terminal-protector/` | battery terminal protector | — | low |
 
 ---
 
-### 5.9 Transport & Storage `/parts-accessories/transport-storage/`
-**Primary KW:** dirt bike tie downs | — | — | C
-**Supporting:** electric dirt bike cover, loading ramp
-**Priority:** 🟢 Low
+### 5.8 — TRANSPORT & STORAGE CATEGORY `/parts-accessories/transport-storage/`
+**Primary KW:** dirt bike tie downs | — | low | C
+
+#### Individual Transport & Storage Product Pages
+
+| # | Product | URL | Primary KW | Vol | KD |
+|---|---|---|---|---|---|
+| 148 | Dirt Bike Tie-Down Straps (Set of 4) | `/parts/dirt-bike-tie-down-straps/` | dirt bike tie down straps | — | low |
+| 149 | Aluminium Loading Ramp | `/parts/aluminium-loading-ramp/` | dirt bike loading ramp | — | low |
+| 150 | Waterproof Bike Cover | `/parts/waterproof-bike-cover/` | electric dirt bike cover | — | low |
+| 151 | Fireproof LiPo Battery Storage Bag | `/parts/lipo-battery-storage-bag/` | lipo battery storage bag | — | low |
+| 152 | Padded Transport Bag (STACYC) | `/parts/stacyc-transport-bag/` | stacyc transport bag | — | low |
+
+---
+
+### ACCESSORIES KEYWORD NOTES FOR CLAUDE CODE
+
+**Schema for every `/parts/[slug]/` page:**
+```json
+{
+  "@type": "Product",
+  "name": "[Product Name]",
+  "description": "[Description including bike compatibility]",
+  "sku": "[VT-XXX-NNN]",
+  "brand": { "@type": "Brand", "name": "[Manufacturer e.g. Sur-Ron / Chi Battery Systems / eWatt]" },
+  "image": "https://volttrack.com/images/parts/[slug]-01.webp",
+  "offers": {
+    "@type": "Offer",
+    "price": "[price]",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/InStock",
+    "url": "https://volttrack.com/parts/[slug]/"
+  }
+}
+```
+
+**Compatibility cross-links (required on every parts page):**
+Every individual parts product page must include a "Compatible Bikes" section with internal links to the relevant bike product pages. e.g. the EBMX X-9000 controller page links to Sur-Ron LBX, Ultra Bee, and Storm Bee product pages.
+
+**Low KD notes:** Many individual parts have low/unknown Semrush volume because they're long-tail specific product searches. They rank through: (1) the exact product name + brand name in H1, (2) compatibility signals ("for Sur-Ron Light Bee X" in body copy), (3) internal links from the bike product page cross-sell section. These don't need high search volume to convert — they capture high-intent bottom-of-funnel accessory buyers.
+
+**H1 format for parts pages:** `[Product Name] for [Compatible Bike(s)]` e.g. "Sur-Ron LBX OEM 60V Battery for Light Bee X" — this is the format that ranks for accessory queries even at low volume.
 
 ---
 
@@ -518,49 +756,67 @@
 3. `/product/sur-ron-storm-bee/` — KD 8
 4. `/product/talaria-komodo/` — KD 14
 5. `/product/talaria-x3-pro/` — KD 7
-6. `/product/segway-xaber-300/` — fresh, new
+6. `/product/segway-xaber-300/` — fresh, May 2026
 7. `/product/e-ride-pro-ss/` (SS 3.0 primary) — KD 12
 8. `/product/e-ride-pro-mini/` — KD 15
 9. `/product/stacyc-12e-drive/` — KD 16
 10. `/product/stacyc-16e-drive/` — KD 17
-11. `/parts-accessories/batteries-chargers/` — KD 0–8 cluster
-12. `/parts-accessories/graphics-kits/` — KD 0–6 cluster
+11. `/parts-accessories/batteries-chargers/` — category page, KD 0–8 cluster
+12. `/parts-accessories/graphics-kits/` — category page, KD 0–6 cluster
 13. Blog Post 1 (Stark Factory Edition) — publish NOW
-14. `/product/sur-ron-light-bee-s/` *(redirect page — zero build effort, captures 5,400/mo. 301 → Hyper Bee with brief "discontinued" note)*
-15. `/product/segway-x260/` + `/product/segway-x160/` *(redirect pages — zero build effort, captures 7,800/mo combined. 301 → Xaber 300)*
+14. `/product/sur-ron-light-bee-s/` *(redirect only — zero build effort, captures 5,400/mo → Hyper Bee)*
+15. `/product/segway-x260/` + `/product/segway-x160/` *(redirect only — zero build effort, captures 7,800/mo → Xaber 300)*
 
-### Phase 2 — Build Next
-14. `/product/gasgas-mc-e-2/` + `/product/gasgas-mc-e-5/` + `/brands/gasgas/`
-15. `/product/altis-sigma/` (variant) + `/product/altis-delta/` + `/brands/altis/`
-16. `/product/zero-xb/` + `/product/zero-xe/`
-17. `/product/ktm-sx-e-3/` + `/product/ktm-freeride-exc/`
-18. `/product/razor-mx350/` + `/product/razor-mx125/`
-19. `/shop/cheap-electric-dirt-bikes/`
-20. Blog Posts 2–5
+### Phase 2 — Build Next (bikes + brand hubs + remaining category pages)
+16. `/product/gasgas-mc-e-2/` + `/product/gasgas-mc-e-5/` + `/brands/gasgas/`
+17. `/product/altis-sigma/` (variant) + `/product/altis-delta/` + `/brands/altis/`
+18. `/product/zero-xb/` + `/product/zero-xe/`
+19. `/product/ktm-sx-e-3/` + `/product/ktm-freeride-exc/`
+20. `/product/razor-mx350/` + `/product/razor-mx125/`
+21. `/shop/cheap-electric-dirt-bikes/`
+22. Remaining 6 accessory category pages (parts-upgrades, helmets, gear, tyres, maintenance, transport)
+23. Blog Posts 2–5
 
-### Phase 3 — Complete the Map
-21. Stark Varg product pages (3 pages with variant selectors)
-22. E-Ride Pro S variant page
-23. Remaining guide pages (12 guides)
-24. Segway redirect pages (X160/X260)
-25. Remaining accessory sub-pages
-26. Blog Posts 6–10, then begin tracker (posts 11+)
+### Phase 3 — Individual accessory product pages + guides + remaining bikes
+24. **All 43 individual battery + charger pages** (`/parts/surron-lbx-oem-60v-battery/` etc.) — priority order: Sur-Ron batteries first (KD 0–8), then Talaria, then STACYC, then E-Ride Pro, then Razor, then chargers
+25. **All 51 individual bike parts pages** (`/parts/surron-throttle/` etc.) — Sur-Ron first (highest KW volume), then Talaria, then others
+26. **All 15 graphics kit pages** (`/parts/surron-lbx-graphics-kit/` etc.) — KD 0 cluster, fast wins
+27. Stark Varg product pages (3 pages with Standard/Alpha variant selectors)
+28. E-Ride Pro S variant page
+29. Remaining guide pages (12 guides listed in Section 6)
+30. Remaining accessory product pages (helmets ×12, gear ×6, tyres ×11, maintenance ×9, transport ×5)
+31. Blog Posts 6–10, then begin tracker (posts 11+)
 
 ---
 
 ## SECTION 9 — PAGE COUNT (AUTHORITATIVE)
 
-| Section | Count |
-|---|---|
-| Bike product pages | 46 |
-| Accessory category pages (3A–3H) | 8 |
-| Parts hub | 1 |
-| Shop category pages | 7 |
-| Brand hub pages | 11 |
-| Guide + comparison pages | 14 |
-| Blog posts (initial 10) | 10 |
-| Support pages (home/about/FAQ/contact/finance/delivery/returns/privacy/terms/sitemap) | 10 |
-| **TOTAL AT LAUNCH** | **107 pages** |
-| + Blog posts 11–76 (over time) | +66 |
-| **FULL BUILD TARGET** | **~173 pages** |
+| Section | Count | Notes |
+|---|---|---|
+| Bike product pages | 46 | `/product/[slug]/` |
+| Individual accessory product pages | 152 | `/parts/[slug]/` — see Section 5 |
+| Accessory category pages | 8 | `/parts-accessories/[category]/` |
+| Parts & Accessories hub | 1 | `/parts-accessories/` |
+| Shop category pages | 7 | `/shop/[category]/` |
+| Brand hub pages | 11 | `/brands/[brand]/` |
+| Guide + comparison pages | 14 | `/guides/` + `/compare/` |
+| Blog posts (initial 10) | 10 | `/blog/[slug]/` |
+| Support pages (home, about, FAQ, contact, finance, delivery, returns, privacy, terms, sitemap) | 10 | — |
+| **TOTAL AT LAUNCH** | **259 pages** | |
+| + Blog posts 11–76 (over time) | +66 | |
+| **FULL BUILD TARGET** | **~325 pages** | |
+
+**App Router route structure:**
+```
+app/
+  product/[slug]/page.jsx        ← bike products (46 pages)
+  parts/[slug]/page.jsx          ← accessory individual products (152 pages)
+  parts-accessories/page.jsx     ← parts hub
+  parts-accessories/[cat]/page.jsx ← category pages (8)
+  shop/page.jsx                  ← bikes shop hub
+  shop/[cat]/page.jsx            ← bike categories (7)
+  brands/[brand]/page.jsx        ← brand hubs (11)
+  guides/[slug]/page.jsx         ← guides (14)
+  blog/[slug]/page.jsx           ← blog posts
+```
 
