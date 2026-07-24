@@ -1296,6 +1296,13 @@ export const POSTS = [
           'If you want one, the best move is to register your interest with us and buy an Alpha in the meantime if you need a bike this season. We will contact you the moment we can quote firm US pricing and a real delivery date. In the meantime, browse the full [Stark Future range](/brands/stark-future/) to see what is available today.',
         ],
       },
+      {
+        h2: 'Should you wait for the Factory Edition?',
+        paras: [
+          'For most riders, no. The Factory Edition adds exclusivity and the highest factory tune, but the 80 HP Alpha models already deliver enormous performance, the same KYB suspension and Brembo brakes, and they are available to order now rather than on an unconfirmed timeline. Waiting on a bike with no confirmed US price or delivery date is a gamble on all three.',
+          'The riders who should wait are collectors and racers who specifically want the limited edition and are willing to accept an open-ended timeline to get it. If that is you, register your interest so you are first in line when allocation firms up. If you just want the best Varg you can ride this season, buy an Alpha and enjoy it now — you can always add the Factory Edition later if it lives up to the hype.',
+        ],
+      },
     ],
     faqs: [
       { q: 'How much is the Stark Varg Factory Edition?', a: 'Stark has positioned the Varg MX Factory Edition at an estimated $15,990 and the EX Factory Edition at an estimated $16,990 — roughly $4,500 above the equivalent Alpha models. These are estimates and not confirmed US pricing; tariff conditions and limited allocation can move them.' },
@@ -1340,6 +1347,10 @@ export const POSTS = [
         'The [Light Bee X](/product/sur-ron-light-bee-x/) is heavier at 110 lb, faster to around 47 mph in stock form but far more upgradeable, and has the deepest aftermarket in the class. The Hyper Bee is lighter, cheaper and more nimble but has a smaller battery and less upgrade potential.',
         'Choose the Hyper Bee if weight and price matter most; choose the Light Bee X if you plan to modify heavily or want the strongest resale. Both are off-road / OHV use only unless certified street-legal in your state, and both belong to the wider [Sur-Ron range](/brands/sur-ron/) if you want to compare the whole lineup.',
       ] },
+      { h2: 'The verdict', paras: [
+        'The Hyper Bee is the bike we most often recommend to riders who are not sure a full-size Sur-Ron is right for them. It removes the two things that intimidate newcomers — weight and unmanageable power — without feeling like a toy, and it does so at the lowest price of any adult Sur-Ron. That combination is rare and genuinely valuable.',
+        'It will not be the last word for a heavy, aggressive rider chasing outright speed, and it does not have the Light Bee’s bottomless upgrade path. But as a bike to actually ride, learn on and enjoy — rather than a project to build — the Hyper Bee punches well above its price. For lighter adults, teens and anyone stepping up from a first bike, it is one of the easiest recommendations in the whole range.',
+      ] },
     ],
     faqs: [
       { q: 'How much is the Sur-Ron Hyper Bee?', a: 'The Sur-Ron Hyper Bee is $3,699, making it the most affordable adult Sur-Ron. Prices are estimates and can change with import tariff conditions, so contact us to confirm the current figure before ordering.' },
@@ -1377,6 +1388,14 @@ export const POSTS = [
       { h2: 'What else affects the price?', paras: [
         'The sticker price is not the whole cost. Import tariff conditions can shift the figure between quote and delivery, which is why we treat all prices as estimates and confirm before you order. Shipping to the Lower 48 is included, but graphics kits, spare batteries and protective gear all add to your out-the-door total, so budget for the extras you actually want.',
         'On the other side of the ledger, running a Varg is cheap — you charge it for pennies and skip the fuel, oil and engine servicing a gas 450 demands. Over a few seasons of racing that running-cost saving is real money back against the higher purchase price.',
+      ] },
+      { h2: 'How the Varg compares on price', paras: [
+        'Against gas 450 motocross bikes the Varg is priced in the same premium territory, but it changes the maths on running costs — no fuel, no oil, no top-ends. Against other electric dirt bikes it sits at the very top: a lightweight Sur-Ron or Talaria costs a third to a half as much. That gap is the honest reason most riders do not need a Varg, however good it is.',
+        'What you are paying for is genuine race-winning performance and componentry that would cost a fortune to replicate through upgrades on a cheaper bike. If you race or ride at a high level, that is money well spent. If you ride trails at the weekend, it is more bike, and more money, than the riding calls for.',
+      ] },
+      { h2: 'Which Stark Varg should you buy?', paras: [
+        'If you race or ride closed-course motocross, the MX is the one — it is the lightest, most focused Varg and the cheapest way in. If you want a street-legal enduro you can register and ride on trails and roads, the EX is your bike. If you want a supermoto for city and trail, the SM. Within each, the Alpha tune is worth the roughly $1,000 premium if the budget allows, but the Standard is far from slow.',
+        'Whichever you choose, confirm the current figure with us before ordering — tariff conditions can move Stark Varg pricing, so every number here is an estimate rather than a locked quote.',
       ] },
       { h2: 'Is the Stark Varg worth it?', paras: [
         'For a rider who wants genuine, class-leading electric motocross performance — configurable power to 80 HP, KYB suspension, Brembo brakes — the Varg is the benchmark and the price reflects that. For casual trail riding it is far more bike than you need, and a lightweight Sur-Ron or Talaria from a few thousand less will serve you better. Match the bike to your riding, not to the spec sheet.',
@@ -1419,6 +1438,15 @@ export const POSTS = [
         'The Komodo suits a rider who has outgrown the lightweight class and wants real range and mid-weight power without stepping up to an $8,000-plus machine. It is a serious bike for experienced adult riders rather than a beginner tool, and at 16+ with the right supervision it can suit a strong younger rider too.',
         'If you mostly ride tight, technical single-track, a lighter bike like the [Sur-Ron Hyper Bee](/product/sur-ron-hyper-bee/) may actually suit you better. But if your riding is fast, open and long, the Komodo is one of the most capable options at anywhere near the price, and it sits proudly at the top of the [Talaria range](/brands/talaria/).',
       ] },
+      { h2: 'Build quality and components', paras: [
+        'The Komodo feels like a step up from the Sting range in more than just power. The 96V system and 45Ah pack are matched to suspension and brakes that can handle the extra speed and weight, so the bike stays composed when you push it. It is a genuine performance machine rather than a lightweight bike with a bigger battery bolted in.',
+        'That said, like most bikes in this class it still benefits from the usual sensible checks — keeping the chain clean and lubed, watching brake pad wear, and confirming everything is torqued correctly after the first few rides. Electric drivetrains remove the engine servicing, but the chassis is still a dirt bike and rewards basic care.',
+        'The 96V system is also worth understanding before you buy. Higher voltage delivers the strong, sustained power the Komodo is known for, but it means the pack and charger are specific to this bike rather than shared with the lighter 60V and 72V machines. Keep that in mind if you already own accessories for a Sting or Sur-Ron — you will be starting fresh on batteries and chargers.',
+      ] },
+      { h2: 'Komodo vs the lightweight class', paras: [
+        'It is worth being clear about what the Komodo is not. If your riding is tight, slow and technical, a 203 lb mid-weight bike is more machine than you want, and a lighter option like the [Sur-Ron Hyper Bee](/product/sur-ron-hyper-bee/) or a Talaria Sting will be more fun and less tiring. The Komodo’s weight and power are assets on fast, open ground and a liability in a tight woods section.',
+        'Where it shines is exactly where the lightweight bikes run out of legs: sustained speed, long climbs, and range that lets you ride all day. If that describes your local terrain, the Komodo is transformative. If it does not, spend less and buy lighter — the most expensive bike is not automatically the right one.',
+      ] },
       { h2: 'Is it the best under $6,000?', paras: [
         'For a rider who wants genuine mid-weight performance and long range rather than lightweight agility, yes — the Komodo is arguably the most bike you can buy for under $6,000 today. Just remember it is off-road / OHV use only, and prices are estimates that can move with tariff conditions.',
       ] },
@@ -1460,6 +1488,12 @@ export const POSTS = [
       { h2: 'Don’t forget the protective gear', paras: [
         'Whatever bike you choose, budget for a properly fitted full-face helmet, goggles, gloves and knee and elbow protection before the first ride. This is the highest-value money you will spend — a good helmet matters far more than an extra few mph, and setting the gear-up habit early makes it second nature as your child progresses.',
         'Ill-fitting adult gear does not protect a child, so buy youth-specific kit that fits now. You can hand it down or resell as they grow. The same applies to the bike: fit and control come first, speed second.',
+      ] },
+      { h2: 'Electric vs gas for a 10 year old', paras: [
+        'Parents often ask whether to start a child on electric or a small gas bike. For most families electric wins clearly at this age: there is no clutch or gears to master, the power is smooth and predictable, and selectable ride modes let you cap the speed precisely. A child can focus on balance, braking and body position without also wrestling a temperamental two-stroke.',
+        'Electric is also quieter and lower-maintenance, which matters when you are the one running the pit. No premix, no fouled plugs, no cold-start drama — you charge it and go. When your rider is ready for more, they can step up within the electric range or move to gas with the fundamentals already in place.',
+        'The quiet operation has a practical benefit too: you can ride in more places and at more times of day without upsetting neighbours, which for a lot of families is the difference between riding most weekends and barely riding at all. More seat time is what actually builds a young rider’s skill, so anything that removes friction from getting out is worth a lot.',
+        'There is a safety angle as well. Because electric power is instant and smooth, a nervous child is not fighting a snatchy clutch or a two-stroke’s sudden powerband while also trying to stay upright. You set a gentle mode, they learn the fundamentals of balance and braking, and only then do you introduce more speed. That staged progression is far harder to manage on a peaky gas bike, which is a big part of why so many parents now start their kids on electric.',
       ] },
       { h2: 'How to choose the right size', paras: [
         'Size the bike so your child can touch the ground comfortably and pick it up after a fall. Start in the lowest power mode and progress slowly. Insist on a full-face helmet, goggles, gloves and knee protection, and ride only on private land or designated OHV areas — none of these bikes is street legal. Browse the full [youth and kids range](/shop/youth-electric-dirt-bikes/) to compare sizes and prices.',
@@ -1507,6 +1541,15 @@ export const POSTS = [
         'Budget-focused and new to electric? A Talaria Sting MX3 or Sting R MX4 gives you a capable bike for less. Planning a project bike with battery and controller upgrades? Start with a Sur-Ron Light Bee X. Want maximum stock range and speed for the money? Look at the Talaria Komodo. Want the strongest resale and the deepest community? Sur-Ron.',
         'There is no wrong answer here — both brands make genuinely good bikes, which is exactly why the debate never ends. Match the bike to how you actually ride and what you plan to do with it, and either brand will serve you well.',
       ] },
+      { h2: 'The used market', paras: [
+        'If you are shopping used, the two brands behave differently. Used Sur-Rons are plentiful and hold strong prices, and because the parts ecosystem is so deep you can buy an older bike with confidence that anything worn can be replaced or upgraded. The trade-off is that you rarely find a bargain — demand keeps prices firm.',
+        'Used Talarias can represent better value, especially newer models depreciating from a lower starting price, but the smaller parts network means you want to buy a clean example rather than a project. For either brand, our advice is the same: buy the best-condition bike you can afford, check the battery health, and factor in the cost of any upgrades you already know you want.',
+      ] },
+      { h2: 'What we would buy', paras: [
+        'Put on the spot, here is how we would call it. First electric bike, tight budget, mostly stock riding: a Talaria Sting, likely the MX4. Planning to modify heavily and keep the bike for years: a Sur-Ron Light Bee X for the ecosystem. Want the most stock range and speed for the money: a Talaria Komodo. Lightest, most beginner-friendly option either brand makes: the Sur-Ron Hyper Bee.',
+        'There is genuinely no wrong answer — both brands make bikes we are happy to sell and ride ourselves. The debate never settles because it is not really Sur-Ron versus Talaria; it is which bike fits your budget, your terrain and what you plan to do with it.',
+        'One last piece of advice: do not buy on spec sheets alone. A bike that fits your body, suits your local trails and matches your appetite for tinkering will make you happier than one that wins a paper comparison. If you can, sit on both and picture your typical ride — and if you cannot, tell us your height, weight and where you ride, and we will point you honestly toward the one that fits.',
+      ] },
       { h2: 'So which should you buy?', paras: [
         'If this is your first electric dirt bike and you want to keep it simple, buy on fit and price — that often means Talaria. If you already know you will be upgrading batteries and controllers within a year, buy Sur-Ron and save yourself the parts hunt. Both are off-road / OHV use only unless a listing states a street-legal path.',
       ] },
@@ -1550,6 +1593,14 @@ export const POSTS = [
         'The Xaber 300 suits an experienced adult rider who wants strong mid-weight performance and does not want to spend their first weekend upgrading suspension. It rewards fast, open trails and riders who value quality componentry over outright lightness.',
         'If you want the lightest, most flickable bike or the deepest aftermarket, a Sur-Ron still makes more sense. But as a ride-it-as-it-comes package, the Xaber 300 is one of the more complete bikes at its price, and it anchors the refreshed [Segway range](/brands/segway/).',
       ] },
+      { h2: 'Segway as a brand in dirt', paras: [
+        'Some riders are surprised to see Segway making a serious dirt bike, associating the name with commuter scooters. But Segway Powersports is a substantial operation with real engineering behind it, and the Xaber 300 is the clearest statement yet that they are aiming at enthusiasts rather than the lifestyle market. The Samsung cells and Marzocchi suspension are not the choices of a company cutting corners.',
+        'The X160 and X260 that came before were solid if unremarkable; the Xaber 300 is a genuine step up and a sign the brand is investing. For buyers that matters, because a manufacturer that keeps improving is more likely to support the bike with parts and updates down the line.',
+      ] },
+      { h2: 'What to know before you buy', paras: [
+        'As with every bike in this class, the Xaber 300 is off-road / OHV use only — it is not street legal, and you should plan to ride it on private land or designated OHV areas with the correct registration. California riders should follow Vehicle Code Section 436.1. Confirm the current price with us before ordering, since tariff conditions can move it.',
+        'If you are cross-shopping, the honest comparison is against the Sur-Ron Light Bee X and the mid-weight Talaria machines. The Xaber counters the Sur-Ron’s lightness and aftermarket with better stock componentry and more speed. Which matters more depends on whether you are a rider who upgrades or a rider who just wants a complete bike out of the crate.',
+      ] },
       { h2: 'Is the Xaber 300 worth it?', paras: [
         'For a rider who wants strong mid-weight performance with quality suspension straight out of the box, the Xaber 300 is a compelling package. It is off-road / OHV use only, and as always prices are estimates that can move with tariff conditions.',
       ] },
@@ -1592,6 +1643,14 @@ export const POSTS = [
         'Even off-road, most states expect some form of registration for use on public OHV land. California’s green-sticker scheme is the best-known, but many states have their own OHV or trail-permit systems. On genuinely private land with the owner’s permission, those requirements typically do not apply, but public trails almost always do.',
         'The practical takeaway: decide where you actually want to ride before you buy. If it is private land and OHV parks, almost any bike we sell works with the right registration. If it is public roads, you need one of the small number of street-legal-path models, and you need to confirm your state’s specific rules.',
       ] },
+      { h2: 'Why "street legal" claims are often misleading', paras: [
+        'You will see plenty of listings and forum posts claiming a given bike is "street legal." Treat those claims with caution. Very often they mean the bike is street legal in one specific state under narrow conditions, or that a previous owner managed to register it through a loophole that has since closed. What is legal in one state may be impounded in the next, and enforcement varies even between counties.',
+        'This is why we never use a blanket "street legal" label. A bike either has a genuine, built-in path to registration — the right equipment and certification — or it does not, and even then the final answer depends on your state. Anyone promising a dirt bike is "street legal everywhere" is either mistaken or selling you something.',
+      ] },
+      { h2: 'How to ride legally wherever you are', paras: [
+        'The safe approach is simple. Decide where you want to ride, then confirm the rules for that place before you buy — your state DMV for road use, and your state OHV or parks authority for trail use. For private land with the owner’s permission, you have the most freedom. For public roads, you need a model with a real street-legal path and the correct registration and insurance.',
+        'If any of that is unclear, ask us first. We would rather tell you honestly that a bike will not do what you want than sell you one that ends up parked because you cannot ride it legally where you live.',
+      ] },
       { h2: 'The bottom line', paras: [
         'This is general information, not legal advice — your state DMV is the authority, and rules and enforcement vary. What we can promise is that every VoltTrack listing states plainly whether a bike is off-road only or has a street-legal path. We will never tell you a bike is street legal everywhere, because no electric dirt bike is. If you are unsure, [contact us](/contact/) before buying and we will talk you through it honestly.',
       ] },
@@ -1632,6 +1691,10 @@ export const POSTS = [
       ] },
       { h2: 'Resale and depreciation', paras: [
         'Depreciation is real on both sides, but the strongest electric brands hold value well — a used Sur-Ron in good condition commands a healthy price thanks to the deep demand and aftermarket. Gas bikes have a larger used market overall, which cuts both ways: more buyers, but also more supply. Factor resale into the five-year picture, because a bike that holds value lowers your true cost of ownership regardless of drivetrain.',
+      ] },
+      { h2: 'Who should choose which', paras: [
+        'For riders close to home, on private land or OHV parks, and especially for families with younger riders, electric is usually the better call — lower running costs, near-silent operation and minimal maintenance make it easy to ride often. For riders doing long backcountry days far from power, or those who value a deep used market and independent repair, gas still holds practical advantages.',
+        'The good news is you no longer have to compromise much on performance either way. Modern electric dirt bikes match or beat comparable gas machines on acceleration and, increasingly, on range. The decision comes down to how and where you ride rather than whether electric can keep up — it can.',
       ] },
       { h2: 'The five-year picture', paras: [
         'Electric dirt bike pricing can move with import tariff conditions, so quoted prices are estimates. Even so, over a typical five-year hold, lower running and maintenance costs usually make electric competitive or cheaper overall — while being quieter and easier to ride where noise rules apply. Explore the [adult range](/shop/adult-electric-dirt-bikes/) to see where the numbers land for the riding you actually do.',
@@ -1677,6 +1740,14 @@ export const POSTS = [
       { h2: 'Long-term ownership', paras: [
         'This is where the two diverge most. The Sur-Ron Light Bee X sits at the centre of a huge parts and upgrade ecosystem — batteries, controllers, suspension, plastics — and holds its value strongly on the used market. The E-Ride Pro SS has a smaller aftermarket, so it is better thought of as a ride-it-as-it-comes value machine than a long-term project platform.',
         'If you love tinkering and upgrading, that Sur-Ron depth is a real draw and part of what you pay the premium for. If you just want a lot of capable bike for your money and plan to ride it largely stock, the E-Ride Pro’s value is hard to argue with. Compare both across the [E-Ride Pro](/brands/e-ride-pro/) and [Sur-Ron](/brands/sur-ron/) ranges.',
+      ] },
+      { h2: 'Resale and running costs', paras: [
+        'Both bikes are cheap to run — pennies to charge, no fuel or oil, and only tyres, brakes, suspension and the chain to maintain. Where they differ is resale. The Sur-Ron’s strong used-market demand means a well-kept Light Bee X gives much of its purchase price back when you sell, which narrows the real cost gap against the cheaper E-Ride Pro over time.',
+        'Factor that in if you expect to upgrade in a couple of years. The E-Ride Pro SS costs less up front, but the Sur-Ron’s stronger resale and deeper parts support can make it the more sensible long-term buy for a rider who churns through bikes or plans to sell on.',
+      ] },
+      { h2: 'The bottom line', paras: [
+        'If you want the most speed and size per dollar and plan to ride largely stock, the E-Ride Pro SS is outstanding value. If you want the lighter, more refined ride, the deepest aftermarket and the strongest resale, the Sur-Ron Light Bee X justifies its premium. Both are genuinely good bikes — the right one depends on whether you are a value buyer or an ecosystem buyer.',
+        'Still torn? Think about the five-year picture rather than the sticker price. If you plan to modify, sell on and buy again, the Sur-Ron ecosystem and resale tilt the maths its way. If you want to buy once, ride it as it comes and keep it simple, the E-Ride Pro gives you more bike today for less money — and that is a perfectly good reason to choose it.',
       ] },
     ],
     faqs: [
