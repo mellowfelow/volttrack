@@ -51,7 +51,7 @@ export default function CheckoutClient() {
         if (res.status === 200 && res.data.success) done()
         else throw new Error((res.data && res.data.message) || 'Submission failed')
       })
-      .catch(() => setError('Something went wrong submitting your order. Please email hello@volttrack.com or use the chat button.'))
+      .catch(() => setError('Something went wrong submitting your order. Please use the chat button or the contact page to reach us.'))
   }
 
   if (items.length === 0) {

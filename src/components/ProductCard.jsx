@@ -1,19 +1,23 @@
 import Link from 'next/link'
-import { SITE, brandName } from '@/config/site'
+import { SITE, brandName, partPriceLabel } from '@/config/site'
 import CardBuy from '@/components/CardBuy'
 import SmartImage from '@/components/SmartImage'
 
-export default function ProductCard({ p, eager = false }) {
+// Renders a bike product by default, or an accessory when `part` is true
+// (links to /parts/[slug]/, shows SKU + ranged price, no spec chips).
+export default function ProductCard({ p, eager = false, part = false }) {
+  const href = part ? `/parts/${p.slug}/` : `/product/${p.slug}/`
   const img = p.images && p.images[0]
     ? `/images/${p.images[0]}`
     : '/images/placeholder-bike.svg'
+  const brandLabel = part ? p.brandLabel : brandName(p.brand)
   return (
     <div className="card">
-      <Link href={`/product/${p.slug}/`} style={{ color: 'inherit' }} aria-label={p.name}>
+      <Link href={href} style={{ color: 'inherit' }} aria-label={p.name}>
         <div className="product-frame">
           <SmartImage
             src={img}
-            alt={`${p.name} electric dirt bike`}
+            alt={`${p.name}${part ? '' : ' electric dirt bike'}`}
             width={1600}
             height={1200}
             loading={eager ? 'eager' : 'lazy'}
@@ -22,12 +26,16 @@ export default function ProductCard({ p, eager = false }) {
       </Link>
       <div className="card-body">
         {p.badge ? <span className="badge">{p.badge}</span> : null}
-        <span className="muted" style={{ fontSize: '.8rem', fontWeight: 600 }}>{brandName(p.brand)}</span>
+        <span className="muted" style={{ fontSize: '.8rem', fontWeight: 600 }}>{brandLabel}</span>
         <h3 style={{ margin: '2px 0 6px' }}>
-          <Link href={`/product/${p.slug}/`} style={{ color: 'inherit' }}>{p.name}</Link>
+          <Link href={href} style={{ color: 'inherit' }}>{p.name}</Link>
         </h3>
-        <p className="muted" style={{ fontSize: '.9rem' }}>{p.short}</p>
-        {p.specs ? (
+        {part ? (
+          p.fits ? <p className="muted" style={{ fontSize: '.9rem' }}>Fits {p.fits}</p> : null
+        ) : (
+          <p className="muted" style={{ fontSize: '.9rem' }}>{p.short}</p>
+        )}
+        {!part && p.specs ? (
           <ul className="spec-chips" aria-label="Key specifications">
             <li><span aria-hidden="true">⚡</span> {p.specs.topSpeed}</li>
             <li><span aria-hidden="true">📏</span> {p.specs.range}</li>
@@ -35,10 +43,16 @@ export default function ProductCard({ p, eager = false }) {
             <li><span aria-hidden="true">⚖️</span> {p.specs.weight}</li>
           </ul>
         ) : null}
-        {p.enquire ? (
+        {part ? (
+          <>
+            <span className="price">{partPriceLabel(p)}</span>
+            <CardBuy product={p} />
+            <Link href={href} className="btn btn-ghost btn-block" style={{ marginTop: 8 }}>View details</Link>
+          </>
+        ) : p.enquire ? (
           <>
             <span className="price">Contact for pricing</span>
-            <Link href={`/product/${p.slug}/`} className="btn btn-block" style={{ marginTop: 8 }}>
+            <Link href={href} className="btn btn-block" style={{ marginTop: 8 }}>
               {p.pending ? 'Register interest' : 'Enquire'}
             </Link>
           </>
@@ -46,7 +60,7 @@ export default function ProductCard({ p, eager = false }) {
           <>
             <span className="price">{SITE.currencySymbol}{p.price.toLocaleString('en-US')}</span>
             <CardBuy product={p} />
-            <Link href={`/product/${p.slug}/`} className="btn btn-ghost btn-block" style={{ marginTop: 8 }}>View details</Link>
+            <Link href={href} className="btn btn-ghost btn-block" style={{ marginTop: 8 }}>View details</Link>
           </>
         )}
       </div>

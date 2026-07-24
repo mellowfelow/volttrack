@@ -7,13 +7,15 @@ export const url = (path = '/') => `${base}${path.startsWith('/') ? '' : '/'}${p
 export const encEmail = (e) =>
   e.replace(/[A-Za-z@.]/g, (c) => `&#${c.charCodeAt(0)};`)
 
-export function buildMetadata({ title, description, path = '/', type = 'website', image, robots }) {
+export function buildMetadata({ title, description, path = '/', type = 'website', image, robots, absoluteTitle }) {
   const canonical = url(path)
   const desc = (description || SITE.description).slice(0, 158)
   // Next's typed metadata only accepts a subset of OG types; map product→website.
   const ogType = type === 'product' ? 'website' : type
   const meta = {
-    title,
+    // absoluteTitle bypasses the layout "%s | VoltTrack" template (used by /parts/
+    // pages, whose titles already end in "| VoltTrack Parts").
+    title: absoluteTitle ? { absolute: absoluteTitle } : title,
     description: desc,
     alternates: { canonical },
     openGraph: {

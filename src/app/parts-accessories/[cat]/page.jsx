@@ -1,8 +1,9 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import {
-  ACCESSORY_CATEGORIES, accessoryCatBySlug, brandBySlug, PRICE_DISCLAIMER,
+  ACCESSORY_CATEGORIES, accessoryCatBySlug, partsInCategory, brandBySlug, PRICE_DISCLAIMER,
 } from '@/config/site'
+import PartsGrid from '@/components/PartsGrid'
 import Breadcrumbs from '@/components/Breadcrumbs'
 import FaqAccordion from '@/components/FaqAccordion'
 import { buildMetadata, JsonLd, url } from '@/lib/seo'
@@ -24,8 +25,7 @@ export function generateMetadata({ params }) {
 export default function AccessoryCategoryPage({ params }) {
   const a = accessoryCatBySlug(params.cat)
   if (!a) notFound()
-
-  const count = a.groups.reduce((n, g) => n + g.items.length, 0)
+  const items = partsInCategory(a.slug)
 
   const ld = {
     '@context': 'https://schema.org',
@@ -36,9 +36,9 @@ export default function AccessoryCategoryPage({ params }) {
     isPartOf: { '@type': 'CollectionPage', name: 'Parts & Accessories', url: url('/parts-accessories/') },
     mainEntity: {
       '@type': 'ItemList',
-      numberOfItems: count,
-      itemListElement: a.groups.flatMap((g) => g.items).map((it, i) => ({
-        '@type': 'ListItem', position: i + 1, name: it.name,
+      numberOfItems: items.length,
+      itemListElement: items.map((it, i) => ({
+        '@type': 'ListItem', position: i + 1, name: it.name, url: url(`/parts/${it.slug}/`),
       })),
     },
   }
@@ -67,35 +67,11 @@ export default function AccessoryCategoryPage({ params }) {
           <h1>{a.h1}</h1>
           <p className="lead">{a.description}</p>
 
-          {a.groups.map((g) => (
-            <div key={g.name} style={{ marginTop: 40 }}>
-              <h2>{g.name}</h2>
-              {g.warn ? <p className="min-order-block" role="note">⚠️ {g.warn}</p> : null}
-              <div className="spec-table-wrap">
-                <table className="spec-table">
-                  <caption className="sr-only">{g.name}</caption>
-                  <thead>
-                    <tr><th scope="col">Product</th><th scope="col">Fits</th><th scope="col">Price</th></tr>
-                  </thead>
-                  <tbody>
-                    {g.items.map((it) => (
-                      <tr key={it.name}>
-                        <th scope="row" style={{ fontWeight: 600 }}>{it.name}</th>
-                        <td>{it.fits || '—'}</td>
-                        <td className="price">{it.price}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-              {g.note ? <p className="form-note">{g.note}</p> : null}
-            </div>
-          ))}
+          {items.length ? <PartsGrid items={items} /> : (
+            <p>Products arriving soon — <Link href="/contact/">contact us</Link> for current stock.</p>
+          )}
 
-          <p className="form-note" style={{ marginTop: 24 }}>{PRICE_DISCLAIMER}</p>
-          <p style={{ marginTop: 16 }}>
-            <Link href="/contact/" className="btn btn-lg">Enquire about {a.name.toLowerCase()}</Link>
-          </p>
+          <p className="form-note" style={{ marginTop: 20 }}>{PRICE_DISCLAIMER}</p>
 
           {a.faqs && a.faqs.length ? (
             <div style={{ marginTop: 48 }}>

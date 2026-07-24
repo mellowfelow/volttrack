@@ -35,7 +35,7 @@ export default function WebForm({ subject, thankYou, children }) {
       })
       .catch(() => {
         setError(
-          'Sorry — something went wrong sending your message. Please email us at hello@volttrack.com or use the chat button.',
+          'Sorry — something went wrong sending your message. Please use the chat button or try again in a moment.',
         )
       })
   }

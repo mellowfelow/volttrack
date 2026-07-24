@@ -1,4 +1,4 @@
-import { CATEGORIES, BRANDS, PRODUCTS, POSTS, GUIDES, COMPARISONS, ACCESSORY_CATEGORIES } from '@/config/site'
+import { CATEGORIES, BRANDS, PRODUCTS, POSTS, GUIDES, COMPARISONS, ACCESSORY_CATEGORIES, PARTS } from '@/config/site'
 import { url } from '@/lib/seo'
 
 export const dynamic = 'force-static'
@@ -19,6 +19,7 @@ export default function sitemap() {
     ...GUIDES.map((g) => ({ url: url(`/guides/${g.slug}/`), lastModified: now, priority: 0.6 })),
     ...COMPARISONS.map((c) => ({ url: url(`/compare/${c.slug}/`), lastModified: now, priority: 0.6 })),
     ...ACCESSORY_CATEGORIES.map((a) => ({ url: url(`/parts-accessories/${a.slug}/`), lastModified: now, priority: 0.7 })),
+    ...PARTS.map((p) => ({ url: url(`/parts/${p.slug}/`), lastModified: now, priority: 0.6 })),
   ]
   return entries
 }

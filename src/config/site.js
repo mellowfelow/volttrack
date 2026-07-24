@@ -4,6 +4,12 @@
 // The domain lives ONLY in SITE.domain. Never hand-write a domain elsewhere.
 // ============================================================================
 
+// 152 individual accessory products at /parts/[slug]/ live in parts-data.js
+// (auto-generated from the product + keyword docs). Re-exported here so the rest
+// of the app keeps importing everything from site.js.
+import { PARTS } from './parts-data.js'
+export { PARTS }
+
 export const SITE = {
   domain: 'volttrack.com',
   target: 'vercel',
@@ -1643,6 +1649,13 @@ export const PRICE_DISCLAIMER =
 export const productBySlug = (slug) => PRODUCTS.find((p) => p.slug === slug)
 export const discontinuedBySlug = (slug) => DISCONTINUED.find((d) => d.slug === slug)
 export const accessoryCatBySlug = (slug) => ACCESSORY_CATEGORIES.find((a) => a.slug === slug)
+export const partBySlug = (slug) => PARTS.find((p) => p.slug === slug)
+export const partsInCategory = (cat) => PARTS.filter((p) => p.category === cat)
+// Display helper: "$1,499" or "$160–$200" for ranged parts.
+export const partPriceLabel = (p) =>
+  p.priceMax
+    ? `$${p.price.toLocaleString('en-US')}–$${p.priceMax.toLocaleString('en-US')}`
+    : `$${p.price.toLocaleString('en-US')}`
 // Default (primary) variant of a product — always the first listed.
 export const defaultVariant = (p) => (p.variants && p.variants.length ? p.variants[0] : null)
 export const categoryBySlug = (slug) => CATEGORIES.find((c) => c.slug === slug)

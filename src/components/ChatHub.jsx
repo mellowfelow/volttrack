@@ -11,6 +11,12 @@ const LINK_META = {
 
 export default function ChatHub() {
   const [open, setOpen] = useState(false)
+  // Email addresses must never appear as plaintext in the static HTML (scrape
+  // protection + CLAUDE.md rule). The mailto: href is assembled only after mount,
+  // so the server-rendered markup carries a harmless placeholder instead.
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
+  const hrefFor = (c) => (c.type === 'email' && !mounted ? '#' : LINK_META[c.type].href(c.value))
   const links = CHAT.channels.filter((c) => LINK_META[c.type])
   const widget = CHAT.channels.find((c) => ['tawk', 'crisp', 'jivochat'].includes(c.type))
 
@@ -43,7 +49,7 @@ export default function ChatHub() {
     const m = LINK_META[c.type]
     return (
       <div className="chat-hub">
-        <a className="chat-toggle" href={m.href(c.value)} aria-label={m.label} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <a className="chat-toggle" href={hrefFor(c)} aria-label={m.label} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           {m.icon}
         </a>
       </div>
@@ -56,7 +62,7 @@ export default function ChatHub() {
         {links.map((c) => {
           const m = LINK_META[c.type]
           return (
-            <a key={c.type} href={m.href(c.value)} aria-label={m.label}>
+            <a key={c.type} href={hrefFor(c)} aria-label={m.label}>
               <span aria-hidden="true">{m.icon}</span> {m.label}
             </a>
           )
