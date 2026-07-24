@@ -7,7 +7,7 @@ export default function sitemap() {
   const now = new Date().toISOString()
   const staticPaths = [
     '/', '/shop/', '/brands/', '/blog/', '/guides/', '/about/', '/contact/',
-    '/faq/', '/shipping/', '/returns/', '/privacy/', '/terms/', '/parts-accessories/',
+    '/faq/', '/finance/', '/shipping/', '/returns/', '/privacy/', '/terms/', '/parts-accessories/',
   ]
   // DISCONTINUED slugs are deliberately absent — they 301 to their successor.
   const entries = [

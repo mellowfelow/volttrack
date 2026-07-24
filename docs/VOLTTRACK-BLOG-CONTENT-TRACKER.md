@@ -1,4 +1,4 @@
-# VoltTrack — Blog Content Tracker (Posts 1–76)
+#`/blog/sur-ron-hyper-bee-review/``/blog/stark-varg-price-2026/``/blog/talaria-komodo-review/``/blog/electric-dirt-bike-for-10-year-olds-2026/``/blog/sur-ron-vs-talaria/``/blog/segway-xaber-300-review/``/blog/are-electric-dirt-bikes-street-legal-usa/``/blog/electric-vs-gas-dirt-bike-cost-of-ownership/``/blog/e-ride-pro-ss-vs-sur-ron-light-bee-x/` VoltTrack — Blog Content Tracker (Posts 1–76)
 **Living document | Claude Code saves this file and removes posts as they are published**
 **Format: Check box → remove row when published. Keep file current.**
 **Save location in repo:** `/docs/VOLTTRACK-BLOG-CONTENT-TRACKER.md`
@@ -18,15 +18,6 @@
 
 | # | Status | Title | URL Slug | Primary KW | Vol | KD | Word Count | Internal Links |
 |---|---|---|---|---|---|---|---|---|
-| 2 | ☐ TODO | Sur-Ron Hyper Bee Review: The Lightest Sur-Ron Is Also the Most Exciting | `/blog/sur-ron-hyper-bee-review/` | surron hyper bee | 9,900 | 8 | 1,000–1,200 | Sur-Ron Hyper Bee product, Sur-Ron LBX product, Sur-Ron brand hub |
-| 3 | ☐ TODO | Stark Varg Price in 2026: How Much Does It Actually Cost? | `/blog/stark-varg-price-2026/` | stark varg price | 2,900 | 5 | 700–900 | All Stark Varg product pages, finance page |
-| 4 | ☐ TODO | Talaria Komodo Review: Is This the Best Electric Dirt Bike Under $6,000? | `/blog/talaria-komodo-review/` | talaria komodo | 8,100 | 14 | 1,000–1,200 | Talaria Komodo product, Talaria brand hub, Sur-Ron Ultra Bee product |
-| 5 | ☐ TODO | Best Electric Dirt Bike for 10 Year Olds: A Parent's Complete Guide | `/blog/electric-dirt-bike-for-10-year-olds-2026/` | electric dirt bike for 10 year old | 1,300 | 9 | 1,000–1,200 | KTM SX-E 5, GasGas MC-E 5, STACYC 20eDRIVE, Sur-Ron Hyper Bee, youth bikes category |
-| 6 | ☐ TODO | Sur-Ron vs Talaria in 2026: Which Electric Dirt Bike Should You Buy? | `/blog/sur-ron-vs-talaria/` | surron vs talaria | 480 | 16 | 1,200–1,500 | Sur-Ron brand hub, Talaria brand hub, Sur-Ron LBX, Talaria MX4 |
-| 7 | ☐ TODO | Segway Xaber 300 Review: Dakar-Inspired Electric Dirt Bike for $5,299 | `/blog/segway-xaber-300-review/` | segway xaber 300 | — | low | 900–1,100 | Segway Xaber 300 product, Segway brand hub, Sur-Ron LBX product |
-| 8 | ☐ TODO | Are Electric Dirt Bikes Street Legal in the USA? Complete 2026 Guide | `/blog/are-electric-dirt-bikes-street-legal-usa/` | are electric dirt bikes street legal | 480 | 21 | 1,000–1,200 | Street-legal shop category, Sur-Ron L1e, Stark Varg EX, Stark Varg SM |
-| 9 | ☐ TODO | Electric Dirt Bike vs Gas Dirt Bike: Real Cost of Ownership in 2026 | `/blog/electric-vs-gas-dirt-bike-cost-of-ownership/` | electric vs gas dirt bike | 110 | 3 | 800–1,000 | Adult bikes category, FAQ page, Sur-Ron brand hub |
-| 10 | ☐ TODO | E-Ride Pro SS 2.0 vs Sur-Ron Light Bee X: Which Wins for the Money? | `/blog/e-ride-pro-ss-vs-sur-ron-light-bee-x/` | e ride pro ss 2.0 | 3,600 | 12 | 900–1,100 | E-Ride Pro SS product, Sur-Ron LBX product, both brand hubs |
 
 **Post 1 supporting KWs:** stark varg price (2,900/KD5), stark varg for sale (880/KD1)
 **Post 2 supporting KWs:** surron hyper bee top speed (1,300/KD0), surron hyper bee price (720/KD2), how fast is the surron hyper bee (260/KD0)
@@ -178,6 +169,15 @@
 | Post # | Title | URL | Published Date |
 |---|---|---|---|
 | 1 | Stark Varg MX and EX Factory Editions: First Look | `/blog/stark-varg-factory-edition-2026/` | 2026-07-24 |
+| 2 | Sur-Ron Hyper Bee Review | `/blog/sur-ron-hyper-bee-review/` | 2026-07-24 |
+| 3 | Stark Varg Price in 2026 | `/blog/stark-varg-price-2026/` | 2026-07-24 |
+| 4 | Talaria Komodo Review | `/blog/talaria-komodo-review/` | 2026-07-24 |
+| 5 | Best Electric Dirt Bike for 10 Year Olds | `/blog/electric-dirt-bike-for-10-year-olds-2026/` | 2026-07-24 |
+| 6 | Sur-Ron vs Talaria in 2026 | `/blog/sur-ron-vs-talaria/` | 2026-07-24 |
+| 7 | Segway Xaber 300 Review | `/blog/segway-xaber-300-review/` | 2026-07-24 |
+| 8 | Are Electric Dirt Bikes Street Legal in the USA | `/blog/are-electric-dirt-bikes-street-legal-usa/` | 2026-07-24 |
+| 9 | Electric Dirt Bike vs Gas Dirt Bike | `/blog/electric-vs-gas-dirt-bike-cost-of-ownership/` | 2026-07-24 |
+| 10 | E-Ride Pro SS 2.0 vs Sur-Ron Light Bee X | `/blog/e-ride-pro-ss-vs-sur-ron-light-bee-x/` | 2026-07-24 |
 
 *Fill in URL and date as each post is published.*
 
