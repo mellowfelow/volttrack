@@ -35,9 +35,20 @@ export default function ProductCard({ p, eager = false }) {
             <li><span aria-hidden="true">⚖️</span> {p.specs.weight}</li>
           </ul>
         ) : null}
-        <span className="price">{SITE.currencySymbol}{p.price.toLocaleString('en-US')}</span>
-        <CardBuy product={p} />
-        <Link href={`/product/${p.slug}/`} className="btn btn-ghost btn-block" style={{ marginTop: 8 }}>View details</Link>
+        {p.enquire ? (
+          <>
+            <span className="price">Contact for pricing</span>
+            <Link href={`/product/${p.slug}/`} className="btn btn-block" style={{ marginTop: 8 }}>
+              {p.pending ? 'Register interest' : 'Enquire'}
+            </Link>
+          </>
+        ) : (
+          <>
+            <span className="price">{SITE.currencySymbol}{p.price.toLocaleString('en-US')}</span>
+            <CardBuy product={p} />
+            <Link href={`/product/${p.slug}/`} className="btn btn-ghost btn-block" style={{ marginTop: 8 }}>View details</Link>
+          </>
+        )}
       </div>
     </div>
   )

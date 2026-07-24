@@ -33,8 +33,9 @@ export default function CartClient() {
             <div className="cart-items">
               {items.map((i) => {
                 const img = '/images/placeholder-bike.svg'
+                const key = i.key || i.slug
                 return (
-                  <div className="cart-row" key={i.slug}>
+                  <div className="cart-row" key={key}>
                     <Link href={`/product/${i.slug}/`} className="cart-thumb" aria-label={i.name}>
                       <SmartImage src={img} alt={`${i.name} electric dirt bike`} width={160} height={120} loading="lazy" />
                     </Link>
@@ -42,9 +43,9 @@ export default function CartClient() {
                       <Link href={`/product/${i.slug}/`} className="cart-name">{i.name}</Link>
                       <span className="muted">{money(i.price)} each</span>
                     </div>
-                    <QtyStepper qty={i.qty} setQty={(q) => setQty(i.slug, q)} size="sm" />
+                    <QtyStepper qty={i.qty} setQty={(q) => setQty(key, q)} size="sm" />
                     <span className="cart-line">{money(i.price * i.qty)}</span>
-                    <button type="button" className="cart-remove" aria-label={`Remove ${i.name}`} onClick={() => removeItem(i.slug)}>Remove</button>
+                    <button type="button" className="cart-remove" aria-label={`Remove ${i.name}`} onClick={() => removeItem(key)}>Remove</button>
                   </div>
                 )
               })}

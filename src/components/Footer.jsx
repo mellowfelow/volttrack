@@ -22,10 +22,13 @@ export default function Footer() {
             <Link href="/shop/youth-electric-dirt-bikes/">Youth &amp; Kids</Link>
             <Link href="/shop/electric-motocross-bikes/">Motocross</Link>
             <Link href="/shop/electric-trail-bikes/">Trail &amp; Enduro</Link>
+            <Link href="/shop/street-legal-electric-bikes/">Street Legal</Link>
             <Link href="/brands/">All Brands</Link>
           </div>
           <div>
             <h4>Learn</h4>
+            <Link href="/parts-accessories/batteries-chargers/">Batteries &amp; Chargers</Link>
+            <Link href="/parts-accessories/graphics-kits/">Graphics Kits</Link>
             <Link href="/guides/">Buying Guides</Link>
             <Link href="/blog/">Blog</Link>
             <Link href="/faq/">FAQ</Link>

@@ -1,25 +1,48 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import {
-  PRODUCTS, productBySlug, categoryBySlug, brandName, brandBySlug,
-  productsInCategory, SITE,
+  PRODUCTS, DISCONTINUED, productBySlug, discontinuedBySlug, categoryBySlug,
+  brandName, brandBySlug, productsInCategory, productsForBrand, SITE, PRICE_DISCLAIMER,
 } from '@/config/site'
 import Breadcrumbs from '@/components/Breadcrumbs'
 import ProductCard from '@/components/ProductCard'
 import ProductBuy from '@/components/ProductBuy'
+import ProductSpecs from '@/components/ProductSpecs'
+import FaqAccordion from '@/components/FaqAccordion'
 import SmartImage from '@/components/SmartImage'
+import { VariantProvider } from '@/components/VariantContext'
 import { buildMetadata, JsonLd, url } from '@/lib/seo'
+import DiscontinuedPage from './Discontinued'
 
 export function generateStaticParams() {
-  return PRODUCTS.map((p) => ({ slug: p.slug }))
+  return [...PRODUCTS, ...DISCONTINUED].map((p) => ({ slug: p.slug }))
+}
+
+// Title format: [Model Name] | [Brand] Electric Dirt Bike | VoltTrack
+// (the "| VoltTrack" suffix comes from the layout title template).
+// `titleName` / brand `titleName` are short forms used only here, to keep the
+// finished title within the 60-character rule.
+const titleFor = (p) => {
+  const b = brandBySlug(p.brand)
+  return `${p.titleName || p.name} | ${(b && b.titleName) || brandName(p.brand)} Electric Dirt Bike`
 }
 
 export function generateMetadata({ params }) {
+  const d = discontinuedBySlug(params.slug)
+  if (d) {
+    return buildMetadata({
+      title: `${d.name} — Discontinued`,
+      description: `${d.note} See the ${d.successorName} at VoltTrack, an authorized US electric dirt bike dealer.`,
+      path: `/product/${d.slug}/`,
+      // Discontinued stubs redirect; keep them out of the index.
+      robots: { index: false, follow: true },
+    })
+  }
   const p = productBySlug(params.slug)
   if (!p) return {}
   return buildMetadata({
-    title: `${p.name} for Sale`,
-    description: p.short,
+    title: titleFor(p),
+    description: p.metaDesc || p.short,
     path: `/product/${p.slug}/`,
     type: 'product',
     image: p.images && p.images[0] ? url(`/images/${p.images[0]}`) : undefined,
@@ -27,12 +50,30 @@ export function generateMetadata({ params }) {
 }
 
 export default function ProductPage({ params }) {
+  const d = discontinuedBySlug(params.slug)
+  if (d) return <DiscontinuedPage model={d} />
+
   const p = productBySlug(params.slug)
   if (!p) notFound()
+
   const cat = categoryBySlug(p.category)
   const brand = brandBySlug(p.brand)
   const img = p.images && p.images[0] ? `/images/${p.images[0]}` : '/images/placeholder-bike.svg'
-  const related = productsInCategory(p.category).filter((x) => x.slug !== p.slug).slice(0, 4)
+  // Cross-sell: same brand first, topped up from the same category.
+  const related = [
+    ...productsForBrand(p.brand).filter((x) => x.slug !== p.slug),
+    ...productsInCategory(p.category).filter((x) => x.slug !== p.slug && x.brand !== p.brand),
+  ].filter((x, i, a) => a.findIndex((y) => y.slug === x.slug) === i).slice(0, 4)
+
+  const offer = (price, name) => ({
+    '@type': 'Offer',
+    ...(name ? { name } : {}),
+    priceCurrency: SITE.currency,
+    price,
+    availability: 'https://schema.org/InStock',
+    url: url(`/product/${p.slug}/`),
+    seller: { '@type': 'Organization', name: SITE.name },
+  })
 
   const ld = {
     '@context': 'https://schema.org',
@@ -44,25 +85,37 @@ export default function ProductPage({ params }) {
     category: cat ? cat.name : undefined,
     ...(p.specs && {
       additionalProperty: [
+        { '@type': 'PropertyValue', name: 'Motor power', value: p.specs.power },
+        { '@type': 'PropertyValue', name: 'Battery', value: p.specs.battery },
         { '@type': 'PropertyValue', name: 'Top speed', value: p.specs.topSpeed },
         { '@type': 'PropertyValue', name: 'Range', value: p.specs.range },
-        { '@type': 'PropertyValue', name: 'Battery', value: p.specs.battery },
         { '@type': 'PropertyValue', name: 'Weight', value: p.specs.weight },
-        { '@type': 'PropertyValue', name: 'Motor power', value: p.specs.power },
+        { '@type': 'PropertyValue', name: 'Riding modes', value: p.specs.modes },
+        { '@type': 'PropertyValue', name: 'Road legal', value: p.specs.roadLegal },
+        { '@type': 'PropertyValue', name: 'Age recommendation', value: p.specs.age },
       ],
     }),
-    offers: {
-      '@type': 'Offer',
-      priceCurrency: SITE.currency,
-      price: p.price,
-      availability: 'https://schema.org/InStock',
-      url: url(`/product/${p.slug}/`),
-      seller: { '@type': 'Organization', name: SITE.name },
-    },
+    // Variant products expose one Offer per variant under the single canonical URL.
+    // Enquiry-only products get no Offer at all — we have no price to publish.
+    ...(p.enquire ? {} : {
+      offers: p.variants && p.variants.length
+        ? p.variants.map((v) => offer(v.price, `${p.name} — ${v.label}`))
+        : offer(p.price),
+    }),
   }
 
+  const faqLd = p.faqs && p.faqs.length ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: p.faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  } : null
+
   return (
-    <>
+    <VariantProvider variants={p.variants || []}>
       <Breadcrumbs
         items={[
           { name: 'Shop', href: '/shop/' },
@@ -71,6 +124,7 @@ export default function ProductPage({ params }) {
         ]}
       />
       <JsonLd data={ld} />
+      {faqLd ? <JsonLd data={faqLd} /> : null}
       <section className="section" style={{ paddingTop: 8 }}>
         <div className="container">
           <div className="grid cols-2" style={{ alignItems: 'start' }}>
@@ -82,18 +136,17 @@ export default function ProductPage({ params }) {
               <p className="muted" style={{ fontWeight: 600, margin: 0 }}>
                 {brand ? <Link href={`/brands/${brand.slug}/`}>{brand.name}</Link> : brandName(p.brand)}
               </p>
-              <h1 style={{ marginTop: 4 }}>{p.name}</h1>
-              <p className="price" style={{ fontSize: '2rem' }}>
-                {SITE.currencySymbol}{p.price.toLocaleString('en-US')}
-              </p>
+              {/* H1 is the page's primary keyword (config `h1`), not the display name. */}
+              <h1 style={{ marginTop: 4 }}>{p.h1 || p.name}</h1>
               <p>{p.description}</p>
+              {p.availNote ? <p className="min-order-block" role="note">{p.availNote}</p> : null}
               <ProductBuy product={p} />
               <p style={{ marginTop: 12 }}>
                 <Link href="/contact/" className="btn btn-ghost">Ask an expert</Link>
               </p>
               <p className="form-note" style={{ marginTop: 16 }}>
                 {SITE.financing}. {SITE.freeShippingText}. Off-road use only unless a street-legal
-                path is stated. Prices are estimates and may change due to import tariff conditions.
+                path is stated on this listing.
               </p>
             </div>
           </div>
@@ -101,22 +154,33 @@ export default function ProductPage({ params }) {
           {p.specs ? (
             <div style={{ marginTop: 48 }}>
               <h2>Technical Specifications</h2>
-              <div className="spec-table-wrap">
-                <table className="spec-table">
-                  <tbody>
-                    <tr><th>⚡ Top speed</th><td>{p.specs.topSpeed}</td><th>🏍️ Motor / power</th><td>{p.specs.power}</td></tr>
-                    <tr><th>📏 Range</th><td>{p.specs.range}</td><th>🔋 Battery</th><td>{p.specs.battery}</td></tr>
-                    <tr><th>⚖️ Weight</th><td>{p.specs.weight}</td><th>🏁 Use</th><td>{cat ? cat.name : 'Off-road'}</td></tr>
-                  </tbody>
-                </table>
-              </div>
+              <ProductSpecs specs={p.specs} />
+              {p.footnote ? <p className="form-note">{p.footnote}</p> : null}
               <p className="form-note">Specifications are indicative and may vary by model year and configuration. Confirm current manufacturer specs with us before purchase.</p>
             </div>
           ) : null}
 
+          {p.faqs && p.faqs.length ? (
+            <div style={{ marginTop: 48 }}>
+              <h2>{p.name} — Frequently Asked Questions</h2>
+              <FaqAccordion items={p.faqs} />
+            </div>
+          ) : null}
+
+          <div className="section-soft" style={{ marginTop: 48, padding: 24, borderRadius: 'var(--radius)' }}>
+            <h2 style={{ marginTop: 0 }}>Where this bike sits in the range</h2>
+            <p>
+              Browse the full{' '}
+              {brand ? <Link href={`/brands/${brand.slug}/`}>{brand.name} range</Link> : brandName(p.brand)}
+              {cat ? <> , or compare it against every <Link href={`/shop/${cat.slug}/`}>{cat.name.toLowerCase()}</Link> we stock</> : null}.
+              Not sure which model fits your rider? <Link href="/contact/">Ask us</Link> — we ride these bikes ourselves.
+            </p>
+            <p className="form-note" style={{ marginBottom: 0 }}>{PRICE_DISCLAIMER}</p>
+          </div>
+
           {related.length ? (
             <div style={{ marginTop: 48 }}>
-              <h2>Related {cat ? cat.name : 'bikes'}</h2>
+              <h2>You might also consider</h2>
               <div className="grid cols-4" style={{ marginTop: 18 }}>
                 {related.map((r) => <ProductCard key={r.slug} p={r} />)}
               </div>
@@ -124,6 +188,6 @@ export default function ProductPage({ params }) {
           ) : null}
         </div>
       </section>
-    </>
+    </VariantProvider>
   )
 }

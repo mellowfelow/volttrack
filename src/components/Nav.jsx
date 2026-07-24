@@ -16,6 +16,7 @@ export default function Nav() {
           <div className="nav-links">
             <Link href="/shop/">Shop</Link>
             <Link href="/brands/">Brands</Link>
+            <Link href="/parts-accessories/">Parts</Link>
             <Link href="/guides/">Guides</Link>
             <Link href="/blog/">Blog</Link>
             <Link href="/about/">About</Link>
@@ -40,6 +41,7 @@ export default function Nav() {
             </Link>
           ))}
           <Link href="/brands/" onClick={() => setOpen(false)}>Brands</Link>
+          <Link href="/parts-accessories/" onClick={() => setOpen(false)}>Parts &amp; Accessories</Link>
           <Link href="/guides/" onClick={() => setOpen(false)}>Guides</Link>
           <Link href="/blog/" onClick={() => setOpen(false)}>Blog</Link>
           <Link href="/about/" onClick={() => setOpen(false)}>About</Link>

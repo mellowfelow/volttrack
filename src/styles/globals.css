@@ -116,6 +116,10 @@ p{margin:0 0 1em}
 .field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
 .field label{font-weight:600;font-size:.9rem}
 .field input,.field textarea,.field select{padding:11px;border:1px solid var(--line);border-radius:9px;font:inherit;min-height:44px}
+/* collection-page filter/sort row */
+.filter-bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;align-items:end;background:var(--bg-soft);border:1px solid var(--line);border-radius:var(--radius);padding:16px;margin-top:20px}
+.filter-bar .field{margin-bottom:0}
+.filter-bar input[type=range]{min-height:auto;padding:0;border:0;background:transparent}
 .hp{position:absolute;left:-9999px}
 .form-note{font-size:.85rem;color:var(--muted)}
 /* skip link (a11y) */
@@ -137,11 +141,21 @@ p{margin:0 0 1em}
 .spec-table{width:100%;border-collapse:collapse}
 .spec-table th{background:var(--bg-soft);text-align:left;white-space:nowrap;width:1%;font-weight:700}
 .spec-table th,.spec-table td{border:1px solid var(--line);padding:11px 14px}
+/* accessory tables list many products: header row + roomy first column */
+.spec-table thead th{width:auto;white-space:normal}
+.spec-table tbody th{white-space:normal}
 @media (max-width:600px){
   .spec-table,.spec-table tbody,.spec-table tr,.spec-table th,.spec-table td{display:block;width:auto}
+  .spec-table thead{display:none}
   .spec-table tr{margin-bottom:10px;border:1px solid var(--line);border-radius:10px;overflow:hidden}
   .spec-table th,.spec-table td{border:0;border-bottom:1px solid var(--line)}
 }
+/* visually hidden but read by assistive tech (table captions) */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+/* PDP variant selector */
+.variant-picker{border:0;padding:0;margin:12px 0 4px}
+.variant-picker legend{font-weight:700;padding:0;margin-bottom:4px}
+.variant-picker .pay-option span{display:flex;align-items:center;flex-wrap:wrap;gap:4px}
 /* centered section heads */
 .section-head{text-align:center;max-width:720px;margin:0 auto 30px}
 .section-head .eyebrow{display:block;margin-bottom:8px}

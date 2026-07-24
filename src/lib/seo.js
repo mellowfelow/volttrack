@@ -7,7 +7,7 @@ export const url = (path = '/') => `${base}${path.startsWith('/') ? '' : '/'}${p
 export const encEmail = (e) =>
   e.replace(/[A-Za-z@.]/g, (c) => `&#${c.charCodeAt(0)};`)
 
-export function buildMetadata({ title, description, path = '/', type = 'website', image }) {
+export function buildMetadata({ title, description, path = '/', type = 'website', image, robots }) {
   const canonical = url(path)
   const desc = (description || SITE.description).slice(0, 158)
   // Next's typed metadata only accepts a subset of OG types; map product→website.
@@ -31,6 +31,7 @@ export function buildMetadata({ title, description, path = '/', type = 'website'
       images: [image || url('/images/placeholder-bike.svg')],
     },
   }
+  if (robots) meta.robots = robots
   if (SITE.gscVerification) meta.verification = { google: SITE.gscVerification }
   return meta
 }

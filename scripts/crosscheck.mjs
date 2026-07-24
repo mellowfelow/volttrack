@@ -37,7 +37,9 @@ const slugs = new Set()
 for (const p of PRODUCTS) {
   if (slugs.has(p.slug)) fail('duplicate product slug: ' + p.slug); slugs.add(p.slug)
   if (!CATEGORIES.find((c) => c.slug === p.category)) fail(`product ${p.slug} has unknown category ${p.category}`)
-  if (!p.price || p.price <= 0) fail(`product ${p.slug} has no price`)
+  // Enquiry-only products (enquire: true) intentionally carry no price.
+  if (!p.enquire && (!p.price || p.price <= 0)) fail(`product ${p.slug} has no price`)
+  if (p.enquire && p.price) fail(`product ${p.slug} is enquire-only but has a price set`)
 }
 pass(`config: ${PRODUCTS.length} products across ${CATEGORIES.length} categories`)
 

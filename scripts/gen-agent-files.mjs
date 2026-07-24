@@ -17,7 +17,8 @@ const AGE = 'None (off-road vehicles; local OHV / street-legal rules apply)'
 const COMPLIANCE =
   'Most vehicles are off-road / private-land use only and not street legal without specific federal/state certification. California: Vehicle Code Section 436.1 OHV registration applies.'
 const range = (() => {
-  const p = PRODUCTS.map((x) => x.price)
+  // Enquiry-only products carry no price and must not report a $0 low.
+  const p = PRODUCTS.filter((x) => !x.enquire).map((x) => x.price)
   return { low: Math.min(...p), high: Math.max(...p) }
 })()
 

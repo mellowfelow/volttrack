@@ -26,8 +26,10 @@ export default function CheckoutClient() {
   const installment = Math.round(t.total / 4)
   const selectedPlan = SITE.paymentPlans.find((p) => p.id === plan) || {}
 
+  // Line format includes the variant name, e.g.
+  // "Stark Varg EX — Alpha (80HP) × 1 — $13,900"
   const orderText = items
-    .map((i) => `${i.qty}× ${i.name} @ ${SITE.currencySymbol}${i.price.toLocaleString('en-US')}`)
+    .map((i) => `${i.name} × ${i.qty} — ${SITE.currencySymbol}${(i.price * i.qty).toLocaleString('en-US')}`)
     .join('\n')
 
   function onSubmit(e) {
@@ -138,8 +140,8 @@ export default function CheckoutClient() {
             <div className="order-summary">
               <h2 style={{ fontSize: '1.2rem' }}>Order summary</h2>
               {items.map((i) => (
-                <div className="order-row" key={i.slug}>
-                  <span>{i.qty}× {i.name}</span>
+                <div className="order-row" key={i.key || i.slug}>
+                  <span>{i.name} × {i.qty}</span>
                   <span>{SITE.currencySymbol}{(i.price * i.qty).toLocaleString('en-US')}</span>
                 </div>
               ))}
