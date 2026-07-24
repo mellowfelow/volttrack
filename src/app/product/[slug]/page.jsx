@@ -18,14 +18,10 @@ export function generateStaticParams() {
   return [...PRODUCTS, ...DISCONTINUED].map((p) => ({ slug: p.slug }))
 }
 
-// Title format: [Model Name] | [Brand] Electric Dirt Bike | VoltTrack
-// (the "| VoltTrack" suffix comes from the layout title template).
-// `titleName` / brand `titleName` are short forms used only here, to keep the
-// finished title within the 60-character rule.
-const titleFor = (p) => {
-  const b = brandBySlug(p.brand)
-  return `${p.titleName || p.name} | ${(b && b.titleName) || brandName(p.brand)} Electric Dirt Bike`
-}
+// Title format: [Model Name] | VoltTrack  (the "| VoltTrack" suffix comes from
+// the layout title template, so this returns just the model name). Uses the full
+// product name for clarity — all names sit within the ≤60-char rule once suffixed.
+const titleFor = (p) => p.name
 
 export function generateMetadata({ params }) {
   const d = discontinuedBySlug(params.slug)

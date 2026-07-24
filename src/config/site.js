@@ -1247,8 +1247,60 @@ export const ACCESSORY_CATEGORIES = [
 // POSTS (blog)
 // ----------------------------------------------------------------------------
 export const POSTS = [
+  // Blog model: intro[] + sections[{h2, paras[]}] + optional faqs[] + cta.
+  // Paragraphs may contain inline [text](/internal-link) markup (see Prose.jsx).
+  {
+    slug: 'stark-varg-factory-edition-2026',
+    title: 'Stark Varg MX and EX Factory Editions: First Look at Stark’s Most Powerful Bikes Yet',
+    metaTitle: 'Stark Varg Factory Edition: First Look',
+    date: '2026-07-24',
+    primaryKw: 'stark varg',
+    metaDesc: 'Stark Varg MX and EX Factory Editions launched July 2026 at an estimated $15,990 and $16,990. First look at specs, price and US availability.',
+    excerpt: 'Stark Future has unveiled Factory Edition versions of the Varg MX and EX. Here is what we know about price, specs and US availability.',
+    intro: [
+      'The Stark Varg is already the benchmark for electric motocross, and on July 22 2026 Stark Future pushed it further with two limited Factory Edition models — the Varg MX Factory Edition and the Varg EX Factory Edition. These are the most powerful, most exclusive bikes the company has built, and they sit above the standard [Stark Varg MX](/product/stark-varg-mx/) and [Stark Varg EX](/product/stark-varg-ex/) that we already stock.',
+      'Here is our honest first look at what the Factory Editions are, what they are estimated to cost, and — the question we get asked most — when you will actually be able to buy one in the US.',
+    ],
+    sections: [
+      {
+        h2: 'What is the Stark Varg Factory Edition?',
+        paras: [
+          'The Factory Edition is a limited-production trim of the Varg platform, positioned above the 60 HP Standard and 80 HP Alpha versions that make up the current range. Stark Future builds the Varg around a 7.2 kWh battery, KYB suspension and Brembo brakes, with power configurable through the onboard display — and the Factory Edition takes that formula to its highest tune.',
+          'There are two Factory Editions. The Varg MX Factory Edition is the closed-course motocross bike, built for the track. The Varg EX Factory Edition is based on the street-legal enduro EX, with lights and mirrors. Both are limited production, which is exactly why we are not listing them as orderable yet — more on that below.',
+        ],
+      },
+      {
+        h2: 'Stark Varg Factory Edition price',
+        paras: [
+          'Stark has positioned the Factory Editions at an estimated $15,990 for the MX and $16,990 for the EX. That is roughly $4,500 above the equivalent Alpha models. For context on where the rest of the range sits, browse the full [Stark Future range](/brands/stark-future/), and the [finance page](/finance/) covers Pay-in-4 options on eligible bikes.',
+          'Treat those numbers as estimates. Stark Varg pricing — like all our pricing — moves with import tariff conditions, and Factory Edition allocation to the US is limited. We would rather quote you a firm figure when stock is confirmed than publish a number that changes before the bike lands.',
+        ],
+      },
+      {
+        h2: 'How does it compare to the standard Varg?',
+        paras: [
+          'If you are choosing between the range today, the standard bikes are the ones you can actually order. The [Stark Varg MX](/product/stark-varg-mx/) starts at $10,490 for the 60 HP Standard and $11,490 for the 80 HP Alpha. The street-legal [Stark Varg EX](/product/stark-varg-ex/) runs $12,900 and $13,900, and the supermoto [Stark Varg SM](/product/stark-varg-sm/) matches it.',
+          'The Factory Editions add exclusivity and the highest factory tune, but the Alpha models already deliver 80 HP and the 33% larger battery. For the vast majority of riders, an Alpha is the sensible buy and it is available now rather than on an unconfirmed timeline.',
+        ],
+      },
+      {
+        h2: 'When can you buy one in the US?',
+        paras: [
+          'This is the honest part: we have not yet confirmed that we can source the Factory Editions for the US market. They launched days ago, production is limited, and allocation is not settled. We are not taking orders or deposits on them, and we would be wary of anyone who is.',
+          'If you want one, the best move is to register your interest with us and buy an Alpha in the meantime if you need a bike this season. We will contact you the moment we can quote firm US pricing and a real delivery date. In the meantime, browse the full [Stark Future range](/brands/stark-future/) to see what is available today.',
+        ],
+      },
+    ],
+    faqs: [
+      { q: 'How much is the Stark Varg Factory Edition?', a: 'Stark has positioned the Varg MX Factory Edition at an estimated $15,990 and the EX Factory Edition at an estimated $16,990 — roughly $4,500 above the equivalent Alpha models. These are estimates and not confirmed US pricing; tariff conditions and limited allocation can move them.' },
+      { q: 'Is the Stark Varg Factory Edition street legal?', a: 'The EX Factory Edition is based on the street-legal enduro EX, so it is expected to follow the same path, while the MX Factory Edition is a closed-course motocross bike with no street-legal path. Road legality always depends on final certification and your state’s registration rules.' },
+      { q: 'Can I order a Stark Varg Factory Edition now?', a: 'Not yet. The Factory Editions launched in July 2026, production is limited, and we have not confirmed US supply. We are not taking orders or deposits. Register your interest and consider a standard Varg Alpha if you need a bike this season.' },
+    ],
+    cta: { text: 'Explore the Stark Varg range', href: '/brands/stark-future/' },
+  },
   {
     slug: '2026-stark-varg-sm-first-look',
+    metaTitle: '2026 Stark Varg SM: First Look',
     title: '2026 Stark Varg SM First Look: Stark Takes It to the Streets',
     date: '2026-01-15',
     excerpt: 'Stark Future adds a supermoto build to the Varg lineup. Here is what the 2026 Varg SM means for street-legal electric riding.',
@@ -1262,6 +1314,7 @@ export const POSTS = [
   },
   {
     slug: 'california-section-436-1-what-riders-need-to-know',
+    metaTitle: 'California Section 436.1 Explained',
     title: 'California Section 436.1: What Electric Dirt Bike Riders Need to Know',
     date: '2025-12-01',
     excerpt: 'California’s Section 436.1 changes how off-highway electric dirt bikes are registered. Here is a plain-English rundown for riders.',
@@ -1275,6 +1328,7 @@ export const POSTS = [
   },
   {
     slug: 'electric-vs-gas-dirt-bike-cost-of-ownership',
+    metaTitle: 'Electric vs Gas Dirt Bike: Cost of Ownership',
     title: 'Electric vs Gas Dirt Bike: The Real Cost of Ownership in 2026',
     date: '2026-02-10',
     excerpt: 'Electric dirt bikes cost more up front but far less to run. We break down the real five-year cost of ownership versus gas.',

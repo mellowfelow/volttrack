@@ -18,7 +18,6 @@
 
 | # | Status | Title | URL Slug | Primary KW | Vol | KD | Word Count | Internal Links |
 |---|---|---|---|---|---|---|---|---|
-| 1 | ☐ TODO | Stark Varg MX and EX Factory Editions: First Look at Stark's Most Powerful Bikes Yet | `/blog/stark-varg-factory-edition-2026/` | stark varg | 135,000 | 29 | 800–1,000 | Stark Varg EX, Stark Varg MX, Stark Varg SM product pages |
 | 2 | ☐ TODO | Sur-Ron Hyper Bee Review: The Lightest Sur-Ron Is Also the Most Exciting | `/blog/sur-ron-hyper-bee-review/` | surron hyper bee | 9,900 | 8 | 1,000–1,200 | Sur-Ron Hyper Bee product, Sur-Ron LBX product, Sur-Ron brand hub |
 | 3 | ☐ TODO | Stark Varg Price in 2026: How Much Does It Actually Cost? | `/blog/stark-varg-price-2026/` | stark varg price | 2,900 | 5 | 700–900 | All Stark Varg product pages, finance page |
 | 4 | ☐ TODO | Talaria Komodo Review: Is This the Best Electric Dirt Bike Under $6,000? | `/blog/talaria-komodo-review/` | talaria komodo | 8,100 | 14 | 1,000–1,200 | Talaria Komodo product, Talaria brand hub, Sur-Ron Ultra Bee product |
@@ -178,7 +177,7 @@
 
 | Post # | Title | URL | Published Date |
 |---|---|---|---|
-| — | — | — | — |
+| 1 | Stark Varg MX and EX Factory Editions: First Look | `/blog/stark-varg-factory-edition-2026/` | 2026-07-24 |
 
 *Fill in URL and date as each post is published.*
 
