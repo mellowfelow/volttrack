@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { SITE } from '@/config/site'
+import { RevealEmail, RevealPhone } from '@/components/ContactReveal'
 
 export default function Footer() {
   return (
@@ -12,9 +13,11 @@ export default function Footer() {
               America&rsquo;s expert electric dirt bike destination. Sur-Ron, Stark Future,
               STACYC, Talaria &amp; more. {SITE.freeShippingText}.
             </p>
-            <p className="muted">
-              <a href="/contact/">Contact us</a> · Support {SITE.supportHours}
-            </p>
+            <div className="footer-contact">
+              <RevealEmail className="footer-contact-link" />
+              <RevealPhone className="footer-contact-link" />
+              <span className="muted">Support {SITE.supportHours}</span>
+            </div>
           </div>
           <div>
             <h4>Electric Dirt Bikes</h4>

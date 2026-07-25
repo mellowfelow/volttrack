@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react'
 import { CHAT, SITE } from '@/config/site'
+import { RevealEmail, RevealPhone } from '@/components/ContactReveal'
 
 const LINK_META = {
   whatsapp: { label: 'WhatsApp', icon: '💬', href: (v) => `https://wa.me/${v}` },
@@ -67,6 +68,9 @@ export default function ChatHub() {
     <div className="chat-hub">
       <div className={`chat-panel${open ? ' open' : ''}`}>
         {links.map((c) => {
+          // Email & phone reveal the real address/number on click (scrape-safe).
+          if (c.type === 'email') return <RevealEmail key="email" className="chat-reveal" />
+          if (c.type === 'phone') return <RevealPhone key="phone" className="chat-reveal" />
           const m = LINK_META[c.type]
           return (
             <a key={c.type} href={hrefFor(c)} aria-label={m.label}>
