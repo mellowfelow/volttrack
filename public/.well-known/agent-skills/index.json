@@ -1,42 +1,42 @@
 {
   "$schema": "https://agentskills.io/schema/v0.2.0/index.json",
   "name": "VoltTrack",
-  "url": "https://volttrackhub.com",
+  "url": "https://www.volttrackhub.com",
   "description": "America's Electric Dirt Bike Experts",
   "skills": [
     {
       "name": "browse-products",
       "type": "navigation",
       "description": "Browse the full electric dirt bike catalog by category",
-      "url": "https://volttrackhub.com/shop/",
+      "url": "https://www.volttrackhub.com/shop/",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
       "name": "browse-brands",
       "type": "navigation",
       "description": "Browse electric dirt bikes by brand (Sur-Ron, Stark, Talaria, KTM and more)",
-      "url": "https://volttrackhub.com/brands/",
+      "url": "https://www.volttrackhub.com/brands/",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
       "name": "buying-guides",
       "type": "content",
       "description": "Expert buying guides for beginners, kids, teens and adults",
-      "url": "https://volttrackhub.com/guides/",
+      "url": "https://www.volttrackhub.com/guides/",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
       "name": "product-education",
       "type": "content",
       "description": "Electric dirt bike news, legal updates and ownership tips",
-      "url": "https://volttrackhub.com/blog/",
+      "url": "https://www.volttrackhub.com/blog/",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
       "name": "contact",
       "type": "support",
       "description": "Contact for product questions, orders, financing or aftercare. Human-assisted ordering.",
-      "url": "https://volttrackhub.com/contact/",
+      "url": "https://www.volttrackhub.com/contact/",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     }
   ]

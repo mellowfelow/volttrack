@@ -41,10 +41,10 @@ Allow: /
 User-agent: cohere-ai
 Allow: /
 
-Sitemap: https://volttrackhub.com/sitemap.xml
+Sitemap: https://www.volttrackhub.com/sitemap.xml
 
 # Agent-readable resources
-# llms.txt: https://volttrackhub.com/llms.txt
-# API Catalog: https://volttrackhub.com/.well-known/api-catalog
-# Agent Skills: https://volttrackhub.com/.well-known/agent-skills/index.json
-# MCP Server Card: https://volttrackhub.com/.well-known/mcp/server-card.json
+# llms.txt: https://www.volttrackhub.com/llms.txt
+# API Catalog: https://www.volttrackhub.com/.well-known/api-catalog
+# Agent Skills: https://www.volttrackhub.com/.well-known/agent-skills/index.json
+# MCP Server Card: https://www.volttrackhub.com/.well-known/mcp/server-card.json

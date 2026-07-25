@@ -1,5 +1,5 @@
 {
-  "issuer": "https://volttrackhub.com",
+  "issuer": "https://www.volttrackhub.com",
   "authorization_endpoint": null,
   "token_endpoint": null,
   "jwks_uri": null,
@@ -8,14 +8,14 @@
   "scopes_supported": [],
   "note": "VoltTrack has no protected APIs. All resources are publicly accessible.",
   "public_resources": [
-    "https://volttrackhub.com/shop/",
-    "https://volttrackhub.com/blog/",
-    "https://volttrackhub.com/guides/",
-    "https://volttrackhub.com/faq/",
-    "https://volttrackhub.com/llms.txt",
-    "https://volttrackhub.com/.well-known/api-catalog",
-    "https://volttrackhub.com/.well-known/agent-skills/index.json",
-    "https://volttrackhub.com/.well-known/mcp/server-card.json"
+    "https://www.volttrackhub.com/shop/",
+    "https://www.volttrackhub.com/blog/",
+    "https://www.volttrackhub.com/guides/",
+    "https://www.volttrackhub.com/faq/",
+    "https://www.volttrackhub.com/llms.txt",
+    "https://www.volttrackhub.com/.well-known/api-catalog",
+    "https://www.volttrackhub.com/.well-known/agent-skills/index.json",
+    "https://www.volttrackhub.com/.well-known/mcp/server-card.json"
   ],
   "agent_auth": {
     "register_uri": null,

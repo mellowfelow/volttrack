@@ -1,11 +1,11 @@
 {
-  "resource": "https://volttrackhub.com",
+  "resource": "https://www.volttrackhub.com",
   "resource_name": "VoltTrack Public Catalog",
   "authorization_servers": [],
   "scopes_supported": [],
   "bearer_methods_supported": [],
-  "resource_documentation": "https://volttrackhub.com/auth.md",
-  "resource_policy_uri": "https://volttrackhub.com/terms/",
+  "resource_documentation": "https://www.volttrackhub.com/auth.md",
+  "resource_policy_uri": "https://www.volttrackhub.com/terms/",
   "tls_client_certificate_bound_access_tokens": false,
-  "note": "All resources on volttrackhub.com are publicly accessible. No OAuth tokens are required."
+  "note": "All resources on www.volttrackhub.com are publicly accessible. No OAuth tokens are required."
 }

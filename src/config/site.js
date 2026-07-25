@@ -11,7 +11,9 @@ import { PARTS } from './parts-data.js'
 export { PARTS }
 
 export const SITE = {
-  domain: 'volttrackhub.com',
+  // Canonical host = what Vercel serves (apex 308→www). Keeps canonicals,
+  // sitemap and robots aligned with the served URL so Search Console indexes cleanly.
+  domain: 'www.volttrackhub.com',
   target: 'vercel',
   name: 'VoltTrack',
   legalName: 'VoltTrack',

@@ -1,5 +1,5 @@
 {
-  "issuer": "https://volttrackhub.com",
+  "issuer": "https://www.volttrackhub.com",
   "note": "VoltTrack does not operate an OpenID Connect provider. All resources are publicly accessible.",
   "public_site": true,
   "authorization_endpoint": null,

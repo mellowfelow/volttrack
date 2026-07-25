@@ -3,26 +3,26 @@
   "protocol_version": "1.0",
   "spec": "https://ucp.dev/specification/overview/",
   "schema": "https://ucp.dev/schema/v1.json",
-  "site": "https://volttrackhub.com",
+  "site": "https://www.volttrackhub.com",
   "name": "VoltTrack",
   "description": "VoltTrack is a US-based authorized dealer for the world's leading electric dirt bike brands — Sur-Ron, Stark Future, Talaria, STACYC, Razor, KTM, Segway and more. Founded by US off-road riders, VoltTrack offers honest expert advice, transparent legal and tariff information, fast shipping to the Lower 48, and real post-purchase support.",
   "services": [
     {
       "id": "product-catalog",
       "type": "catalog",
-      "url": "https://volttrackhub.com/shop/",
+      "url": "https://www.volttrackhub.com/shop/",
       "description": "Full electric dirt bike catalog"
     },
     {
       "id": "order",
       "type": "commerce",
-      "url": "https://volttrackhub.com/contact/",
+      "url": "https://www.volttrackhub.com/contact/",
       "description": "Place orders (human-assisted) via the contact page"
     },
     {
       "id": "brands",
       "type": "catalog",
-      "url": "https://volttrackhub.com/brands/",
+      "url": "https://www.volttrackhub.com/brands/",
       "description": "Browse by brand"
     }
   ],
@@ -32,12 +32,12 @@
     "content"
   ],
   "endpoints": {
-    "catalog": "https://volttrackhub.com/shop/",
-    "contact": "https://volttrackhub.com/contact/",
-    "agent_skills": "https://volttrackhub.com/.well-known/agent-skills/index.json",
-    "mcp_server_card": "https://volttrackhub.com/.well-known/mcp/server-card.json",
-    "api_catalog": "https://volttrackhub.com/.well-known/api-catalog",
-    "llms_txt": "https://volttrackhub.com/llms.txt"
+    "catalog": "https://www.volttrackhub.com/shop/",
+    "contact": "https://www.volttrackhub.com/contact/",
+    "agent_skills": "https://www.volttrackhub.com/.well-known/agent-skills/index.json",
+    "mcp_server_card": "https://www.volttrackhub.com/.well-known/mcp/server-card.json",
+    "api_catalog": "https://www.volttrackhub.com/.well-known/api-catalog",
+    "llms_txt": "https://www.volttrackhub.com/llms.txt"
   },
   "currency": "USD",
   "minimum_order_usd": 0,

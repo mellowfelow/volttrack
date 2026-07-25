@@ -7,7 +7,7 @@
         description: "Browse electric dirt bikes by category",
         inputSchema: { type: "object", properties: { category: { type: "string", description: "Category slug to browse" } } },
         execute: async ({ category }) => {
-          const url = category ? "https://volttrackhub.com/shop/" + category + "/" : "https://volttrackhub.com/shop/";
+          const url = category ? "https://www.volttrackhub.com/shop/" + category + "/" : "https://www.volttrackhub.com/shop/";
           window.location.href = url; return { url };
         }
       },
@@ -16,7 +16,7 @@
         description: "Browse electric dirt bikes by brand",
         inputSchema: { type: "object", properties: { brand: { type: "string", description: "Brand slug" } } },
         execute: async ({ brand }) => {
-          const url = brand ? "https://volttrackhub.com/brands/" + brand + "/" : "https://volttrackhub.com/brands/";
+          const url = brand ? "https://www.volttrackhub.com/brands/" + brand + "/" : "https://www.volttrackhub.com/brands/";
           window.location.href = url; return { url };
         }
       },
@@ -24,7 +24,7 @@
         name: "contact",
         description: "Contact VoltTrack for orders, advice or aftercare (human-assisted ordering)",
         inputSchema: { type: "object", properties: {} },
-        execute: async () => { window.location.href = "https://volttrackhub.com/contact/"; return { url: "https://volttrackhub.com/contact/" }; }
+        execute: async () => { window.location.href = "https://www.volttrackhub.com/contact/"; return { url: "https://www.volttrackhub.com/contact/" }; }
       }
     ]
   });

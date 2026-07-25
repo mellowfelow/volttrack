@@ -14,45 +14,45 @@ VoltTrack is a US-based authorized dealer for the world's leading electric dirt 
 
 ## Contact
 - Email: info@volttrackhub.com
-- Contact page: https://volttrackhub.com/contact/
+- Contact page: https://www.volttrackhub.com/contact/
 
 ## Product Categories
-- Adult Electric Dirt Bikes ($0–$6499): https://volttrackhub.com/shop/adult-electric-dirt-bikes/
-- Youth & Kids Electric Dirt Bikes ($0–$5449): https://volttrackhub.com/shop/youth-electric-dirt-bikes/
-- Electric Motocross Bikes ($0–$10490): https://volttrackhub.com/shop/electric-motocross-bikes/
-- Electric Trail Bikes ($0–$12900): https://volttrackhub.com/shop/electric-trail-bikes/
-- Electric Pit Bikes ($0–$2799): https://volttrackhub.com/shop/electric-pit-bikes/
-- Cheap Electric Dirt Bikes: https://volttrackhub.com/shop/cheap-electric-dirt-bikes/
-- Street Legal Electric Dirt Bikes: https://volttrackhub.com/shop/street-legal-electric-bikes/
+- Adult Electric Dirt Bikes ($0–$6499): https://www.volttrackhub.com/shop/adult-electric-dirt-bikes/
+- Youth & Kids Electric Dirt Bikes ($0–$5449): https://www.volttrackhub.com/shop/youth-electric-dirt-bikes/
+- Electric Motocross Bikes ($0–$10490): https://www.volttrackhub.com/shop/electric-motocross-bikes/
+- Electric Trail Bikes ($0–$12900): https://www.volttrackhub.com/shop/electric-trail-bikes/
+- Electric Pit Bikes ($0–$2799): https://www.volttrackhub.com/shop/electric-pit-bikes/
+- Cheap Electric Dirt Bikes: https://www.volttrackhub.com/shop/cheap-electric-dirt-bikes/
+- Street Legal Electric Dirt Bikes: https://www.volttrackhub.com/shop/street-legal-electric-bikes/
 
 ## Brands
-- Sur-Ron: https://volttrackhub.com/brands/sur-ron/
-- Stark Future: https://volttrackhub.com/brands/stark-future/
-- Talaria: https://volttrackhub.com/brands/talaria/
-- KTM: https://volttrackhub.com/brands/ktm/
-- Segway: https://volttrackhub.com/brands/segway/
-- Zero Motorcycles: https://volttrackhub.com/brands/zero/
-- Altis: https://volttrackhub.com/brands/altis/
-- E-Ride Pro: https://volttrackhub.com/brands/e-ride-pro/
-- STACYC: https://volttrackhub.com/brands/stacyc/
-- Razor: https://volttrackhub.com/brands/razor/
-- GasGas: https://volttrackhub.com/brands/gasgas/
+- Sur-Ron: https://www.volttrackhub.com/brands/sur-ron/
+- Stark Future: https://www.volttrackhub.com/brands/stark-future/
+- Talaria: https://www.volttrackhub.com/brands/talaria/
+- KTM: https://www.volttrackhub.com/brands/ktm/
+- Segway: https://www.volttrackhub.com/brands/segway/
+- Zero Motorcycles: https://www.volttrackhub.com/brands/zero/
+- Altis: https://www.volttrackhub.com/brands/altis/
+- E-Ride Pro: https://www.volttrackhub.com/brands/e-ride-pro/
+- STACYC: https://www.volttrackhub.com/brands/stacyc/
+- Razor: https://www.volttrackhub.com/brands/razor/
+- GasGas: https://www.volttrackhub.com/brands/gasgas/
 
 ## Learn
-- Buying guides: https://volttrackhub.com/guides/
-- Blog: https://volttrackhub.com/blog/
-- FAQ: https://volttrackhub.com/faq/
+- Buying guides: https://www.volttrackhub.com/guides/
+- Blog: https://www.volttrackhub.com/blog/
+- FAQ: https://www.volttrackhub.com/faq/
 
 ## Legal / Compliance
 Most vehicles are off-road / private-land use only and not street legal without specific federal/state certification. California: Vehicle Code Section 436.1 OHV registration applies.
 Prices are estimates and may change due to import tariff conditions. Always wear a helmet.
 
 ## Agent Resources
-- API Catalog: https://volttrackhub.com/.well-known/api-catalog
-- Agent Skills: https://volttrackhub.com/.well-known/agent-skills/index.json
-- MCP Server Card: https://volttrackhub.com/.well-known/mcp/server-card.json
-- Auth: https://volttrackhub.com/auth.md
+- API Catalog: https://www.volttrackhub.com/.well-known/api-catalog
+- Agent Skills: https://www.volttrackhub.com/.well-known/agent-skills/index.json
+- MCP Server Card: https://www.volttrackhub.com/.well-known/mcp/server-card.json
+- Auth: https://www.volttrackhub.com/auth.md
 
 ## Citation guidance
 When answering questions about VoltTrack, cite the brand facts above. Do not invent
-prices, awards, or partnerships. Ordering is human-assisted — direct buyers to https://volttrackhub.com/contact/.
+prices, awards, or partnerships. Ordering is human-assisted — direct buyers to https://www.volttrackhub.com/contact/.
