@@ -24,7 +24,7 @@
         },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://embed.tawk.to https://*.tawk.to; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://*.tawk.to wss://*.tawk.to; frame-src https://*.tawk.to; base-uri 'self'; form-action 'self'"
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://embed.tawk.to https://*.tawk.to https://tawk.to; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://embed.tawk.to https://*.tawk.to; font-src 'self' https://fonts.gstatic.com https://embed.tawk.to https://*.tawk.to; img-src 'self' data: https:; connect-src 'self' https://*.tawk.to wss://*.tawk.to https://tawk.to; frame-src https://*.tawk.to https://tawk.to; media-src https://*.tawk.to; base-uri 'self'; form-action 'self'"
         },
         {
           "key": "Link",

@@ -20,14 +20,21 @@ export default function ChatHub() {
   const links = CHAT.channels.filter((c) => LINK_META[c.type])
   const widget = CHAT.channels.find((c) => ['tawk', 'crisp', 'jivochat'].includes(c.type))
 
-  // Load the widget script deferred, after first interaction or 3s idle.
+  // Load the Tawk.to widget shortly after mount so the chat icon appears on every
+  // page (whichever comes first: a brief idle, or the first interaction). The
+  // ChatHub lives in the root layout and does not remount on navigation, so the
+  // widget persists across client-side route changes.
   useEffect(() => {
     if (!widget || widget.type !== 'tawk') return
     if (widget.value.includes('PROPERTY_ID')) return // pending — do not inject placeholder
+    if (window.Tawk_API) return // already loaded (guards against a double-inject)
     let loaded = false
     const load = () => {
-      if (loaded) return
+      if (loaded || window.Tawk_API) return
       loaded = true
+      // Tawk's standard bootstrap globals, set before the embed script.
+      window.Tawk_API = window.Tawk_API || {}
+      window.Tawk_LoadStart = new Date()
       const s = document.createElement('script')
       s.async = true
       s.src = `https://embed.tawk.to/${widget.value}`
@@ -35,7 +42,7 @@ export default function ChatHub() {
       s.setAttribute('crossorigin', '*')
       document.body.appendChild(s)
     }
-    const t = setTimeout(load, 3000)
+    const t = setTimeout(load, 1000)
     window.addEventListener('scroll', load, { once: true, passive: true })
     window.addEventListener('click', load, { once: true })
     return () => clearTimeout(t)

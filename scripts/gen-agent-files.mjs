@@ -391,14 +391,18 @@ w('js/webmcp.js', `(function () {
 const indexNowKey = 'a1b2c3d4e5f60718293a4b5c6d7e8f90'
 w(`${indexNowKey}.txt`, indexNowKey + '\n')
 
+// Tawk.to loads scripts, stylesheets, fonts, the chat iframe, images and
+// notification sounds across *.tawk.to (and bare tawk.to) — all must be allowed
+// or the chat widget silently fails to render.
 const CSP =
   "default-src 'self'; " +
-  "script-src 'self' 'unsafe-inline' https://embed.tawk.to https://*.tawk.to; " +
-  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
-  "font-src 'self' https://fonts.gstatic.com; " +
+  "script-src 'self' 'unsafe-inline' https://embed.tawk.to https://*.tawk.to https://tawk.to; " +
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://embed.tawk.to https://*.tawk.to; " +
+  "font-src 'self' https://fonts.gstatic.com https://embed.tawk.to https://*.tawk.to; " +
   "img-src 'self' data: https:; " +
-  "connect-src 'self' https://*.tawk.to wss://*.tawk.to; " +
-  "frame-src https://*.tawk.to; " +
+  "connect-src 'self' https://*.tawk.to wss://*.tawk.to https://tawk.to; " +
+  "frame-src https://*.tawk.to https://tawk.to; " +
+  "media-src https://*.tawk.to; " +
   "base-uri 'self'; form-action 'self'"
 
 const LINK =
