@@ -15,8 +15,10 @@
   --max:1200px;
 }
 *{box-sizing:border-box;min-width:0}
-html,body{overflow-x:hidden;max-width:100vw}
-html{scroll-behavior:smooth}
+html,body{overflow-x:hidden}
+/* Reserve the scrollbar gutter on BOTH sides so page content stays truly centred
+   and never shifts left/right between pages that do and don't have a scrollbar. */
+html{scroll-behavior:smooth;scrollbar-gutter:stable both-edges}
 body{
   margin:0;color:var(--ink);background:var(--bg);
   font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
@@ -67,10 +69,31 @@ p{margin:0 0 1em}
 .muted{color:var(--muted)}
 /* header */
 .site-header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line)}
-.announce{background:var(--brand);color:#fff;font-size:.85rem;padding:8px 12px;display:flex;flex-wrap:wrap;gap:6px 22px;justify-content:center;align-items:center}
-.announce-item{white-space:nowrap;font-weight:600}
-.announce-item + .announce-item{position:relative}
-.announce-item + .announce-item::before{content:"·";position:absolute;left:-13px;opacity:.6}
+/* Auto-rotating announcement bar — one promo at a time, CSS-driven (no JS timer).
+   --n = slide count (set inline). Each slide is visible for 1/n of the loop and
+   slides up to the next. Identical on mobile; static fallback for reduced motion. */
+.announce{--dur:3s;background:var(--brand);color:#fff;font-size:.85rem;font-weight:600;height:36px;position:relative;overflow:hidden}
+.announce-viewport{height:100%}
+.announce-slide{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 16px;white-space:nowrap;opacity:0;will-change:transform,opacity;
+  animation:announce-rot calc(var(--n)*var(--dur)) infinite;
+  animation-delay:calc(var(--i)*var(--dur))}
+/* fallback: if animations don't run, the first promo stays visible (never blank) */
+.announce-slide:first-child{opacity:1}
+@keyframes announce-rot{
+  0%{opacity:0;transform:translateY(120%)}
+  /* fade/slide in, hold, then out — active window is ~1/n of the loop */
+  3%{opacity:1;transform:translateY(0)}
+  22%{opacity:1;transform:translateY(0)}
+  25%{opacity:0;transform:translateY(-120%)}
+  100%{opacity:0;transform:translateY(-120%)}
+}
+@media (prefers-reduced-motion:reduce){
+  /* no motion: show every promo, centred and wrapping, as a static row */
+  .announce{height:auto;overflow:visible;display:flex;flex-wrap:wrap;gap:6px 22px;justify-content:center;align-items:center;padding:8px 12px}
+  .announce-viewport{display:contents}
+  .announce-slide{position:static;inset:auto;opacity:1;animation:none;transform:none;padding:0;width:auto}
+  .announce-slide + .announce-slide::before{content:"·";margin-right:22px;opacity:.6}
+}
 .nav{display:flex;align-items:center;gap:18px;padding:12px 0}
 .brand-logo{font-weight:800;font-size:1.35rem;color:var(--ink)}
 .brand-logo:hover{text-decoration:none}
