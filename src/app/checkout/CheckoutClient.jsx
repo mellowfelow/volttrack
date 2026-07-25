@@ -119,8 +119,11 @@ export default function CheckoutClient() {
                 ))}
               </div>
 
-              <h2 style={{ fontSize: '1.2rem', marginTop: 18 }}>Payment plan</h2>
-              <p className="form-note" style={{ marginTop: 0 }}>Available with any payment method above.</p>
+              <h2 style={{ fontSize: '1.2rem', marginTop: 18 }}>Finance — Pay in 4</h2>
+              <p className="form-note" style={{ marginTop: 0 }}>
+                Choose Pay in 4 with <strong>any</strong> payment method above — 4 interest-free
+                instalments, pay the first now to confirm your order.
+              </p>
               <div className="pay-options">
                 {SITE.paymentPlans.map((pl) => (
                   <label key={pl.id} className={`pay-option${plan === pl.id ? ' selected' : ''}`}>
@@ -132,6 +135,9 @@ export default function CheckoutClient() {
                   </label>
                 ))}
               </div>
+              {payIn4 ? (
+                <p className="form-note" style={{ marginTop: 8 }}>{SITE.payIn4Detail}</p>
+              ) : null}
             </div>
 
             <div className="order-summary">
@@ -154,9 +160,13 @@ export default function CheckoutClient() {
               )}
               <div className="order-row total"><span>Total</span><span>{SITE.currencySymbol}{t.total.toLocaleString('en-US')}</span></div>
               {payIn4 ? (
-                <div className="order-row" style={{ color: 'var(--brand)', fontWeight: 700 }}>
-                  <span>Pay in 4</span><span>4 × {SITE.currencySymbol}{installment.toLocaleString('en-US')}</span>
-                </div>
+                <>
+                  <div className="order-row" style={{ color: 'var(--brand)', fontWeight: 700 }}>
+                    <span>Pay in 4 (interest-free)</span><span>4 × {SITE.currencySymbol}{installment.toLocaleString('en-US')}</span>
+                  </div>
+                  <div className="order-row"><span>First instalment (due now to confirm)</span><span>{SITE.currencySymbol}{installment.toLocaleString('en-US')}</span></div>
+                  <div className="order-row muted"><span>Then 3 × {SITE.currencySymbol}{installment.toLocaleString('en-US')}</span><span>over time</span></div>
+                </>
               ) : null}
 
               {error ? <p style={{ color: '#b91c1c', fontWeight: 600 }}>{error}</p> : null}

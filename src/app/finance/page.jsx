@@ -34,14 +34,19 @@ export default function FinancePage() {
           <h1>Electric Dirt Bike Financing</h1>
           <p className="lead">
             Spread the cost of your electric dirt bike with Pay-in-4 on eligible bikes, and pay
-            however suits you — bank transfer, credit card or crypto.
+            however suits you — card, bank / wire transfer, Apple Pay, Cash App, Chime, Zelle or crypto.
           </p>
 
-          <h2>Pay in 4</h2>
+          <h2>Pay in 4 — interest-free instalments</h2>
           <p>
-            {SITE.financing}. Split an eligible bike into four instalments rather than paying the
-            full amount up front. Financing availability depends on the product and approval, and we
-            will confirm exactly what applies to your chosen bike before you commit.
+            {SITE.payIn4Detail} You pay the <strong>first of four instalments as soon as you order,
+            which confirms and reserves your bike</strong>, then the remaining three instalments are
+            spread over time — with <strong>zero interest</strong>. Choose Pay in 4 at checkout
+            alongside any payment method above.
+          </p>
+          <p>
+            Financing availability depends on the product and approval, and we will confirm exactly
+            what applies to your chosen bike before you commit — you are never locked in until you say so.
           </p>
 
           <h2>Ways to pay</h2>

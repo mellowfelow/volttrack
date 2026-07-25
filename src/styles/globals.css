@@ -130,9 +130,11 @@ p{margin:0 0 1em}
 .footer-bottom{border-top:1px solid #1e293b;margin-top:28px;padding-top:18px;font-size:.85rem;color:#94a3b8}
 .disclaimer{font-size:.8rem;color:#94a3b8;margin-top:14px;line-height:1.5}
 /* chat hub */
-.chat-hub{position:fixed;right:18px;bottom:18px;z-index:60}
+/* Quick email/phone links sit bottom-LEFT so they don't overlap the Tawk.to
+   live-chat bubble (bottom-right). ChatHub also injects the Tawk script. */
+.chat-hub{position:fixed;left:18px;bottom:18px;z-index:60}
 .chat-toggle{width:56px;height:56px;border-radius:50%;background:var(--brand);color:#fff;border:0;font-size:1.5rem;cursor:pointer;box-shadow:0 6px 20px rgba(37,99,235,.4)}
-.chat-panel{position:absolute;right:0;bottom:68px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,.18);padding:10px;min-width:210px;display:none}
+.chat-panel{position:absolute;left:0;bottom:68px;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,.18);padding:10px;min-width:210px;display:none}
 .chat-panel.open{display:block}
 .chat-panel a{display:flex;gap:10px;align-items:center;padding:10px;border-radius:8px;color:var(--ink);font-weight:600}
 .chat-panel a:hover{background:var(--bg-soft);text-decoration:none}

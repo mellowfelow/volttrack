@@ -36,7 +36,10 @@ export const SITE = {
   // Order rules
   minOrder: 0,
   freeShippingText: 'Free US Shipping (Lower 48)',
-  financing: 'Flexible financing available — Pay in 4',
+  financing: 'Pay in 4 — 4 interest-free instalments',
+  // Pay-in-4 detail, reused at checkout and on the finance/product pages.
+  payIn4Detail:
+    'Split your order into 4 interest-free instalments. Pay the first instalment now to confirm your order; the remaining three are spread over time. Available with any payment method.',
   cryptoDiscount: 0.10, // 10% off when paying with crypto (BTC/USDT) — auto-applied at checkout
   // Payment methods offered at checkout. `crypto: true` triggers the crypto discount.
   paymentMethods: [
@@ -51,7 +54,7 @@ export const SITE = {
   // Payment plan (Pay in 4 / financing) is offered on TOP of any payment method.
   paymentPlans: [
     { id: 'full', label: 'Pay in full' },
-    { id: 'pay-in-4', label: 'Pay in 4 (financing)' },
+    { id: 'pay-in-4', label: 'Pay in 4 — interest-free instalments' },
   ],
   // Real brand facts (never invent beyond these)
   authorizedBrands: ['Sur-Ron', 'Stark Future', 'Talaria', 'STACYC', 'KTM'],
@@ -72,7 +75,7 @@ export const CHAT = {
   channels: [
     { type: 'email', value: 'info@volttrackhub.com' },
     { type: 'phone', value: '+15627324044' },
-    { type: 'tawk', value: 'PROPERTY_ID/WIDGET_ID' }, // pending — paste Tawk.to property/widget ID
+    { type: 'tawk', value: '6a64dd8797935d1d490199b7/1jud02ntb' }, // Tawk.to live chat (bottom-right)
   ],
 }
 
