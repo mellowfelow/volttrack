@@ -397,9 +397,9 @@ const CSP =
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
   "font-src 'self' https://fonts.gstatic.com; " +
   "img-src 'self' data: https:; " +
-  "connect-src 'self' https://api.web3forms.com https://*.tawk.to wss://*.tawk.to; " +
+  "connect-src 'self' https://*.tawk.to wss://*.tawk.to; " +
   "frame-src https://*.tawk.to; " +
-  "base-uri 'self'; form-action 'self' https://api.web3forms.com"
+  "base-uri 'self'; form-action 'self'"
 
 const LINK =
   '</.well-known/api-catalog>; rel="api-catalog", </.well-known/agent-skills/index.json>; rel="describedby", </llms.txt>; rel="describedby", </.well-known/mcp/server-card.json>; rel="service-desc", </auth.md>; rel="auth", </.well-known/openid-configuration>; rel="openid-configuration"'

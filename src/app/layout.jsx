@@ -2,6 +2,7 @@ import '@/styles/globals.css'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import ChatHub from '@/components/ChatHub'
+import CartDrawer from '@/components/CartDrawer'
 import { SITE } from '@/config/site'
 import { base } from '@/lib/seo'
 
@@ -13,6 +14,11 @@ export const metadata = {
   },
   description: SITE.description,
   icons: { icon: '/favicon.ico' },
+  // Site-wide search-engine verification (rendered once, in every page's <head>).
+  verification: {
+    ...(SITE.gscVerification ? { google: SITE.gscVerification } : {}),
+    ...(SITE.yandexVerification ? { yandex: SITE.yandexVerification } : {}),
+  },
 }
 
 export const viewport = {
@@ -40,6 +46,7 @@ export default function RootLayout({ children }) {
         <Nav />
         <main id="main">{children}</main>
         <Footer />
+        <CartDrawer />
         <ChatHub />
       </body>
     </html>

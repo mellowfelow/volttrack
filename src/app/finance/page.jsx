@@ -6,13 +6,13 @@ import { buildMetadata, JsonLd, url } from '@/lib/seo'
 
 const FAQS = [
   { q: 'Do you offer financing on electric dirt bikes?', a: 'Yes. VoltTrack offers Pay-in-4 financing on eligible bikes, letting you split the cost into four instalments. Availability depends on the product and approval — contact us and we will confirm what applies to the bike you want.' },
-  { q: 'What payment methods does VoltTrack accept?', a: 'We accept bank transfer, credit card and cryptocurrency (Bitcoin and Tether USDT). Pay-in-4 financing can be applied on top of these on eligible bikes. Paying with crypto saves 5%, applied at checkout.' },
+  { q: 'What payment methods does VoltTrack accept?', a: 'We accept credit card, bank / wire transfer, Apple Pay, Cash App, Chime, Zelle and cryptocurrency (Bitcoin and Tether USDT). Pay-in-4 financing can be applied on top of these on eligible bikes. Paying with crypto saves 10%, applied automatically at checkout.' },
   { q: 'Is a credit check required for Pay-in-4?', a: 'Financing is subject to approval, and terms depend on the provider and your circumstances. We will explain exactly what is involved for your order before anything is finalised — there are no surprises, and you are never committed until you confirm.' },
 ]
 
 export const metadata = buildMetadata({
   title: 'Electric Dirt Bike Financing — Pay in 4',
-  description: 'Finance your electric dirt bike with VoltTrack. Pay-in-4 on eligible bikes, plus bank transfer, credit card and crypto (save 5%). Honest terms, US dealer.',
+  description: 'Finance your electric dirt bike with VoltTrack. Pay-in-4 on eligible bikes, plus card, bank/wire, Apple Pay, Cash App, Chime, Zelle and crypto (save 10%).',
   path: '/finance/',
 })
 

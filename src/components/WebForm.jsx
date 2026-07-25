@@ -1,41 +1,34 @@
 'use client'
 import { useRef, useState } from 'react'
-import { FORMS } from '@/config/site'
 
-// A provider-pluggable form. Web3Forms uses the exact CORS method:
-// fetch + body:new FormData(form) + header Accept only. No Content-Type, no action.
+// Forms POST to our own Vercel route handler (/api/submit), which emails via
+// Resend. Same-origin fetch with FormData — no Content-Type header (the browser
+// sets the multipart boundary), Accept: application/json, preventDefault.
 export default function WebForm({ subject, thankYou, children }) {
   const formRef = useRef(null)
   const [error, setError] = useState('')
-  const keyPending = !FORMS.web3formsKey || FORMS.web3formsKey.startsWith('YOUR-')
 
   function onSubmit(e) {
     e.preventDefault()
     setError('')
     const form = formRef.current
 
-    // Key-pending fallback: never dead-end an order pre-launch.
-    if (FORMS.provider === 'web3forms' && keyPending) {
-      window.location.href = thankYou
-      return
-    }
-
-    fetch('https://api.web3forms.com/submit', {
+    fetch('/api/submit', {
       method: 'POST',
       headers: { Accept: 'application/json' },
       body: new FormData(form),
     })
       .then((r) => r.json().then((d) => ({ status: r.status, data: d })))
       .then((res) => {
-        if (res.status === 200 && res.data.success) {
+        if (res.status === 200 && res.data.ok) {
           window.location.href = thankYou
         } else {
-          throw new Error((res.data && res.data.message) || 'Submission failed')
+          throw new Error((res.data && res.data.error) || 'Submission failed')
         }
       })
       .catch(() => {
         setError(
-          'Sorry — something went wrong sending your message. Please use the chat button or try again in a moment.',
+          'Sorry — something went wrong sending your message. Please email us or use the chat button and try again in a moment.',
         )
       })
   }
@@ -47,7 +40,6 @@ export default function WebForm({ subject, thankYou, children }) {
 
   return (
     <form ref={formRef} onSubmit={onSubmit}>
-      <input type="hidden" name="access_key" value={FORMS.web3formsKey} />
       <input type="hidden" name="subject" value={subject} />
       <input type="hidden" name="from_name" value="VoltTrack Website" />
       <input type="hidden" name="replyto" value="" />
@@ -55,11 +47,6 @@ export default function WebForm({ subject, thankYou, children }) {
       <div onChange={(e) => e.target.type === 'email' && syncReplyto(e)}>{children}</div>
       {error ? <p style={{ color: '#b91c1c', fontWeight: 600 }}>{error}</p> : null}
       <button type="submit" className="btn">Send</button>
-      {keyPending ? (
-        <p className="form-note" style={{ marginTop: 10 }}>
-          Note: form delivery activates once the Web3Forms key is set.
-        </p>
-      ) : null}
     </form>
   )
 }

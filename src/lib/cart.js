@@ -39,10 +39,13 @@ export function addToCart(product, qty = 1, variant = null) {
       name: variant ? `${product.name} — ${variant.label}` : product.name,
       variant: variant ? variant.label : '',
       price: variant ? variant.price : product.price,
+      image: (product.images && product.images[0]) || '',
       qty,
     })
   }
   write(items)
+  // Signal the slide-out cart drawer to open (only on add, not qty/remove).
+  if (isBrowser()) window.dispatchEvent(new Event('cart-open'))
   return items
 }
 

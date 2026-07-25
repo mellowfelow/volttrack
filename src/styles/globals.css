@@ -80,12 +80,13 @@ p{margin:0 0 1em}
 /* fallback: if animations don't run, the first promo stays visible (never blank) */
 .announce-slide:first-child{opacity:1}
 @keyframes announce-rot{
-  0%{opacity:0;transform:translateY(120%)}
-  /* fade/slide in, hold, then out — active window is ~1/n of the loop */
-  3%{opacity:1;transform:translateY(0)}
-  22%{opacity:1;transform:translateY(0)}
-  25%{opacity:0;transform:translateY(-120%)}
-  100%{opacity:0;transform:translateY(-120%)}
+  /* slide in from the left, hold, then slide out to the right (left→right motion).
+     Active window is ~1/n of the loop. */
+  0%{opacity:0;transform:translateX(-110%)}
+  3%{opacity:1;transform:translateX(0)}
+  22%{opacity:1;transform:translateX(0)}
+  25%{opacity:0;transform:translateX(110%)}
+  100%{opacity:0;transform:translateX(110%)}
 }
 @media (prefers-reduced-motion:reduce){
   /* no motion: show every promo, centred and wrapping, as a static row */
@@ -256,6 +257,24 @@ p{margin:0 0 1em}
 .cart-line{font-weight:800;white-space:nowrap}
 .cart-remove{background:none;border:0;color:var(--muted);font-weight:600;cursor:pointer;text-decoration:underline;padding:8px;min-height:44px}
 .cart-remove:hover{color:#b91c1c}
+/* slide-out cart drawer (opens on add-to-cart) */
+.drawer-backdrop{position:fixed;inset:0;background:rgba(15,23,42,.45);opacity:0;visibility:hidden;transition:opacity .25s ease,visibility .25s ease;z-index:90}
+.drawer-backdrop.open{opacity:1;visibility:visible}
+.cart-drawer{position:fixed;top:0;right:0;height:100vh;height:100dvh;width:min(410px,92vw);background:var(--surface);border-left:1px solid var(--line);box-shadow:var(--shadow-lg);display:flex;flex-direction:column;transform:translateX(101%);transition:transform .28s cubic-bezier(.4,0,.2,1);z-index:91}
+.cart-drawer.open{transform:translateX(0)}
+.cart-drawer-head{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:1px solid var(--line);font-size:1.05rem}
+.cart-drawer-close{background:none;border:0;font-size:1.2rem;cursor:pointer;color:var(--ink);line-height:1;padding:6px;min-height:40px;min-width:40px}
+.cart-drawer-empty{padding:34px 18px;text-align:center;display:flex;flex-direction:column;gap:14px}
+.cart-drawer-items{flex:1;overflow-y:auto;padding:4px 18px}
+.drawer-row{display:grid;grid-template-columns:72px 1fr auto;gap:12px;padding:14px 0;border-bottom:1px solid var(--line);align-items:start}
+.drawer-thumb{display:block;background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden;align-self:start}
+.drawer-thumb img{width:100%;height:auto;object-fit:contain;aspect-ratio:4/3;display:block}
+.drawer-info{display:flex;flex-direction:column;gap:5px;min-width:0}
+.drawer-name{font-weight:600;font-size:.9rem;color:inherit;line-height:1.25}
+.drawer-line{display:flex;flex-direction:column;align-items:flex-end;gap:4px;font-weight:700;white-space:nowrap;font-size:.9rem}
+.drawer-line .cart-remove{padding:2px;min-height:auto;font-size:.8rem}
+.cart-drawer-foot{border-top:1px solid var(--line);padding:16px 18px;background:var(--bg-soft)}
+@media (prefers-reduced-motion:reduce){.cart-drawer,.drawer-backdrop{transition:none}}
 /* misc */
 .pill-row{display:flex;flex-wrap:wrap;gap:10px}
 .pill{background:var(--bg-soft);border:1px solid var(--line);border-radius:999px;padding:8px 15px;font-weight:600;font-size:.9rem;color:var(--ink)}

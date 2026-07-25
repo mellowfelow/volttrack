@@ -11,7 +11,7 @@ import { PARTS } from './parts-data.js'
 export { PARTS }
 
 export const SITE = {
-  domain: 'volttrack.com',
+  domain: 'volttrackhub.com',
   target: 'vercel',
   name: 'VoltTrack',
   legalName: 'VoltTrack',
@@ -25,22 +25,28 @@ export const SITE = {
   region: 'United States',
   areaServed: 'US (Lower 48 states)',
   color: '#2563eb',
-  email: 'hello@volttrack.com',
+  email: 'info@volttrackhub.com',
+  phone: '+15627324044',            // tel: href (E.164, no spaces)
+  phoneDisplay: '+1 562 732 4044',  // human-readable
   supportHours: 'Mon–Sat 9am–6pm ET',
   currency: 'USD',
   currencySymbol: '$',
-  gscVerification: '', // add GSC verification code when domain is verified
+  gscVerification: '4zJ9Taat5cPRI7qmYL1ym7n7oypwl6UZwjvOad36so4', // Google Search Console
+  yandexVerification: '4b348fd46faf30e6', // Yandex Webmaster
   // Order rules
   minOrder: 0,
   freeShippingText: 'Free US Shipping (Lower 48)',
   financing: 'Flexible financing available — Pay in 4',
-  cryptoDiscount: 0.05, // 5% off when paying with BTC/USDT — auto-applied at checkout
+  cryptoDiscount: 0.10, // 10% off when paying with crypto (BTC/USDT) — auto-applied at checkout
   // Payment methods offered at checkout. `crypto: true` triggers the crypto discount.
   paymentMethods: [
-    { id: 'crypto-btc', label: 'Crypto — Bitcoin (BTC)', crypto: true },
-    { id: 'crypto-usdt', label: 'Crypto — Tether (USDT)', crypto: true },
-    { id: 'bank-transfer', label: 'Bank Transfer', crypto: false },
+    { id: 'crypto', label: 'Crypto (BTC / USDT)', crypto: true },
+    { id: 'bank-transfer', label: 'Bank / Wire Transfer', crypto: false },
+    { id: 'apple-pay', label: 'Apple Pay', crypto: false },
     { id: 'credit-card', label: 'Credit Card', crypto: false },
+    { id: 'cashapp', label: 'Cash App', crypto: false },
+    { id: 'chime', label: 'Chime', crypto: false },
+    { id: 'zelle', label: 'Zelle', crypto: false },
   ],
   // Payment plan (Pay in 4 / financing) is offered on TOP of any payment method.
   paymentPlans: [
@@ -53,17 +59,19 @@ export const SITE = {
 }
 
 export const FORMS = {
-  provider: 'web3forms', // web3forms (default, both targets) | resend (Vercel only, needs verified domain)
-  web3formsKey: 'YOUR-WEB3FORMS-KEY', // pending — forms redirect to thank-you until set
-  resendFrom: '',
+  // Vercel-hosted: forms POST to /api/submit (a Next.js route handler) which emails
+  // via Resend. Set RESEND_API_KEY in Vercel env to activate delivery (see docs).
+  provider: 'resend',
+  resendFrom: 'VoltTrack <orders@volttrackhub.com>', // must be a Resend-verified domain sender
   turnstileSiteKey: '',
-  contactEmail: 'hello@volttrack.com',
-  orderEmail: 'hello@volttrack.com',
+  contactEmail: 'info@volttrackhub.com',
+  orderEmail: 'info@volttrackhub.com',
 }
 
 export const CHAT = {
   channels: [
-    { type: 'email', value: 'hello@volttrack.com' },
+    { type: 'email', value: 'info@volttrackhub.com' },
+    { type: 'phone', value: '+15627324044' },
     { type: 'tawk', value: 'PROPERTY_ID/WIDGET_ID' }, // pending — paste Tawk.to property/widget ID
   ],
 }
@@ -1823,7 +1831,7 @@ export const FAQS = [
   },
   {
     q: 'What payment methods do you accept?',
-    a: 'VoltTrack accepts cryptocurrency (Bitcoin BTC and Tether USDT), bank transfer and credit card. Pay-in-4 financing is available on top of any of these payment methods on eligible bikes. Pay with crypto to save 5%.',
+    a: 'VoltTrack accepts credit card, bank / wire transfer, Apple Pay, Cash App, Chime, Zelle and cryptocurrency (Bitcoin BTC and Tether USDT). Pay-in-4 financing is available on top of any of these payment methods on eligible bikes. Pay with crypto to save 10%.',
   },
   {
     q: 'Which electric dirt bike is right for my rider?',

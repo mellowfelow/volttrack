@@ -34,7 +34,8 @@ export function buildMetadata({ title, description, path = '/', type = 'website'
     },
   }
   if (robots) meta.robots = robots
-  if (SITE.gscVerification) meta.verification = { google: SITE.gscVerification }
+  // Search-engine verification lives once in the root layout metadata (site-wide),
+  // not per page — avoids duplicate verification <meta> tags.
   return meta
 }
 
