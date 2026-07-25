@@ -12,7 +12,7 @@ const srcDir = resolve(root, 'assets/product-photos')
 const outDir = resolve(root, 'public/images')
 
 const photos = existsSync(srcDir)
-  ? readdirSync(srcDir).filter((f) => /\.(jpe?g|png|webp|tiff?)$/i.test(f))
+  ? readdirSync(srcDir).filter((f) => /\.(jpe?g|png|webp|avif|tiff?)$/i.test(f))
   : []
 
 if (!photos.length) {

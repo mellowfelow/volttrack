@@ -27,7 +27,7 @@ export function generateMetadata({ params }) {
     description: p.metaDesc,
     path: `/parts/${p.slug}/`,
     type: 'product',
-    image: url(`/images/parts/${p.slug}-01.webp`),
+    image: p.images && p.images[0] ? url(`/images/${p.images[0]}`) : undefined,
   })
 }
 
@@ -35,7 +35,7 @@ export default function PartPage({ params }) {
   const p = partBySlug(params.slug)
   if (!p) notFound()
   const cat = accessoryCatBySlug(p.category)
-  const img = '/images/placeholder-bike.svg'
+  const img = p.images && p.images[0] ? `/images/${p.images[0]}` : '/images/placeholder-bike.svg'
   // Related: other parts in the same category.
   const related = partsInCategory(p.category).filter((x) => x.slug !== p.slug).slice(0, 4)
   const compatProducts = (p.compat || []).map(productBySlug).filter(Boolean)
@@ -47,7 +47,7 @@ export default function PartPage({ params }) {
     description: p.metaDesc,
     sku: p.sku,
     brand: { '@type': 'Brand', name: p.brandLabel },
-    image: [url(`/images/parts/${p.slug}-01.webp`)],
+    ...(p.images && p.images[0] ? { image: [url(`/images/${p.images[0]}`)] } : {}),
     offers: {
       '@type': 'Offer',
       price: p.price,
