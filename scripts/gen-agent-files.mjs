@@ -441,9 +441,12 @@ http://${D}/*  https://${D}/:splat  301!
   const vercel = {
     $schema: 'https://openapi.vercel.sh/vercel.json',
     trailingSlash: true,
-    redirects: [
-      { source: '/:path*', has: [{ type: 'host', value: `www.${D}` }], destination: `https://${D}/:path*`, permanent: true },
-    ],
+    // No host (www↔apex) redirect here on purpose: Vercel's Domains settings own
+    // apex/www canonicalization. Duplicating it in vercel.json in the opposite
+    // direction to the dashboard creates an infinite redirect loop that breaks
+    // /_next/static asset loading (unstyled site). Set the primary domain in
+    // Vercel → Domains instead.
+    redirects: [],
     headers: [
       {
         source: '/(.*)',
