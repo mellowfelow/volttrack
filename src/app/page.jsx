@@ -10,7 +10,7 @@ import { JsonLd, url, buildMetadata } from '@/lib/seo'
 export const metadata = buildMetadata({
   title: 'Electric Dirt Bikes USA — Sur-Ron, Stark & More | VoltTrack',
   description:
-    'Shop electric dirt bikes in the USA. Sur-Ron, Stark Varg, Talaria, STACYC & more. Adult, youth & kids electric dirt bikes with expert advice, fast US shipping and financing.',
+    'Shop electric dirt bikes in the USA — Sur-Ron, Stark Varg, Talaria, STACYC & more. Adult, youth & kids models with expert advice, fast US shipping & financing.',
   path: '/',
 })
 
