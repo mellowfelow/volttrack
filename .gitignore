@@ -9,3 +9,7 @@ npm-debug.log*
 
 # Content source only — not part of the deploy
 _source/
+
+# Raw product photo sources — kept locally, regenerated into public/images
+# via `npm run images`; the optimized AVIF/WebP output is what ships.
+assets/product-photos/
