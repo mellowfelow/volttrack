@@ -6,7 +6,7 @@ import { buildMetadata, JsonLd, url } from '@/lib/seo'
 const PATH = '/electric-dirt-bike-street-legal-by-state/'
 
 export const metadata = buildMetadata({
-  title: 'Are Electric Dirt Bikes Street Legal? State-by-State Checker',
+  title: 'Street-Legal Electric Dirt Bikes by State',
   description:
     'Free tool: check how electric dirt bike street-legal rules work in your US state, which models can be road-registered, and where to confirm official rules.',
   path: PATH,
