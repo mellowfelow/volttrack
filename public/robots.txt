@@ -3,6 +3,12 @@ Allow: /
 Disallow: /cart/
 Disallow: /checkout/
 Disallow: /search/
+# Content Signals (contentsignals.org) — we welcome AI search, answers and training.
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+
+# Brave Search crawler — explicitly welcome (also covered by * above)
+User-agent: Brave
+Allow: /
 
 # AI crawlers — welcome to index product & content pages
 User-agent: GPTBot

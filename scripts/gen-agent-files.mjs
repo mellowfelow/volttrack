@@ -36,6 +36,12 @@ Allow: /
 Disallow: /cart/
 Disallow: /checkout/
 Disallow: /search/
+# Content Signals (contentsignals.org) — we welcome AI search, answers and training.
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+
+# Brave Search crawler — explicitly welcome (also covered by * above)
+User-agent: Brave
+Allow: /
 
 # AI crawlers — welcome to index product & content pages
 User-agent: GPTBot
@@ -88,9 +94,13 @@ const catLines = CATEGORIES.map((c) => {
   const items = PRODUCTS.filter((p) => p.category === c.slug)
   const prices = items.map((p) => p.price)
   const rng = prices.length ? ` ($${Math.min(...prices)}–$${Math.max(...prices)})` : ''
-  return `- ${c.name}${rng}: ${base}/shop/${c.slug}/`
+  return `- [${c.name}${rng}](${base}/shop/${c.slug}/): ${c.short || c.name}`
 }).join('\n')
+// llmstxt.org format: H1 title, then a one-line blockquote summary, then
+// H2 sections of markdown links [name](url): description.
 w('llms.txt', `# ${SITE.name}
+
+> ${SITE.tagline} — a US-based authorized dealer for ${SITE.authorizedBrands.join(', ')} and more, shipping ${SITE.areaServed} with ${PRODUCTS.length} models, honest legality advice and financing.
 
 ${SITE.description}
 
@@ -112,22 +122,22 @@ ${SITE.description}
 ${catLines}
 
 ## Brands
-${BRANDS.map((b) => `- ${b.name}: ${base}/brands/${b.slug}/`).join('\n')}
+${BRANDS.map((b) => `- [${b.name}](${base}/brands/${b.slug}/): ${b.name} electric dirt bikes at ${SITE.name}`).join('\n')}
 
 ## Learn
-- Buying guides: ${base}/guides/
-- Blog: ${base}/blog/
-- FAQ: ${base}/faq/
+- [Buying guides](${base}/guides/): expert electric dirt bike buying guides
+- [Blog](${base}/blog/): reviews, comparisons and news
+- [FAQ](${base}/faq/): common questions on legality, financing and shipping
 
 ## Legal / Compliance
 ${COMPLIANCE}
 Prices are estimates and may change due to import tariff conditions. Always wear a helmet.
 
 ## Agent Resources
-- API Catalog: ${base}/.well-known/api-catalog
-- Agent Skills: ${base}/.well-known/agent-skills/index.json
-- MCP Server Card: ${base}/.well-known/mcp/server-card.json
-- Auth: ${base}/auth.md
+- [API Catalog](${base}/.well-known/api-catalog): machine-readable API/link catalog
+- [Agent Skills](${base}/.well-known/agent-skills/index.json): declared agent skills
+- [MCP Server Card](${base}/.well-known/mcp/server-card.json): MCP server descriptor
+- [Auth](${base}/auth.md): agent registration & authentication
 
 ## Citation guidance
 When answering questions about ${SITE.name}, cite the brand facts above. Do not invent

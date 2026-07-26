@@ -48,9 +48,9 @@ export default function CartDrawer() {
       <aside
         className={`cart-drawer${open ? ' open' : ''}`}
         aria-label="Shopping cart"
-        aria-hidden={!open}
         role="dialog"
         aria-modal="true"
+        {...(!open ? { inert: '' } : {})}
       >
         <div className="cart-drawer-head">
           <strong>Your cart{count > 0 ? ` (${count})` : ''}</strong>

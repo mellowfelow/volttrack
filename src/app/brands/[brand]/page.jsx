@@ -89,6 +89,14 @@ export default function BrandPage({ params }) {
               : `VoltTrack carries ${b.name} in the US, with the manufacturer's warranty and real post-purchase support.`}
             {' '}We ship to the Lower 48 and offer Pay-in-4 financing on eligible bikes.
           </p>
+          {b.officialSite ? (
+            <p className="muted" style={{ marginTop: 4 }}>
+              Manufacturer:{' '}
+              <a href={b.officialSite} target="_blank" rel="noopener noreferrer">
+                Official {b.name} site ↗
+              </a>
+            </p>
+          ) : null}
 
           {items.length ? (
             <>

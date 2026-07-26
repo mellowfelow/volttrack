@@ -180,8 +180,9 @@ else pass('40 perf: cards use SmartImage (picture/AVIF)')
 // no render-blocking external <script> without defer/async in <head>
 if (/<script\s+src=(?!.*(defer|async))/.test(layoutSrc)) fail('40 perf: render-blocking external head script (needs defer)')
 else pass('40 perf: no render-blocking head scripts')
-if (!/font-display=swap|display:\s*swap|display=swap/.test(layoutSrc)) fail('40 perf: font-display swap missing')
-else pass('40 perf: font-display swap + preconnect')
+// Accept next/font's quoted form (display: 'swap') as well as CSS/URL forms.
+if (!/font-display=swap|display:\s*['"]?swap|display=swap/.test(layoutSrc)) fail('40 perf: font-display swap missing')
+else pass('40 perf: font-display swap (self-hosted via next/font)')
 
 // ---------------------------------------------------------------------------
 // 41. Visual design quality — references/design-quality.md

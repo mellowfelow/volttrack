@@ -1,10 +1,20 @@
 import '@/styles/globals.css'
+import { Inter } from 'next/font/google'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import ChatHub from '@/components/ChatHub'
 import CartDrawer from '@/components/CartDrawer'
 import { SITE } from '@/config/site'
 import { base } from '@/lib/seo'
+
+// Self-hosted, non-render-blocking font (Next inlines it + preloads the woff2),
+// replacing the render-blocking Google Fonts <link>. Exposed as --font-sans.
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  display: 'swap',
+  variable: '--font-sans',
+})
 
 export const metadata = {
   metadataBase: new URL(base),
@@ -29,16 +39,10 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className={inter.variable}>
       <head>
         {/* Enable reveal animations only when JS is active (before paint → no flash) */}
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js-anim')" }} />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-          rel="stylesheet"
-        />
         <script src="/js/webmcp.js" defer></script>
       </head>
       <body>

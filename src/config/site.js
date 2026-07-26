@@ -214,7 +214,7 @@ export const CATEGORIES = [
 // carry — the hub copy must never claim authorized status for them.
 export const BRANDS = [
   {
-    slug: 'sur-ron', name: 'Sur-Ron', audience: 'adult', authorized: true,
+    slug: 'sur-ron', name: 'Sur-Ron', officialSite: 'https://sur-ron.com', audience: 'adult', authorized: true,
     h1: 'Surron Electric Dirt Bikes',
     metaDesc:
       'Shop Sur-Ron electric dirt bikes — Light Bee X, Ultra Bee, Hyper Bee and Storm Bee. Authorized US dealer, free Lower 48 shipping and honest advice.',
@@ -227,7 +227,7 @@ export const BRANDS = [
     ],
   },
   {
-    slug: 'stark-future', name: 'Stark Future', titleName: 'Stark', audience: 'adult', authorized: true,
+    slug: 'stark-future', name: 'Stark Future', officialSite: 'https://www.starkfuture.com', titleName: 'Stark', audience: 'adult', authorized: true,
     h1: 'Stark Varg Electric Dirt Bikes',
     metaDesc:
       'Shop the Stark Varg MX, EX and SM — 60HP Standard or 80HP Alpha. Authorized US dealer for Stark Future, with financing and free Lower 48 shipping.',
@@ -241,7 +241,7 @@ export const BRANDS = [
     ],
   },
   {
-    slug: 'talaria', name: 'Talaria', audience: 'adult', authorized: true,
+    slug: 'talaria', name: 'Talaria', officialSite: 'https://www.talaria.bike', audience: 'adult', authorized: true,
     h1: 'Talaria X3 & Sting Electric Dirt Bikes',
     metaDesc:
       'Shop Talaria electric dirt bikes — X3, X3 Pro, Sting MX3, MX4, MX5 Pro, XXX and Komodo. Authorized US dealer with free Lower 48 shipping.',
@@ -255,7 +255,7 @@ export const BRANDS = [
     ],
   },
   {
-    slug: 'ktm', name: 'KTM', audience: 'adult', authorized: true,
+    slug: 'ktm', name: 'KTM', officialSite: 'https://www.ktm.com', audience: 'adult', authorized: true,
     h1: 'KTM Electric Dirt Bikes',
     metaDesc:
       'Shop KTM electric dirt bikes — SX-E 2, SX-E 3, SX-E 5 youth motocross and the Freeride E-XC. Authorized US dealer, free Lower 48 shipping.',
@@ -268,7 +268,7 @@ export const BRANDS = [
     ],
   },
   {
-    slug: 'segway', name: 'Segway', audience: 'adult',
+    slug: 'segway', name: 'Segway', officialSite: 'https://powersports.segway.com', audience: 'adult',
     h1: 'Segway Xaber 300 Electric Dirt Bike',
     metaDesc:
       'Shop the Segway Xaber 300 — 21kW, 60mph, Samsung battery and Marzocchi suspension. The replacement for the discontinued X260. Free Lower 48 shipping.',
@@ -281,7 +281,7 @@ export const BRANDS = [
     ],
   },
   {
-    slug: 'zero', name: 'Zero Motorcycles', titleName: 'Zero', audience: 'adult',
+    slug: 'zero', name: 'Zero Motorcycles', officialSite: 'https://www.zeromotorcycles.com', titleName: 'Zero', audience: 'adult',
     h1: 'Zero Electric Dirt Bikes',
     metaDesc:
       'Shop Zero electric dirt bikes — the 2026 XB and XE trail models and the FX dual-sport. US-designed electric motorcycles, free Lower 48 shipping.',
@@ -320,7 +320,7 @@ export const BRANDS = [
     ],
   },
   {
-    slug: 'stacyc', name: 'STACYC', audience: 'youth', authorized: true,
+    slug: 'stacyc', name: 'STACYC', officialSite: 'https://www.stacyc.com', audience: 'youth', authorized: true,
     h1: 'STACYC Bikes',
     metaDesc:
       'Shop STACYC electric balance bikes — 12eDRIVE, 16eDRIVE, 18eDRIVE and 20eDRIVE. The best first electric bike for ages 3–10. Authorized US dealer.',
@@ -334,7 +334,7 @@ export const BRANDS = [
     ],
   },
   {
-    slug: 'razor', name: 'Razor', audience: 'youth',
+    slug: 'razor', name: 'Razor', officialSite: 'https://www.razor.com', audience: 'youth',
     h1: 'Razor Electric Dirt Bikes',
     metaDesc:
       'Shop Razor Dirt Rocket electric dirt bikes — MX125, MX350, MX500 and MX650, from $229. The most affordable way to start riding. Free Lower 48 shipping.',
@@ -347,7 +347,7 @@ export const BRANDS = [
     ],
   },
   {
-    slug: 'gasgas', name: 'GasGas', audience: 'youth',
+    slug: 'gasgas', name: 'GasGas', officialSite: 'https://www.gasgas.com', audience: 'youth',
     h1: 'GasGas E Bike — Electric Dirt Bikes',
     metaDesc:
       'Shop GasGas electric dirt bikes — the MC-E 2 for ages 3–7 and the 5kW MC-E 5 for ages 4–12. Austrian-built youth motocross. Free Lower 48 shipping.',
