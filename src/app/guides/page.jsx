@@ -17,6 +17,10 @@ export default function GuidesPage() {
         <div className="container">
           <h1>Electric Dirt Bike Buying Guides</h1>
           <p className="lead">Honest, experience-based advice to help you choose the right bike.</p>
+          <p style={{ margin: '0 0 8px' }}>
+            🛠️ Try our free tool:{' '}
+            <Link href="/electric-dirt-bike-street-legal-by-state/">Are electric dirt bikes street legal? State-by-state checker →</Link>
+          </p>
           <div className="grid cols-3" style={{ marginTop: 20 }}>
             {[
               ...GUIDES.map((g) => ({ ...g, href: `/guides/${g.slug}/` })),

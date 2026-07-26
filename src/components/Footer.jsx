@@ -32,6 +32,7 @@ export default function Footer() {
             <h4>Learn</h4>
             <Link href="/parts-accessories/batteries-chargers/">Batteries &amp; Chargers</Link>
             <Link href="/parts-accessories/graphics-kits/">Graphics Kits</Link>
+            <Link href="/electric-dirt-bike-street-legal-by-state/">Street-Legal Checker</Link>
             <Link href="/guides/">Buying Guides</Link>
             <Link href="/blog/">Blog</Link>
             <Link href="/faq/">FAQ</Link>

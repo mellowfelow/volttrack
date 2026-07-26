@@ -8,6 +8,7 @@ export default function sitemap() {
   const staticPaths = [
     '/', '/shop/', '/brands/', '/blog/', '/guides/', '/about/', '/contact/',
     '/faq/', '/finance/', '/shipping/', '/returns/', '/privacy/', '/terms/', '/parts-accessories/',
+    '/electric-dirt-bike-street-legal-by-state/',
   ]
   // DISCONTINUED slugs are deliberately absent — they 301 to their successor.
   const entries = [

@@ -285,6 +285,12 @@ p{margin:0 0 1em}
 .drawer-line .cart-remove{padding:2px;min-height:auto;font-size:.8rem}
 .cart-drawer-foot{border-top:1px solid var(--line);padding:16px 18px;background:var(--bg-soft)}
 @media (prefers-reduced-motion:reduce){.cart-drawer,.drawer-backdrop{transition:none}}
+/* street-legal checker tool */
+.checker-result{padding:22px;margin-top:20px}
+.checker-cols{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:6px 0 10px}
+@media(max-width:640px){.checker-cols{grid-template-columns:1fr}}
+.checker-cols h3{font-size:1rem;margin:0 0 4px}
+.checker-cta{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0 6px}
 /* misc */
 .pill-row{display:flex;flex-wrap:wrap;gap:10px}
 .pill{background:var(--bg-soft);border:1px solid var(--line);border-radius:999px;padding:8px 15px;font-weight:600;font-size:.9rem;color:var(--ink)}
