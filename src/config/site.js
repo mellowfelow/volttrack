@@ -1798,20 +1798,6 @@ export const POSTS = [
       'When you buy from VoltTrack, every listing states clearly whether a bike is off-road only or has a street-legal certification path. If you are a California rider and unsure, contact us before you buy and we will walk you through it honestly.',
     ],
   },
-  {
-    slug: 'electric-vs-gas-dirt-bike-cost-of-ownership',
-    metaTitle: 'Electric vs Gas Dirt Bike: Cost of Ownership',
-    title: 'Electric vs Gas Dirt Bike: The Real Cost of Ownership in 2026',
-    date: '2026-02-10',
-    excerpt: 'Electric dirt bikes cost more up front but far less to run. We break down the real five-year cost of ownership versus gas.',
-    keyword: 'electric vs gas dirt bike cost',
-    body: [
-      'Electric dirt bikes often carry a higher sticker price than comparable gas machines, and that scares off some buyers. But sticker price is only part of the story. Once you factor in fuel, oil, filters, and the constant maintenance a two-stroke or four-stroke demands, the gap narrows fast — and often reverses.',
-      'Fuel and oil: an electric dirt bike costs pennies to charge. A gas bike drinks premium fuel and, for two-strokes, premix oil every tank. Over a season of regular riding that adds up to real money.',
-      'Maintenance: no pistons, valves, spark plugs, air filters or oil changes. Electric drivetrains have far fewer wear items. You still maintain tires, brakes, suspension and the chain, but you skip the engine-service treadmill entirely.',
-      'Depreciation and tariffs: electric dirt bike pricing can move with import tariff conditions, so quoted prices are estimates. Even so, over a typical five-year hold, lower running and maintenance costs usually make the electric option competitive or cheaper overall — while being quieter and easier to ride where noise rules apply.',
-    ],
-  },
 ]
 
 // ----------------------------------------------------------------------------

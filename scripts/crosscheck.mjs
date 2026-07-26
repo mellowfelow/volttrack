@@ -19,7 +19,7 @@ const parseJson = (p, label) => {
 }
 
 const cfg = await import(pathToFileURL(resolve(root, 'src/config/site.js')).href)
-const { SITE, FORMS, PRODUCTS, CATEGORIES } = cfg
+const { SITE, FORMS, PRODUCTS, CATEGORIES, POSTS, GUIDES, PARTS } = cfg
 const isProd = process.env.DEPLOY === 'production'
 
 console.log('WebForge crosscheck — VoltTrack')
@@ -40,6 +40,16 @@ for (const p of PRODUCTS) {
   // Enquiry-only products (enquire: true) intentionally carry no price.
   if (!p.enquire && (!p.price || p.price <= 0)) fail(`product ${p.slug} has no price`)
   if (p.enquire && p.price) fail(`product ${p.slug} is enquire-only but has a price set`)
+}
+// Duplicate slugs within a collection produce duplicate sitemap URLs (search
+// engines dedupe them, causing GSC/Bing count mismatches). Guard every collection.
+for (const [name, list] of [['POSTS', POSTS], ['GUIDES', GUIDES], ['PARTS', PARTS]]) {
+  if (!Array.isArray(list)) continue
+  const seen = new Set()
+  for (const it of list) {
+    if (seen.has(it.slug)) fail(`duplicate ${name} slug: ${it.slug}`)
+    seen.add(it.slug)
+  }
 }
 pass(`config: ${PRODUCTS.length} products across ${CATEGORIES.length} categories`)
 
