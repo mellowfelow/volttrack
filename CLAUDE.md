@@ -29,8 +29,11 @@ Removing or merging a page? Add a 301 to `REDIRECTS` in `src/config/site.js` (ge
 - Never commit node_modules/, .next/, out/. `_source/` is content-only and gitignored — never deploy it.
 
 ## Live placeholders (what breaks while unset)
-- Forms provider is **`resend`** (not web3forms) — needs `RESEND_API_KEY` set in Vercel env or
-  contact/order/wholesale forms fail to send. Chat/email/phone are the live fallback channels.
+- Forms provider is **`web3forms`** (real access key set in `FORMS.web3formsKey`) — submits
+  directly from the browser to api.web3forms.com, no backend or domain verification needed.
+  `/api/submit` (Resend) is dead code while this is the provider — kept only in case the client
+  later wants first-party sending once a domain is Resend-verified (switch `FORMS.provider` back
+  and set `RESEND_API_KEY` in Vercel).
 - GSC + Yandex verification and the Tawk chat widget are all live (real values set) — nothing
   pending there.
 - `SITE.sameAs` is still `[]` — add real social profile URLs when the client supplies them.

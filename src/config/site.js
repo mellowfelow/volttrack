@@ -64,10 +64,13 @@ export const SITE = {
 }
 
 export const FORMS = {
-  // Vercel-hosted: forms POST to /api/submit (a Next.js route handler) which emails
-  // via Resend. Set RESEND_API_KEY in Vercel env to activate delivery (see docs).
-  provider: 'resend',
-  resendFrom: 'VoltTrack <orders@volttrackhub.com>', // must be a Resend-verified domain sender
+  // 'web3forms' (default): forms POST directly to api.web3forms.com from the
+  // browser — no backend, no domain verification, works immediately. 'resend'
+  // (Vercel only): forms POST to our own /api/submit route, which needs
+  // RESEND_API_KEY set in Vercel env + a Resend-verified sending domain.
+  provider: 'web3forms',
+  web3formsKey: 'b81165bd-daf0-4e0f-bac9-a835965c06be',
+  resendFrom: 'VoltTrack <orders@volttrackhub.com>', // only used if provider is switched back to 'resend'
   turnstileSiteKey: '',
   contactEmail: 'info@volttrackhub.com',
   orderEmail: 'info@volttrackhub.com',

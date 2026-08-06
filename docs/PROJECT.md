@@ -21,8 +21,9 @@ dirt bikes themselves and gives advice based on experience, not commission.
 - Support: Mon–Sat 9am–6pm ET · Currency: USD · Region: US (Lower 48)
 
 ## Forms & chat
-- Forms: Resend (provider), sending from `orders@volttrackhub.com` (Resend-verified domain sender).
-  Set `RESEND_API_KEY` in Vercel env to activate delivery.
+- Forms: Web3Forms (provider), real access key set (`FORMS.web3formsKey`) — live, no domain
+  verification needed. `/api/submit` (Resend route) is unused while this is the provider; kept
+  as a fallback for when a Resend-verified sending domain exists.
 - Chat hub: Tawk.to widget (live) + email + phone link channels.
 
 ## Deploy target rationale

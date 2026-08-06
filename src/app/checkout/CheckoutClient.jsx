@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
-import { SITE } from '@/config/site'
+import { SITE, FORMS } from '@/config/site'
 import { getCart, subscribe, totals, clearCart } from '@/lib/cart'
 
 const THANK_YOU = '/thank-you-order/'
@@ -31,13 +31,31 @@ export default function CheckoutClient() {
     .map((i) => `${i.name} × ${i.qty} — ${SITE.currencySymbol}${(i.price * i.qty).toLocaleString('en-US')}`)
     .join('\n')
 
+  const keyPending = !FORMS.web3formsKey || FORMS.web3formsKey.startsWith('YOUR-')
+
   function onSubmit(e) {
     e.preventDefault()
     setError('')
     if (!items.length) { setError('Your cart is empty.'); return }
     const form = formRef.current
-
     const done = () => { clearCart(); window.location.href = THANK_YOU }
+    const fail = () => setError('Something went wrong submitting your order. Please use the chat button or the contact page to reach us.')
+
+    if (FORMS.provider === 'web3forms') {
+      if (keyPending) { done(); return }
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: new FormData(form),
+      })
+        .then((r) => r.json().then((d) => ({ status: r.status, data: d })))
+        .then((res) => {
+          if (res.status === 200 && res.data.success) done()
+          else throw new Error((res.data && res.data.message) || 'Submission failed')
+        })
+        .catch(fail)
+      return
+    }
 
     fetch('/api/submit', {
       method: 'POST',
@@ -49,7 +67,7 @@ export default function CheckoutClient() {
         if (res.status === 200 && res.data.ok) done()
         else throw new Error((res.data && res.data.error) || 'Submission failed')
       })
-      .catch(() => setError('Something went wrong submitting your order. Please use the chat button or the contact page to reach us.'))
+      .catch(fail)
   }
 
   if (items.length === 0) {
@@ -69,7 +87,8 @@ export default function CheckoutClient() {
       <div className="container">
         <h1>Checkout</h1>
         <form ref={formRef} onSubmit={onSubmit}>
-          {/* hidden fields emailed via /api/submit (Resend) */}
+          {/* hidden fields: web3forms (direct) or /api/submit (Resend), per FORMS.provider */}
+          {FORMS.provider === 'web3forms' ? <input type="hidden" name="access_key" value={FORMS.web3formsKey} /> : null}
           <input type="hidden" name="subject" value="VoltTrack — New Order" />
           <input type="hidden" name="from_name" value="VoltTrack Checkout" />
           <input type="hidden" name="replyto" value="" />

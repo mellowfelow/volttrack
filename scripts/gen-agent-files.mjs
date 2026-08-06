@@ -8,6 +8,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const root = resolve(__dirname, '..')
 const cfg = await import(pathToFileURL(resolve(root, 'src/config/site.js')).href)
 const { SITE, FORMS, CHAT, CATEGORIES, PRODUCTS, BRANDS, REDIRECTS } = cfg
+const FORMS_CONNECT = FORMS.provider === 'web3forms' ? 'https://api.web3forms.com' : "'self'"
 
 const D = SITE.domain
 const base = `https://${D}`
@@ -410,7 +411,7 @@ const CSP =
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://embed.tawk.to https://*.tawk.to; " +
   "font-src 'self' https://fonts.gstatic.com https://embed.tawk.to https://*.tawk.to; " +
   "img-src 'self' data: https:; " +
-  "connect-src 'self' https://*.tawk.to wss://*.tawk.to https://tawk.to; " +
+  `connect-src 'self' ${FORMS_CONNECT} https://*.tawk.to wss://*.tawk.to https://tawk.to; ` +
   "frame-src https://*.tawk.to https://tawk.to; " +
   "media-src https://*.tawk.to; " +
   "base-uri 'self'; form-action 'self'"
