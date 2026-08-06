@@ -28,6 +28,11 @@ export function generateMetadata({ params }) {
     path: `/parts/${p.slug}/`,
     type: 'product',
     image: p.images && p.images[0] ? url(`/images/${p.images[0]}`) : undefined,
+    // Generic accessories with no bike-specific fitment (empty compat[]) carry no
+    // unique differentiation from one another — keep them live and linkable from
+    // their category page, but out of the index so they don't dilute crawl trust
+    // on a young domain. Bike-specific parts (compat.length > 0) stay indexed.
+    ...((p.compat && p.compat.length) ? {} : { robots: { index: false, follow: true } }),
   })
 }
 

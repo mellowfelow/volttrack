@@ -32,12 +32,17 @@
 | best electric dirt bike for teens | /guides/best-electric-dirt-bike-for-teens/ |
 | sur-ron vs talaria | /guides/sur-ron-vs-talaria/ |
 | sur-ron light bee vs ultra bee | /guides/sur-ron-light-bee-vs-ultra-bee/ |
-| are electric dirt bikes legal | /guides/are-electric-dirt-bikes-legal-in-my-state/ |
+| are electric dirt bikes street legal | /guides/are-electric-dirt-bikes-street-legal/ |
 
 ## Blog (news / freshness)
 - stark varg sm → /blog/2026-stark-varg-sm-first-look/
 - california section 436.1 → /blog/california-section-436-1-what-riders-need-to-know/
 - electric vs gas dirt bike cost → /blog/electric-vs-gas-dirt-bike-cost-of-ownership/
+
+**Note (2026-08-06):** this list predates most of the published blog — `src/config/site.js` POSTS
+is the source of truth for what's actually live, not this table. Also: `/blog/are-electric-dirt-bikes-street-legal-usa/`
+was merged into `/guides/are-electric-dirt-bikes-street-legal/` (301 redirect) — do not recreate a
+blog post on this exact topic, the guide now owns it.
 
 ## Unused clusters (future posts)
 - electric dirt bike maintenance / battery care

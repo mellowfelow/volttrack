@@ -82,6 +82,19 @@ export const CHAT = {
 }
 
 // ----------------------------------------------------------------------------
+// REDIRECTS — permanent 301s for removed/merged URLs. Generated into vercel.json
+// by scripts/gen-agent-files.mjs. Add an entry here when a page is removed or
+// merged into another rather than deleting it outright — never leave a dead URL
+// that used to be indexed.
+// ----------------------------------------------------------------------------
+export const REDIRECTS = [
+  // Blog post merged into the richer /guides/ version of the same topic
+  // (keyword cannibalization fix, 2026-08-06) — both targeted "are electric
+  // dirt bikes street legal" with near-identical titles/meta.
+  { source: '/blog/are-electric-dirt-bikes-street-legal-usa/', destination: '/guides/are-electric-dirt-bikes-street-legal/', permanent: true },
+]
+
+// ----------------------------------------------------------------------------
 // HERO SLIDES (homepage slider). First slide carries the single <h1>.
 // `image`: filename in /public/images/ (optional) — falls back to brand gradient.
 // ----------------------------------------------------------------------------
@@ -1627,56 +1640,6 @@ export const POSTS = [
     cta: { text: 'Shop the Segway Xaber 300', href: '/product/segway-xaber-300/' },
   },
   {
-    slug: 'are-electric-dirt-bikes-street-legal-usa',
-    title: 'Are Electric Dirt Bikes Street Legal in the USA? Complete 2026 Guide',
-    metaTitle: 'Are Electric Dirt Bikes Street Legal?',
-    date: '2026-07-24',
-    primaryKw: 'are electric dirt bikes street legal',
-    metaDesc: 'Are electric dirt bikes street legal in the USA? Which models have a real registration path, which never will, and what your state requires. 2026 guide.',
-    excerpt: 'Are electric dirt bikes street legal in the US? An honest guide to what is legal, what is not, and the models with a real path.',
-    intro: [
-      'Are electric dirt bikes street legal? For most models the honest answer is no — and no dealer can make one legal simply by saying so. Street legality is a function of federal certification, state registration and equipment, not of how a bike looks or how fast it goes.',
-      'Here is the plain-English guide, including the models with a genuine path, all of which live in our [street-legal category](/shop/street-legal-electric-bikes/).',
-    ],
-    sections: [
-      { h2: 'Most electric dirt bikes are off-road only', paras: [
-        'The majority of what we and everyone else sells is off-road, private-land and OHV use only. That includes the Sur-Ron Light Bee, Ultra Bee and Storm Bee, the Talaria Sting and X3 ranges, the E-Ride Pro line and the Segway Xaber 300. These are legal on private land and on OHV routes with the correct registration, and nowhere else.',
-      ] },
-      { h2: 'The models with a street-legal path', paras: [
-        'A small number of models are built for road use. The [Stark Varg EX](/product/stark-varg-ex/) enduro and [Stark Varg SM](/product/stark-varg-sm/) supermoto ship with lights and mirrors and a street-legal path, and the [Sur-Ron Light Bee L1e](/product/sur-ron-light-bee-l1e/) is prepared for L1e-category homologation. Even for these, road legality depends on final certification and your specific state’s rules.',
-      ] },
-      { h2: 'California and Section 436.1', paras: [
-        'California riders have an extra layer. Vehicle Code Section 436.1 governs green-sticker and OHV registration for off-highway electric dirt bikes. It applies regardless of a bike’s performance — a 17 mph kids bike and a 68 mph Storm Bee are both off-highway vehicles under these rules.',
-      ] },
-      { h2: 'What makes a bike street legal?', paras: [
-        'Street legality is not one thing but a checklist. A road-legal motorcycle generally needs a compliant VIN, DOT-approved lights front and rear, indicators or the correct signalling, mirrors, a horn, and DOT-rated tyres — plus federal certification and then state registration and insurance. An off-road bike is missing several of these by design, which is why you cannot simply "register" a dirt bike for the road.',
-        'This is why the models with a genuine path — the Varg EX, Varg SM and Light Bee L1e — are built from the ground up with that equipment. Bolting lights onto an off-road bike does not make it legal, and shops that imply otherwise are not doing you a favour.',
-      ] },
-      { h2: 'OHV registration and where you can ride', paras: [
-        'Even off-road, most states expect some form of registration for use on public OHV land. California’s green-sticker scheme is the best-known, but many states have their own OHV or trail-permit systems. On genuinely private land with the owner’s permission, those requirements typically do not apply, but public trails almost always do.',
-        'The practical takeaway: decide where you actually want to ride before you buy. If it is private land and OHV parks, almost any bike we sell works with the right registration. If it is public roads, you need one of the small number of street-legal-path models, and you need to confirm your state’s specific rules.',
-      ] },
-      { h2: 'Why "street legal" claims are often misleading', paras: [
-        'You will see plenty of listings and forum posts claiming a given bike is "street legal." Treat those claims with caution. Very often they mean the bike is street legal in one specific state under narrow conditions, or that a previous owner managed to register it through a loophole that has since closed. What is legal in one state may be impounded in the next, and enforcement varies even between counties.',
-        'This is why we never use a blanket "street legal" label. A bike either has a genuine, built-in path to registration — the right equipment and certification — or it does not, and even then the final answer depends on your state. Anyone promising a dirt bike is "street legal everywhere" is either mistaken or selling you something.',
-      ] },
-      { h2: 'How to ride legally wherever you are', paras: [
-        'The safe approach is simple. Decide where you want to ride, then confirm the rules for that place before you buy — your state DMV for road use, and your state OHV or parks authority for trail use. For private land with the owner’s permission, you have the most freedom. For public roads, you need a model with a real street-legal path and the correct registration and insurance.',
-        'If any of that is unclear, ask us first. We would rather tell you honestly that a bike will not do what you want than sell you one that ends up parked because you cannot ride it legally where you live.',
-      ] },
-      { h2: 'The bottom line', paras: [
-        'This is general information, not legal advice — your state DMV is the authority, and rules and enforcement vary. What we can promise is that every VoltTrack listing states plainly whether a bike is off-road only or has a street-legal path. We will never tell you a bike is street legal everywhere, because no electric dirt bike is. If you are unsure, [contact us](/contact/) before buying and we will talk you through it honestly.',
-      ] },
-    ],
-    faqs: [
-      { q: 'Are electric dirt bikes street legal?', a: 'Most are not — they are off-road / OHV use only. A few models like the Stark Varg EX, Varg SM and Sur-Ron Light Bee L1e have a street-legal path, but road legality still depends on final certification and your state’s registration rules.' },
-      { q: 'What equipment does a street-legal dirt bike need?', a: 'Generally a compliant VIN, DOT lights, indicators, mirrors, a horn and DOT-rated tyres, plus federal certification and state registration and insurance. Off-road bikes lack several of these by design, which is why they cannot simply be registered for the road.' },
-      { q: 'Is a Sur-Ron street legal?', a: 'Most Sur-Ron models are off-road only. The exception is the Light Bee L1e, built for an L1e homologation path, but road legality still depends on your state. The Light Bee X, Ultra Bee and Storm Bee are not street legal.' },
-      { q: 'Can you register an electric dirt bike for the road?', a: 'Only models built with the correct equipment and certification, and only where your state allows it. For OHV use, most states require green-sticker or OHV registration. Check your state DMV before riding anywhere but private land.' },
-    ],
-    cta: { text: 'Shop street-legal electric dirt bikes', href: '/shop/street-legal-electric-bikes/' },
-  },
-  {
     slug: 'electric-vs-gas-dirt-bike-cost-of-ownership',
     metaTitle: 'Electric vs Gas Dirt Bike: Cost of Ownership',
     title: 'Electric Dirt Bike vs Gas Dirt Bike: Real Cost of Ownership in 2026',
@@ -2016,17 +1979,51 @@ export const GUIDES = [
   },
   {
     slug: 'are-electric-dirt-bikes-street-legal',
-    title: 'Are Electric Dirt Bikes Street Legal? US Guide',
+    title: 'Are Electric Dirt Bikes Street Legal in the USA? Complete 2026 Guide',
+    metaTitle: 'Are Electric Dirt Bikes Street Legal?',
     keyword: 'street legal electric dirt bike',
     metaDesc:
-      'Are electric dirt bikes street legal in the US? Which models have a real registration path, which never will, and what your state actually requires. Honest guide.',
+      'Are electric dirt bikes street legal in the USA? Which models have a real registration path, which never will, and what your state requires. 2026 guide.',
     excerpt: 'Street legal, off-road only, OHV registration — a plain-English guide to US electric dirt bike law.',
-    body: [
-      'The short answer: most electric dirt bikes are not street legal, and no dealer can make one legal for you by saying so. Street legality is a function of federal certification, state registration and equipment — lights, mirrors, horn, DOT tyres and a compliant VIN — not of how the bike looks or how fast it goes.',
-      'Most of what we sell is off-road, private-land and OHV use only. That includes the entire Sur-Ron Light Bee X, Ultra Bee and Storm Bee range, the Talaria Sting and X3 range, the E-Ride Pro line, the Altis bikes and the Segway Xaber 300. These are legal on private land and on OHV routes with the correct registration, and nowhere else.',
-      'A small number of models do have a genuine street-legal path. The Stark Varg EX and Varg SM are built as street-legal enduro and supermoto machines, and the Sur-Ron Light Bee L1e is prepared for L1e-category homologation. Even for these, road legality depends on final certification and your specific state’s rules — it is a path, not a guarantee.',
-      'California riders have an additional layer. Vehicle Code Section 436.1 governs green-sticker and OHV registration expectations for off-highway electric dirt bikes. If you ride in California, understanding it is the difference between a legal ride and an impounded bike, and it applies regardless of what the bike is capable of.',
-      'This is general information, not legal advice. Rules change, enforcement varies by county, and your DMV is the authority. What we can promise is that every VoltTrack listing states plainly whether a bike is off-road only or has a street-legal path — we will never tell you a bike is street legal everywhere, because no electric dirt bike is.',
+    intro: [
+      'Are electric dirt bikes street legal? For most models the honest answer is no — and no dealer can make one legal simply by saying so. Street legality is a function of federal certification, state registration and equipment, not of how a bike looks or how fast it goes.',
+      'Here is the plain-English guide, including the models with a genuine path, all of which live in our [street-legal category](/shop/street-legal-electric-bikes/). If you just want a state-by-state answer, try our [free street-legal checker](/electric-dirt-bike-street-legal-by-state/).',
+    ],
+    sections: [
+      { h2: 'Most electric dirt bikes are off-road only', paras: [
+        'The majority of what we and everyone else sells is off-road, private-land and OHV use only. That includes the Sur-Ron Light Bee, Ultra Bee and Storm Bee, the Talaria Sting and X3 ranges, the E-Ride Pro line and the Segway Xaber 300. These are legal on private land and on OHV routes with the correct registration, and nowhere else.',
+      ] },
+      { h2: 'The models with a street-legal path', paras: [
+        'A small number of models are built for road use. The [Stark Varg EX](/product/stark-varg-ex/) enduro and [Stark Varg SM](/product/stark-varg-sm/) supermoto ship with lights and mirrors and a street-legal path, and the [Sur-Ron Light Bee L1e](/product/sur-ron-light-bee-l1e/) is prepared for L1e-category homologation. Even for these, road legality depends on final certification and your specific state’s rules.',
+      ] },
+      { h2: 'California and Section 436.1', paras: [
+        'California riders have an extra layer. Vehicle Code Section 436.1 governs green-sticker and OHV registration for off-highway electric dirt bikes. It applies regardless of a bike’s performance — a 17 mph kids bike and a 68 mph Storm Bee are both off-highway vehicles under these rules.',
+      ] },
+      { h2: 'What makes a bike street legal?', paras: [
+        'Street legality is not one thing but a checklist. A road-legal motorcycle generally needs a compliant VIN, DOT-approved lights front and rear, indicators or the correct signalling, mirrors, a horn, and DOT-rated tyres — plus federal certification and then state registration and insurance. An off-road bike is missing several of these by design, which is why you cannot simply "register" a dirt bike for the road.',
+        'This is why the models with a genuine path — the Varg EX, Varg SM and Light Bee L1e — are built from the ground up with that equipment. Bolting lights onto an off-road bike does not make it legal, and shops that imply otherwise are not doing you a favour.',
+      ] },
+      { h2: 'OHV registration and where you can ride', paras: [
+        'Even off-road, most states expect some form of registration for use on public OHV land. California’s green-sticker scheme is the best-known, but many states have their own OHV or trail-permit systems. On genuinely private land with the owner’s permission, those requirements typically do not apply, but public trails almost always do. Our [state-by-state checker](/electric-dirt-bike-street-legal-by-state/) covers the specifics for your state.',
+        'The practical takeaway: decide where you actually want to ride before you buy. If it is private land and OHV parks, almost any bike we sell works with the right registration. If it is public roads, you need one of the small number of street-legal-path models, and you need to confirm your state’s specific rules.',
+      ] },
+      { h2: 'Why "street legal" claims are often misleading', paras: [
+        'You will see plenty of listings and forum posts claiming a given bike is "street legal." Treat those claims with caution. Very often they mean the bike is street legal in one specific state under narrow conditions, or that a previous owner managed to register it through a loophole that has since closed. What is legal in one state may be impounded in the next, and enforcement varies even between counties.',
+        'This is why we never use a blanket "street legal" label. A bike either has a genuine, built-in path to registration — the right equipment and certification — or it does not, and even then the final answer depends on your state. Anyone promising a dirt bike is "street legal everywhere" is either mistaken or selling you something.',
+      ] },
+      { h2: 'How to ride legally wherever you are', paras: [
+        'The safe approach is simple. Decide where you want to ride, then confirm the rules for that place before you buy — your state DMV for road use, and your state OHV or parks authority for trail use. For private land with the owner’s permission, you have the most freedom. For public roads, you need a model with a real street-legal path and the correct registration and insurance.',
+        'If any of that is unclear, ask us first. We would rather tell you honestly that a bike will not do what you want than sell you one that ends up parked because you cannot ride it legally where you live.',
+      ] },
+      { h2: 'The bottom line', paras: [
+        'This is general information, not legal advice — your state DMV is the authority, and rules and enforcement vary. What we can promise is that every VoltTrack listing states plainly whether a bike is off-road only or has a street-legal path. We will never tell you a bike is street legal everywhere, because no electric dirt bike is. If you are unsure, [contact us](/contact/) before buying and we will talk you through it honestly.',
+      ] },
+    ],
+    faqs: [
+      { q: 'Are electric dirt bikes street legal?', a: 'Most are not — they are off-road / OHV use only. A few models like the Stark Varg EX, Varg SM and Sur-Ron Light Bee L1e have a street-legal path, but road legality still depends on final certification and your state’s registration rules.' },
+      { q: 'What equipment does a street-legal dirt bike need?', a: 'Generally a compliant VIN, DOT lights, indicators, mirrors, a horn and DOT-rated tyres, plus federal certification and state registration and insurance. Off-road bikes lack several of these by design, which is why they cannot simply be registered for the road.' },
+      { q: 'Is a Sur-Ron street legal?', a: 'Most Sur-Ron models are off-road only. The exception is the Light Bee L1e, built for an L1e homologation path, but road legality still depends on your state. The Light Bee X, Ultra Bee and Storm Bee are not street legal.' },
+      { q: 'Can you register an electric dirt bike for the road?', a: 'Only models built with the correct equipment and certification, and only where your state allows it. For OHV use, most states require green-sticker or OHV registration. Check your state DMV before riding anywhere but private land.' },
     ],
     related: ['stark-varg-ex', 'stark-varg-sm', 'sur-ron-light-bee-l1e'],
   },

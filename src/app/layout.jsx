@@ -1,5 +1,6 @@
 import '@/styles/globals.css'
 import { Inter } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/next'
 import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import ChatHub from '@/components/ChatHub'
@@ -52,6 +53,7 @@ export default function RootLayout({ children }) {
         <Footer />
         <CartDrawer />
         <ChatHub />
+        {SITE.target === 'vercel' ? <Analytics /> : null}
       </body>
     </html>
   )

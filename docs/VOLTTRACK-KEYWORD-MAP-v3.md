@@ -739,7 +739,7 @@ Every individual parts product page must include a "Compatible Bikes" section wi
 | 5 | `/blog/electric-dirt-bike-for-10-year-olds-2026/` | electric dirt bike for 10 year old | 1,300 | 9 | Week 2 |
 | 6 | `/blog/sur-ron-vs-talaria/` | surron vs talaria | 480 | 16 | Week 2 |
 | 7 | `/blog/segway-xaber-300-review/` | segway xaber 300 | — | low | Week 2 |
-| 8 | `/blog/are-electric-dirt-bikes-street-legal-usa/` | street legal electric dirt bike | 2,400 | 9 | Week 3 |
+| 8 | ~~`/blog/are-electric-dirt-bikes-street-legal-usa/`~~ merged → `/guides/are-electric-dirt-bikes-street-legal/` (2026-08-06) | street legal electric dirt bike | 2,400 | 9 | Week 3 |
 | 9 | `/blog/electric-vs-gas-dirt-bike-cost-of-ownership/` | electric vs gas dirt bike | 110 | 3 | Week 3 |
 | 10 | `/blog/e-ride-pro-ss-vs-sur-ron-light-bee-x/` | e ride pro ss 2.0 | 3,600 | 12 | Week 3 |
 

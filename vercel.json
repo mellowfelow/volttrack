@@ -1,7 +1,13 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "trailingSlash": true,
-  "redirects": [],
+  "redirects": [
+    {
+      "source": "/blog/are-electric-dirt-bikes-street-legal-usa/",
+      "destination": "/guides/are-electric-dirt-bikes-street-legal/",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",

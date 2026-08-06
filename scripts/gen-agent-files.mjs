@@ -7,7 +7,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const root = resolve(__dirname, '..')
 const cfg = await import(pathToFileURL(resolve(root, 'src/config/site.js')).href)
-const { SITE, FORMS, CHAT, CATEGORIES, PRODUCTS, BRANDS } = cfg
+const { SITE, FORMS, CHAT, CATEGORIES, PRODUCTS, BRANDS, REDIRECTS } = cfg
 
 const D = SITE.domain
 const base = `https://${D}`
@@ -460,7 +460,11 @@ http://${D}/*  https://${D}/:splat  301!
     // direction to the dashboard creates an infinite redirect loop that breaks
     // /_next/static asset loading (unstyled site). Set the primary domain in
     // Vercel → Domains instead.
-    redirects: [],
+    // Path-level redirects (removed/merged pages) are a separate concern and
+    // come from REDIRECTS in src/config/site.js — never hand-edit them here.
+    redirects: (REDIRECTS || []).map((r) => ({
+      source: r.source, destination: r.destination, permanent: r.permanent !== false,
+    })),
     headers: [
       {
         source: '/(.*)',

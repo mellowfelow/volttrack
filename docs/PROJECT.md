@@ -3,7 +3,7 @@
 **Never published.** Full project record. Rebuilt from the original hand-built site in `_source/`.
 
 ## Identity
-- Domain: volttrack.com
+- Domain: volttrackhub.com (canonical host: www.volttrackhub.com — see SITE.domain)
 - Name: VoltTrack · Tagline: America's Electric Dirt Bike Experts
 - Primary color: #2563eb (cobalt blue)
 - Deploy target: **Vercel** (GitHub → auto-deploy)
@@ -17,13 +17,13 @@ Future, Talaria, STACYC, KTM and Razor. What makes VoltTrack different: the team
 dirt bikes themselves and gives advice based on experience, not commission.
 
 ## Contact & business
-- Email: hello@volttrack.com
+- Email: info@volttrackhub.com · Phone: +1 562 732 4044
 - Support: Mon–Sat 9am–6pm ET · Currency: USD · Region: US (Lower 48)
-- No phone/WhatsApp on file.
 
 ## Forms & chat
-- Forms: Web3Forms (provider), key **pending** (`YOUR-WEB3FORMS-KEY`). Works pre-domain.
-- Chat hub: Tawk.to widget (ID **pending** `PROPERTY_ID/WIDGET_ID`) + email link channel.
+- Forms: Resend (provider), sending from `orders@volttrackhub.com` (Resend-verified domain sender).
+  Set `RESEND_API_KEY` in Vercel env to activate delivery.
+- Chat hub: Tawk.to widget (live) + email + phone link channels.
 
 ## Deploy target rationale
 Vercel chosen per operator instruction. Real API routes available later; higher agent ceiling.
@@ -58,8 +58,22 @@ directories, real social profiles) still TODO — cannot be fixed on-page.
 - Authority: CA Vehicle Code §436.1 + federal/state OHV law.
 
 ## GSC
-- Verification code: pending (add to `SITE.gscVerification`).
+- Verification: live (`SITE.gscVerification` set). Yandex verification also set.
 
-## Migration notes
-- Old `_redirects` (UK→US path 301s, brand slug fixes) — re-add as `redirects` in `vercel.json`
-  generator if those old URLs still receive traffic. Not carried over yet (new domain build).
+## Redirects
+- Path-level 301s (removed/merged pages) live in `REDIRECTS` in `src/config/site.js` and are
+  generated into `vercel.json` by `scripts/gen-agent-files.mjs` — never hand-edit `vercel.json`.
+- 2026-08-06: `/blog/are-electric-dirt-bikes-street-legal-usa/` → merged into
+  `/guides/are-electric-dirt-bikes-street-legal/` (keyword cannibalization fix — both pages
+  targeted "are electric dirt bikes street legal" with near-identical titles/meta). The guide is
+  now the single comprehensive page (full sections + FAQPage schema); the blog post was removed.
+
+## Known issues / open items (2026-08-06 audit)
+- No analytics existed until this date — `@vercel/analytics` now installed in `layout.jsx`.
+- Backlink profile is 100% low-quality nofollow spam (see `docs/BACKLINK-PLAN.md`) — none of the
+  real Tier 1 items (GBP, Bing Places, dealer-locator links, social `sameAs`) are done yet.
+- 152 `/parts/[slug]/` pages: the ~33 with no bike-specific `compat[]` (generic accessories) are
+  now `noindex,follow` — kept linkable/purchasable but out of the index — to stop diluting crawl
+  trust on a young domain. The ~119 with real bike fitment stay indexed.
+- Domain is new (this Next.js rebuild shipped 2026-07-22); GSC showed 0/269 pages indexed as of
+  2026-08-06 despite a successfully-read sitemap — expected for a domain this age, not a bug.

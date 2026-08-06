@@ -175,7 +175,7 @@
 | 5 | Best Electric Dirt Bike for 10 Year Olds | `/blog/electric-dirt-bike-for-10-year-olds-2026/` | 2026-07-24 |
 | 6 | Sur-Ron vs Talaria in 2026 | `/blog/sur-ron-vs-talaria/` | 2026-07-24 |
 | 7 | Segway Xaber 300 Review | `/blog/segway-xaber-300-review/` | 2026-07-24 |
-| 8 | Are Electric Dirt Bikes Street Legal in the USA | `/blog/are-electric-dirt-bikes-street-legal-usa/` | 2026-07-24 |
+| 8 | ~~Are Electric Dirt Bikes Street Legal in the USA~~ — merged 2026-08-06, 301 → `/guides/are-electric-dirt-bikes-street-legal/` (cannibalization fix) | `/blog/are-electric-dirt-bikes-street-legal-usa/` | 2026-07-24 |
 | 9 | Electric Dirt Bike vs Gas Dirt Bike | `/blog/electric-vs-gas-dirt-bike-cost-of-ownership/` | 2026-07-24 |
 | 10 | E-Ride Pro SS 2.0 vs Sur-Ron Light Bee X | `/blog/e-ride-pro-ss-vs-sur-ron-light-bee-x/` | 2026-07-24 |
 
