@@ -1,4 +1,4 @@
-import ThankYou from '@/components/ThankYou'
+import OrderThankYou from '@/components/OrderThankYou'
 import { buildMetadata } from '@/lib/seo'
 
 export const metadata = {
@@ -7,10 +7,5 @@ export const metadata = {
 }
 
 export default function Page() {
-  return (
-    <ThankYou
-      heading="Order enquiry received"
-      body="Thanks for your order enquiry. We’ll confirm stock, shipping and the best payment method for you and follow up shortly."
-    />
-  )
+  return <OrderThankYou />
 }

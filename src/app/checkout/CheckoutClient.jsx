@@ -5,6 +5,17 @@ import { SITE, FORMS } from '@/config/site'
 import { getCart, subscribe, totals, clearCart } from '@/lib/cart'
 
 const THANK_YOU = '/thank-you-order/'
+const ORDER_KEY = 'vt-last-order'
+
+// Human-shareable reference, e.g. VT-20260807-K3F9. No backend/database, so
+// this is a client-generated reference for the customer + the order email —
+// not a guaranteed-unique database ID.
+function genOrderNumber() {
+  const d = new Date()
+  const ymd = `${d.getFullYear()}${String(d.getMonth() + 1).padStart(2, '0')}${String(d.getDate()).padStart(2, '0')}`
+  const rand = Math.random().toString(36).slice(2, 6).toUpperCase()
+  return `VT-${ymd}-${rand}`
+}
 
 export default function CheckoutClient() {
   const formRef = useRef(null)
@@ -12,6 +23,7 @@ export default function CheckoutClient() {
   const [method, setMethod] = useState(SITE.paymentMethods[0].id)
   const [plan, setPlan] = useState(SITE.paymentPlans[0].id)
   const [error, setError] = useState('')
+  const [orderNumber] = useState(genOrderNumber)
 
   useEffect(() => {
     setItems(getCart())
@@ -38,7 +50,25 @@ export default function CheckoutClient() {
     setError('')
     if (!items.length) { setError('Your cart is empty.'); return }
     const form = formRef.current
-    const done = () => { clearCart(); window.location.href = THANK_YOU }
+    const done = () => {
+      // Snapshot the order for the thank-you page before the cart is cleared —
+      // there's no backend/database, so this is the only place that data exists.
+      try {
+        sessionStorage.setItem(ORDER_KEY, JSON.stringify({
+          orderNumber,
+          date: new Date().toISOString(),
+          items: items.map((i) => ({ key: i.key || i.slug, name: i.name, qty: i.qty, price: i.price })),
+          subtotal: t.subtotal,
+          discount: t.discount,
+          total: t.total,
+          paymentMethod: selected.label || method,
+          paymentPlan: selectedPlan.label || plan,
+          installment: payIn4 ? installment : null,
+        }))
+      } catch { /* sessionStorage unavailable (private mode etc.) — thank-you page falls back */ }
+      clearCart()
+      window.location.href = THANK_YOU
+    }
     const fail = () => setError('Something went wrong submitting your order. Please use the chat button or the contact page to reach us.')
 
     if (FORMS.provider === 'web3forms') {
@@ -89,7 +119,8 @@ export default function CheckoutClient() {
         <form ref={formRef} onSubmit={onSubmit}>
           {/* hidden fields: web3forms (direct) or /api/submit (Resend), per FORMS.provider */}
           {FORMS.provider === 'web3forms' ? <input type="hidden" name="access_key" value={FORMS.web3formsKey} /> : null}
-          <input type="hidden" name="subject" value="VoltTrack — New Order" />
+          <input type="hidden" name="subject" value={`VoltTrack — New Order ${orderNumber}`} />
+          <input type="hidden" name="order_number" value={orderNumber} />
           <input type="hidden" name="from_name" value="VoltTrack Checkout" />
           <input type="hidden" name="replyto" value="" />
           <input type="hidden" name="order" value={orderText} />
@@ -161,6 +192,7 @@ export default function CheckoutClient() {
 
             <div className="order-summary">
               <h2 style={{ fontSize: '1.2rem' }}>Order summary</h2>
+              <p className="form-note" style={{ marginTop: -4 }}>Order reference: <strong>{orderNumber}</strong></p>
               {items.map((i) => (
                 <div className="order-row" key={i.key || i.slug}>
                   <span>{i.name} × {i.qty}</span>
