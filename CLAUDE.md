@@ -18,6 +18,9 @@ run `node scripts/gen-agent-files.mjs`.
 
 The domain lives ONLY in `SITE.domain`. To connect/change a domain: edit that one line, rebuild, push.
 
+Removing or merging a page? Add a 301 to `REDIRECTS` in `src/config/site.js` (generated into
+`vercel.json` by the same script) — never leave a dead URL that used to be indexed.
+
 ## Rules
 - `npm run build && npm run crosscheck` must pass before every push.
 - One `<h1>` per page. Meta descriptions ≤158 chars. Titles ≤60.
@@ -26,9 +29,11 @@ The domain lives ONLY in `SITE.domain`. To connect/change a domain: edit that on
 - Never commit node_modules/, .next/, out/. `_source/` is content-only and gitignored — never deploy it.
 
 ## Live placeholders (what breaks while unset)
-- `FORMS.web3formsKey` = `YOUR-WEB3FORMS-KEY` → contact form redirects to thank-you but emails nowhere. Chat/email is the live channel until set.
-- `CHAT` tawk value = `PROPERTY_ID/WIDGET_ID` → Tawk widget not injected until a real ID is set (email link channel still works).
-- `SITE.gscVerification` empty → no GSC meta until a code is added.
+- Forms provider is **`resend`** (not web3forms) — needs `RESEND_API_KEY` set in Vercel env or
+  contact/order/wholesale forms fail to send. Chat/email/phone are the live fallback channels.
+- GSC + Yandex verification and the Tawk chat widget are all live (real values set) — nothing
+  pending there.
+- `SITE.sameAs` is still `[]` — add real social profile URLs when the client supplies them.
 
 ## Brand facts (only these are true — never invent more)
 - US-based authorized dealer, founded 2025, ships Lower 48.
