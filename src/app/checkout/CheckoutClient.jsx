@@ -7,14 +7,12 @@ import { getCart, subscribe, totals, clearCart } from '@/lib/cart'
 const THANK_YOU = '/thank-you-order/'
 const ORDER_KEY = 'vt-last-order'
 
-// Human-shareable reference, e.g. VT-20260807-K3F9. No backend/database, so
+// Short human-shareable reference, e.g. VT-7K3F9X. No backend/database, so
 // this is a client-generated reference for the customer + the order email —
-// not a guaranteed-unique database ID.
+// not a guaranteed-unique database ID (6 chars is plenty for this order volume).
 function genOrderNumber() {
-  const d = new Date()
-  const ymd = `${d.getFullYear()}${String(d.getMonth() + 1).padStart(2, '0')}${String(d.getDate()).padStart(2, '0')}`
-  const rand = Math.random().toString(36).slice(2, 6).toUpperCase()
-  return `VT-${ymd}-${rand}`
+  const rand = Math.random().toString(36).slice(2, 8).toUpperCase()
+  return `VT-${rand}`
 }
 
 export default function CheckoutClient() {
