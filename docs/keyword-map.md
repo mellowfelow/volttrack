@@ -45,7 +45,9 @@ was merged into `/guides/are-electric-dirt-bikes-street-legal/` (301 redirect) â
 blog post on this exact topic, the guide now owns it.
 
 ## Unused clusters (future posts)
-- electric dirt bike maintenance / battery care
 - Sur-Ron upgrades & aftermarket
 - OHV riding areas by state
 - financing an electric dirt bike
+
+## Cluster log
+- 2026-08-08: electric dirt bike maintenance / battery care â†’ published as /blog/electric-dirt-bike-maintenance-and-battery-care/

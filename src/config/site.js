@@ -1285,6 +1285,52 @@ export const POSTS = [
   // Blog model: intro[] + sections[{h2, paras[]}] + optional faqs[] + cta.
   // Paragraphs may contain inline [text](/internal-link) markup (see Prose.jsx).
   {
+    slug: 'electric-dirt-bike-maintenance-and-battery-care',
+    metaTitle: 'Electric Dirt Bike Maintenance & Battery Care',
+    title: 'Electric Dirt Bike Maintenance and Battery Care: The Complete Guide',
+    date: '2026-08-08',
+    primaryKw: 'electric dirt bike maintenance',
+    metaDesc: 'Electric dirt bike maintenance and battery care basics: charging, storage, cleaning and pre-ride checks to keep your Sur-Ron or Talaria running longer.',
+    excerpt: 'Charging habits, storage, cleaning and pre-ride checks that keep your electric dirt bike’s battery — and the rest of the bike — running strong for years.',
+    intro: [
+      'Electric dirt bikes trade the oil changes and spark plugs of a gas machine for a much shorter maintenance list — but the list is not zero, and the item that matters most is the battery. A little regular care in charging, storage and cleaning is the difference between a pack that is still strong in three years and one that is noticeably weaker by next season.',
+      'This guide covers the basics for any lithium battery electric dirt bike we sell — Sur-Ron, Talaria, STACYC, E-Ride Pro and more — plus the quick pre-ride checks that catch small problems before they become expensive ones. For parts to keep on hand, see our [batteries & chargers](/parts-accessories/batteries-chargers/) and [stands & maintenance](/parts-accessories/stands-maintenance/) ranges.',
+    ],
+    sections: [
+      { h2: 'Charging habits that extend battery life', paras: [
+        'Lithium battery packs last longest when they spend most of their life between about 20% and 80% charge, rather than sitting at 100% or running down to empty. Charge after most rides rather than waiting until the pack is flat, and unplug once it hits full rather than trickle-charging overnight out of habit.',
+        'Always use the charger that came with the bike, or a replacement rated for the same voltage and chemistry — see our [batteries & chargers](/parts-accessories/batteries-chargers/) range for OEM and upgrade options. Charge in a dry, ventilated space, and let a pack cool to room temperature after a hard ride before plugging it in.',
+      ] },
+      { h2: 'Storing your bike for a week, a month or the off-season', paras: [
+        'For short breaks of a week or two, a battery left at roughly 50-60% charge holds up better than one left full or empty. Store the bike somewhere dry and temperature-stable — a hot garage or a freezing shed both age a lithium pack faster than a moderate indoor space.',
+        'Going longer than a month without riding? Check the charge level every few weeks and top up if it has drifted low; a pack left fully discharged for an extended period can lose capacity permanently. If the bike has a removable battery, like most [Sur-Ron](/brands/sur-ron/) models, storing the pack indoors separately from the bike is the safest option in freezing weather.',
+      ] },
+      { h2: 'Cleaning without damaging the electronics', paras: [
+        'Mud and dust are inevitable, but a pressure washer aimed directly at the battery box, controller or connectors is one of the most common ways riders cause electrical faults. Rinse with a garden hose or a low-pressure setting, keep the nozzle away from seams and connectors, and dry the bike before putting it away.',
+        'A soft brush handles caked-on mud around the motor and swingarm better than blasting it with water. Wipe the battery case and charging port dry, and never charge a bike that is still wet from washing.',
+      ] },
+      { h2: 'Tyres, brakes and the pre-ride five-minute check', paras: [
+        'Before any ride, check tyre pressure — electric dirt bikes are sensitive to it, since too low risks a pinch flat and too high costs grip — squeeze the brake levers to confirm they feel firm, and give the axle and swingarm bolts a visual check for anything obviously loose.',
+        'Chain tension on chain-drive models and belt condition on belt-drive models are worth a quick look too — a chain that has stretched noticeably or a belt showing cracking should be addressed before it fails mid-ride. Keep spares on hand from our [stands & maintenance](/parts-accessories/stands-maintenance/) range so a five-minute check does not turn into a wasted ride day.',
+      ] },
+      { h2: 'Battery care mistakes to avoid', paras: [
+        'The habits that shorten a pack’s life fastest: leaving it on the charger for days at a time, storing it fully drained over winter, charging immediately after a ride while it is still hot, and using a charger not rated for the pack’s voltage. Any one of these on its own will not ruin a battery overnight, but the effects compound over a season.',
+        'If you notice range dropping off noticeably faster than it used to, or the pack getting unusually warm on a normal charge, that is worth investigating rather than ignoring — small changes are often the first sign of a cell going bad.',
+      ] },
+      { h2: 'When it is time for a new or upgraded pack', paras: [
+        'Every lithium battery loses some capacity over time; it is normal to see meaningfully less range after a couple of hundred charge cycles. When a stock pack is no longer keeping up, an OEM replacement gets you back to original spec, while an upgrade pack from a brand like Chi Battery Systems, eWatt or EBMX can add both range and power — see the full [batteries & chargers](/parts-accessories/batteries-chargers/) range for what fits your bike.',
+        'And if running costs are part of why you went electric in the first place, keeping the battery healthy is most of the game — we cover the bigger financial picture in our [electric vs gas cost of ownership guide](/blog/electric-vs-gas-dirt-bike-cost-of-ownership/).',
+      ] },
+    ],
+    faqs: [
+      { q: 'How often should I charge my electric dirt bike battery?', a: 'After most rides rather than letting it run flat, and unplug once it reaches full. Lithium packs last longest when kept mostly between 20% and 80% charge rather than sitting at empty or 100% for long periods.' },
+      { q: 'Can I pressure wash my electric dirt bike?', a: 'Avoid aiming a pressure washer directly at the battery box, controller or connectors — this is one of the most common causes of electrical faults. Use a garden hose or low-pressure setting instead, and dry the bike fully before charging.' },
+      { q: 'What charge level should I store the battery at?', a: 'For breaks of a few weeks, store the pack at roughly 50-60% charge rather than full or empty. For longer storage, check the level every few weeks and top up if it has drifted low, since leaving a lithium pack fully discharged for an extended period can cause permanent capacity loss.' },
+      { q: 'How do I know when my battery needs replacing?', a: 'Watch for noticeably reduced range compared to when the bike was new, or the pack getting unusually warm during a normal charge. Some capacity loss over a couple hundred charge cycles is normal; a sudden or sharp drop is worth investigating.' },
+    ],
+    cta: { text: 'Shop batteries & chargers', href: '/parts-accessories/batteries-chargers/' },
+  },
+  {
     slug: 'stark-varg-factory-edition-2026',
     title: 'Stark Varg MX and EX Factory Editions: First Look at Stark’s Most Powerful Bikes Yet',
     metaTitle: 'Stark Varg Factory Edition: First Look',
