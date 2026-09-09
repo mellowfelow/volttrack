@@ -12,9 +12,17 @@ export const encEmail = (e) =>
 // AI unfurlers don't render it).
 export const OG_DEFAULT = url('/og/default.png')
 
+// Trim to <=158 chars on a word boundary (never mid-word), keeping trailing
+// punctuation tidy. A description written within budget passes through untouched.
+function clampDesc(s) {
+  const t = (s || '').trim()
+  if (t.length <= 158) return t
+  return t.slice(0, 158).replace(/\s+\S*$/, '').replace(/[\s,;:—-]+$/, '') + '…'
+}
+
 export function buildMetadata({ title, description, path = '/', type = 'website', image, robots, absoluteTitle }) {
   const canonical = url(path)
-  const desc = (description || SITE.description).slice(0, 158)
+  const desc = clampDesc(description || SITE.description)
   const ogImage = image || OG_DEFAULT
   // Next's typed metadata only accepts a subset of OG types; map product→website.
   const ogType = type === 'product' ? 'website' : type

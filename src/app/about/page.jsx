@@ -5,7 +5,7 @@ import { buildMetadata, JsonLd, url } from '@/lib/seo'
 
 export const metadata = buildMetadata({
   title: 'About Us — Electric Dirt Bike Experts',
-  description: 'VoltTrack is a US-based authorized dealer for the world’s leading electric dirt bike brands, founded by off-road riders to give honest advice and real aftercare.',
+  description: 'VoltTrack is a US-based authorized dealer for Sur-Ron, Stark, Talaria, STACYC and KTM — founded by off-road riders to give honest advice and real aftercare.',
   path: '/about/',
 })
 
