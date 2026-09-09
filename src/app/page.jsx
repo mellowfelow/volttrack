@@ -10,13 +10,15 @@ import { JsonLd, url, buildMetadata } from '@/lib/seo'
 export const metadata = buildMetadata({
   title: 'Electric Dirt Bikes USA — Sur-Ron, Stark & More | VoltTrack',
   description:
-    'Shop electric dirt bikes in the USA — Sur-Ron, Stark Varg, Talaria, STACYC & more. Adult, youth & kids models with expert advice, fast US shipping & financing.',
+    'Shop electric dirt bikes in the USA — Sur-Ron, Stark Varg, Talaria, STACYC & more. Adult, youth & kids models with expert advice and fast US shipping.',
   path: '/',
 })
 
 export default function Home() {
   const featured = PRODUCTS.filter((p) => p.badge).slice(0, 8)
   const range = priceRange(PRODUCTS)
+  // AggregateOffer describes the priced catalogue; enquiry-only bikes have no price.
+  const pricedCount = PRODUCTS.filter((p) => !p.enquire).length
 
   const orgLd = {
     '@context': 'https://schema.org',
@@ -37,7 +39,7 @@ export default function Home() {
       priceCurrency: SITE.currency,
       lowPrice: range.low,
       highPrice: range.high,
-      offerCount: PRODUCTS.length,
+      offerCount: pricedCount,
     },
   }
   const websiteLd = {

@@ -2,6 +2,7 @@
   "name": "volttrack",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "prebuild": "node scripts/gen-agent-files.mjs",

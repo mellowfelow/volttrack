@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { SITE } from '@/config/site'
+import { SITE, BRANDS } from '@/config/site'
 import { RevealEmail, RevealPhone } from '@/components/ContactReveal'
 
 export default function Footer() {
@@ -25,18 +25,24 @@ export default function Footer() {
             <Link href="/shop/youth-electric-dirt-bikes/">Youth &amp; Kids</Link>
             <Link href="/shop/electric-motocross-bikes/">Motocross</Link>
             <Link href="/shop/electric-trail-bikes/">Trail &amp; Enduro</Link>
+            <Link href="/shop/electric-pit-bikes/">Pit Bikes</Link>
             <Link href="/shop/street-legal-electric-bikes/">Street Legal</Link>
-            <Link href="/brands/">All Brands</Link>
+            <Link href="/shop/cheap-electric-dirt-bikes/">Cheap Electric Bikes</Link>
           </div>
           <div>
-            <h4>Learn</h4>
-            <Link href="/parts-accessories/batteries-chargers/">Batteries &amp; Chargers</Link>
-            <Link href="/parts-accessories/graphics-kits/">Graphics Kits</Link>
-            <Link href="/electric-dirt-bike-street-legal-by-state/">Street-Legal Checker</Link>
+            <h4>Brands</h4>
+            {BRANDS.map((b) => (
+              <Link key={b.slug} href={`/brands/${b.slug}/`}>{b.name}</Link>
+            ))}
+          </div>
+          <div>
+            <h4>Learn &amp; Parts</h4>
             <Link href="/guides/">Buying Guides</Link>
             <Link href="/blog/">Blog</Link>
             <Link href="/faq/">FAQ</Link>
-            <Link href="/shop/">Shop All</Link>
+            <Link href="/electric-dirt-bike-street-legal-by-state/">Street-Legal Checker</Link>
+            <Link href="/parts-accessories/">Parts &amp; Accessories</Link>
+            <Link href="/parts-accessories/batteries-chargers/">Batteries &amp; Chargers</Link>
           </div>
           <div>
             <h4>Company</h4>

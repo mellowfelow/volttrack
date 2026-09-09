@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 import Link from 'next/link'
-import { SITE, CATEGORIES } from '@/config/site'
+import { SITE, CATEGORIES, BRANDS } from '@/config/site'
 import CartCount from '@/components/CartCount'
 import AnnounceBar from '@/components/AnnounceBar'
 
@@ -14,8 +14,23 @@ export default function Nav() {
         <nav className="nav" aria-label="Primary">
           <Link href="/" className="brand-logo">⚡ {SITE.name}</Link>
           <div className="nav-links">
-            <Link href="/shop/">Shop</Link>
-            <Link href="/brands/">Brands</Link>
+            <div className="nav-item">
+              <Link href="/shop/">Shop</Link>
+              <div className="nav-menu" role="menu" aria-label="Shop by category">
+                {CATEGORIES.map((c) => (
+                  <Link key={c.slug} href={`/shop/${c.slug}/`} role="menuitem">{c.name}</Link>
+                ))}
+                <Link href="/shop/" className="nav-menu-all" role="menuitem">All bikes →</Link>
+              </div>
+            </div>
+            <div className="nav-item">
+              <Link href="/brands/">Brands</Link>
+              <div className="nav-menu nav-menu--wide" role="menu" aria-label="Shop by brand">
+                {BRANDS.map((b) => (
+                  <Link key={b.slug} href={`/brands/${b.slug}/`} role="menuitem">{b.name}</Link>
+                ))}
+              </div>
+            </div>
             <Link href="/parts-accessories/">Parts</Link>
             <Link href="/guides/">Guides</Link>
             <Link href="/blog/">Blog</Link>

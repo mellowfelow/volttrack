@@ -92,8 +92,8 @@ Sitemap: ${base}/sitemap.xml
 
 // -------------------------------------------------------------------- llms.txt
 const catLines = CATEGORIES.map((c) => {
-  const items = PRODUCTS.filter((p) => p.category === c.slug)
-  const prices = items.map((p) => p.price)
+  // Exclude enquiry-only bikes (price 0) so the range never reports a $0 low.
+  const prices = PRODUCTS.filter((p) => p.category === c.slug && !p.enquire).map((p) => p.price)
   const rng = prices.length ? ` ($${Math.min(...prices)}–$${Math.max(...prices)})` : ''
   return `- [${c.name}${rng}](${base}/shop/${c.slug}/): ${c.short || c.name}`
 }).join('\n')
@@ -405,11 +405,12 @@ w(`${indexNowKey}.txt`, indexNowKey + '\n')
 // Tawk.to loads scripts, stylesheets, fonts, the chat iframe, images and
 // notification sounds across *.tawk.to (and bare tawk.to) — all must be allowed
 // or the chat widget silently fails to render.
+// Fonts are self-hosted via next/font — no Google Fonts hosts needed in the CSP.
 const CSP =
   "default-src 'self'; " +
   "script-src 'self' 'unsafe-inline' https://embed.tawk.to https://*.tawk.to https://tawk.to; " +
-  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://embed.tawk.to https://*.tawk.to; " +
-  "font-src 'self' https://fonts.gstatic.com https://embed.tawk.to https://*.tawk.to; " +
+  "style-src 'self' 'unsafe-inline' https://embed.tawk.to https://*.tawk.to; " +
+  "font-src 'self' https://embed.tawk.to https://*.tawk.to; " +
   "img-src 'self' data: https:; " +
   `connect-src 'self' ${FORMS_CONNECT} https://*.tawk.to wss://*.tawk.to https://tawk.to; ` +
   "frame-src https://*.tawk.to https://tawk.to; " +
@@ -437,6 +438,7 @@ if (isStatic) {
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: geolocation=(), microphone=(), camera=()
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
   Content-Security-Policy: ${CSP}
   Link: ${LINK}
 
@@ -474,6 +476,7 @@ http://${D}/*  https://${D}/:splat  301!
           { key: 'X-Content-Type-Options', value: 'nosniff' },
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
           { key: 'Permissions-Policy', value: 'geolocation=(), microphone=(), camera=()' },
+          { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' },
           { key: 'Content-Security-Policy', value: CSP },
           { key: 'Link', value: LINK },
         ],
