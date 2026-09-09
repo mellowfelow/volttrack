@@ -2,9 +2,10 @@
 import { useState } from 'react'
 import { SITE } from '@/config/site'
 
-// Click-to-reveal contact. Shows "Email us" / "Call us"; on click the real
-// address / number appears as a mailto:/tel: link. Keeps the address out of the
-// server-rendered HTML (scrape protection) — it only enters the DOM on click.
+// Email stays click-to-reveal (spam-harvest protection — it only enters the DOM
+// on click). The phone number is rendered directly as a crawlable tel: link: it
+// is a local-SEO / agent signal, is already in the Organization JSON-LD, and is
+// not a meaningful spam target.
 
 export function RevealEmail({ className = '' }) {
   const [shown, setShown] = useState(false)
@@ -23,17 +24,9 @@ export function RevealEmail({ className = '' }) {
 }
 
 export function RevealPhone({ className = '' }) {
-  const [shown, setShown] = useState(false)
-  if (shown) {
-    return (
-      <a className={className} href={`tel:${SITE.phone}`}>
-        <span aria-hidden="true">📞</span> {SITE.phoneDisplay}
-      </a>
-    )
-  }
   return (
-    <button type="button" className={className} onClick={() => setShown(true)} aria-label="Show phone number">
-      <span aria-hidden="true">📞</span> Call us
-    </button>
+    <a className={className} href={`tel:${SITE.phone}`}>
+      <span aria-hidden="true">📞</span> {SITE.phoneDisplay}
+    </a>
   )
 }

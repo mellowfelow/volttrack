@@ -59,6 +59,15 @@ export default function CategoryPage({ params }) {
               <ProductFilters items={items} />
               <p className="form-note" style={{ marginTop: 20 }}>{PRICE_DISCLAIMER}</p>
 
+              {c.slug === 'street-legal-electric-bikes' ? (
+                <p style={{ marginTop: 4 }}>
+                  Not sure what your state allows?{' '}
+                  <Link href="/electric-dirt-bike-street-legal-by-state/">Check the rules for your state</Link>
+                  {' '}or read the full{' '}
+                  <Link href="/guides/are-electric-dirt-bikes-street-legal/">electric dirt bike street-legal guide</Link>.
+                </p>
+              ) : null}
+
               <div className="section-soft" style={{ marginTop: 40, padding: 24, borderRadius: 'var(--radius)' }}>
                 <h2 style={{ marginTop: 0 }}>Popular in {c.name.toLowerCase()}</h2>
                 <ul>

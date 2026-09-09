@@ -21,9 +21,9 @@ export default function OrderThankYou() {
     setChecked(true)
   }, [])
 
-  if (!checked) return null
-
-  if (!order) {
+  // Before hydration (and on a direct visit with no stored order) render the
+  // plain confirmation — this keeps a real <h1> in the server-rendered HTML.
+  if (!checked || !order) {
     return (
       <section className="section" style={{ paddingTop: 40 }}>
         <div className="container prose" style={{ textAlign: 'center' }}>

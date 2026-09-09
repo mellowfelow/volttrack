@@ -154,6 +154,8 @@ export const CATEGORIES = [
   {
     slug: 'adult-electric-dirt-bikes',
     name: 'Adult Electric Dirt Bikes',
+    metaDesc:
+      'Adult electric dirt bikes from Sur-Ron, Talaria, Stark and KTM — trail to race-spec. Expert advice, financing and free Lower 48 shipping. Off-road / OHV use.',
     short: 'Full-performance electric dirt bikes for adult riders.',
     description:
       'Full-size, full-performance electric dirt bikes for adult riders — from trail-ready Sur-Ron builds to race-spec Stark and Talaria machines. Off-road use unless certified street-legal.',
@@ -163,6 +165,8 @@ export const CATEGORIES = [
   {
     slug: 'youth-electric-dirt-bikes',
     name: 'Youth & Kids Electric Dirt Bikes',
+    metaDesc:
+      'Youth and kids electric dirt bikes from $229 — STACYC, Razor, KTM SX-E and GasGas. Age-matched power and ride-mode limits. Free Lower 48 shipping.',
     short: 'Age-appropriate electric dirt bikes for kids and teens.',
     description:
       'Right-sized electric dirt bikes for kids and teens, with adjustable power and ride modes for a safe way to learn. STACYC and Razor lead our youth lineup.',
@@ -172,6 +176,8 @@ export const CATEGORIES = [
   {
     slug: 'electric-motocross-bikes',
     name: 'Electric Motocross Bikes',
+    metaDesc:
+      'Electric motocross bikes built for closed-course racing — Stark Varg, Sur-Ron Storm Bee, Talaria XXX. Full power and suspension travel. Free US shipping.',
     short: 'Race-ready electric motocross machines.',
     description:
       'Track-focused electric motocross bikes built for closed-course racing — high power, full suspension travel and competition geometry. Off-road / closed-course use only.',
@@ -181,6 +187,8 @@ export const CATEGORIES = [
   {
     slug: 'electric-trail-bikes',
     name: 'Electric Trail Bikes',
+    metaDesc:
+      'Electric trail and enduro bikes tuned for range on OHV trails — Talaria Komodo, Sur-Ron Light Bee, Zero. Some with a street-legal path. Free US shipping.',
     short: 'Trail and enduro electric bikes for the backcountry.',
     description:
       'Electric trail and enduro bikes tuned for range and rideability on OHV trails and private land. Some models offer street-legal certification — check each listing.',
@@ -190,6 +198,8 @@ export const CATEGORIES = [
   {
     slug: 'electric-pit-bikes',
     name: 'Electric Pit Bikes',
+    metaDesc:
+      'Compact electric pit bikes for the yard and pit lane — Altis Delta, E-Ride Pro Mini and more. Playful power for newer riders. Free Lower 48 shipping.',
     short: 'Compact electric pit bikes for the yard and pit lane.',
     description:
       'Compact, playful electric pit bikes — perfect for the pit lane, the yard and newer riders building confidence. Off-road use only.',
@@ -209,15 +219,20 @@ export const CATEGORIES = [
     image: 'pit-bikes.webp',
   },
   {
+    // Transactional page: "buy a street-legal electric dirt bike". The guide
+    // /guides/are-electric-dirt-bikes-street-legal/ owns the informational query,
+    // and /electric-dirt-bike-street-legal-by-state/ owns the by-state checker —
+    // GSC flagged this page as a duplicate of one of them (2026-09), so the H1,
+    // title and intro here are deliberately shopping-intent, not "are they legal".
     slug: 'street-legal-electric-bikes',
     name: 'Street Legal Electric Dirt Bikes',
-    h1: 'Street Legal Electric Dirt Bikes',
+    h1: 'Street Legal Electric Dirt Bikes for Sale',
     metaDesc:
-      'Street legal electric dirt bikes with a real registration path — Sur-Ron L1e, Stark Varg EX and SM. Honest legality advice from an authorized US dealer.',
+      'Shop street legal electric dirt bikes with a real registration path — Sur-Ron Light Bee L1e, Stark Varg EX and SM. Authorized US dealer, free Lower 48 shipping.',
     short: 'Electric dirt bikes with a road-legal certification path.',
     description:
-      'Electric dirt bikes with a route to street-legal registration in the US — from the L1e-homologated Sur-Ron Light Bee to the street-legal Stark Varg EX and SM. Street legality varies by state and requires the correct certification and registration; most electric dirt bikes remain off-road / OHV only. California riders: green-sticker / OHV rules under Vehicle Code Section 436.1 apply. Confirm your state DMV requirements with us before riding on public roads.',
-    keyword: 'street legal electric dirt bike',
+      'The electric dirt bikes VoltTrack sells with a route to street-legal registration in the US — the L1e-homologated Sur-Ron Light Bee and the street-legal Stark Varg EX and SM. Every other bike we sell is off-road / OHV only. Street legality still varies by state and needs the correct certification and registration; use our free street-legal checker to see the rules where you ride, and confirm DMV requirements with us before any public-road use. California riders: green-sticker / OHV rules under Vehicle Code Section 436.1 apply.',
+    keyword: 'street legal electric dirt bike for sale',
     image: 'enduro.webp',
   },
 ]

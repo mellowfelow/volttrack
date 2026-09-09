@@ -29,6 +29,14 @@ export default function Home() {
     foundingDate: SITE.foundingYear,
     foundingLocation: SITE.foundingLocation,
     address: { '@type': 'PostalAddress', addressCountry: 'US' },
+    telephone: SITE.phone,
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'customer service',
+      telephone: SITE.phone,
+      areaServed: 'US',
+      availableLanguage: 'English',
+    },
     areaServed: SITE.areaServed,
     numberOfItems: PRODUCTS.length,
     knowsAbout: ['electric dirt bikes', 'Sur-Ron', 'Stark Future', 'Talaria', 'STACYC', 'electric motocross', 'OHV law'],
@@ -101,6 +109,7 @@ export default function Home() {
                     width={1280}
                     height={960}
                     loading="lazy"
+                    sizes="(max-width:600px) 50vw, (max-width:900px) 50vw, 33vw"
                   />
                   <span className="tile-overlay">
                     <h3>{c.name}</h3>
@@ -129,8 +138,8 @@ export default function Home() {
           </div>
           <Reveal>
             <div className="grid cols-4">
-              {featured.map((p, i) => (
-                <ProductCard key={p.slug} p={p} eager={i === 0} />
+              {featured.map((p) => (
+                <ProductCard key={p.slug} p={p} />
               ))}
             </div>
           </Reveal>

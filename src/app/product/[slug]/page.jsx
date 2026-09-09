@@ -61,14 +61,38 @@ export default function ProductPage({ params }) {
     ...productsInCategory(p.category).filter((x) => x.slug !== p.slug && x.brand !== p.brand),
   ].filter((x, i, a) => a.findIndex((y) => y.slug === x.slug) === i).slice(0, 4)
 
+  // ~1 year out — a concrete future date keeps Merchant listings valid without
+  // implying the price is fixed (the visible copy still says "prices are estimates").
+  const priceValidUntil = `${new Date().getFullYear() + 1}-12-31`
+  const shippingDetails = {
+    '@type': 'OfferShippingDetails',
+    shippingRate: { '@type': 'MonetaryAmount', value: 0, currency: SITE.currency },
+    shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'US' },
+    deliveryTime: {
+      '@type': 'ShippingDeliveryTime',
+      handlingTime: { '@type': 'QuantitativeValue', minValue: 1, maxValue: 3, unitCode: 'DAY' },
+      transitTime: { '@type': 'QuantitativeValue', minValue: 3, maxValue: 10, unitCode: 'DAY' },
+    },
+  }
+  const returnPolicy = {
+    '@type': 'MerchantReturnPolicy',
+    applicableCountry: 'US',
+    returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
+    merchantReturnDays: 30,
+    returnMethod: 'https://schema.org/ReturnByMail',
+    returnFees: 'https://schema.org/FreeReturn',
+  }
   const offer = (price, name) => ({
     '@type': 'Offer',
     ...(name ? { name } : {}),
     priceCurrency: SITE.currency,
     price,
+    priceValidUntil,
     availability: 'https://schema.org/InStock',
     url: url(`/product/${p.slug}/`),
     seller: { '@type': 'Organization', name: SITE.name },
+    shippingDetails,
+    hasMerchantReturnPolicy: returnPolicy,
   })
 
   const ld = {
@@ -76,7 +100,7 @@ export default function ProductPage({ params }) {
     '@type': 'Product',
     name: p.name,
     description: p.description,
-    image: [url(img)],
+    image: p.images && p.images.length ? p.images.map((f) => url(`/images/${f}`)) : [url(img)],
     brand: { '@type': 'Brand', name: brandName(p.brand) },
     category: cat ? cat.name : undefined,
     ...(p.specs && {
@@ -125,7 +149,7 @@ export default function ProductPage({ params }) {
         <div className="container">
           <div className="grid cols-2" style={{ alignItems: 'start' }}>
             <div className="product-frame" style={{ borderRadius: 'var(--radius)', border: '1px solid var(--line)' }}>
-              <SmartImage src={img} alt={`${p.name} electric dirt bike`} width={1600} height={1200} loading="eager" />
+              <SmartImage src={img} alt={`${p.name} electric dirt bike`} width={1600} height={1200} loading="eager" sizes="(max-width:900px) 100vw, 600px" />
             </div>
             <div>
               {p.badge ? <span className="badge">{p.badge}</span> : null}

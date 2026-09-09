@@ -71,7 +71,7 @@ export default function CartDrawer() {
                 return (
                   <div className="drawer-row" key={key}>
                     <Link href={`/product/${i.slug}/`} className="drawer-thumb" onClick={close} aria-label={i.name}>
-                      <SmartImage src={img} alt={i.name} width={120} height={90} loading="lazy" />
+                      <SmartImage src={img} alt={i.name} width={120} height={90} loading="lazy" sizes="120px" />
                     </Link>
                     <div className="drawer-info">
                       <Link href={`/product/${i.slug}/`} className="drawer-name" onClick={close}>{i.name}</Link>

@@ -5,7 +5,7 @@ import ProductCard from '@/components/ProductCard'
 import Breadcrumbs from '@/components/Breadcrumbs'
 import FaqAccordion from '@/components/FaqAccordion'
 import Prose from '@/components/Prose'
-import { buildMetadata, JsonLd, url } from '@/lib/seo'
+import { buildMetadata, JsonLd, url, OG_DEFAULT } from '@/lib/seo'
 
 export function generateStaticParams() {
   return GUIDES.map((g) => ({ slug: g.slug }))
@@ -34,8 +34,15 @@ export default function GuidePage({ params }) {
     headline: g.title,
     name: g.title,
     description: g.metaDesc || g.excerpt,
-    author: { '@type': 'Organization', name: 'VoltTrack' },
-    publisher: { '@type': 'Organization', name: 'VoltTrack' },
+    image: [g.image ? url(`/images/${g.image}`) : OG_DEFAULT],
+    author: { '@type': 'Organization', name: 'VoltTrack', url: url('/') },
+    publisher: {
+      '@type': 'Organization',
+      name: 'VoltTrack',
+      logo: { '@type': 'ImageObject', url: url('/images/logo.png'), width: 512, height: 512 },
+    },
+    ...(g.date ? { datePublished: g.date } : {}),
+    ...(g.updated || g.date ? { dateModified: g.updated || g.date } : {}),
     mainEntityOfPage: url(`/guides/${g.slug}/`),
   }
   const faqLd = g.faqs && g.faqs.length ? {

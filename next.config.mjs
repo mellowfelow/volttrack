@@ -6,7 +6,9 @@ const isStatic = process.env.TARGET === 'static'
 export default {
   output: isStatic ? 'export' : undefined,
   trailingSlash: true,
-  images: { unoptimized: true },
+  // Vercel: optimise + serve AVIF/WebP at responsive widths (SmartImage → next/image).
+  // Static export: the optimiser can't run, so serve the pre-optimised files as-is.
+  images: isStatic ? { unoptimized: true } : { formats: ['image/avif', 'image/webp'] },
   // 301s for discontinued models → their successor. Driven by DISCONTINUED in
   // src/config/site.js; never hand-maintain this list. Not applied on the static
   // export target, which serves the landing page at the same URL instead.

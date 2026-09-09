@@ -6,9 +6,9 @@ import { buildMetadata, JsonLd, url } from '@/lib/seo'
 const PATH = '/electric-dirt-bike-street-legal-by-state/'
 
 export const metadata = buildMetadata({
-  title: 'Street-Legal Electric Dirt Bikes by State',
+  title: 'Electric Dirt Bike Street-Legal Checker — by US State',
   description:
-    'Free tool: check how electric dirt bike street-legal rules work in your US state, which models can be road-registered, and where to confirm official rules.',
+    'Free checker: pick your US state to see how electric dirt bike street-legal and OHV rules work there, which models can be road-registered, and the official rules.',
   path: PATH,
   type: 'article',
 })
@@ -33,11 +33,12 @@ export default function StreetLegalByStatePage() {
       <JsonLd data={ld} />
       <section className="section" style={{ paddingTop: 8 }}>
         <div className="container">
-          <h1>Are Electric Dirt Bikes Street Legal? State-by-State Checker</h1>
+          <h1>Electric Dirt Bike Street-Legal Checker: Rules by US State</h1>
           <p className="lead">
-            Whether an electric dirt bike can be ridden on the road depends on the model and on your
-            state. Pick your state below for a plain-English rundown, the VoltTrack models that offer a
-            street-legal path, and a link to your state&rsquo;s official rules.
+            Pick your state below for a plain-English rundown of its electric dirt bike and OHV rules,
+            the VoltTrack models that offer a street-legal path there, and a link to the state&rsquo;s
+            official rules. For the background, see the{' '}
+            <Link href="/guides/are-electric-dirt-bikes-street-legal/">full street-legal guide</Link>.
           </p>
 
           <StreetLegalChecker />

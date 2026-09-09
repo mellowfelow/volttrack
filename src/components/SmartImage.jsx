@@ -1,18 +1,38 @@
-// AVIF → WebP <picture> wrapper (v9.1 performance: AVIF+WebP for every raster).
-// SVGs and non-webp sources pass through as a plain <img>. width/height always
-// set so image CLS contribution is 0.
-export default function SmartImage({ src, alt, width, height, loading = 'lazy', className, sizes }) {
-  const isWebp = typeof src === 'string' && src.endsWith('.webp')
-  const common = { alt, width, height, loading, className, decoding: 'async' }
-  if (!isWebp) {
-    return <img src={src} {...common} />
+import Image from 'next/image'
+
+// Responsive image wrapper.
+//  - Vercel: next/image serves AVIF + WebP at device-appropriate widths from a
+//    responsive srcset (the `sizes` prop tells it the rendered width per
+//    breakpoint — always pass a realistic one for anything below full-bleed).
+//  - Static export (next.config sets images.unoptimized): next/image emits a
+//    plain <img> with the original file; the AVIF sibling from scripts/images.mjs
+//    is still on disk for a future <picture> pass if Cloudflare becomes the target.
+//  - Non-raster sources (the shared SVG placeholder) bypass next/image.
+// width/height are always set so the layout box is reserved (CLS = 0).
+export default function SmartImage({
+  src,
+  alt,
+  width,
+  height,
+  loading = 'lazy',
+  className,
+  sizes = '100vw',
+}) {
+  const isRaster = typeof src === 'string' && /\.(webp|avif|jpe?g|png)$/i.test(src)
+  if (!isRaster) {
+    // eslint-disable-next-line @next/next/no-img-element
+    return <img src={src} alt={alt} width={width} height={height} loading={loading} className={className} decoding="async" />
   }
-  const avif = src.replace(/\.webp$/, '.avif')
   return (
-    <picture>
-      <source srcSet={avif} type="image/avif" sizes={sizes} />
-      <source srcSet={src} type="image/webp" sizes={sizes} />
-      <img src={src} {...common} />
-    </picture>
+    <Image
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+      sizes={sizes}
+      className={className}
+      priority={loading === 'eager'}
+      loading={loading === 'eager' ? undefined : 'lazy'}
+    />
   )
 }

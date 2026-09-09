@@ -37,7 +37,7 @@ export default function CartClient() {
                 return (
                   <div className="cart-row" key={key}>
                     <Link href={`/product/${i.slug}/`} className="cart-thumb" aria-label={i.name}>
-                      <SmartImage src={img} alt={`${i.name} electric dirt bike`} width={160} height={120} loading="lazy" />
+                      <SmartImage src={img} alt={`${i.name} electric dirt bike`} width={160} height={120} loading="lazy" sizes="160px" />
                     </Link>
                     <div className="cart-info">
                       <Link href={`/product/${i.slug}/`} className="cart-name">{i.name}</Link>

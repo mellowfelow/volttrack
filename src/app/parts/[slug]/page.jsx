@@ -77,7 +77,7 @@ export default function PartPage({ params }) {
         <div className="container">
           <div className="grid cols-2" style={{ alignItems: 'start' }}>
             <div className="product-frame" style={{ borderRadius: 'var(--radius)', border: '1px solid var(--line)' }}>
-              <SmartImage src={img} alt={`${p.name}`} width={1600} height={1200} loading="eager" />
+              <SmartImage src={img} alt={`${p.name}`} width={1600} height={1200} loading="eager" sizes="(max-width:900px) 100vw, 600px" />
             </div>
             <div>
               <p className="muted" style={{ fontWeight: 600, margin: 0 }}>

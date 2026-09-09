@@ -21,6 +21,7 @@ export default function ProductCard({ p, eager = false, part = false }) {
             width={1600}
             height={1200}
             loading={eager ? 'eager' : 'lazy'}
+            sizes="(max-width:600px) 100vw, (max-width:900px) 50vw, 25vw"
           />
         </div>
       </Link>

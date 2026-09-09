@@ -5,11 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/gen-agent-files.mjs",
+    "prebuild": "node scripts/gen-og.mjs && node scripts/gen-agent-files.mjs",
     "build": "next build",
-    "build:static": "cross-env TARGET=static node scripts/gen-agent-files.mjs && cross-env TARGET=static next build",
+    "build:static": "node scripts/gen-og.mjs && cross-env TARGET=static node scripts/gen-agent-files.mjs && cross-env TARGET=static next build",
     "start": "next start",
     "images": "node scripts/images.mjs",
+    "og": "node scripts/gen-og.mjs",
     "crosscheck": "node scripts/crosscheck.mjs"
   },
   "dependencies": {

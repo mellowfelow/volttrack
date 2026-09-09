@@ -23,6 +23,14 @@ export default function AboutPage() {
       foundingLocation: SITE.foundingLocation,
       areaServed: SITE.areaServed,
       address: { '@type': 'PostalAddress', addressCountry: 'US' },
+      telephone: SITE.phone,
+      contactPoint: {
+        '@type': 'ContactPoint',
+        contactType: 'customer service',
+        telephone: SITE.phone,
+        areaServed: 'US',
+        availableLanguage: 'English',
+      },
       brand: SITE.authorizedBrands,
     },
   }

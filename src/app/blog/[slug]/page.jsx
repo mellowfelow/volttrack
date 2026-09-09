@@ -4,7 +4,7 @@ import { POSTS, postBySlug, SITE } from '@/config/site'
 import Breadcrumbs from '@/components/Breadcrumbs'
 import FaqAccordion from '@/components/FaqAccordion'
 import Prose, { proseNodes } from '@/components/Prose'
-import { buildMetadata, JsonLd, url } from '@/lib/seo'
+import { buildMetadata, JsonLd, url, OG_DEFAULT } from '@/lib/seo'
 
 export function generateStaticParams() {
   return POSTS.map((p) => ({ slug: p.slug }))
@@ -32,10 +32,15 @@ export default function PostPage({ params }) {
     '@type': 'Article',
     headline: p.title,
     description: p.metaDesc || p.excerpt,
+    image: [p.image ? url(`/images/${p.image}`) : OG_DEFAULT],
     datePublished: p.date,
     dateModified: p.dateModified || p.date,
-    author: { '@type': 'Organization', name: SITE.name },
-    publisher: { '@type': 'Organization', name: SITE.name, url: url('/') },
+    author: { '@type': 'Organization', name: SITE.name, url: url('/') },
+    publisher: {
+      '@type': 'Organization',
+      name: SITE.name,
+      logo: { '@type': 'ImageObject', url: url('/images/logo.png'), width: 512, height: 512 },
+    },
     mainEntityOfPage: url(`/blog/${p.slug}/`),
   }
   const faqLd = p.faqs && p.faqs.length ? {

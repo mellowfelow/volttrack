@@ -15,6 +15,17 @@ export default function Hero() {
     : undefined
   return (
     <section className={`hero${s.image ? ' hero--image' : ''}`} style={style}>
+      {/* LCP element is this section's CSS background — the preload scanner can't
+          see it until CSS parses, so preload it explicitly. Next hoists <link>. */}
+      {s.image ? (
+        <link
+          rel="preload"
+          as="image"
+          href={`/images/${s.image.replace(/\.webp$/, '.avif')}`}
+          type="image/avif"
+          fetchPriority="high"
+        />
+      ) : null}
       <div className="container hero-inner">
         <span className="eyebrow">{s.eyebrow}</span>
         <h1>{s.heading}</h1>
