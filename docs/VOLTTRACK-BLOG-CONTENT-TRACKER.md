@@ -36,16 +36,6 @@
 
 | # | Status | Title | URL Slug | Primary KW | Vol | KD |
 |---|---|---|---|---|---|---|
-| 11 | ☐ TODO | Sur-Ron Storm Bee: Full Specs, Top Speed & Review | `/blog/sur-ron-storm-bee-review/` | surron storm bee | 8,100 | 8 |
-| 12 | ☐ TODO | Talaria MX5 Pro Review: The Most Powerful Sting Yet | `/blog/talaria-mx5-pro-review/` | talaria mx5 pro | 1,900 | 6 |
-| 13 | ☐ TODO | Sur-Ron Ultra Bee vs Light Bee X: Which Should You Choose? | `/blog/sur-ron-ultra-bee-vs-light-bee-x/` | surron ultra bee | 40,500 | 21 *(high vol justifies KD 21)* |
-| 14 | ☐ TODO | Talaria X3 Pro Review & Top Speed Test | `/blog/talaria-x3-pro-review/` | talaria x3 pro top speed | 1,300 | 9 |
-| 15 | ☐ TODO | How Fast Does the Sur-Ron Hyper Bee Go? | `/blog/sur-ron-hyper-bee-top-speed/` | surron hyper bee top speed | 1,300 | 0 |
-| 16 | ☐ TODO | Altis Sigma MX Review: The 98V Electric Dirt Bike Explained | `/blog/altis-sigma-mx-review/` | altis sigma top speed | 2,900 | 19 |
-| 17 | ☐ TODO | Can You Build an Electric Dirt Bike for $1,000? | `/blog/can-you-build-electric-dirt-bike-1000/` | can you build an electric dirt bike with 1k | 880 | 3 |
-| 18 | ☐ TODO | Pink Electric Dirt Bike: Best Options for Girls in 2026 | `/blog/pink-electric-dirt-bike/` | pink electric dirt bike | 320 | 4 |
-| 19 | ☐ TODO | Sur-Ron Mods: Best Upgrades for the Light Bee X | `/blog/sur-ron-light-bee-x-mods/` | surron mods | 590 | 5 |
-| 20 | ☐ TODO | GasGas MC-E 5 vs KTM SX-E 5: Which Kids MX Bike Wins? | `/blog/gasgas-mc-e5-vs-ktm-sx-e5/` | gasgas electric bike | 320 | 15 |
 | 21 | ☐ TODO | Talaria MX3 vs Sur-Ron Light Bee X: Budget Showdown | `/blog/talaria-mx3-vs-sur-ron-light-bee-x/` | talaria mx3 | 6,600 | 13 |
 | 22 | ☐ TODO | E-Ride Pro Mini Review: The Best Electric Pit Bike? | `/blog/e-ride-pro-mini-review/` | e ride pro mini | 4,400 | 15 |
 | 23 | ☐ TODO | Sur-Ron Battery Upgrade Guide: 60V vs 72V Explained | `/blog/sur-ron-battery-upgrade-guide/` | surron battery | 6,600 | 8 |
@@ -156,10 +146,10 @@
 
 ## TOTAL TRACKER SUMMARY
 - **Total posts in bank:** 76
-- **Remaining in this tracker:** 76 (none published yet)
+- **Published:** 22 (posts 1–10 at build, maintenance post 2026-08-08, Tier-1 posts 11–20 on 2026-08-15→09-08)
+- **Remaining in this tracker:** 54
 - **Target publish rate:** 2–3 posts per week
-- **Estimated time to clear this bank:** 25–38 weeks (~6–9 months)
-- **⚠️ Post 1 is time-sensitive — publish within 24–48 hours of build**
+- **Next up:** post 21 (Talaria MX3 vs Sur-Ron Light Bee X), then the rest of Tier 1 (24, 25)
 
 ---
 

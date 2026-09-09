@@ -1825,6 +1825,378 @@ export const POSTS = [
       'When you buy from VoltTrack, every listing states clearly whether a bike is off-road only or has a street-legal certification path. If you are a California rider and unsure, contact us before you buy and we will walk you through it honestly.',
     ],
   },
+
+  // ---- Tier 1 batch (tracker posts 11–20), published Aug–Sep 2026 ----
+  {
+    slug: 'sur-ron-storm-bee-review',
+    metaTitle: 'Sur-Ron Storm Bee Review 2026',
+    title: 'Sur-Ron Storm Bee Review: Full-Size Electric Motocross, Tested',
+    date: '2026-08-15',
+    primaryKw: 'surron storm bee',
+    metaDesc: 'Sur-Ron Storm Bee review: 22.5kW, 84V/55Ah, 68mph and 265lb of full-size electric motocross for $8,499. Specs, who it is for and how it compares.',
+    excerpt: 'The Storm Bee is the full-size motocross bike in the Sur-Ron range — 22.5 kW, 68 mph and a very different machine from the Light Bee. Our review.',
+    intro: [
+      'The [Sur-Ron Storm Bee](/product/sur-ron-storm-bee/) is the bike that answers the question every Light Bee owner eventually asks: what does a full-size Sur-Ron feel like? At around 265 lb with race geometry and a 22.5 kW motor, it is not a scaled-up Light Bee — it is a genuine electric motocross machine that competes with gas 250s and 450s on a closed course.',
+      'At $8,499 it also sits at the top of the [Sur-Ron range](/brands/sur-ron/) on price. Here is what the Storm Bee is, who should buy one, and where it fits against the rest of the [electric motocross bikes](/shop/electric-motocross-bikes/) we stock.',
+    ],
+    sections: [
+      { h2: 'Sur-Ron Storm Bee specs and price', paras: [
+        'The Storm Bee runs a 22.5 kW peak motor, an 84V/55Ah battery and full long-travel suspension, for a top speed of around 68 mph and a claimed range near 75 miles depending on how hard it is ridden. It weighs roughly 265 lb — more than double the [Light Bee X](/product/sur-ron-light-bee-x/) — with a tall seat height and a chassis built for jumps and race pace rather than tight trail.',
+        'US pricing is $8,499 as an estimate; like all our pricing it moves with import tariff conditions, so confirm the current figure with us before ordering. The Storm Bee is sold for closed-course and off-road use only — it is not street legal, and California riders should follow green-sticker / OHV rules under Vehicle Code Section 436.1.',
+      ] },
+      { h2: 'How it rides compared to the Light Bee', paras: [
+        'The Light Bee and Hyper Bee reward a light touch and are forgiving of mistakes. The Storm Bee is the opposite kind of bike — the power, weight and suspension travel all assume an experienced rider who wants to push. On a motocross track it feels planted and fast; on a narrow trail its size and weight work against it.',
+        'If your riding is mostly trails, single-track or pit duty, the Storm Bee is more bike than you need and the [Ultra Bee HP](/product/sur-ron-ultra-bee-hp/) or Light Bee X is the smarter buy. If you ride a track, want to jump, and are stepping across from a gas MX bike, the Storm Bee is the Sur-Ron built for you.',
+      ] },
+      { h2: 'Storm Bee vs Stark Varg', paras: [
+        'The obvious rival is the Stark Varg, which starts at $10,490 for the 60 HP Standard. The Varg has more configurable power, a bigger 7.2 kWh battery and a more refined chassis, and it costs meaningfully more. The Storm Bee undercuts it by around $2,000 and brings Sur-Ron’s deeper aftermarket and dealer familiarity.',
+        'For a rider who wants the outright best electric MX bike and has the budget, the Varg is the pick. For a rider who wants a full-size electric motocross bike at the lowest sensible price and values the Sur-Ron ecosystem, the Storm Bee makes the case. Browse both in the [electric motocross bikes](/shop/electric-motocross-bikes/) category.',
+      ] },
+      { h2: 'Who should buy the Storm Bee', paras: [
+        'The Storm Bee suits experienced adult riders (18+) who ride closed courses or open desert, want to jump, and are comfortable managing a 265 lb machine at speed. It is not a first electric dirt bike and it is not a trail bike.',
+        'Availability on the Storm Bee can be tighter than on the lightweight Sur-Ron models, so contact us to confirm current US stock and lead time before you commit. For the rest of the range, the [Sur-Ron brand page](/brands/sur-ron/) has every model side by side.',
+      ] },
+    ],
+    faqs: [
+      { q: 'How fast is the Sur-Ron Storm Bee?', a: 'The Storm Bee reaches around 68 mph from its 22.5 kW motor and 84V battery, making it one of the fastest bikes in the Sur-Ron lineup. It is a full-size machine for experienced adult riders on closed courses and off-road terrain.' },
+      { q: 'Is the Sur-Ron Storm Bee street legal?', a: 'No. The Storm Bee is built for closed-course and off-road use only and has no street-legal path. Ride it on private land or designated OHV areas with the correct registration; California riders follow Vehicle Code Section 436.1.' },
+      { q: 'Storm Bee or Ultra Bee HP?', a: 'Choose the Ultra Bee HP for trail and aggressive enduro at 187 lb, or the Storm Bee if you ride a motocross track, want to jump and are coming from a full-size gas MX bike. The Storm Bee is larger, heavier and race-focused.' },
+    ],
+    cta: { text: 'See the Sur-Ron Storm Bee', href: '/product/sur-ron-storm-bee/' },
+  },
+  {
+    slug: 'talaria-mx5-pro-review',
+    metaTitle: 'Talaria MX5 Pro Review 2026',
+    title: 'Talaria Sting MX5 Pro Review: The Refined Sting',
+    date: '2026-08-18',
+    primaryKw: 'talaria mx5 pro',
+    metaDesc: 'Talaria Sting MX5 Pro review: 72V/40Ah Samsung 50S cells, 55mph and smoother power for $4,800. How it compares to the MX4 and the Sur-Ron Light Bee X.',
+    excerpt: 'The MX5 Pro is Talaria’s most refined Sting — Samsung 50S cells, updated ergonomics and smoother power delivery. Our review and who it suits.',
+    intro: [
+      'The [Talaria Sting MX5 Pro](/product/talaria-sting-mx5-pro/) is the version of the Sting that fixes most of the small complaints riders had about earlier models. The headline change is the battery — a 72V/40Ah pack built with Samsung 50S cells — but the more noticeable improvement in the seat is how much smoother the power comes on.',
+      'At $4,800 it sits just below the [Sur-Ron Light Bee X](/product/sur-ron-light-bee-x/) and above the value [Sting MX3](/product/talaria-sting-mx3/). Here is our review and where it fits in the [Talaria range](/brands/talaria/).',
+    ],
+    sections: [
+      { h2: 'Talaria MX5 Pro specs and price', paras: [
+        'The MX5 Pro pairs an 8 kW motor with the 72V/40Ah Samsung 50S battery for a top speed of around 55 mph and a real-world range near 55 miles at trail pace. It weighs about 130 lb, has four selectable ride modes, and is sold for off-road and OHV use only — it is not street legal without specific state certification.',
+        'US pricing is $4,800 as an estimate and subject to import tariff conditions. Confirm the current figure and stock with us before ordering. California riders should understand green-sticker / OHV rules under Vehicle Code Section 436.1 before buying any off-road bike.',
+      ] },
+      { h2: 'What the "Pro" and Samsung cells actually change', paras: [
+        'The Samsung 50S cells give the pack better sustained output and a flatter voltage curve, which in practice means the bike holds its power deeper into the battery rather than going soft at 40%. The updated controller tuning also smooths the initial throttle response, so the MX5 Pro is easier to ride cleanly on loose or technical terrain than the older Stings.',
+        'Ergonomically it gets a slightly roomier riding position than the compact early Stings, which matters if you are a taller adult. None of this makes it a different class of bike — it is still a lightweight trail machine — but it is a more polished one.',
+      ] },
+      { h2: 'MX5 Pro vs MX4 vs Sur-Ron Light Bee X', paras: [
+        'Against the [Sting R MX4](/product/talaria-sting-r-mx4/) at $3,735, the MX5 Pro costs about $1,000 more and buys you the better battery, smoother power and updated ergonomics. If your budget is tight and you do not mind the older feel, the MX4 is still a lot of bike for the money.',
+        'Against the Sur-Ron Light Bee X at $4,999, the two are close on price and performance. The Talaria typically gives slightly roomier ergonomics and more stock performance per dollar; the Sur-Ron has the deeper aftermarket and stronger resale. We cover that trade-off in detail in our [Sur-Ron vs Talaria guide](/blog/sur-ron-vs-talaria/).',
+      ] },
+      { h2: 'Who should buy the MX5 Pro', paras: [
+        'The MX5 Pro suits adult and teen riders (roughly 16+) who want a lightweight trail bike that feels modern and rides smoothly, and who value stock refinement over building the bike up themselves. It is a strong first "real" electric dirt bike.',
+        'If you already know you will be upgrading batteries and controllers within a year, lean Sur-Ron for the parts availability. If you want the best-sorted bike straight out of the crate at this price, the MX5 Pro is it.',
+      ] },
+    ],
+    faqs: [
+      { q: 'How fast is the Talaria MX5 Pro?', a: 'The Talaria Sting MX5 Pro tops out around 55 mph in its highest ride mode, with lower modes that cap speed for newer riders. Its 72V Samsung 50S battery holds power better than earlier Stings deep into the charge.' },
+      { q: 'Is the Talaria MX5 Pro street legal?', a: 'No. The MX5 Pro is sold for off-road, private-land and OHV use only and is not street legal without specific state certification and registration. California riders follow green-sticker / OHV rules under Vehicle Code Section 436.1.' },
+      { q: 'MX5 Pro or Sur-Ron Light Bee X?', a: 'They are close on price and performance. The Talaria gives roomier ergonomics and more stock performance per dollar; the Sur-Ron has the deeper aftermarket and better resale. Choose Talaria for value as-delivered, Sur-Ron if you plan heavy upgrades.' },
+    ],
+    cta: { text: 'See the Talaria Sting MX5 Pro', href: '/product/talaria-sting-mx5-pro/' },
+  },
+  {
+    slug: 'sur-ron-ultra-bee-vs-light-bee-x',
+    metaTitle: 'Sur-Ron Ultra Bee vs Light Bee X',
+    title: 'Sur-Ron Ultra Bee vs Light Bee X: Which Should You Choose?',
+    date: '2026-08-21',
+    primaryKw: 'surron ultra bee',
+    metaDesc: 'Sur-Ron Ultra Bee vs Light Bee X compared: 21kW vs 10kW, 187lb vs 110lb, $6,499 vs $4,999. Which Sur-Ron suits your riding, honestly.',
+    excerpt: 'The two Sur-Rons most buyers choose between. One is a nimble 110lb trail bike, the other a full-size 187lb enduro machine. Here is how to pick.',
+    intro: [
+      'The [Sur-Ron Light Bee X](/product/sur-ron-light-bee-x/) and the [Sur-Ron Ultra Bee HP](/product/sur-ron-ultra-bee-hp/) are the two bikes most Sur-Ron buyers end up choosing between. They share a badge and an aftermarket, but they are genuinely different machines — a nimble lightweight versus a full-size enduro bike — and the right answer depends entirely on where and how you ride.',
+      'This is the honest comparison from a dealer that sells both. For the wider range, the [Sur-Ron brand page](/brands/sur-ron/) has every model.',
+    ],
+    sections: [
+      { h2: 'The core numbers', paras: [
+        'The Light Bee X: 10 kW peak, 72V/35Ah, around 47 mph, 40-mile range, and 110 lb. The Ultra Bee HP: 21 kW peak with the HairPin motor, 74V/60Ah, around 56 mph, 55-mile range, and 187 lb. Price is $4,999 for the Light Bee X and $6,499 for the Ultra Bee HP — both estimates, subject to import tariff conditions.',
+        'Both are sold for off-road and OHV use only; neither is street legal. The [L1e version of the Light Bee](/product/sur-ron-light-bee-l1e/) is the only Sur-Ron with a road-legal certification path, and even that depends on your state.',
+      ] },
+      { h2: 'Weight is the real difference', paras: [
+        'The 77 lb between these bikes changes everything about how they ride. The Light Bee X is easy to pick up after a fall, easy to load into a truck bed alone, and flickable in tight single-track. The Ultra Bee HP feels planted and stable at speed, soaks up rough ground its little brother would skip across, and has the seat height and presence of a real motorcycle.',
+        'If your trails are tight and technical, or you transport the bike solo, the Light Bee X’s weight is a genuine advantage every ride. If you ride faster, rougher, more open terrain, the Ultra Bee’s size and suspension travel are worth the extra effort.',
+      ] },
+      { h2: 'Power and range', paras: [
+        'The Ultra Bee HP more than doubles the Light Bee’s peak power and adds around 40% more range from its larger 60Ah pack. For a heavier or more aggressive rider, that extra headroom means the bike never feels like it is working hard. For a lighter rider or a beginner, the Light Bee’s 10 kW is already plenty and easier to manage.',
+        'Both bikes have four ride modes, so either can be dialled down for a newer rider and opened up as skill grows. The Light Bee is simply the more forgiving starting point.',
+      ] },
+      { h2: 'Which one to buy', paras: [
+        'Buy the Light Bee X if it is your first electric dirt bike, if you ride tight trails, if you transport the bike alone, or if you want the deepest aftermarket and best resale in the lightweight class. It is the more versatile bike for most riders.',
+        'Buy the Ultra Bee HP if you are an experienced rider (16+), ride faster or rougher terrain, want a full-size feel, or are a heavier rider who wants power in reserve. If you want to go further still, the [Storm Bee](/product/sur-ron-storm-bee/) is the full motocross machine above both.',
+      ] },
+    ],
+    faqs: [
+      { q: 'Is the Sur-Ron Ultra Bee faster than the Light Bee X?', a: 'Yes. The Ultra Bee HP tops out around 56 mph with a 21 kW motor, versus about 47 mph and 10 kW for the Light Bee X. It also has roughly 40% more range from its larger 74V/60Ah battery.' },
+      { q: 'Is the Ultra Bee too big for a beginner?', a: 'For most beginners, yes. At 187 lb with a tall seat height and 21 kW on tap, the Ultra Bee HP is a lot to manage. The 110 lb Light Bee X, or the lighter Hyper Bee, is the more forgiving first bike.' },
+      { q: 'Do they use the same parts and upgrades?', a: 'They share the Sur-Ron aftermarket ecosystem but are different chassis, so many parts — batteries, suspension, bodywork — are model-specific. Both have far more upgrade options than rival brands.' },
+    ],
+    cta: { text: 'Compare Sur-Ron models', href: '/brands/sur-ron/' },
+  },
+  {
+    slug: 'talaria-x3-pro-review',
+    metaTitle: 'Talaria X3 Pro Review 2026',
+    title: 'Talaria X3 Pro Review: The Lighter, Modern Talaria Chassis',
+    date: '2026-08-25',
+    primaryKw: 'talaria x3 pro top speed',
+    metaDesc: 'Talaria X3 Pro review: the lighter, more modern Talaria chassis with a frame-distributed battery. Top speed, range and how it differs from the Sting.',
+    excerpt: 'The X3 Pro is a different bike from the Sting — a lighter, more modern chassis with the battery spread through the frame. Our review.',
+    intro: [
+      'The [Talaria X3 Pro](/product/talaria-x3-pro/) confuses a lot of shoppers because Talaria sells it alongside the Sting range, and the two look similar in photos. They are not the same bike. The X3 is a newer, lighter chassis with the battery distributed through the frame rather than sitting in a single box, and it rides noticeably differently from a Sting.',
+      'Here is what the X3 Pro is, how it performs, and whether it or a [Sting MX5 Pro](/product/talaria-sting-mx5-pro/) is the better buy. The full lineup is on the [Talaria brand page](/brands/talaria/).',
+    ],
+    sections: [
+      { h2: 'What makes the X3 different from the Sting', paras: [
+        'The Sting uses a conventional layout with the battery in a central box. The X3 spreads a 40Ah pack through the frame, which lowers and centralises the mass and drops overall weight. The result is a bike that turns in faster and feels lighter on its feet than a Sting of similar spec, at the cost of a slightly less straightforward battery-swap process.',
+        'The "Pro" designation brings the higher-spec motor tune, upgraded brakes and suspension over the standard [X3](/product/talaria-x3/). Both are lightweight trail bikes, not motocross machines.',
+      ] },
+      { h2: 'Talaria X3 Pro top speed and range', paras: [
+        'The X3 Pro tops out in the low-to-mid 50s mph in its highest ride mode, with lower modes that cap speed for newer riders. Range depends heavily on terrain and rider weight, but expect something in the 40-55 mile band at trail pace from the 40Ah pack.',
+        'As with every off-road bike we sell, treat performance figures as indicative — model year, tune and configuration all move them. The X3 Pro is off-road and OHV use only; it is not street legal without specific state certification, and California riders follow Vehicle Code Section 436.1.',
+      ] },
+      { h2: 'X3 Pro vs Sting MX5 Pro', paras: [
+        'The MX5 Pro has the 72V Samsung 50S battery and a more traditional feel — planted, predictable, easy to live with. The X3 Pro trades some of that stability for lower weight and quicker handling, and it is the more engaging bike on tight, twisty terrain.',
+        'If you ride flowing trails and value composure, the MX5 Pro is the pick. If you ride technical single-track and want the bike to feel alive underneath you, the X3 Pro rewards that. Prices are close, so this is a riding-style choice rather than a budget one.',
+      ] },
+      { h2: 'Who should buy the X3 Pro', paras: [
+        'The X3 Pro suits riders who want the newest Talaria chassis, prioritise handling and low weight, and ride technical terrain. It is a good fit for lighter adults and confident teens.',
+        'If frequent battery swaps matter to you — because you carry a spare and ride long days — the Sting’s simpler battery box is more convenient. Contact us to confirm current US spec and stock on the X3 Pro before ordering.',
+      ] },
+    ],
+    faqs: [
+      { q: 'How fast does the Talaria X3 Pro go?', a: 'The X3 Pro tops out in the low-to-mid 50s mph in its highest ride mode. Lower ride modes cap the speed for newer or lighter riders, so the bike can grow with the rider.' },
+      { q: 'Is the Talaria X3 Pro the same as the Sting?', a: 'No. The X3 is a newer, lighter chassis with the battery distributed through the frame rather than in a central box. It turns in faster and feels lighter than a Sting of similar spec.' },
+      { q: 'Is the Talaria X3 Pro street legal?', a: 'No. The X3 and X3 Pro are sold for off-road, private-land and OHV use only and are not street legal without specific state certification. California riders follow green-sticker / OHV rules under Vehicle Code Section 436.1.' },
+    ],
+    cta: { text: 'See the Talaria X3 Pro', href: '/product/talaria-x3-pro/' },
+  },
+  {
+    slug: 'sur-ron-hyper-bee-top-speed',
+    metaTitle: 'How Fast Is the Sur-Ron Hyper Bee?',
+    title: 'How Fast Does the Sur-Ron Hyper Bee Go?',
+    date: '2026-08-28',
+    primaryKw: 'surron hyper bee top speed',
+    metaDesc: 'The Sur-Ron Hyper Bee tops out around 50 mph from its 8kW motor and 58V battery. Speed by ride mode, what affects it, and how it compares.',
+    excerpt: 'The short answer: around 50 mph. The longer answer covers ride modes, rider weight, and how the lightest Sur-Ron stacks up on speed.',
+    intro: [
+      'The [Sur-Ron Hyper Bee](/product/sur-ron-hyper-bee/) tops out at around 50 mph in its highest ride mode. For the lightest bike in the [Sur-Ron range](/brands/sur-ron/) at just 86 lb, that is quick — quicker than the Light Bee X, in fact — and it is one of the reasons the Hyper Bee has become such a popular first "real" electric dirt bike.',
+      'Here is the full picture: speed by ride mode, what changes it, and how the Hyper Bee compares to the bikes around it on price.',
+    ],
+    sections: [
+      { h2: 'Top speed by ride mode', paras: [
+        'The Hyper Bee has four selectable ride modes. The lowest is a genuine beginner setting that caps speed well below 20 mph for a first-time rider; the middle modes step up progressively; and the highest unlocks the full roughly 50 mph. This is what lets one bike stay useful as a rider’s skill grows over a season or two rather than being outgrown in a month.',
+        'A parent setting up the bike for a younger or lighter rider can lock it to a lower mode and open it up later. That progression is a core part of why we recommend the Hyper Bee for riders moving up from a first bike.',
+      ] },
+      { h2: 'What actually affects the top speed', paras: [
+        'Rider weight is the biggest variable — a lighter rider will see the full 50 mph more easily than a heavier one. Terrain matters too: 50 mph is a flat, hard-packed figure, and you will see less uphill or in soft sand. Battery charge level has a smaller effect, with the bike pulling slightly harder on a full pack.',
+        'Tyre choice and pressure, and whether the bike is geared stock, also move the number. None of this is unique to the Hyper Bee — it applies to every electric dirt bike — but it is why a real-world top speed can sit a few mph either side of the quoted figure.',
+      ] },
+      { h2: 'How the Hyper Bee compares on speed', paras: [
+        'At around 50 mph the Hyper Bee is actually a touch faster than the [Light Bee X](/product/sur-ron-light-bee-x/) at 47 mph, despite costing $1,300 less and weighing 24 lb less. The [Ultra Bee HP](/product/sur-ron-ultra-bee-hp/) pulls clear at 56 mph, and the full-size [Storm Bee](/product/sur-ron-storm-bee/) reaches around 68 mph.',
+        'For most trail riding, 50 mph is more than enough — the Hyper Bee’s low weight makes it feel faster than the number suggests, and it is far easier to place precisely on tight terrain than a heavier, faster bike.',
+      ] },
+      { h2: 'Is 50 mph enough?', paras: [
+        'For single-track, trails, pit riding and skill-building, yes — comfortably. Riders who genuinely need more speed are usually riding open desert or a motocross track, and those riders should look at the Ultra Bee HP or Storm Bee instead.',
+        'The Hyper Bee is sold for off-road and OHV use only and is not street legal. California riders should follow green-sticker / OHV rules under Vehicle Code Section 436.1. Whatever you ride, wear a helmet and full protection.',
+      ] },
+    ],
+    faqs: [
+      { q: 'How fast does the Sur-Ron Hyper Bee go?', a: 'The Sur-Ron Hyper Bee has a top speed of around 50 mph in its highest ride mode. Lower ride modes cap the speed for newer or lighter riders, so the bike can grow with the rider as their confidence increases.' },
+      { q: 'Is the Hyper Bee faster than the Light Bee X?', a: 'Slightly, yes — around 50 mph versus 47 mph for the Light Bee X. The Hyper Bee is also 24 lb lighter and about $1,300 cheaper, though the Light Bee has the deeper aftermarket.' },
+      { q: 'Can you make the Hyper Bee faster?', a: 'Gearing and battery changes can raise top speed, but the Hyper Bee’s appeal is its low weight and manageable power. Riders who need significantly more speed are usually better served by the Ultra Bee HP or Storm Bee.' },
+    ],
+    cta: { text: 'See the Sur-Ron Hyper Bee', href: '/product/sur-ron-hyper-bee/' },
+  },
+  {
+    slug: 'altis-sigma-mx-review',
+    metaTitle: 'Altis Sigma MX Review 2026',
+    title: 'Altis Sigma MX Review: The 98V Electric Dirt Bike Explained',
+    date: '2026-09-01',
+    primaryKw: 'altis sigma top speed',
+    metaDesc: 'Altis Sigma MX review: a 98V Samsung 50S pack, 22–25kW and genuine 70–80+ mph for a price that undercuts the big names. Who it is really for.',
+    excerpt: 'Altis runs one of the highest-voltage systems in the lightweight class. The Sigma MX is fast and cheap on paper — here is the honest picture.',
+    intro: [
+      'The [Altis Sigma](/product/altis-sigma/) is one of the most interesting value plays in the lightweight electric dirt bike class. It runs a 98V Samsung 50S battery — higher voltage than a Sur-Ron Ultra Bee or a Talaria — with 22–25 kW on tap, for a genuine 70–80+ mph top speed at a price that undercuts the established names.',
+      'That combination sounds too good, so here is the honest picture: what the Sigma MX delivers, what you give up versus a Sur-Ron, and who should actually buy one. The full range is on the [Altis brand page](/brands/altis/).',
+    ],
+    sections: [
+      { h2: 'Altis Sigma MX specs and price', paras: [
+        'The Sigma runs a 98V/35Ah Samsung 50S pack and a 22–25 kW motor, for a top speed of 70–80+ mph depending on variant, gearing and rider weight. It is offered in a Standard 19"/19" setup and the MX with 19"/16" wheels. US pricing starts around $3,999 as an estimate, subject to import tariff conditions.',
+        'The higher system voltage is the headline: more volts means the motor can make power more efficiently at speed, which is how a lightweight bike hits 70+ mph. The Sigma is off-road and OHV use only — not street legal — and California riders follow Vehicle Code Section 436.1.',
+      ] },
+      { h2: 'What you give up versus a Sur-Ron', paras: [
+        'The Sigma’s weak points are the ones you would expect from a newer brand: a much thinner aftermarket, fewer dealers who know the bike, and softer resale value. If something breaks, parts are harder to source than for a Sur-Ron, where almost every component has an OEM and an aftermarket option.',
+        'It is also a genuinely fast bike, which makes it an experienced-rider machine. The 70–80+ mph potential is not something a beginner should be near, and the ride modes that tame it are less refined than Sur-Ron’s.',
+      ] },
+      { h2: 'Sigma MX vs Sur-Ron Ultra Bee HP', paras: [
+        'On paper the Sigma is faster than the 74V [Ultra Bee HP](/product/sur-ron-ultra-bee-hp/) and costs less. The Ultra Bee counters with the deepest aftermarket in the class, wide dealer support, stronger resale and more polished electronics.',
+        'Choose the Sigma for outright performance per dollar if you are an experienced rider comfortable with a smaller support ecosystem. Choose the Ultra Bee if you want the bike you can get parts and help for anywhere, and plan to keep or upgrade it for years.',
+      ] },
+      { h2: 'Who should buy the Sigma MX', paras: [
+        'The Sigma MX suits experienced adult riders who want maximum speed and power for the money, ride private land or open OHV areas, and are comfortable being an early adopter on a less-established platform.',
+        'If you want your first electric dirt bike, or you value a proven aftermarket and resale, a Sur-Ron or Talaria is the safer choice. Contact us to confirm current US Sigma stock, variant availability and lead time before ordering.',
+      ] },
+    ],
+    faqs: [
+      { q: 'How fast does the Altis Sigma go?', a: 'The Altis Sigma reaches 70–80+ mph depending on variant, gearing and rider weight, driven by a 98V/35Ah Samsung 50S pack and 22–25 kW output. That makes it one of the fastest bikes in its price class and firmly an experienced-rider machine.' },
+      { q: 'Is the Altis Sigma reliable?', a: 'The hardware — Samsung cells, a high-voltage system — is capable, but Altis has a much thinner aftermarket and dealer network than Sur-Ron or Talaria, so parts and support are harder to source if something goes wrong.' },
+      { q: 'Altis Sigma or Sur-Ron Ultra Bee?', a: 'The Sigma is faster on paper and cheaper; the Ultra Bee has the far deeper aftermarket, wider support and stronger resale. Choose the Sigma for performance per dollar, the Ultra Bee for the ecosystem.' },
+    ],
+    cta: { text: 'See the Altis Sigma', href: '/product/altis-sigma/' },
+  },
+  {
+    slug: 'can-you-build-electric-dirt-bike-1000',
+    metaTitle: 'Build an Electric Dirt Bike for $1,000?',
+    title: 'Can You Build an Electric Dirt Bike for $1,000?',
+    date: '2026-09-03',
+    primaryKw: 'can you build an electric dirt bike with 1k',
+    metaDesc: 'Can you build an electric dirt bike for $1,000? The honest answer, what a DIY build actually costs and risks, and the cheaper safe alternatives.',
+    excerpt: 'The idea is everywhere on YouTube. Here is what a $1,000 DIY electric dirt bike build actually involves — and why most people should not.',
+    intro: [
+      'Search "cheap electric dirt bike build" and you will find dozens of videos promising a Sur-Ron-style machine for a fraction of the price. The question we get asked is whether it is real: can you genuinely build a capable electric dirt bike for around $1,000?',
+      'The honest answer is "sort of, and probably not the way you are imagining." Here is what a budget build actually costs, what it involves, and the cheaper off-the-shelf options if you want a bike rather than a project. If price is the priority, start with our [cheap electric dirt bikes](/shop/cheap-electric-dirt-bikes/) category.',
+    ],
+    sections: [
+      { h2: 'What a $1,000 build really costs', paras: [
+        'A basic build starts with a donor frame or a hardtail mountain-bike-style chassis, a mid-drive motor kit, a controller, a throttle and a battery. The motor and controller can be had for a few hundred dollars; the battery is where budgets break. A pack with enough capacity and current delivery to feel like a dirt bike rather than an e-bike is rarely under $600–$900 on its own.',
+        'By the time you have added brakes worth trusting, tyres, a seat, wiring and the inevitable replacement parts for things that break during assembly, most "$1,000" builds land closer to $1,500–$2,500 — and that is before your time.',
+      ] },
+      { h2: 'The parts that matter — and the ones that bite', paras: [
+        'The battery and the brakes are not places to save money. A cheap pack can sag under load, overheat, or in the worst case fail unsafely; cheap brakes on a bike that does 40 mph are a genuine hazard. These are the components where a budget build most often goes wrong.',
+        'Frame strength is the other one. A bicycle frame is not designed for the sustained torque and jump loads of a dirt bike, and DIY builds on light frames crack. A purpose-built electric dirt bike has a frame engineered for the job.',
+      ] },
+      { h2: 'When a build makes sense', paras: [
+        'A DIY build makes sense if the building is the point — if you enjoy the fabrication and wiring, you have the tools and the space, and you are treating it as a hobby project rather than a cost-saving exercise. Plenty of people build excellent bikes this way.',
+        'It does not make sense as a way to get a reliable, safe bike cheaply. The time, the risk and the true parts cost usually add up to more than a used entry bike, with none of the warranty or support.',
+      ] },
+      { h2: 'The cheaper off-the-shelf alternatives', paras: [
+        'If your budget is genuinely around $1,000, the honest options are a used lightweight bike, or a new sealed-lead-acid bike like a [Razor MX650](/product/razor-mx650/) or [MX350](/product/razor-mx350/) — simple, safe, and covered by a warranty, though modest on speed and run time.',
+        'Stretch to $3,000–$3,700 and you are into a new [Talaria Sting MX3](/product/talaria-sting-mx3/) or [Sur-Ron Hyper Bee](/product/sur-ron-hyper-bee/) — real lithium performance bikes with a warranty, parts availability and no assembly risk. That is where most first-time buyers should be looking.',
+      ] },
+    ],
+    faqs: [
+      { q: 'Can you really build an electric dirt bike for $1,000?', a: 'A very basic build is possible, but most "$1,000" builds end up nearer $1,500–$2,500 once you include a battery capable of real dirt-bike performance, trustworthy brakes and replacement parts — and that is before your time.' },
+      { q: 'Is a DIY electric dirt bike safe?', a: 'It can be if the battery, brakes and frame are chosen carefully, but these are exactly the components budget builds compromise on. A purpose-built bike has an engineered frame and matched components with a warranty behind them.' },
+      { q: 'What is the cheapest new electric dirt bike worth buying?', a: 'For very low budgets, a Razor Dirt Rocket from $229 is simple and safe if modest. For a real lithium performance bike, the Talaria Sting MX3 and Sur-Ron Hyper Bee start around $3,390–$3,699 with a warranty and parts support.' },
+    ],
+    cta: { text: 'Shop cheap electric dirt bikes', href: '/shop/cheap-electric-dirt-bikes/' },
+  },
+  {
+    slug: 'pink-electric-dirt-bike',
+    metaTitle: 'Pink Electric Dirt Bike: Best Options 2026',
+    title: 'Pink Electric Dirt Bike: Best Options for Girls in 2026',
+    date: '2026-09-05',
+    primaryKw: 'pink electric dirt bike',
+    metaDesc: 'Looking for a pink electric dirt bike? The best options by age from STACYC and Razor, plus how to add pink graphics to any bike. 2026 guide.',
+    excerpt: 'Pink electric dirt bikes for kids and teens — the models that come in pink, and how to make any bike pink with a graphics kit.',
+    intro: [
+      'A pink electric dirt bike is one of the most common requests we get from parents shopping for a daughter who wants to ride. The good news is there are genuine factory options, and for any bike that does not come in pink, a graphics kit turns it into one for well under $200.',
+      'Here are the best pink or pink-available electric dirt bikes by age, plus the graphics route for everything else. For the full kids lineup, see the [youth & kids category](/shop/youth-electric-dirt-bikes/).',
+    ],
+    sections: [
+      { h2: 'Pink bikes for the youngest riders (ages 3–7)', paras: [
+        'STACYC electric balance bikes are the standard first bike for ages 3–7, and pink and purple colourways come and go through the range. A [STACYC 16eDRIVE](/product/stacyc-16e-drive/) suits roughly ages 4–7 with a brushless motor and three power modes, and it is the bike we most often recommend as a first ride.',
+        'Availability of specific colours changes by model year and batch, so contact us to check what pink or purple stock we can source before you order.',
+      ] },
+      { h2: 'Pink bikes for older kids (ages 7–13)', paras: [
+        'The Razor Dirt Rocket range is the affordable step up, and Razor has offered pink versions of several models over the years. The [Razor MX350](/product/razor-mx350/) suits roughly ages 10–13 at around 14 mph, and the smaller [MX125](/product/razor-mx125/) fits ages 7–10. These are simple sealed-lead-acid bikes — modest speeds and run times, but a safe and inexpensive way to start.',
+        'For a rider ready for a lithium bike, the performance models mostly ship in black or brand colours, which is where a graphics kit comes in.',
+      ] },
+      { h2: 'Make any bike pink with a graphics kit', paras: [
+        'Every performance bike we sell — Sur-Ron, Talaria, KTM youth models — can be personalised with a stick-on graphics kit, and pink is one of the most popular finishes. A full kit runs roughly $100–$180, goes on in an afternoon, and is fully removable if resale matters later.',
+        'Browse the [graphics kits](/parts-accessories/graphics-kits/) range for options that fit specific models. This is the route we recommend for any rider who wants both real performance and a pink bike.',
+      ] },
+      { h2: 'Choosing on fit, not just colour', paras: [
+        'Colour is the fun part, but the bike still has to fit. Match the model to the rider’s age, height and confidence — a bike they can flat-foot at a stop and control at low speed — rather than buying up a size for them to "grow into." Our [best electric dirt bikes for kids guide](/guides/best-electric-dirt-bikes-for-kids/) walks through sizing by age.',
+        'Whatever the bike, a properly fitted helmet and full protective gear are non-negotiable for a young rider. All of these bikes are off-road use only.',
+      ] },
+    ],
+    faqs: [
+      { q: 'Do electric dirt bikes come in pink?', a: 'Some do from the factory — STACYC and Razor have offered pink and purple colourways on several models, though availability changes by batch. Any other bike can be made pink with a removable graphics kit for roughly $100–$180.' },
+      { q: 'What is the best pink electric dirt bike for a young child?', a: 'A STACYC electric balance bike (roughly ages 3–7) is the standard first bike, with pink and purple colourways appearing through the range. The 16eDRIVE suits ages 4–7 with three power modes.' },
+      { q: 'Can you put a pink graphics kit on a Sur-Ron or Talaria?', a: 'Yes. Stick-on graphics kits are available for every performance bike we sell, cost around $100–$180, go on in an afternoon and are fully removable. It is the usual way to get a pink lithium performance bike.' },
+    ],
+    cta: { text: 'Shop youth & kids electric dirt bikes', href: '/shop/youth-electric-dirt-bikes/' },
+  },
+  {
+    slug: 'sur-ron-light-bee-x-mods',
+    metaTitle: 'Sur-Ron Light Bee X Mods & Upgrades',
+    title: 'Sur-Ron Mods: The Best Upgrades for the Light Bee X',
+    date: '2026-09-07',
+    primaryKw: 'surron mods',
+    metaDesc: 'The best Sur-Ron Light Bee X mods and upgrades, in the order that makes sense: suspension, brakes, battery, controller and ergonomics.',
+    excerpt: 'The Light Bee X has the deepest aftermarket of any electric dirt bike. Here are the upgrades worth doing, in the order to do them.',
+    intro: [
+      'The [Sur-Ron Light Bee X](/product/sur-ron-light-bee-x/) is bought as much for what it can become as for what it is out of the crate. Its aftermarket is deeper than any other electric dirt bike, and a well-chosen set of upgrades transforms it — but the order you do them in matters, and some popular mods should wait.',
+      'Here is our recommended upgrade path, from the changes that improve every ride to the big-ticket performance parts. For parts that fit, see [parts & upgrades](/parts-accessories/parts-upgrades/) and [batteries & chargers](/parts-accessories/batteries-chargers/).',
+    ],
+    sections: [
+      { h2: 'First: suspension and brakes', paras: [
+        'The stock Light Bee suspension and brakes are the components most riders outgrow first, and they are the upgrades that make the bike safer and more enjoyable immediately. Better fork internals or a full aftermarket fork, a rear shock with proper adjustment, and upgraded brake pads or a larger rotor are the changes we recommend before anything else.',
+        'These are not glamorous mods, but they are the ones that pay back every single ride and let you use the power the bike already has.',
+      ] },
+      { h2: 'Second: ergonomics and contact points', paras: [
+        'Bar risers, a taller or firmer seat, wider footpegs and better grips cost relatively little and dramatically change how the bike fits — especially for taller adults, since the stock Light Bee is compact. Getting the riding position right also reduces fatigue on longer rides.',
+        'Tyres are part of this too: a proper dirt tyre in the right compound for your terrain transforms grip and confidence far more cheaply than any electronic upgrade.',
+      ] },
+      { h2: 'Third: battery', paras: [
+        'A bigger or higher-output battery is the upgrade that adds both range and, on many packs, more sustained power. Options from Chi Battery Systems, eWatt and EBMX range from a straight capacity increase to a full high-voltage conversion. The [batteries & chargers](/parts-accessories/batteries-chargers/) range covers what fits the Light Bee X.',
+        'Do this after suspension and brakes — a faster bike on stock suspension is less fun and less safe than a stock-power bike that handles well.',
+      ] },
+      { h2: 'Fourth: controller and motor', paras: [
+        'An aftermarket controller (and, at the top end, a motor swap) unlocks the biggest power gains, and it is where the Light Bee starts to genuinely outrun an [Ultra Bee HP](/product/sur-ron-ultra-bee-hp/). This is also where you take on the most risk: more power stresses every other component, warranties are affected, and setup matters.',
+        'Save this for last, do it when the rest of the bike is ready for it, and be honest about whether you have outgrown the platform — at some point a bigger bike is the better answer than a heavily modded small one.',
+      ] },
+    ],
+    faqs: [
+      { q: 'What is the first Sur-Ron mod I should do?', a: 'Suspension and brakes. The stock Light Bee X components are what most riders outgrow first, and upgrading them makes the bike safer and better on every ride before you add any power.' },
+      { q: 'Does modding a Sur-Ron void the warranty?', a: 'Performance modifications — especially controller, motor and battery changes — can affect warranty coverage on the affected components. Check with us before major electrical upgrades so you understand what stays covered.' },
+      { q: 'Should I mod a Light Bee X or buy an Ultra Bee?', a: 'If you want more suspension travel, range and a full-size feel, the Ultra Bee HP is the cleaner answer than heavily modding a Light Bee. Mod the Light Bee if you value its low weight and want to keep it nimble.' },
+    ],
+    cta: { text: 'Shop Sur-Ron parts & upgrades', href: '/parts-accessories/parts-upgrades/' },
+  },
+  {
+    slug: 'gasgas-mc-e5-vs-ktm-sx-e5',
+    metaTitle: 'GasGas MC-E 5 vs KTM SX-E 5',
+    title: 'GasGas MC-E 5 vs KTM SX-E 5: Which Kids MX Bike Wins?',
+    date: '2026-09-08',
+    primaryKw: 'gasgas electric bike',
+    metaDesc: 'GasGas MC-E 5 vs KTM SX-E 5 compared: same Austrian group, same 5kW platform, same price. What actually differs and how to choose.',
+    excerpt: 'They share an engine, a frame and a price. Here is what genuinely separates the GasGas MC-E 5 and the KTM SX-E 5 for a young racer.',
+    intro: [
+      'The [GasGas MC-E 5](/product/gasgas-mc-e-5/) and the [KTM SX-E 5](/product/ktm-sx-e-5/) are the two serious youth electric motocross bikes for riders roughly aged 4–12, and they come from the same Austrian group. They share the core 5 kW water-cooled platform, the frame generation and, typically, the price. So what actually separates them?',
+      'Here is the honest comparison for a parent choosing between them. Both are in the [youth & kids category](/shop/youth-electric-dirt-bikes/).',
+    ],
+    sections: [
+      { h2: 'What they share', paras: [
+        'Both bikes use the same 5 kW water-cooled motor, the same 2025-generation frame, adjustable seat height and selectable ride modes, and both suit riders roughly 4–12 who are already confident on a smaller machine. On the track, a rider would be hard-pressed to tell them apart blindfolded.',
+        'Pricing is essentially identical — both land around $5,449 as an estimate, subject to import tariff conditions. These are genuine competition-capable youth MX bikes, not toys, and both are off-road use only.',
+      ] },
+      { h2: 'What actually differs', paras: [
+        'The meaningful differences are bodywork, graphics and colour. KTM runs its familiar orange; GasGas runs red with its own plastics profile. Some riders and families have a strong brand preference — a young racer who idolises a particular factory rider will care which badge is on the tank.',
+        'Dealer support and parts availability can vary by region, so in practice the tie-breaker is often which brand your local track and riding community leans toward, and which one we can get to you fastest.',
+      ] },
+      { h2: 'How to choose', paras: [
+        'Buy whichever has better availability when you order, whichever your rider prefers the look of, and whichever fits your local support network best. There is no performance reason to pick one over the other.',
+        'If your rider is younger or newer, the smaller [KTM SX-E 3](/product/ktm-sx-e-3/) or [GasGas MC-E 2](/product/gasgas-mc-e-2/) may be the better fit — going up a size too early makes a bike harder to learn on. Our [best electric dirt bikes for kids guide](/guides/best-electric-dirt-bikes-for-kids/) covers sizing by age.',
+      ] },
+      { h2: 'Where these sit against STACYC and Razor', paras: [
+        'The MC-E 5 and SX-E 5 are a big step up in price and capability from a [STACYC](/brands/stacyc/) balance bike or a Razor Dirt Rocket. They are for kids who are already riding confidently and want to race or ride a real MX track.',
+        'A child still learning balance and throttle control is better served — and safer — on a STACYC or an entry Razor first, then moving up to one of these when the skills are there.',
+      ] },
+    ],
+    faqs: [
+      { q: 'Is the GasGas MC-E 5 the same as the KTM SX-E 5?', a: 'Very nearly. They share the 5 kW water-cooled motor, the frame generation, adjustable settings and the price. The meaningful differences are bodywork, graphics and colour — orange for KTM, red for GasGas.' },
+      { q: 'What age is the MC-E 5 / SX-E 5 for?', a: 'Both suit riders roughly 4 to 12, thanks to adjustable seat height and selectable ride modes. They are competition-capable youth motocross bikes, best for a rider already confident on a smaller machine.' },
+      { q: 'GasGas or KTM — which should I buy?', a: 'There is no performance difference. Choose on availability, which colour your rider prefers, and which brand your local track and dealer network supports better.' },
+    ],
+    cta: { text: 'Shop youth electric motocross bikes', href: '/shop/youth-electric-dirt-bikes/' },
+  },
 ]
 
 // ----------------------------------------------------------------------------

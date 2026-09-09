@@ -4,21 +4,22 @@ import Breadcrumbs from '@/components/Breadcrumbs'
 import { buildMetadata } from '@/lib/seo'
 
 export const metadata = buildMetadata({
-  title: 'VoltTrack Blog — News, Deals & Riding Guides',
-  description: 'Electric dirt bike news, US legal updates and ownership tips from VoltTrack — America’s electric dirt bike experts.',
+  title: 'Electric Dirt Bike Blog — Reviews, Comparisons & News',
+  description: 'Electric dirt bike reviews, brand comparisons, US legal updates and ownership tips from VoltTrack — Sur-Ron, Talaria, Stark, KTM and more.',
   path: '/blog/',
 })
 
 export default function BlogPage() {
+  const posts = [...POSTS].sort((a, b) => (b.date || '').localeCompare(a.date || ''))
   return (
     <>
       <Breadcrumbs items={[{ name: 'Blog', href: '/blog/' }]} />
       <section className="section" style={{ paddingTop: 8 }}>
         <div className="container">
-          <h1>VoltTrack Blog</h1>
-          <p className="lead">News, deals and riding guides for US electric dirt bike riders.</p>
+          <h1>Electric Dirt Bike News, Reviews &amp; Riding Guides</h1>
+          <p className="lead">Reviews, brand comparisons, legal updates and ownership tips for US electric dirt bike riders.</p>
           <div className="grid cols-3" style={{ marginTop: 20 }}>
-            {POSTS.map((p) => (
+            {posts.map((p) => (
               <Link key={p.slug} href={`/blog/${p.slug}/`} className="card" style={{ color: 'inherit' }}>
                 <div className="card-body">
                   <span className="muted" style={{ fontSize: '.8rem' }}>{p.date}</span>

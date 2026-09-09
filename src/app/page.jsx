@@ -19,6 +19,8 @@ export default function Home() {
   const range = priceRange(PRODUCTS)
   // AggregateOffer describes the priced catalogue; enquiry-only bikes have no price.
   const pricedCount = PRODUCTS.filter((p) => !p.enquire).length
+  // 6 newest posts on the homepage; the rest live on /blog/.
+  const recentPosts = [...POSTS].sort((a, b) => (b.date || '').localeCompare(a.date || '')).slice(0, 6)
 
   const orgLd = {
     '@context': 'https://schema.org',
@@ -38,7 +40,7 @@ export default function Home() {
       availableLanguage: 'English',
     },
     areaServed: SITE.areaServed,
-    numberOfItems: PRODUCTS.length,
+    numberOfItems: pricedCount,
     knowsAbout: ['electric dirt bikes', 'Sur-Ron', 'Stark Future', 'Talaria', 'STACYC', 'electric motocross', 'OHV law'],
     priceRange: `${SITE.currencySymbol}${range.low}–${SITE.currencySymbol}${range.high}`,
     brand: SITE.authorizedBrands,
@@ -200,7 +202,7 @@ export default function Home() {
           </div>
           <Reveal>
             <div className="grid cols-3">
-              {POSTS.map((post) => (
+              {recentPosts.map((post) => (
                 <Link key={post.slug} href={`/blog/${post.slug}/`} className="card" style={{ color: 'inherit' }}>
                   <div className="card-body">
                     <h3>{post.title}</h3>
@@ -211,6 +213,9 @@ export default function Home() {
               ))}
             </div>
           </Reveal>
+          <p style={{ marginTop: 24, textAlign: 'center' }}>
+            <Link href="/blog/" className="btn btn-ghost">All articles</Link>
+          </p>
         </div>
       </section>
 

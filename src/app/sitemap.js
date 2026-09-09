@@ -1,6 +1,9 @@
 import { CATEGORIES, BRANDS, PRODUCTS, POSTS, GUIDES, COMPARISONS, ACCESSORY_CATEGORIES } from '@/config/site'
 import { url } from '@/lib/seo'
 
+// Note: <image:image> sitemap entries need Next 15's `images` field (or a custom
+// XML route). On Next 14.2 the field is silently ignored, so it's left out for now.
+
 export const dynamic = 'force-static'
 
 export default function sitemap() {

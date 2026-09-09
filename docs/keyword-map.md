@@ -45,9 +45,20 @@ was merged into `/guides/are-electric-dirt-bikes-street-legal/` (301 redirect) �
 blog post on this exact topic, the guide now owns it.
 
 ## Unused clusters (future posts)
-- Sur-Ron upgrades & aftermarket
 - OHV riding areas by state
 - financing an electric dirt bike
+- Tracker Tier 1 remaining: talaria mx3 vs light bee x (#21), stark varg sm explained (#24), stacyc vs ktm vs gasgas (#25)
 
 ## Cluster log
-- 2026-08-08: electric dirt bike maintenance / battery care → published as /blog/electric-dirt-bike-maintenance-and-battery-care/
+- 2026-08-08: electric dirt bike maintenance / battery care → /blog/electric-dirt-bike-maintenance-and-battery-care/
+- 2026-08-15→09-08: Tier 1 batch (tracker #11–20) published:
+  - surron storm bee → /blog/sur-ron-storm-bee-review/
+  - talaria mx5 pro → /blog/talaria-mx5-pro-review/
+  - surron ultra bee (vs light bee x) → /blog/sur-ron-ultra-bee-vs-light-bee-x/
+  - talaria x3 pro top speed → /blog/talaria-x3-pro-review/
+  - surron hyper bee top speed → /blog/sur-ron-hyper-bee-top-speed/
+  - altis sigma top speed → /blog/altis-sigma-mx-review/
+  - build electric dirt bike for 1k → /blog/can-you-build-electric-dirt-bike-1000/
+  - pink electric dirt bike → /blog/pink-electric-dirt-bike/
+  - surron mods → /blog/sur-ron-light-bee-x-mods/
+  - gasgas electric bike (vs ktm sx-e 5) → /blog/gasgas-mc-e5-vs-ktm-sx-e5/
