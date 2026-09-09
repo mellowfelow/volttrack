@@ -127,6 +127,11 @@ p{margin:0 0 1em}
 .hero--image{color:#fff}
 .hero--image{background-image:linear-gradient(105deg,rgba(9,14,26,.82) 0%,rgba(9,14,26,.62) 45%,rgba(9,14,26,.30) 100%),var(--hero-webp)} /* fallback */
 .hero--image{background-image:linear-gradient(105deg,rgba(9,14,26,.82) 0%,rgba(9,14,26,.62) 45%,rgba(9,14,26,.30) 100%),image-set(var(--hero-avif) type("image/avif"),var(--hero-webp) type("image/webp"))}
+/* phones pull the 800px hero, not the 1600px one */
+@media (max-width:768px){
+  .hero--image{background-image:linear-gradient(105deg,rgba(9,14,26,.82) 0%,rgba(9,14,26,.62) 45%,rgba(9,14,26,.30) 100%),var(--hero-webp-sm)}
+  .hero--image{background-image:linear-gradient(105deg,rgba(9,14,26,.82) 0%,rgba(9,14,26,.62) 45%,rgba(9,14,26,.30) 100%),image-set(var(--hero-avif-sm) type("image/avif"),var(--hero-webp-sm) type("image/webp"))}
+}
 .hero--image .eyebrow{color:#bfdbfe}
 .hero--image .lead{color:#eef2f7}
 .hero--image h1{color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.35)}

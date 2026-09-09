@@ -7,22 +7,27 @@ export default function Hero() {
   const s = HERO[0]
   // Expose AVIF + WebP URLs as custom props; globals.css builds an image-set()
   // background with a WebP fallback (AVIF → WebP → hard fallback).
-  const style = s.image
+  const heroBase = s.image ? s.image.replace(/\.webp$/, '') : null
+  const style = heroBase
     ? {
-        '--hero-webp': `url(/images/${s.image})`,
-        '--hero-avif': `url(/images/${s.image.replace(/\.webp$/, '.avif')})`,
+        '--hero-webp': `url(/images/${heroBase}.webp)`,
+        '--hero-avif': `url(/images/${heroBase}.avif)`,
+        '--hero-webp-sm': `url(/images/${heroBase}-sm.webp)`,
+        '--hero-avif-sm': `url(/images/${heroBase}-sm.avif)`,
       }
     : undefined
   return (
     <section className={`hero${s.image ? ' hero--image' : ''}`} style={style}>
       {/* LCP element is this section's CSS background — the preload scanner can't
           see it until CSS parses, so preload it explicitly. Next hoists <link>. */}
-      {s.image ? (
+      {heroBase ? (
         <link
           rel="preload"
           as="image"
-          href={`/images/${s.image.replace(/\.webp$/, '.avif')}`}
           type="image/avif"
+          href={`/images/${heroBase}.avif`}
+          imageSrcSet={`/images/${heroBase}-sm.avif 800w, /images/${heroBase}.avif 1600w`}
+          imageSizes="100vw"
           fetchPriority="high"
         />
       ) : null}

@@ -62,32 +62,70 @@ for (const file of photos) {
   if (scale > 1.1) inner = inner.sharpen({ sigma: 1 })
   const innerBuf = await inner.toBuffer()
 
-  // 4) composite centred on a white 4:3 canvas (blends with the white card frame)
-  const canvas = sharp({ create: { width: W, height: H, channels: 4, background: { r: 255, g: 255, b: 255, alpha: 1 } } })
+  // 4) composite centred on a white 4:3 canvas (blends with the white card frame),
+  //    then flatten to an opaque RGB PNG buffer we can re-encode/downscale freely.
+  const fullPng = await sharp({ create: { width: W, height: H, channels: 4, background: { r: 255, g: 255, b: 255, alpha: 1 } } })
     .composite([{ input: innerBuf, gravity: 'centre' }])
     .flatten({ background: { r: 255, g: 255, b: 255 } })
+    .png()
+    .toBuffer()
+  const smPng = await sharp(fullPng).resize(800, 600, { kernel: 'lanczos3' }).png().toBuffer()
 
-  const webp = resolve(outDir, `${slug}.webp`)
-  const avif = resolve(outDir, `${slug}.avif`)
   // Adaptive quality: keep quality as high as possible but under the 150KB
   // crosscheck budget (target 145KB with margin). Step down only if needed.
   const CAP = 145 * 1024
   // Encode to a buffer, stepping quality down until under the cap, then write
   // ONCE. (Repeated .toFile() to the same path fails on Windows: EINVAL.)
-  const encode = async (fmt, out, qStart, qFloor) => {
+  const encode = async (srcBuf, out, fmt, qStart, qFloor) => {
     let out2, qUsed
     for (let q = qStart; ; q -= 6) {
-      out2 = await canvas.clone()[fmt]({ quality: q }).toBuffer()
+      out2 = await sharp(srcBuf)[fmt]({ quality: q }).toBuffer()
       qUsed = q
       if (out2.length <= CAP || q <= qFloor) break
     }
     await writeRetry(out, out2)
     return qUsed
   }
-  const qw = await encode('webp', webp, 88, 40)
-  const qa = await encode('avif', avif, 62, 40)
   const kb = (p) => Math.round(statSync(p).size / 1024) + 'KB'
+
+  // Two widths so phones don't pull the 1600px file: <slug>.{webp,avif} at 1600w
+  // and <slug>-sm.{webp,avif} at 800w. SmartImage emits a width-based srcset.
+  const parts = []
+  for (const [suffix, srcBuf] of [['', fullPng], ['-sm', smPng]]) {
+    const webp = resolve(outDir, `${slug}${suffix}.webp`)
+    const avif = resolve(outDir, `${slug}${suffix}.avif`)
+    const qw = await encode(srcBuf, webp, 'webp', suffix ? 82 : 88, 40)
+    const qa = await encode(srcBuf, avif, 'avif', suffix ? 55 : 62, 40)
+    parts.push(`${suffix || 'full'} webp ${kb(webp)}(q${qw}) avif ${kb(avif)}(q${qa})`)
+  }
   const up = scale > 1 ? ` up${scale.toFixed(1)}x` : ''
-  console.log(`images: ${slug}  webp ${kb(webp)}(q${qw})  avif ${kb(avif)}(q${qa})${up}`)
+  console.log(`images: ${slug}  ${parts.join('  |  ')}${up}`)
 }
 console.log(`images: processed ${photos.length} photo(s) → AVIF + WebP.`)
+
+// Post-pass: some images (category/hero art) are dropped straight into
+// public/images/ with no source photo. Make sure every <slug>.webp has an
+// 800px <slug>-sm.{webp,avif} sibling so SmartImage's srcset never 404s.
+{
+  const CAP = 145 * 1024
+  const encodeFrom = async (srcBuf, out, fmt, qStart, qFloor) => {
+    let out2, q = qStart
+    for (; ; q -= 6) {
+      out2 = await sharp(srcBuf)[fmt]({ quality: q }).toBuffer()
+      if (out2.length <= CAP || q <= qFloor) break
+    }
+    await writeRetry(out, out2)
+  }
+  const loose = readdirSync(outDir).filter((f) => /\.webp$/i.test(f) && !/-sm\.webp$/i.test(f))
+  let added = 0
+  for (const f of loose) {
+    const slug = basename(f, '.webp')
+    if (existsSync(resolve(outDir, `${slug}-sm.webp`))) continue
+    const smPng = await sharp(resolve(outDir, f)).resize(800, 600, { fit: 'inside', kernel: 'lanczos3' }).png().toBuffer()
+    await encodeFrom(smPng, resolve(outDir, `${slug}-sm.webp`), 'webp', 82, 40)
+    await encodeFrom(smPng, resolve(outDir, `${slug}-sm.avif`), 'avif', 55, 40)
+    added++
+    console.log(`images: ${slug}  +sm variant (no source photo)`)
+  }
+  if (added) console.log(`images: added ${added} missing -sm variant(s).`)
+}
