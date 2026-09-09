@@ -42,6 +42,19 @@ export default function ChatHub() {
       s.charset = 'UTF-8'
       s.setAttribute('crossorigin', '*')
       document.body.appendChild(s)
+
+      // Tawk rewrites document.title to "(1) …" / "New message…" for unread
+      // agent messages (a dashboard-only setting we can't reach). Restore the
+      // real title whenever it does — the real title is whatever Next set last.
+      const titleEl = document.querySelector('title')
+      if (titleEl && !window.__tawkTitleGuard) {
+        window.__tawkTitleGuard = true
+        let realTitle = document.title
+        new MutationObserver(() => {
+          if (/^\(\d+\)\s|new message/i.test(document.title)) document.title = realTitle
+          else realTitle = document.title
+        }).observe(titleEl, { childList: true })
+      }
     }
     const t = setTimeout(load, 1000)
     window.addEventListener('scroll', load, { once: true, passive: true })

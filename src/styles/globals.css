@@ -234,6 +234,14 @@ p{margin:0 0 1em}
 .tile .tile-go{margin-top:8px;font-weight:700;color:#bfdbfe;font-size:.9rem}
 .tile-cta{background:linear-gradient(135deg,var(--brand),#1e3a8a);display:flex;align-items:flex-end}
 .tile-cta .tile-overlay{background:linear-gradient(180deg,rgba(37,99,235,.15),rgba(30,58,138,.55))}
+/* On phones the 2-col tile is too short for h3 + p + link — keep the title
+   and CTA, drop the description so nothing clips. */
+@media (max-width:600px){
+  .cat-grid .tile:not(.tile-cta) p{display:none}
+  .cat-grid .tile .tile-overlay{padding:12px}
+  .cat-grid .tile h3{font-size:1rem}
+  .cat-grid .tile .tile-go{margin-top:4px}
+}
 /* reveal on scroll — content is visible by default; only hidden+animated when JS is active
    (html.js-anim is set by an inline script before paint), so no-JS users always see content */
 .reveal{transition:opacity .6s ease,transform .6s ease}
