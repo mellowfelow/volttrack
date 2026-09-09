@@ -7,6 +7,9 @@ dist/
 .DS_Store
 npm-debug.log*
 
+# Claude Code: local per-user settings (permission allowlist etc). launch.json IS committed.
+.claude/settings.local.json
+
 # Content source only — not part of the deploy
 _source/
 
