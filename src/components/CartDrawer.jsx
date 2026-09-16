@@ -35,8 +35,9 @@ export default function CartDrawer() {
   }, [open, close])
 
   const t = totals(items, false)
-  const cryptoSaving = Math.round(t.subtotal * SITE.cryptoDiscount)
+  const cryptoSaving = Math.round(t.afterBundle * SITE.cryptoDiscount)
   const count = cartCount(items)
+  const bundlePct = Math.round(SITE.bundleAccessoryDiscount * 100)
 
   return (
     <>
@@ -88,9 +89,17 @@ export default function CartDrawer() {
             </div>
 
             <div className="cart-drawer-foot">
-              <div className="order-row total"><span>Subtotal</span><span>{money(t.subtotal)}</span></div>
+              <div className="order-row"><span>Subtotal</span><span>{money(t.subtotal)}</span></div>
+              {t.bundleDiscount > 0 ? (
+                <>
+                  <div className="order-row discount"><span>Accessory bundle (−{bundlePct}%)</span><span>−{money(t.bundleDiscount)}</span></div>
+                  <div className="order-row total"><span>Total</span><span>{money(t.afterBundle)}</span></div>
+                </>
+              ) : (
+                <div className="order-row total"><span>Total</span><span>{money(t.afterBundle)}</span></div>
+              )}
               <p className="form-note" style={{ margin: '2px 0 10px' }}>
-                Pay with crypto to save {Math.round(SITE.cryptoDiscount * 100)}% ({money(cryptoSaving)}) — applied at checkout. {SITE.freeShippingText}.
+                {t.bundleDiscount > 0 ? `${bundlePct}% accessory bundle discount applied. ` : ''}Pay with crypto to save {Math.round(SITE.cryptoDiscount * 100)}% more ({money(cryptoSaving)}) — applied at checkout. {SITE.freeShippingText}.
               </p>
               <Link href="/checkout/" className="btn btn-block" onClick={close}>Checkout</Link>
               <Link href="/cart/" className="btn btn-ghost btn-block" style={{ marginTop: 8 }} onClick={close}>View full cart</Link>

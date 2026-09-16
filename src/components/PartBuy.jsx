@@ -24,7 +24,7 @@ export default function PartBuy({ part }) {
           type="button"
           className="btn btn-lg"
           aria-label={`Add ${part.name} to cart`}
-          onClick={() => { addToCart(part, qty); setQty(1); setAdded(true) }}
+          onClick={() => { addToCart(part, qty, null, { part: true }); setQty(1); setAdded(true) }}
         >
           Add to cart
         </button>

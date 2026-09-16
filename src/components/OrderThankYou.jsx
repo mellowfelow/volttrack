@@ -59,6 +59,11 @@ export default function OrderThankYou() {
           <div className="order-row">
             <span>Subtotal</span><span>{SITE.currencySymbol}{order.subtotal.toLocaleString('en-US')}</span>
           </div>
+          {order.bundleDiscount > 0 ? (
+            <div className="order-row discount">
+              <span>Accessory bundle discount</span><span>−{SITE.currencySymbol}{order.bundleDiscount.toLocaleString('en-US')}</span>
+            </div>
+          ) : null}
           {order.discount > 0 ? (
             <div className="order-row discount">
               <span>Crypto discount</span><span>−{SITE.currencySymbol}{order.discount.toLocaleString('en-US')}</span>

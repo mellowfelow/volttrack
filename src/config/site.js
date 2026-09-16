@@ -43,6 +43,10 @@ export const SITE = {
   payIn4Detail:
     'Split your order into 4 interest-free instalments. Pay the first instalment now to confirm your order; the remaining three are spread over time. Available with any payment method.',
   cryptoDiscount: 0.10, // 10% off when paying with crypto (BTC/USDT) — auto-applied at checkout
+  // Extra loyalty discount: when a bike is in the cart, every accessory line gets
+  // this % off, auto-applied in totals() and shown in the cart/checkout. Stacks
+  // on top of (before) the crypto discount.
+  bundleAccessoryDiscount: 0.05, // 5% off accessories added alongside a bike
   // Payment methods offered at checkout. `crypto: true` triggers the crypto discount.
   paymentMethods: [
     { id: 'crypto', label: 'Crypto (BTC / USDT)', crypto: true },

@@ -57,6 +57,7 @@ export default function CheckoutClient() {
           date: new Date().toISOString(),
           items: items.map((i) => ({ key: i.key || i.slug, name: i.name, qty: i.qty, price: i.price })),
           subtotal: t.subtotal,
+          bundleDiscount: t.bundleDiscount,
           discount: t.discount,
           total: t.total,
           paymentMethod: selected.label || method,
@@ -125,6 +126,7 @@ export default function CheckoutClient() {
           <input type="hidden" name="payment_method" value={selected.label || method} />
           <input type="hidden" name="payment_plan" value={selectedPlan.label || plan} />
           <input type="hidden" name="subtotal_usd" value={t.subtotal} />
+          <input type="hidden" name="bundle_discount_usd" value={t.bundleDiscount} />
           <input type="hidden" name="crypto_discount_usd" value={t.discount} />
           <input type="hidden" name="total_usd" value={t.total} />
           <input type="checkbox" name="botcheck" className="hp" tabIndex={-1} autoComplete="off" />
@@ -198,6 +200,12 @@ export default function CheckoutClient() {
                 </div>
               ))}
               <div className="order-row"><span>Subtotal</span><span>{SITE.currencySymbol}{t.subtotal.toLocaleString('en-US')}</span></div>
+              {t.bundleDiscount > 0 ? (
+                <div className="order-row discount">
+                  <span>Accessory bundle (−{Math.round(t.bundleRate * 100)}%)</span>
+                  <span>−{SITE.currencySymbol}{t.bundleDiscount.toLocaleString('en-US')}</span>
+                </div>
+              ) : null}
               <div className="order-row muted"><span>Shipping</span><span>{SITE.freeShippingText}</span></div>
               {isCrypto ? (
                 <div className="order-row discount">

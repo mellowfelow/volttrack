@@ -4,7 +4,9 @@ import QtyStepper from '@/components/QtyStepper'
 import { addToCart } from '@/lib/cart'
 
 // QtyStepper + Add-to-cart for a product card. Qty resets to 1 after adding.
-export default function CardBuy({ product }) {
+// `part` marks accessory cards so the cart can distinguish bikes from accessories
+// (bundle discount + bike-added upsell popup).
+export default function CardBuy({ product, part = false }) {
   const [qty, setQty] = useState(1)
   const [added, setAdded] = useState(false)
   return (
@@ -15,7 +17,7 @@ export default function CardBuy({ product }) {
         className="btn"
         aria-label={`Add ${product.name} to cart`}
         onClick={() => {
-          addToCart(product, qty)
+          addToCart(product, qty, null, { part })
           setQty(1)
           setAdded(true)
           setTimeout(() => setAdded(false), 1500)

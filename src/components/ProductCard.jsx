@@ -12,6 +12,8 @@ export default function ProductCard({ p, eager = false, part = false }) {
     : '/images/placeholder-bike.svg'
   const brandLabel = part ? p.brandLabel : brandName(p.brand)
   const cryptoPct = Math.round(SITE.cryptoDiscount * 100)
+  const cryptoPrice = (base) => Math.round(base * (1 - SITE.cryptoDiscount))
+  const fmt = (n) => `${SITE.currencySymbol}${n.toLocaleString('en-US')}`
   return (
     <div className="card">
       <Link href={href} style={{ color: 'inherit' }} aria-label={p.name}>
@@ -48,8 +50,8 @@ export default function ProductCard({ p, eager = false, part = false }) {
         {part ? (
           <>
             <span className="price">{partPriceLabel(p)}</span>
-            <span className="crypto-tag" aria-label={`Pay with crypto to save ${cryptoPct} percent`}><span aria-hidden="true">₿</span> Pay with crypto — save {cryptoPct}%</span>
-            <CardBuy product={p} />
+            <span className="crypto-tag" aria-label={`Pay ${p.priceMax ? 'from ' : ''}${fmt(cryptoPrice(p.price))} with crypto, ${cryptoPct} percent off`}><span aria-hidden="true">₿</span> Pay {p.priceMax ? 'from ' : ''}{fmt(cryptoPrice(p.price))} with crypto ({cryptoPct}% off)</span>
+            <CardBuy product={p} part />
             <Link href={href} className="btn btn-ghost btn-block" style={{ marginTop: 8 }}>View details</Link>
           </>
         ) : p.enquire ? (
@@ -62,7 +64,7 @@ export default function ProductCard({ p, eager = false, part = false }) {
         ) : (
           <>
             <span className="price">{SITE.currencySymbol}{p.price.toLocaleString('en-US')}</span>
-            <span className="crypto-tag" aria-label={`Pay with crypto to save ${cryptoPct} percent`}><span aria-hidden="true">₿</span> Pay with crypto — save {cryptoPct}%</span>
+            <span className="crypto-tag" aria-label={`Pay ${fmt(cryptoPrice(p.price))} with crypto, ${cryptoPct} percent off`}><span aria-hidden="true">₿</span> Pay {fmt(cryptoPrice(p.price))} with crypto ({cryptoPct}% off)</span>
             <CardBuy product={p} />
             <Link href={href} className="btn btn-ghost btn-block" style={{ marginTop: 8 }}>View details</Link>
           </>

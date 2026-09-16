@@ -5,6 +5,7 @@ import Nav from '@/components/Nav'
 import Footer from '@/components/Footer'
 import ChatHub from '@/components/ChatHub'
 import CartDrawer from '@/components/CartDrawer'
+import BikeUpsellModal from '@/components/BikeUpsellModal'
 import { SITE } from '@/config/site'
 import { base } from '@/lib/seo'
 
@@ -52,6 +53,7 @@ export default function RootLayout({ children }) {
         <main id="main">{children}</main>
         <Footer />
         <CartDrawer />
+        <BikeUpsellModal />
         <ChatHub />
         {SITE.target === 'vercel' ? <Analytics /> : null}
       </body>

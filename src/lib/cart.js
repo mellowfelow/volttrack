@@ -25,7 +25,11 @@ function write(items) {
 export const lineKey = (slug, variantId) => (variantId ? `${slug}::${variantId}` : slug)
 
 // `variant` is an entry from product.variants ({ id, label, price }) or null.
-export function addToCart(product, qty = 1, variant = null) {
+// `opts.part` marks accessories (vs bikes) — used for the bundle discount and to
+// decide whether adding opens the cart drawer (accessory) or the bike upsell
+// popup (bike).
+export function addToCart(product, qty = 1, variant = null, opts = {}) {
+  const isPart = !!opts.part
   const items = getCart()
   const key = lineKey(product.slug, variant && variant.id)
   const existing = items.find((i) => (i.key || i.slug) === key)
@@ -40,12 +44,24 @@ export function addToCart(product, qty = 1, variant = null) {
       variant: variant ? variant.label : '',
       price: variant ? variant.price : product.price,
       image: (product.images && product.images[0]) || '',
+      part: isPart,
       qty,
     })
   }
   write(items)
-  // Signal the slide-out cart drawer to open (only on add, not qty/remove).
-  if (isBrowser()) window.dispatchEvent(new Event('cart-open'))
+  if (isBrowser() && !opts.silent) {
+    if (isPart) {
+      // Accessory: open the slide-out cart drawer as before.
+      window.dispatchEvent(new Event('cart-open'))
+    } else {
+      // Bike: open the accessory upsell popup (which offers the +5% bundle).
+      window.dispatchEvent(
+        new CustomEvent('bike-added', {
+          detail: { slug: product.slug, brand: product.brand || '', name: product.name },
+        })
+      )
+    }
+  }
   return items
 }
 
@@ -68,12 +84,37 @@ export function cartCount(items = getCart()) {
   return items.reduce((n, i) => n + i.qty, 0)
 }
 
-// Totals, including the auto-applied crypto discount when isCrypto is true.
+// A cart line is an accessory when it was added with { part:true }. Legacy lines
+// (added before this flag existed) have no `part` key and are treated as bikes,
+// so they simply don't earn the accessory bundle discount.
+const isAccessory = (i) => i.part === true
+
+// Totals. Two stacked, auto-applied discounts:
+//  1) Bundle discount — when a bike is in the cart, every accessory line gets
+//     SITE.bundleAccessoryDiscount off (applied always, not payment-dependent).
+//  2) Crypto discount — SITE.cryptoDiscount off the post-bundle amount, only when
+//     isCrypto (i.e. paying with BTC/USDT at checkout).
 export function totals(items = getCart(), isCrypto = false) {
   const subtotal = items.reduce((s, i) => s + i.price * i.qty, 0)
+  const hasBike = items.some((i) => !isAccessory(i))
+  const accessorySubtotal = items
+    .filter(isAccessory)
+    .reduce((s, i) => s + i.price * i.qty, 0)
+  const bundleRate = hasBike ? SITE.bundleAccessoryDiscount : 0
+  const bundleDiscount = Math.round(accessorySubtotal * bundleRate)
+  const afterBundle = subtotal - bundleDiscount
   const rate = isCrypto ? SITE.cryptoDiscount : 0
-  const discount = Math.round(subtotal * rate)
-  return { subtotal, discount, rate, total: subtotal - discount }
+  const discount = Math.round(afterBundle * rate)
+  return {
+    subtotal,
+    hasBike,
+    bundleRate,
+    bundleDiscount,
+    afterBundle,
+    rate,
+    discount,
+    total: afterBundle - discount,
+  }
 }
 
 // Subscribe to cart changes (same-tab event + cross-tab storage event).

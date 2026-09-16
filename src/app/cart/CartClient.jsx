@@ -16,8 +16,9 @@ export default function CartClient() {
   }, [])
 
   const t = totals(items, false)
-  const cryptoSaving = Math.round(t.subtotal * SITE.cryptoDiscount)
-  const belowMin = SITE.minOrder > 0 && t.subtotal < SITE.minOrder
+  const cryptoSaving = Math.round(t.afterBundle * SITE.cryptoDiscount)
+  const bundlePct = Math.round(SITE.bundleAccessoryDiscount * 100)
+  const belowMin = SITE.minOrder > 0 && t.afterBundle < SITE.minOrder
 
   return (
     <section className="section" style={{ paddingTop: 8 }}>
@@ -54,10 +55,16 @@ export default function CartClient() {
             <aside className="order-summary" aria-label="Order summary">
               <h2 style={{ fontSize: '1.2rem' }}>Summary</h2>
               <div className="order-row"><span>Subtotal</span><span>{money(t.subtotal)}</span></div>
+              {t.bundleDiscount > 0 ? (
+                <div className="order-row discount"><span>Accessory bundle (−{bundlePct}%)</span><span>−{money(t.bundleDiscount)}</span></div>
+              ) : null}
               <div className="order-row discount"><span>Crypto discount (at checkout)</span><span>−{money(cryptoSaving)}</span></div>
               <div className="order-row muted"><span>Shipping</span><span>{SITE.freeShippingText}</span></div>
-              <div className="order-row total"><span>Total</span><span>{money(t.subtotal)}</span></div>
-              <p className="form-note">Pay with BTC or USDT at checkout to save {Math.round(SITE.cryptoDiscount * 100)}% ({money(cryptoSaving)}).</p>
+              <div className="order-row total"><span>Total</span><span>{money(t.afterBundle)}</span></div>
+              <p className="form-note">
+                {t.bundleDiscount > 0 ? `Includes ${bundlePct}% off accessories bundled with your bike. ` : ''}
+                Pay with BTC or USDT at checkout to save {Math.round(SITE.cryptoDiscount * 100)}% more ({money(cryptoSaving)}).
+              </p>
               {belowMin ? (
                 <div className="min-order-block" role="alert">
                   Minimum order is {money(SITE.minOrder)}. Add {money(SITE.minOrder - t.subtotal)} more to check out.
