@@ -5,6 +5,7 @@ import Hero from '@/components/Hero'
 import SmartImage from '@/components/SmartImage'
 import FaqAccordion from '@/components/FaqAccordion'
 import Reveal from '@/components/Reveal'
+import ReviewsSection from '@/components/ReviewsSection'
 import { JsonLd, url, buildMetadata } from '@/lib/seo'
 
 export const metadata = buildMetadata({
@@ -218,6 +219,9 @@ export default function Home() {
           </p>
         </div>
       </section>
+
+      {/* Verified Reviews & Trust Signals */}
+      <ReviewsSection />
 
       <section className="section">
         <div className="container">
