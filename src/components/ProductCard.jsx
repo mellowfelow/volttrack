@@ -11,6 +11,7 @@ export default function ProductCard({ p, eager = false, part = false }) {
     ? `/images/${p.images[0]}`
     : '/images/placeholder-bike.svg'
   const brandLabel = part ? p.brandLabel : brandName(p.brand)
+  const cryptoPct = Math.round(SITE.cryptoDiscount * 100)
   return (
     <div className="card">
       <Link href={href} style={{ color: 'inherit' }} aria-label={p.name}>
@@ -47,6 +48,7 @@ export default function ProductCard({ p, eager = false, part = false }) {
         {part ? (
           <>
             <span className="price">{partPriceLabel(p)}</span>
+            <span className="crypto-tag" aria-label={`Pay with crypto to save ${cryptoPct} percent`}><span aria-hidden="true">₿</span> Pay with crypto — save {cryptoPct}%</span>
             <CardBuy product={p} />
             <Link href={href} className="btn btn-ghost btn-block" style={{ marginTop: 8 }}>View details</Link>
           </>
@@ -60,6 +62,7 @@ export default function ProductCard({ p, eager = false, part = false }) {
         ) : (
           <>
             <span className="price">{SITE.currencySymbol}{p.price.toLocaleString('en-US')}</span>
+            <span className="crypto-tag" aria-label={`Pay with crypto to save ${cryptoPct} percent`}><span aria-hidden="true">₿</span> Pay with crypto — save {cryptoPct}%</span>
             <CardBuy product={p} />
             <Link href={href} className="btn btn-ghost btn-block" style={{ marginTop: 8 }}>View details</Link>
           </>
