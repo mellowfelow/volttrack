@@ -21,40 +21,44 @@ export default function EnquiriesPage() {
     setEnquiries((prev) => prev.filter((e) => e.id !== id))
   }
 
-  if (loading) return <p>Loading…</p>
+  if (loading) return <p style={{ padding: 24, color: '#888' }}>Loading enquiries…</p>
 
   return (
     <div>
-      <h1 style={{ fontSize: '1.4rem', marginBottom: 16 }}>Enquiries</h1>
-      {enquiries.length === 0 ? <p style={{ color: '#888' }}>No enquiries yet.</p> : (
-        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
+      <h1 className="admin-page-title">Enquiries</h1>
+      {enquiries.length === 0 ? (
+        <div className="empty-state">
+          <p>No enquiries yet.</p>
+        </div>
+      ) : (
+        <table className="admin-table">
           <thead>
-            <tr style={{ borderBottom: '2px solid #e5e5e5', textAlign: 'left' }}>
-              <th style={{ padding: '8px 12px' }}>ID</th>
-              <th style={{ padding: '8px 12px' }}>Name</th>
-              <th style={{ padding: '8px 12px' }}>Email</th>
-              <th style={{ padding: '8px 12px' }}>Type</th>
-              <th style={{ padding: '8px 12px' }}>Message</th>
-              <th style={{ padding: '8px 12px' }}>Status</th>
-              <th style={{ padding: '8px 12px' }}>Date</th>
-              <th style={{ padding: '8px 12px' }}>Actions</th>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Type</th>
+              <th>Message</th>
+              <th>Status</th>
+              <th>Date</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             {enquiries.map((e) => (
-              <tr key={e.id} style={{ borderBottom: '1px solid #f0f0f0' }}>
-                <td style={{ padding: '8px 12px', fontWeight: 600 }}>{e.id}</td>
-                <td style={{ padding: '8px 12px' }}>{e.name}</td>
-                <td style={{ padding: '8px 12px' }}>{e.email}</td>
-                <td style={{ padding: '8px 12px' }}>{e.type}</td>
-                <td style={{ padding: '8px 12px', maxWidth: 200, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{e.message}</td>
-                <td style={{ padding: '8px 12px' }}>
-                  <span style={{ padding: '2px 8px', borderRadius: 4, fontSize: 12, fontWeight: 600, background: e.status === 'new' ? '#dbeafe' : '#d1fae5', color: e.status === 'new' ? '#1e40af' : '#065f46' }}>{e.status}</span>
-                </td>
-                <td style={{ padding: '8px 12px', color: '#888' }}>{e.createdAt ? new Date(e.createdAt).toLocaleDateString() : '—'}</td>
-                <td style={{ padding: '8px 12px' }}>
-                  <a href={`/admin/reply-enquiry/?id=${encodeURIComponent(e.id)}`} style={{ fontSize: 13, marginRight: 8 }}>Reply</a>
-                  <button onClick={() => handleDelete(e.id)} style={{ fontSize: 13, color: '#b91c1c', background: 'none', border: 'none', cursor: 'pointer' }}>Delete</button>
+              <tr key={e.id}>
+                <td className="mono">{e.id}</td>
+                <td>{e.name}</td>
+                <td>{e.email}</td>
+                <td>{e.type}</td>
+                <td style={{ maxWidth: 220, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{e.message}</td>
+                <td><span className={`status-badge status-${e.status}`}>{e.status}</span></td>
+                <td style={{ color: '#888' }}>{e.createdAt ? new Date(e.createdAt).toLocaleDateString() : '—'}</td>
+                <td>
+                  <div className="action-row">
+                    <a href={`/admin/reply-enquiry/?id=${encodeURIComponent(e.id)}`} className="btn-sm">Reply</a>
+                    <button onClick={() => handleDelete(e.id)} className="btn-danger">Delete</button>
+                  </div>
                 </td>
               </tr>
             ))}

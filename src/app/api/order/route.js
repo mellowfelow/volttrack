@@ -58,7 +58,7 @@ export async function POST(req) {
     notes: data.notes || '',
     channel: 'email',
   }
-  try { await saveOrder(order) } catch (e) { console.error('[order] save failed:', e && e.message) }
+  try { await saveOrder(order); console.log('[order] saved:', orderNumber) } catch (e) { console.error('[order] save failed:', e && e.message) }
 
   const itemRows = items.map((i) => ({ label: `${i.quantity} × ${i.name}`, value: i.price || '' }))
   const dash = `https://${SITE.domain}/admin/send-payment-email/?id=${encodeURIComponent(orderNumber)}`
@@ -83,13 +83,14 @@ export async function POST(req) {
     cta: { label: 'Reply in Dashboard →', url: dash },
   })
   try {
-    await sendMail({
+    const adminResult = await sendMail({
       to: adminEmail,
       subject: `New order ${orderNumber} — ${money(amountDue)} — ${SITE.name}`,
       html: adminHtml,
       text: `New order ${orderNumber} — ${money(amountDue)}. Customer: ${order.customerName} ${order.customerEmail}. Reply in dashboard: ${dash}`,
       replyTo: order.customerEmail || undefined,
     })
+    console.log('[order] admin mail:', JSON.stringify(adminResult))
   } catch (e) { console.error('[order] admin mail failed:', e && e.message) }
 
   // Customer confirmation (no payment details — those come after admin confirms)
@@ -109,12 +110,13 @@ export async function POST(req) {
       footer: SITE.reply.dispatchLine,
     })
     try {
-      await sendMail({
+      const custResult = await sendMail({
         to: order.customerEmail,
         subject: `Order received — ${orderNumber} — ${money(amountDue)} — ${SITE.name}`,
         html: custHtml,
         text: `Thanks ${order.customerName}. We've received order ${orderNumber} (${money(amountDue)}). You'll receive a payment-details email shortly.`,
       })
+      console.log('[order] customer mail:', JSON.stringify(custResult))
     } catch (e) { console.error('[order] customer mail failed:', e && e.message) }
   }
 

@@ -35,7 +35,7 @@ export default function SendPaymentEmailPage() {
         body: JSON.stringify({ orderId, methodId, detail }),
       })
       const data = await res.json()
-      if (data.ok && data.sent) setResult({ type: 'success', text: 'Payment email sent.' })
+      if (data.ok && data.sent) setResult({ type: 'success', text: 'Payment email sent successfully.' })
       else if (data.ok) setResult({ type: 'warn', text: `Saved but email not sent: ${data.reason || 'SMTP not configured'}` })
       else setResult({ type: 'error', text: data.error || 'Failed to send' })
     } catch {
@@ -44,51 +44,56 @@ export default function SendPaymentEmailPage() {
     setSending(false)
   }
 
-  if (loading) return <p>Loading…</p>
-  if (!order) return <p>Order not found. <a href="/admin/orders/">Back to orders</a></p>
+  if (loading) return <p style={{ padding: 24, color: '#888' }}>Loading order…</p>
+  if (!order) return (
+    <div className="empty-state">
+      <p>Order not found.</p>
+      <a href="/admin/orders/" className="btn-sm" style={{ marginTop: 12, display: 'inline-block' }}>Back to orders</a>
+    </div>
+  )
 
   return (
     <div style={{ maxWidth: 640 }}>
-      <h1 style={{ fontSize: '1.4rem', marginBottom: 4 }}>Send payment details</h1>
-      <p style={{ color: '#888', marginBottom: 24 }}>Order <strong>{order.orderNumber}</strong> — {order.customerName} ({order.customerEmail}) — ${Number(order.amountDue).toLocaleString('en-US')}</p>
+      <div className="detail-header">
+        <h1>Send payment details</h1>
+        <p className="detail-meta">
+          Order <strong>{order.orderNumber}</strong> — {order.customerName} ({order.customerEmail}) — ${Number(order.amountDue).toLocaleString('en-US')}
+        </p>
+      </div>
 
       <form onSubmit={handleSend}>
-        <div style={{ marginBottom: 16 }}>
-          <label style={{ display: 'block', fontWeight: 600, marginBottom: 6 }}>Payment method</label>
-          <select value={methodId} onChange={(e) => setMethodId(e.target.value)} style={{ width: '100%', padding: '8px 12px', fontSize: 14, borderRadius: 8, border: '1px solid #ccc' }}>
+        <div className="form-group">
+          <label className="form-label">Payment method</label>
+          <select value={methodId} onChange={(e) => setMethodId(e.target.value)} className="form-select">
             {SITE.reply.paymentMethods.map((m) => (
               <option key={m.id} value={m.id}>{m.label}</option>
             ))}
           </select>
         </div>
 
-        <div style={{ marginBottom: 16 }}>
-          <label style={{ display: 'block', fontWeight: 600, marginBottom: 6 }}>Payment details (wallet address, bank details, etc.)</label>
+        <div className="form-group">
+          <label className="form-label">Payment details</label>
           <textarea
             value={detail}
             onChange={(e) => setDetail(e.target.value)}
             required
             rows={6}
             placeholder="Paste the wallet address, bank account details, or payment link here…"
-            style={{ width: '100%', padding: '10px 12px', fontSize: 14, borderRadius: 8, border: '1px solid #ccc', fontFamily: 'monospace' }}
+            className="form-textarea mono"
           />
         </div>
 
-        {result ? (
-          <p style={{ padding: '8px 12px', borderRadius: 8, marginBottom: 12, fontSize: 14, fontWeight: 600, background: result.type === 'success' ? '#d1fae5' : result.type === 'warn' ? '#fef3c7' : '#fee2e2', color: result.type === 'success' ? '#065f46' : result.type === 'warn' ? '#92400e' : '#991b1b' }}>
-            {result.text}
-          </p>
-        ) : null}
+        {result ? <div className={`alert alert-${result.type === 'warn' ? 'warning' : result.type}`}>{result.text}</div> : null}
 
-        <button type="submit" disabled={sending} style={{ padding: '10px 24px', fontSize: 15, fontWeight: 700, borderRadius: 8, border: 'none', background: '#1d4ed8', color: '#fff', cursor: sending ? 'not-allowed' : 'pointer', opacity: sending ? 0.6 : 1 }}>
+        <button type="submit" disabled={sending} className="btn-primary">
           {sending ? 'Sending…' : 'Send payment email'}
         </button>
       </form>
 
-      <div style={{ marginTop: 32 }}>
-        <h2 style={{ fontSize: '1.1rem', marginBottom: 8 }}>Order items</h2>
+      <div className="item-list">
+        <h2 className="section-title">Order items</h2>
         {(order.items || []).map((item, i) => (
-          <div key={i} style={{ display: 'flex', justifyContent: 'space-between', padding: '6px 0', borderBottom: '1px solid #f0f0f0', fontSize: 14 }}>
+          <div key={i} className="item-row">
             <span>{item.quantity} × {item.name}</span>
             <span>{item.price}</span>
           </div>

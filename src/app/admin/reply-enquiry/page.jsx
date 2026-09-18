@@ -34,7 +34,7 @@ export default function ReplyEnquiryPage() {
         body: JSON.stringify({ enquiryId, subject, message }),
       })
       const data = await res.json()
-      if (data.ok && data.sent) setResult({ type: 'success', text: 'Reply sent.' })
+      if (data.ok && data.sent) setResult({ type: 'success', text: 'Reply sent successfully.' })
       else if (data.ok) setResult({ type: 'warn', text: `Saved but email not sent: ${data.reason || 'SMTP not configured'}` })
       else setResult({ type: 'error', text: data.error || 'Failed' })
     } catch {
@@ -43,48 +43,37 @@ export default function ReplyEnquiryPage() {
     setSending(false)
   }
 
-  if (loading) return <p>Loading…</p>
-  if (!enquiry) return <p>Enquiry not found. <a href="/admin/enquiries/">Back to enquiries</a></p>
+  if (loading) return <p style={{ padding: 24, color: '#888' }}>Loading enquiry…</p>
+  if (!enquiry) return (
+    <div className="empty-state">
+      <p>Enquiry not found.</p>
+      <a href="/admin/enquiries/" className="btn-sm" style={{ marginTop: 12, display: 'inline-block' }}>Back to enquiries</a>
+    </div>
+  )
 
   return (
     <div style={{ maxWidth: 640 }}>
-      <h1 style={{ fontSize: '1.4rem', marginBottom: 4 }}>Reply to enquiry</h1>
-      <p style={{ color: '#888', marginBottom: 16 }}>{enquiry.name} ({enquiry.email}) — {enquiry.type}</p>
-
-      <div style={{ padding: 16, background: '#f9f9f9', borderRadius: 8, marginBottom: 24, fontSize: 14, whiteSpace: 'pre-wrap' }}>
-        {enquiry.message}
+      <div className="detail-header">
+        <h1>Reply to enquiry</h1>
+        <p className="detail-meta">{enquiry.name} ({enquiry.email}) — {enquiry.type}</p>
       </div>
 
+      <div className="detail-card">{enquiry.message}</div>
+
       <form onSubmit={handleSend}>
-        <div style={{ marginBottom: 16 }}>
-          <label style={{ display: 'block', fontWeight: 600, marginBottom: 6 }}>Subject (optional)</label>
-          <input
-            value={subject}
-            onChange={(e) => setSubject(e.target.value)}
-            placeholder="Re: Your enquiry"
-            style={{ width: '100%', padding: '8px 12px', fontSize: 14, borderRadius: 8, border: '1px solid #ccc' }}
-          />
+        <div className="form-group">
+          <label className="form-label">Subject (optional)</label>
+          <input value={subject} onChange={(e) => setSubject(e.target.value)} placeholder="Re: Your enquiry" className="form-input" />
         </div>
 
-        <div style={{ marginBottom: 16 }}>
-          <label style={{ display: 'block', fontWeight: 600, marginBottom: 6 }}>Reply message</label>
-          <textarea
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            required
-            rows={8}
-            placeholder="Type your reply…"
-            style={{ width: '100%', padding: '10px 12px', fontSize: 14, borderRadius: 8, border: '1px solid #ccc' }}
-          />
+        <div className="form-group">
+          <label className="form-label">Reply message</label>
+          <textarea value={message} onChange={(e) => setMessage(e.target.value)} required rows={8} placeholder="Type your reply…" className="form-textarea" />
         </div>
 
-        {result ? (
-          <p style={{ padding: '8px 12px', borderRadius: 8, marginBottom: 12, fontSize: 14, fontWeight: 600, background: result.type === 'success' ? '#d1fae5' : result.type === 'warn' ? '#fef3c7' : '#fee2e2', color: result.type === 'success' ? '#065f46' : result.type === 'warn' ? '#92400e' : '#991b1b' }}>
-            {result.text}
-          </p>
-        ) : null}
+        {result ? <div className={`alert alert-${result.type === 'warn' ? 'warning' : result.type}`}>{result.text}</div> : null}
 
-        <button type="submit" disabled={sending} style={{ padding: '10px 24px', fontSize: 15, fontWeight: 700, borderRadius: 8, border: 'none', background: '#1d4ed8', color: '#fff', cursor: sending ? 'not-allowed' : 'pointer', opacity: sending ? 0.6 : 1 }}>
+        <button type="submit" disabled={sending} className="btn-primary">
           {sending ? 'Sending…' : 'Send reply'}
         </button>
       </form>

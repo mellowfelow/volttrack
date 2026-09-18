@@ -21,40 +21,44 @@ export default function OrdersPage() {
     setOrders((prev) => prev.filter((o) => o.orderNumber !== ref))
   }
 
-  if (loading) return <p>Loading…</p>
+  if (loading) return <p style={{ padding: 24, color: '#888' }}>Loading orders…</p>
 
   return (
     <div>
-      <h1 style={{ fontSize: '1.4rem', marginBottom: 16 }}>Orders</h1>
-      {orders.length === 0 ? <p style={{ color: '#888' }}>No orders yet.</p> : (
-        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14 }}>
+      <h1 className="admin-page-title">Orders</h1>
+      {orders.length === 0 ? (
+        <div className="empty-state">
+          <p>No orders yet.</p>
+        </div>
+      ) : (
+        <table className="admin-table">
           <thead>
-            <tr style={{ borderBottom: '2px solid #e5e5e5', textAlign: 'left' }}>
-              <th style={{ padding: '8px 12px' }}>Order #</th>
-              <th style={{ padding: '8px 12px' }}>Customer</th>
-              <th style={{ padding: '8px 12px' }}>Email</th>
-              <th style={{ padding: '8px 12px' }}>Amount</th>
-              <th style={{ padding: '8px 12px' }}>Method</th>
-              <th style={{ padding: '8px 12px' }}>Status</th>
-              <th style={{ padding: '8px 12px' }}>Date</th>
-              <th style={{ padding: '8px 12px' }}>Actions</th>
+            <tr>
+              <th>Order</th>
+              <th>Customer</th>
+              <th>Email</th>
+              <th>Amount</th>
+              <th>Method</th>
+              <th>Status</th>
+              <th>Date</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
             {orders.map((o) => (
-              <tr key={o.orderNumber} style={{ borderBottom: '1px solid #f0f0f0' }}>
-                <td style={{ padding: '8px 12px', fontWeight: 600 }}>{o.orderNumber}</td>
-                <td style={{ padding: '8px 12px' }}>{o.customerName}</td>
-                <td style={{ padding: '8px 12px' }}>{o.customerEmail}</td>
-                <td style={{ padding: '8px 12px' }}>${Number(o.amountDue).toLocaleString('en-US')}</td>
-                <td style={{ padding: '8px 12px' }}>{o.paymentMethod || '—'}</td>
-                <td style={{ padding: '8px 12px' }}>
-                  <span style={{ padding: '2px 8px', borderRadius: 4, fontSize: 12, fontWeight: 600, background: o.status === 'pending' ? '#fef3c7' : '#d1fae5', color: o.status === 'pending' ? '#92400e' : '#065f46' }}>{o.status}</span>
-                </td>
-                <td style={{ padding: '8px 12px', color: '#888' }}>{o.createdAt ? new Date(o.createdAt).toLocaleDateString() : '—'}</td>
-                <td style={{ padding: '8px 12px' }}>
-                  <a href={`/admin/send-payment-email/?id=${encodeURIComponent(o.orderNumber)}`} style={{ fontSize: 13, marginRight: 8 }}>Send payment email</a>
-                  <button onClick={() => handleDelete(o.orderNumber)} style={{ fontSize: 13, color: '#b91c1c', background: 'none', border: 'none', cursor: 'pointer' }}>Delete</button>
+              <tr key={o.orderNumber}>
+                <td className="mono">{o.orderNumber}</td>
+                <td>{o.customerName}</td>
+                <td>{o.customerEmail}</td>
+                <td>${Number(o.amountDue).toLocaleString('en-US')}</td>
+                <td>{o.paymentMethod || '—'}</td>
+                <td><span className={`status-badge status-${o.status}`}>{o.status}</span></td>
+                <td style={{ color: '#888' }}>{o.createdAt ? new Date(o.createdAt).toLocaleDateString() : '—'}</td>
+                <td>
+                  <div className="action-row">
+                    <a href={`/admin/send-payment-email/?id=${encodeURIComponent(o.orderNumber)}`} className="btn-sm">Send payment email</a>
+                    <button onClick={() => handleDelete(o.orderNumber)} className="btn-danger">Delete</button>
+                  </div>
                 </td>
               </tr>
             ))}

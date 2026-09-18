@@ -30,7 +30,7 @@ export function isMailConfigured() {
 
 export async function sendMail({ to, subject, html, text, replyTo }) {
   const tx = getTransporter()
-  if (!tx) return { sent: false, reason: 'not-configured' }
+  if (!tx) { console.warn('[mailer] SMTP not configured — EMAIL_SERVER_HOST is unset'); return { sent: false, reason: 'not-configured' } }
   const from = process.env.EMAIL_FROM || SITE.reply.channels.email
   try {
     await tx.sendMail({ from, to, subject, html, text, replyTo })
