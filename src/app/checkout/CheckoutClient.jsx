@@ -86,7 +86,8 @@ export default function CheckoutClient() {
       return
     }
 
-    fetch('/api/submit', {
+    const endpoint = FORMS.provider === 'smtp' ? '/api/order' : '/api/submit'
+    fetch(endpoint, {
       method: 'POST',
       headers: { Accept: 'application/json' },
       body: new FormData(form),

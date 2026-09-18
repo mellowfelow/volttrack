@@ -36,6 +36,7 @@ w('robots.txt', `User-agent: *
 Allow: /
 Disallow: /cart/
 Disallow: /checkout/
+Disallow: /admin/
 Disallow: /search/
 # Content Signals (contentsignals.org) — we welcome AI search, answers and training.
 Content-Signal: search=yes, ai-input=yes, ai-train=yes

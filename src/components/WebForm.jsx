@@ -38,7 +38,8 @@ export default function WebForm({ subject, thankYou, children }) {
       return
     }
 
-    fetch('/api/submit', {
+    const endpoint = FORMS.provider === 'smtp' ? '/api/contact' : '/api/submit'
+    fetch(endpoint, {
       method: 'POST',
       headers: { Accept: 'application/json' },
       body: new FormData(form),

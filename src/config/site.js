@@ -47,6 +47,51 @@ export const SITE = {
   // this % off, auto-applied in totals() and shown in the cart/checkout. Stacks
   // on top of (before) the crypto discount.
   bundleAccessoryDiscount: 0.05, // 5% off accessories added alongside a bike
+  // ── Reply Portal config (single source of truth for the /admin dashboard,
+  //    order/enquiry storage and all transactional emails). Everything brand/
+  //    payment specific lives here so the plumbing stays generic. ──
+  reply: {
+    brand: { primary: '#1d4ed8', headerDark: '#0f172a' }, // primary = accent (AA on white); headerDark = email header band
+    currency: { code: 'USD', symbol: '$' },
+    orderPrefix: 'VT', // order refs → VT-XXXXXX
+    headerTagline: "America's Electric Dirt Bike Experts",
+    dispatchLine: 'Free US shipping to the Lower 48, dispatched by insured freight once payment clears.',
+    bizNumber: null, // no public business number displayed
+    channels: {
+      email: 'info@volttrackhub.com',
+      whatsapp: '', // set a WhatsApp number to enable the WA reply panels; empty = feature hidden
+      whatsappCountryCode: '1',
+    },
+    deadlineHours: 48,
+    // Payment-method registry — data, not code. `opening`/`closing` accept {amount} {ref} tokens.
+    paymentMethods: [
+      {
+        id: 'bank-transfer',
+        label: 'Bank / Wire Transfer',
+        opening: 'Please send {amount} by bank / wire transfer using the details below.',
+        closing: 'Once the transfer is sent, reply with a screenshot so we can confirm and dispatch your order.',
+      },
+      {
+        id: 'crypto',
+        label: 'Crypto (BTC / USDT)',
+        opening: 'Please send the crypto-discounted total of {amount} to the wallet below.',
+        closing: 'Send the transaction hash or a screenshot once paid and we will confirm straight away.',
+        discount: { percent: 10, label: 'crypto' },
+      },
+      {
+        id: 'zelle',
+        label: 'Zelle',
+        opening: 'Please send {amount} via Zelle to the details below.',
+        closing: 'Use your order number as the memo, then reply with a screenshot to confirm.',
+      },
+      {
+        id: 'cashapp',
+        label: 'Cash App',
+        opening: 'Please send {amount} via Cash App to the $Cashtag below.',
+        closing: 'Reply with a screenshot of the completed payment so we can confirm and dispatch.',
+      },
+    ],
+  },
   // Payment methods offered at checkout. `crypto: true` triggers the crypto discount.
   paymentMethods: [
     { id: 'crypto', label: 'Crypto (BTC / USDT)', crypto: true },
@@ -72,9 +117,15 @@ export const FORMS = {
   // browser — no backend, no domain verification, works immediately. 'resend'
   // (Vercel only): forms POST to our own /api/submit route, which needs
   // RESEND_API_KEY set in Vercel env + a Resend-verified sending domain.
-  provider: 'web3forms',
-  web3formsKey: 'b81165bd-daf0-4e0f-bac9-a835965c06be',
-  resendFrom: 'VoltTrack <orders@volttrackhub.com>', // only used if provider is switched back to 'resend'
+  // 'smtp' (default): forms POST to our own /api/order + /api/contact routes,
+  // which save to the reply-portal store (Upstash Redis) and send branded emails
+  // via nodemailer. Requires EMAIL_SERVER_* + EMAIL_FROM env vars in Vercel;
+  // without them submissions are accepted (never dead-end) but not emailed until
+  // the vars are set. 'web3forms' remains available as a no-env-var fallback.
+  provider: 'smtp',
+  web3formsKey: 'b81165bd-daf0-4e0f-bac9-a835965c06be', // inert while provider = 'smtp'
+  smtpFrom: 'VoltTrack <info@volttrackhub.com>', // fallback From; EMAIL_FROM env var overrides
+  resendFrom: 'VoltTrack <orders@volttrackhub.com>', // only used if provider is switched to 'resend'
   turnstileSiteKey: '',
   contactEmail: 'info@volttrackhub.com',
   orderEmail: 'info@volttrackhub.com',
