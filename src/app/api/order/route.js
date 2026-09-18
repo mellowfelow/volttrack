@@ -50,6 +50,7 @@ export async function POST(req) {
     customerName: data.name || '',
     customerEmail: data.email || '',
     customerPhone: data.phone || '',
+    address: data.address || '',
     items,
     subtotal,
     amountDue,

@@ -60,7 +60,7 @@ export default function AdminDashboard() {
           <tbody>
             {orders.slice(0, 10).map((o) => (
               <tr key={o.orderNumber}>
-                <td><a href={`/admin/send-payment-email/?id=${encodeURIComponent(o.orderNumber)}`} className="mono">{o.orderNumber}</a></td>
+                <td><a href={`/admin/orders/${encodeURIComponent(o.orderNumber)}`} className="mono">{o.orderNumber}</a></td>
                 <td>{o.customerName}</td>
                 <td>${Number(o.amountDue).toLocaleString('en-US')}</td>
                 <td><span className={`status-badge status-${o.status}`}>{o.status}</span></td>
@@ -90,7 +90,7 @@ export default function AdminDashboard() {
           <tbody>
             {enquiries.slice(0, 10).map((e) => (
               <tr key={e.id}>
-                <td><a href={`/admin/reply-enquiry/?id=${encodeURIComponent(e.id)}`} className="mono">{e.id}</a></td>
+                <td><a href={`/admin/enquiries/${encodeURIComponent(e.id)}`} className="mono">{e.id}</a></td>
                 <td>{e.name}</td>
                 <td>{e.type}</td>
                 <td><span className={`status-badge status-${e.status}`}>{e.status}</span></td>

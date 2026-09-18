@@ -47,7 +47,7 @@ export default function EnquiriesPage() {
           <tbody>
             {enquiries.map((e) => (
               <tr key={e.id}>
-                <td className="mono">{e.id}</td>
+                <td><a href={`/admin/enquiries/${encodeURIComponent(e.id)}`} className="mono">{e.id}</a></td>
                 <td>{e.name}</td>
                 <td>{e.email}</td>
                 <td>{e.type}</td>
@@ -56,7 +56,7 @@ export default function EnquiriesPage() {
                 <td style={{ color: '#888' }}>{e.createdAt ? new Date(e.createdAt).toLocaleDateString() : '—'}</td>
                 <td>
                   <div className="action-row">
-                    <a href={`/admin/reply-enquiry/?id=${encodeURIComponent(e.id)}`} className="btn-sm">Reply</a>
+                    <a href={`/admin/enquiries/${encodeURIComponent(e.id)}`} className="btn-sm">View</a>
                     <button onClick={() => handleDelete(e.id)} className="btn-danger">Delete</button>
                   </div>
                 </td>

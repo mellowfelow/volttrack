@@ -47,7 +47,7 @@ export default function OrdersPage() {
           <tbody>
             {orders.map((o) => (
               <tr key={o.orderNumber}>
-                <td className="mono">{o.orderNumber}</td>
+                <td><a href={`/admin/orders/${encodeURIComponent(o.orderNumber)}`} className="mono">{o.orderNumber}</a></td>
                 <td>{o.customerName}</td>
                 <td>{o.customerEmail}</td>
                 <td>${Number(o.amountDue).toLocaleString('en-US')}</td>
@@ -56,7 +56,7 @@ export default function OrdersPage() {
                 <td style={{ color: '#888' }}>{o.createdAt ? new Date(o.createdAt).toLocaleDateString() : '—'}</td>
                 <td>
                   <div className="action-row">
-                    <a href={`/admin/send-payment-email/?id=${encodeURIComponent(o.orderNumber)}`} className="btn-sm">Send payment email</a>
+                    <a href={`/admin/orders/${encodeURIComponent(o.orderNumber)}`} className="btn-sm">View</a>
                     <button onClick={() => handleDelete(o.orderNumber)} className="btn-danger">Delete</button>
                   </div>
                 </td>
