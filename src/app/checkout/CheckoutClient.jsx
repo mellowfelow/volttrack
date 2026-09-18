@@ -160,10 +160,11 @@ export default function CheckoutClient() {
               <h2 style={{ fontSize: '1.2rem', marginTop: 18 }}>Payment method</h2>
               <div className="pay-options">
                 {SITE.paymentMethods.map((m) => (
-                  <label key={m.id} className={`pay-option${method === m.id ? ' selected' : ''}`}>
+                  <label key={m.id} className={`pay-option${method === m.id ? ' selected' : ''}${m.disabled ? ' disabled' : ''}`} style={m.disabled ? { opacity: 0.5, cursor: 'not-allowed' } : undefined}>
                     <input
                       type="radio" name="payment_choice" value={m.id}
-                      checked={method === m.id} onChange={() => setMethod(m.id)}
+                      checked={method === m.id} onChange={() => !m.disabled && setMethod(m.id)}
+                      disabled={m.disabled}
                     />
                     <span>{m.label}{m.crypto ? ` — save ${Math.round(SITE.cryptoDiscount * 100)}%` : ''}</span>
                   </label>

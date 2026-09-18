@@ -97,7 +97,7 @@ export const SITE = {
     { id: 'crypto', label: 'Crypto (BTC / USDT)', crypto: true },
     { id: 'bank-transfer', label: 'Bank / Wire Transfer', crypto: false },
     { id: 'apple-pay', label: 'Apple Pay', crypto: false },
-    { id: 'credit-card', label: 'Credit Card', crypto: false },
+    { id: 'credit-card', label: 'Credit Card (coming soon)', crypto: false, disabled: true },
     { id: 'cashapp', label: 'Cash App', crypto: false },
     { id: 'chime', label: 'Chime', crypto: false },
     { id: 'zelle', label: 'Zelle', crypto: false },
