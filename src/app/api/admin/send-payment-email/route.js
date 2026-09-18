@@ -5,6 +5,7 @@ import { sendMail } from '@/lib/mailer'
 import { buildEmailHtml } from '@/lib/emailTemplate'
 import { SITE } from '@/config/site'
 import { money, paymentMethodParts, paymentTermsHtml } from '@/lib/order'
+import { escapeHtml } from '@/lib/emailTemplate'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
@@ -33,7 +34,7 @@ export async function POST(request) {
       { label: 'Amount due', value: money(order.amountDue), highlight: true },
     ],
     afterRows: [
-      `<div style="padding:12px 0;font:400 14px/1.6 -apple-system,Segoe UI,Arial,sans-serif;color:#1A1414;white-space:pre-wrap">${opening ? opening + '\n\n' : ''}${detail}${closing ? '\n\n' + closing : ''}</div>`,
+      `<div style="padding:12px 0;font:400 14px/1.6 -apple-system,Segoe UI,Arial,sans-serif;color:#1A1414;white-space:pre-wrap">${opening ? escapeHtml(opening) + '\n\n' : ''}${escapeHtml(detail)}${closing ? '\n\n' + escapeHtml(closing) : ''}</div>`,
       termsHtml,
     ].join(''),
     secondaryCta: { label: 'Contact Us', url: `https://${SITE.domain}/contact/` },

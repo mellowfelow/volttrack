@@ -62,7 +62,7 @@ export async function POST(req) {
   try { await saveOrder(order); console.log('[order] saved:', orderNumber) } catch (e) { console.error('[order] save failed:', e && e.message) }
 
   const itemRows = items.map((i) => ({ label: `${i.quantity} × ${i.name}`, value: i.price || '' }))
-  const dash = `https://${SITE.domain}/admin/send-payment-email/?id=${encodeURIComponent(orderNumber)}`
+  const dash = `https://${SITE.domain}/admin/orders/${encodeURIComponent(orderNumber)}`
 
   // Admin notification
   const adminHtml = buildEmailHtml({

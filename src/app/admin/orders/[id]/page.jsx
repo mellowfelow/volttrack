@@ -48,7 +48,7 @@ export default function OrderDetailPage() {
         <button onClick={handleDelete} className="btn-danger" style={{ fontSize: 14 }}>Delete order</button>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16, marginBottom: 24 }}>
+      <div className="detail-grid">
         <div className="detail-card">
           <div style={{ fontSize: 12, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em', color: '#888', marginBottom: 8 }}>Customer</div>
           <div style={{ fontWeight: 600, marginBottom: 4 }}>{order.customerName}</div>

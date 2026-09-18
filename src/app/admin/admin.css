@@ -324,6 +324,16 @@
   font-size: 14px;
 }
 
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+@media (max-width: 600px) {
+  .detail-grid { grid-template-columns: 1fr; }
+}
+
 .detail-card {
   padding: 18px;
   background: #f9fafb;
