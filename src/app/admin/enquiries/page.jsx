@@ -31,39 +31,32 @@ export default function EnquiriesPage() {
           <p>No enquiries yet.</p>
         </div>
       ) : (
-        <table className="admin-table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Type</th>
-              <th>Message</th>
-              <th>Status</th>
-              <th>Date</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {enquiries.map((e) => (
-              <tr key={e.id}>
-                <td><a href={`/admin/enquiries/${encodeURIComponent(e.id)}`} className="mono">{e.id}</a></td>
-                <td>{e.name}</td>
-                <td>{e.email}</td>
-                <td>{e.type}</td>
-                <td style={{ maxWidth: 220, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{e.message}</td>
-                <td><span className={`status-badge status-${e.status}`}>{e.status}</span></td>
-                <td style={{ color: '#888' }}>{e.createdAt ? new Date(e.createdAt).toLocaleDateString() : '—'}</td>
-                <td>
+        <div>
+          {enquiries.map((e) => {
+            const date = e.createdAt ? new Date(e.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '—'
+            return (
+              <div key={e.id} className="item-card">
+                <div className="item-card-header">
+                  <a href={`/admin/enquiries/${encodeURIComponent(e.id)}`} className="mono" style={{ fontSize: 13, fontWeight: 700, color: '#1d4ed8', textDecoration: 'none' }}>
+                    {e.id}
+                  </a>
+                  <span className="status-badge" style={{ background: '#f3f4f6', color: '#555', textTransform: 'capitalize' }}>{e.type}</span>
+                  <span className={`status-badge status-${e.status}`}>{e.status}</span>
+                </div>
+                <div className="item-card-name">{e.name}</div>
+                <div className="item-card-meta">{e.email || e.phone || 'No contact'} · {date}</div>
+                {e.message && <p className="item-card-preview">{e.message}</p>}
+                <div className="item-card-footer">
+                  <div />
                   <div className="action-row">
                     <a href={`/admin/enquiries/${encodeURIComponent(e.id)}`} className="btn-sm">View</a>
                     <button onClick={() => handleDelete(e.id)} className="btn-danger">Delete</button>
                   </div>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+                </div>
+              </div>
+            )
+          })}
+        </div>
       )}
     </div>
   )

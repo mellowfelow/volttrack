@@ -47,58 +47,63 @@ export default function AdminDashboard() {
           <p>No orders yet — they will appear here once customers check out.</p>
         </div>
       ) : (
-        <table className="admin-table">
-          <thead>
-            <tr>
-              <th>Order</th>
-              <th>Customer</th>
-              <th>Amount</th>
-              <th>Status</th>
-              <th>Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            {orders.slice(0, 10).map((o) => (
-              <tr key={o.orderNumber}>
-                <td><a href={`/admin/orders/${encodeURIComponent(o.orderNumber)}`} className="mono">{o.orderNumber}</a></td>
-                <td>{o.customerName}</td>
-                <td>${Number(o.amountDue).toLocaleString('en-US')}</td>
-                <td><span className={`status-badge status-${o.status}`}>{o.status}</span></td>
-                <td style={{ color: '#888' }}>{o.createdAt ? new Date(o.createdAt).toLocaleDateString() : '—'}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <div>
+          {orders.slice(0, 5).map((o) => {
+            const date = o.createdAt ? new Date(o.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : '—'
+            return (
+              <div key={o.orderNumber} className="item-card">
+                <div className="item-card-header">
+                  <a href={`/admin/orders/${encodeURIComponent(o.orderNumber)}`} className="mono" style={{ fontSize: 13, fontWeight: 700, color: '#1d4ed8', textDecoration: 'none' }}>
+                    {o.orderNumber}
+                  </a>
+                  <span className={`status-badge status-${o.status}`}>{o.status === 'payment-sent' ? 'Sent' : 'Pending'}</span>
+                </div>
+                <div className="item-card-name">{o.customerName}</div>
+                <div className="item-card-footer">
+                  <span className="item-card-amount">${Number(o.amountDue).toLocaleString('en-US')}</span>
+                  <span style={{ fontSize: 12, color: '#aaa' }}>{date}</span>
+                </div>
+              </div>
+            )
+          })}
+          {orders.length > 5 && (
+            <a href="/admin/orders/" style={{ display: 'block', textAlign: 'center', fontSize: 13, color: '#1d4ed8', marginTop: 8 }}>
+              View all {orders.length} orders →
+            </a>
+          )}
+        </div>
       )}
 
-      <h2 className="section-title">Recent enquiries</h2>
+      <h2 className="section-title" style={{ marginTop: 32 }}>Recent enquiries</h2>
       {enquiries.length === 0 ? (
         <div className="empty-state">
           <p>No enquiries yet — contact and wholesale form submissions appear here.</p>
         </div>
       ) : (
-        <table className="admin-table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Type</th>
-              <th>Status</th>
-              <th>Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            {enquiries.slice(0, 10).map((e) => (
-              <tr key={e.id}>
-                <td><a href={`/admin/enquiries/${encodeURIComponent(e.id)}`} className="mono">{e.id}</a></td>
-                <td>{e.name}</td>
-                <td>{e.type}</td>
-                <td><span className={`status-badge status-${e.status}`}>{e.status}</span></td>
-                <td style={{ color: '#888' }}>{e.createdAt ? new Date(e.createdAt).toLocaleDateString() : '—'}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <div>
+          {enquiries.slice(0, 5).map((e) => {
+            const date = e.createdAt ? new Date(e.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) : '—'
+            return (
+              <div key={e.id} className="item-card">
+                <div className="item-card-header">
+                  <span className="status-badge" style={{ background: '#f3f4f6', color: '#555', textTransform: 'capitalize' }}>{e.type}</span>
+                  <span className={`status-badge status-${e.status}`}>{e.status}</span>
+                </div>
+                <div className="item-card-name">{e.name}</div>
+                {e.message && <p className="item-card-preview">{e.message}</p>}
+                <div className="item-card-footer">
+                  <a href={`/admin/enquiries/${encodeURIComponent(e.id)}`} className="btn-sm" style={{ fontSize: 12 }}>View</a>
+                  <span style={{ fontSize: 12, color: '#aaa' }}>{date}</span>
+                </div>
+              </div>
+            )
+          })}
+          {enquiries.length > 5 && (
+            <a href="/admin/enquiries/" style={{ display: 'block', textAlign: 'center', fontSize: 13, color: '#1d4ed8', marginTop: 8 }}>
+              View all {enquiries.length} enquiries →
+            </a>
+          )}
+        </div>
       )}
     </div>
   )
