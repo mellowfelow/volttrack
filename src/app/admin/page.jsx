@@ -16,13 +16,28 @@ function useFetch(url, passcode) {
 
 export default function AdminDashboard() {
   const { passcode } = useAdminPasscode()
+  const [orders, setOrders] = useState([])
+  const [enquiries, setEnquiries] = useState([])
   const ordersData = useFetch('/api/admin/orders', passcode)
   const enquiriesData = useFetch('/api/admin/enquiries', passcode)
 
-  const orders = ordersData?.orders || []
-  const enquiries = enquiriesData?.enquiries || []
+  useEffect(() => { if (ordersData?.orders) setOrders(ordersData.orders) }, [ordersData])
+  useEffect(() => { if (enquiriesData?.enquiries) setEnquiries(enquiriesData.enquiries) }, [enquiriesData])
+
   const pendingOrders = orders.filter((o) => o.status === 'pending').length
   const newEnquiries = enquiries.filter((e) => e.status === 'new').length
+
+  async function deleteOrder(ref) {
+    if (!confirm(`Delete order ${ref}?`)) return
+    await fetch(`/api/admin/orders/${encodeURIComponent(ref)}`, { method: 'DELETE', headers: { 'X-Admin-Passcode': passcode } })
+    setOrders((prev) => prev.filter((o) => o.orderNumber !== ref))
+  }
+
+  async function deleteEnquiry(id) {
+    if (!confirm(`Delete enquiry ${id}?`)) return
+    await fetch(`/api/admin/enquiries/${encodeURIComponent(id)}`, { method: 'DELETE', headers: { 'X-Admin-Passcode': passcode } })
+    setEnquiries((prev) => prev.filter((e) => e.id !== id))
+  }
 
   return (
     <div>
@@ -61,7 +76,10 @@ export default function AdminDashboard() {
                 <div className="item-card-name">{o.customerName}</div>
                 <div className="item-card-footer">
                   <span className="item-card-amount">${Number(o.amountDue).toLocaleString('en-US')}</span>
-                  <span style={{ fontSize: 12, color: '#aaa' }}>{date}</span>
+                  <div className="action-row">
+                    <span style={{ fontSize: 12, color: '#aaa' }}>{date}</span>
+                    <button onClick={() => deleteOrder(o.orderNumber)} className="btn-danger">Delete</button>
+                  </div>
                 </div>
               </div>
             )
@@ -93,7 +111,10 @@ export default function AdminDashboard() {
                 {e.message && <p className="item-card-preview">{e.message}</p>}
                 <div className="item-card-footer">
                   <a href={`/admin/enquiries/${encodeURIComponent(e.id)}`} className="btn-sm" style={{ fontSize: 12 }}>View</a>
-                  <span style={{ fontSize: 12, color: '#aaa' }}>{date}</span>
+                  <div className="action-row">
+                    <span style={{ fontSize: 12, color: '#aaa' }}>{date}</span>
+                    <button onClick={() => deleteEnquiry(e.id)} className="btn-danger">Delete</button>
+                  </div>
                 </div>
               </div>
             )
