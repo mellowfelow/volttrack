@@ -2,10 +2,9 @@ import { NextResponse } from 'next/server'
 import { checkAdminPasscode } from '@/lib/adminAuth'
 import { getOrder, markOrderSent } from '@/lib/orderStore'
 import { sendMail } from '@/lib/mailer'
-import { buildEmailHtml } from '@/lib/emailTemplate'
+import { buildEmailHtml, paymentDetailsCardHtml, emailParagraphHtml } from '@/lib/emailTemplate'
 import { SITE } from '@/config/site'
-import { money, paymentMethodParts, paymentTermsHtml } from '@/lib/order'
-import { escapeHtml } from '@/lib/emailTemplate'
+import { money, paymentMethodParts, paymentTermsHtml, parsePaymentDetail, instructionsParts, paymentTermsLines } from '@/lib/order'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
@@ -34,7 +33,9 @@ export async function POST(request) {
       { label: 'Amount due', value: money(order.amountDue), highlight: true },
     ],
     afterRows: [
-      `<div style="padding:12px 0;font:400 14px/1.6 -apple-system,Segoe UI,Arial,sans-serif;color:#1A1414;white-space:pre-wrap">${opening ? escapeHtml(opening) + '\n\n' : ''}${escapeHtml(detail)}${closing ? '\n\n' + escapeHtml(closing) : ''}</div>`,
+      `<div style="padding-top:14px">${emailParagraphHtml(opening)}</div>`,
+      paymentDetailsCardHtml(parsePaymentDetail(detail)),
+      emailParagraphHtml(closing),
       termsHtml,
     ].join(''),
     secondaryCta: { label: 'Contact Us', url: `https://${SITE.domain}/contact/` },
@@ -45,7 +46,7 @@ export async function POST(request) {
     to: order.customerEmail,
     subject: `Payment details — ${order.orderNumber} — ${money(order.amountDue)} — ${SITE.name}`,
     html,
-    text: `Payment details for ${order.orderNumber} (${money(order.amountDue)}):\n\n${opening}\n\n${detail}\n\n${closing}`,
+    text: `Payment details for ${order.orderNumber} (${money(order.amountDue)}):\n\n${instructionsParts(opening, detail, closing)}\n\n${paymentTermsLines(order.orderNumber, methodId || order.paymentMethod).map((l) => `- ${l}`).join('\n')}`,
   })
 
   if (result.sent) {

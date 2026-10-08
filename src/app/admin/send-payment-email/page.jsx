@@ -1,8 +1,9 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { useAdminPasscode } from '@/lib/useAdminPasscode'
 import { SITE } from '@/config/site'
+import { parsePaymentDetail } from '@/lib/order'
 
 export default function SendPaymentEmailPage() {
   const { passcode } = useAdminPasscode()
@@ -23,6 +24,8 @@ export default function SendPaymentEmailPage() {
       .then((d) => { setOrder(d.order || null); setLoading(false) })
       .catch(() => setLoading(false))
   }, [passcode, orderId])
+
+  const fields = useMemo(() => parsePaymentDetail(detail), [detail])
 
   async function handleSend(e) {
     e.preventDefault()
@@ -82,6 +85,20 @@ export default function SendPaymentEmailPage() {
             className="form-textarea mono"
           />
         </div>
+
+        {fields.length > 0 ? (
+          <div className="form-group">
+            <span className="form-label">Preview — how it will appear to the customer</span>
+            <dl className="pay-preview">
+              {fields.map((f, i) => (
+                <div key={i} className="pay-preview-row">
+                  <dt>{f.label}</dt>
+                  <dd>{f.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        ) : null}
 
         {result ? <div className={`alert alert-${result.type === 'warn' ? 'warning' : result.type}`}>{result.text}</div> : null}
 

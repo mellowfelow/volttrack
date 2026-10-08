@@ -39,6 +39,26 @@ function row(r, accent, first) {
   return `<tr><td style="padding:9px 0;border-bottom:1px solid ${BORDER};font:400 12.5px/1.5 ${SANS};color:${MUTED};width:42%;vertical-align:top">${escapeHtml(r.label)}</td><td style="padding:9px 0;border-bottom:1px solid ${BORDER};font:700 13.5px/1.5 ${valFont};color:${TEXT};text-align:right">${r.html || escapeHtml(r.value)}</td></tr>`
 }
 
+// Payment-details card: one stacked row per {label, value} field (label above
+// value) so long bank/wallet values wrap cleanly at any width — no cramped
+// two-column table on phones.
+export function paymentDetailsCardHtml(fields, accent = SITE.reply.brand.primary) {
+  if (!fields || !fields.length) return ''
+  const rows = fields
+    .map((f, i) => `<tr><td style="padding:12px 18px;${i < fields.length - 1 ? `border-bottom:1px solid ${BORDER};` : ''}">
+<div style="font:700 10.5px/1.4 ${SANS};letter-spacing:.08em;text-transform:uppercase;color:${MUTED};margin:0 0 3px">${escapeHtml(f.label)}</div>
+<div style="font:600 15px/1.45 ${MONO};color:${TEXT};word-break:break-word;overflow-wrap:anywhere">${escapeHtml(f.value)}</div>
+</td></tr>`)
+    .join('')
+  return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:14px 0;background:${FOOTER};border:1px solid ${BORDER};border-left:4px solid ${accent};border-radius:10px;border-collapse:separate">${rows}</table>`
+}
+
+// Body paragraph used for the opening / closing lines around the card.
+export function emailParagraphHtml(text) {
+  if (!text) return ''
+  return `<p style="margin:0 0 12px;font:400 14px/1.65 ${SANS};color:${TEXT}">${escapeHtml(text)}</p>`
+}
+
 function button(cta, accent, outlined) {
   if (!cta) return ''
   const style = outlined
@@ -60,7 +80,7 @@ export function buildEmailHtml(opts) {
   const bizLine = biz
     ? `<div style="font:700 11px/1.5 ${SANS};color:${accent};margin-top:2px">${escapeHtml(biz.label)} ${escapeHtml(biz.value)}</div>`
     : ''
-  return `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"></head>
+  return `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><meta name="supported-color-schemes" content="light"><style>:root{color-scheme:light only;supported-color-schemes:light}</style></head>
 <body style="margin:0;padding:0;background:${PAGE}">
 ${opts.preheader ? `<div style="display:none;max-height:0;overflow:hidden;opacity:0">${escapeHtml(opts.preheader)}</div>` : ''}
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${PAGE}"><tr><td align="center" style="padding:24px 12px">
