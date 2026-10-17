@@ -1,18 +1,31 @@
 'use client'
 import { useEffect, useState } from 'react'
-import { useAdminPasscode } from '@/lib/useAdminPasscode'
+import Link from 'next/link'
+import { useAdminContextPasscode } from '@/components/admin/AdminPasscodeContext'
+import { EnquiryStatusBadge } from '@/components/admin/StatusBadge'
+
+const FILTERS = [
+  { id: 'all', label: 'All', test: () => true },
+  { id: 'contact', label: 'Contact', test: (e) => e.type === 'contact' },
+  { id: 'wholesale', label: 'Wholesale', test: (e) => e.type === 'wholesale' },
+  { id: 'new', label: 'New', test: (e) => (e.status || 'new') === 'new' },
+  { id: 'replied', label: 'Replied', test: (e) => e.status === 'replied' },
+]
 
 export default function EnquiriesPage() {
-  const { passcode } = useAdminPasscode()
+  const passcode = useAdminContextPasscode()
   const [enquiries, setEnquiries] = useState([])
   const [loading, setLoading] = useState(true)
+  const [failed, setFailed] = useState(false)
+  const [filter, setFilter] = useState('all')
 
   useEffect(() => {
     if (!passcode) return
     fetch('/api/admin/enquiries', { headers: { 'X-Admin-Passcode': passcode } })
       .then((r) => r.json())
-      .then((d) => { setEnquiries(d.enquiries || []); setLoading(false) })
-      .catch(() => setLoading(false))
+      .then((d) => setEnquiries(d.enquiries || []))
+      .catch(() => setFailed(true))
+      .finally(() => setLoading(false))
   }, [passcode])
 
   async function handleDelete(id) {
@@ -23,25 +36,41 @@ export default function EnquiriesPage() {
 
   if (loading) return <p style={{ padding: 24, color: '#888' }}>Loading enquiries…</p>
 
+  const active = FILTERS.find((f) => f.id === filter) || FILTERS[0]
+  const shown = enquiries.filter(active.test)
+
   return (
     <div>
       <h1 className="admin-page-title">Enquiries</h1>
-      {enquiries.length === 0 ? (
+      {failed ? <div className="alert alert-error">Couldn’t load enquiries — refresh and try again.</div> : null}
+
+      {enquiries.length > 0 ? (
+        <div className="filter-pills" role="group" aria-label="Filter enquiries">
+          {FILTERS.map((f) => (
+            <button key={f.id} type="button" onClick={() => setFilter(f.id)} className={`filter-pill${filter === f.id ? ' active' : ''}`} aria-pressed={filter === f.id}>
+              {f.label} ({enquiries.filter(f.test).length})
+            </button>
+          ))}
+        </div>
+      ) : null}
+
+      {shown.length === 0 ? (
         <div className="empty-state">
-          <p>No enquiries yet.</p>
+          <p>{enquiries.length === 0 ? 'No enquiries yet.' : 'No enquiries match this filter.'}</p>
         </div>
       ) : (
         <div>
-          {enquiries.map((e) => {
+          {shown.map((e) => {
             const date = e.createdAt ? new Date(e.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '—'
+            const href = `/admin/enquiries/${encodeURIComponent(e.id)}/`
             return (
               <div key={e.id} className="item-card">
                 <div className="item-card-header">
-                  <a href={`/admin/enquiries/${encodeURIComponent(e.id)}`} className="mono" style={{ fontSize: 13, fontWeight: 700, color: '#1d4ed8', textDecoration: 'none' }}>
+                  <Link href={href} className="mono" style={{ fontSize: 13, fontWeight: 700, color: '#1d4ed8', textDecoration: 'none' }}>
                     {e.id}
-                  </a>
+                  </Link>
                   <span className="status-badge" style={{ background: '#f3f4f6', color: '#555', textTransform: 'capitalize' }}>{e.type}</span>
-                  <span className={`status-badge status-${e.status}`}>{e.status}</span>
+                  <EnquiryStatusBadge status={e.status} />
                 </div>
                 <div className="item-card-name">{e.name}</div>
                 <div className="item-card-meta">{e.email || e.phone || 'No contact'} · {date}</div>
@@ -49,7 +78,7 @@ export default function EnquiriesPage() {
                 <div className="item-card-footer">
                   <div />
                   <div className="action-row">
-                    <a href={`/admin/enquiries/${encodeURIComponent(e.id)}`} className="btn-sm">View</a>
+                    <Link href={href} className="btn-sm">View</Link>
                     <button onClick={() => handleDelete(e.id)} className="btn-danger">Delete</button>
                   </div>
                 </div>

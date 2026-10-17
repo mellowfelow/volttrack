@@ -1,10 +1,15 @@
 'use client'
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 import { useParams, useRouter } from 'next/navigation'
-import { useAdminPasscode } from '@/lib/useAdminPasscode'
+import { useAdminContextPasscode } from '@/components/admin/AdminPasscodeContext'
+import { EnquiryStatusBadge } from '@/components/admin/StatusBadge'
+import { ArrowLeftIcon } from '@/components/admin/icons'
+
+const labelStyle = { fontSize: 12, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em', color: '#888', marginBottom: 8 }
 
 export default function EnquiryDetailPage() {
-  const { passcode } = useAdminPasscode()
+  const passcode = useAdminContextPasscode()
   const { id } = useParams()
   const router = useRouter()
   const [enquiry, setEnquiry] = useState(null)
@@ -14,8 +19,9 @@ export default function EnquiryDetailPage() {
     if (!passcode || !id) { setLoading(false); return }
     fetch(`/api/admin/enquiries/${encodeURIComponent(id)}`, { headers: { 'X-Admin-Passcode': passcode } })
       .then((r) => r.json())
-      .then((d) => { setEnquiry(d.enquiry || null); setLoading(false) })
-      .catch(() => setLoading(false))
+      .then((d) => setEnquiry(d.enquiry || null))
+      .catch(() => {})
+      .finally(() => setLoading(false))
   }, [passcode, id])
 
   async function handleDelete() {
@@ -28,7 +34,7 @@ export default function EnquiryDetailPage() {
   if (!enquiry) return (
     <div className="empty-state">
       <p>Enquiry not found.</p>
-      <a href="/admin/enquiries/" className="btn-sm" style={{ marginTop: 12, display: 'inline-block' }}>Back to enquiries</a>
+      <Link href="/admin/enquiries/" className="btn-sm" style={{ marginTop: 12, display: 'inline-block' }}>Back to enquiries</Link>
     </div>
   )
 
@@ -36,13 +42,15 @@ export default function EnquiryDetailPage() {
 
   return (
     <div style={{ maxWidth: 720 }}>
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24 }}>
+      <Link href="/admin/enquiries/" className="back-link"><ArrowLeftIcon /> All enquiries</Link>
+
+      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12, marginBottom: 24, flexWrap: 'wrap' }}>
         <div>
           <h1 className="admin-page-title" style={{ marginBottom: 4 }}>Enquiry {enquiry.id}</h1>
           <p className="detail-meta">
             {created ? created.toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : '—'}
             {' · '}
-            <span className={`status-badge status-${enquiry.status}`}>{enquiry.status}</span>
+            <EnquiryStatusBadge status={enquiry.status} />
           </p>
         </div>
         <button onClick={handleDelete} className="btn-danger" style={{ fontSize: 14 }}>Delete enquiry</button>
@@ -50,13 +58,13 @@ export default function EnquiryDetailPage() {
 
       <div className="detail-grid">
         <div className="detail-card">
-          <div style={{ fontSize: 12, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em', color: '#888', marginBottom: 8 }}>Contact</div>
+          <div style={labelStyle}>Contact</div>
           <div style={{ fontWeight: 600, marginBottom: 4 }}>{enquiry.name}</div>
           <div style={{ marginBottom: 4 }}>{enquiry.email}</div>
           {enquiry.phone ? <div>{enquiry.phone}</div> : null}
         </div>
         <div className="detail-card">
-          <div style={{ fontSize: 12, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em', color: '#888', marginBottom: 8 }}>Details</div>
+          <div style={labelStyle}>Details</div>
           <div style={{ fontWeight: 600, marginBottom: 4 }}>{enquiry.type || 'General'}</div>
           {enquiry.subject ? <div style={{ color: '#666' }}>{enquiry.subject}</div> : null}
         </div>
@@ -65,11 +73,11 @@ export default function EnquiryDetailPage() {
       <h2 className="section-title">Message</h2>
       <div className="detail-card">{enquiry.message}</div>
 
-      <div className="action-row" style={{ marginTop: 24, gap: 12 }}>
-        <a href={`/admin/reply-enquiry/?id=${encodeURIComponent(enquiry.id)}`} className="btn-primary">
+      <div className="action-row" style={{ marginTop: 24, gap: 12, flexWrap: 'wrap' }}>
+        <Link href={`/admin/reply-enquiry/?id=${encodeURIComponent(enquiry.id)}`} className="btn-primary">
           {enquiry.status === 'replied' ? 'Send another reply' : 'Reply'}
-        </a>
-        <a href="/admin/enquiries/" className="btn-sm">Back to enquiries</a>
+        </Link>
+        <Link href="/admin/enquiries/" className="btn-sm">Back to enquiries</Link>
       </div>
     </div>
   )
