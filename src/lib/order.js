@@ -52,6 +52,14 @@ export function paymentTermsHtml(ref, methodId) {
   return `<div style="margin:18px 0 6px;padding-top:16px;border-top:1px solid #EAE3DC"><div style="margin:0 0 8px;font:700 11px/1.4 -apple-system,Segoe UI,Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#6F665F">Before you pay</div><ul style="margin:0;padding-left:18px">${items}</ul></div>`
 }
 
+// Public, no-auth customer pages. The order number is the access token.
+export function paymentDetailsUrl(ref) {
+  return `https://${SITE.domain}/order/payment-details/?id=${encodeURIComponent(ref)}`
+}
+export function confirmPaymentUrl(ref) {
+  return `https://${SITE.domain}/order/confirm-payment/?id=${encodeURIComponent(ref)}`
+}
+
 // ── Payment-detail parsing ──────────────────────────────────────────────────
 // The admin pastes ONE blob of real payment info (bank wire, wallet, Zelle,
 // link). Mail/WhatsApp copy often collapses it to a single line, so we split it

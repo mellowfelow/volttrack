@@ -12,7 +12,8 @@ const INDEX = 'order:index'
 
 // StoredOrder: { orderNumber, customerName, customerEmail?, customerPhone?,
 //   address?, items[{name,quantity,price}], subtotal, amountDue, paymentMethod,
-//   notes?, status:'pending'|'payment-sent', channel:'whatsapp'|'email', createdAt }
+//   notes?, status:'pending'|'payment-sent'|'payment-confirmed',
+//   channel:'whatsapp'|'email', paymentDetails?, createdAt }
 export async function saveOrder(order) {
   if (!isRedisConfigured()) return false
   const record = { status: 'pending', createdAt: new Date().toISOString(), ...order }
@@ -33,10 +34,31 @@ export async function getOrder(ref) {
   return get(KEY(ref))
 }
 
+// paymentDetails: { methodId, fields:[{label,value}], opening, closing, sentAt } —
+// stored so the customer's /order/payment-details/?id= page can render the same
+// tap-to-copy fields whenever they return to it. Saved even if the email send
+// failed (the admin can still share the link / WhatsApp message).
+export async function savePaymentDetails(ref, paymentDetails) {
+  const order = await getOrder(ref)
+  if (!order) return false
+  order.paymentDetails = { ...paymentDetails, savedAt: new Date().toISOString() }
+  await set(KEY(ref), order)
+  return true
+}
+
 export async function markOrderSent(ref) {
   const order = await getOrder(ref)
   if (!order) return false
-  order.status = 'payment-sent'
+  if (order.status !== 'payment-confirmed') order.status = 'payment-sent'
+  await set(KEY(ref), order)
+  return true
+}
+
+export async function markPaymentConfirmed(ref) {
+  const order = await getOrder(ref)
+  if (!order) return false
+  order.status = 'payment-confirmed'
+  order.paymentConfirmedAt = new Date().toISOString()
   await set(KEY(ref), order)
   return true
 }

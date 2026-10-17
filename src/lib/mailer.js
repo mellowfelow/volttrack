@@ -28,12 +28,12 @@ export function isMailConfigured() {
   return !!process.env.EMAIL_SERVER_HOST
 }
 
-export async function sendMail({ to, subject, html, text, replyTo }) {
+export async function sendMail({ to, subject, html, text, replyTo, attachments }) {
   const tx = getTransporter()
   if (!tx) { console.warn('[mailer] SMTP not configured — EMAIL_SERVER_HOST is unset'); return { sent: false, reason: 'not-configured' } }
   const from = process.env.EMAIL_FROM || SITE.reply.channels.email
   try {
-    await tx.sendMail({ from, to, subject, html, text, replyTo })
+    await tx.sendMail({ from, to, subject, html, text, replyTo, attachments })
     return { sent: true }
   } catch (e) {
     // Never log credentials; surface only a generic error.

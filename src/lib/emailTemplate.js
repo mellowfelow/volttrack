@@ -59,6 +59,18 @@ export function emailParagraphHtml(text) {
   return `<p style="margin:0 0 12px;font:400 14px/1.65 ${SANS};color:${TEXT}">${escapeHtml(text)}</p>`
 }
 
+// Full-width, tap-friendly stacked button for use inside afterRows. kind:
+// 'primary' (filled accent) | 'outline' (accent border) | 'ghost' (muted text link look).
+export function blockButtonHtml(cta, kind = 'primary', accent = SITE.reply.brand.primary) {
+  if (!cta || !cta.url) return ''
+  const styles = {
+    primary: `background:${accent};color:#ffffff;border:2px solid ${accent}`,
+    outline: `background:${CARD};color:${accent};border:2px solid ${accent}`,
+    ghost: `background:${CARD};color:${MUTED};border:1px solid ${BORDER}`,
+  }
+  return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 10px"><tr><td align="center"><a href="${escapeHtml(cta.url)}" style="display:block;${styles[kind] || styles.primary};font:700 14px/1.2 ${SANS};text-decoration:none;padding:14px 18px;border-radius:10px;text-align:center">${escapeHtml(cta.label)}</a></td></tr></table>`
+}
+
 function button(cta, accent, outlined) {
   if (!cta) return ''
   const style = outlined

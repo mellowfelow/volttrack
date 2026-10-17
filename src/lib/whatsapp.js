@@ -1,7 +1,17 @@
 // WhatsApp deep-links. Every feature is gated on SITE.reply.channels.whatsapp —
 // when empty, helpers return '' so nothing renders a dead wa.me link.
+//
+// Two message directions, two openers:
+//   Admin → customer   opens with WA_HEADER (*VoltTrack* in bold) — the shop identifying itself.
+//   Customer → shop    opens with "Hi VoltTrack," — so the shop knows which site it came from.
 import { SITE } from '@/config/site'
-import { money, paymentMethodParts, paymentTermsLines, instructionsParts } from '@/lib/order'
+import {
+  money,
+  paymentMethodParts,
+  paymentTermsLines,
+  parsePaymentDetail,
+  paymentDetailsUrl,
+} from '@/lib/order'
 
 export const WA_HEADER = `*${SITE.name}*`
 
@@ -22,16 +32,23 @@ function text(body) {
   return [WA_HEADER, '', ...lines].join('\n')
 }
 
+function customerText(body) {
+  const lines = Array.isArray(body) ? body : [body]
+  return [`Hi ${SITE.name},`, '', ...lines].join('\n')
+}
+
 export function waMessageText(body) {
   return text(body)
 }
 
+// Customer → shop link (greeting opener).
 export function waLink(body) {
   const to = toWhatsAppNumber(SITE.reply.channels.whatsapp)
   if (!to) return ''
-  return `https://wa.me/${to}?text=${encodeURIComponent(text(body))}`
+  return `https://wa.me/${to}?text=${encodeURIComponent(customerText(body))}`
 }
 
+// Admin → customer link (bold shop-name header).
 export function waLinkTo(phone, body) {
   const to = toWhatsAppNumber(phone)
   if (!to) return ''
@@ -39,14 +56,20 @@ export function waLinkTo(phone, body) {
 }
 
 // Admin → customer: payment details, mirroring the payment-details email.
-export function waPaymentDetailsMessage({ orderNumber, amountDue, methodId, detail }) {
+// Accepts either pre-parsed `fields` or the raw pasted `detail` blob.
+export function waPaymentDetailsMessage({ orderNumber, amountDue, methodId, detail, fields }) {
   const { opening, closing } = paymentMethodParts(methodId, amountDue, orderNumber)
+  const rows = fields && fields.length ? fields : parsePaymentDetail(detail)
   const terms = paymentTermsLines(orderNumber, methodId).map((l) => `✅ ${l}`)
   return [
     `Payment details for order ${orderNumber}`,
     `Amount due: ${money(amountDue)}`,
     '',
-    instructionsParts(opening, detail, closing),
+    ...(opening ? [opening, ''] : []),
+    ...rows.map((f) => `${f.label}: ${f.value}`),
+    ...(closing ? ['', closing] : []),
+    '',
+    `Tap-to-copy version: ${paymentDetailsUrl(orderNumber)}`,
     '',
     ...terms,
   ]
@@ -54,4 +77,9 @@ export function waPaymentDetailsMessage({ orderNumber, amountDue, methodId, deta
 
 export function waPaymentDetailsLink(phone, opts) {
   return waLinkTo(phone, waPaymentDetailsMessage(opts))
+}
+
+// Customer → shop: "I've paid" nudge shown in the payment email.
+export function waPaymentConfirmationLink(orderNumber) {
+  return waLink([`I've completed payment for order ${orderNumber}.`, 'Screenshot attached.'])
 }
