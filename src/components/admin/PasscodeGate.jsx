@@ -1,9 +1,11 @@
 'use client'
 import { useState } from 'react'
 import { useAdminPasscode } from '@/lib/useAdminPasscode'
+import AdminNav from '@/components/admin/AdminNav'
+import { AdminPasscodeProvider } from '@/components/admin/AdminPasscodeContext'
 
 export default function PasscodeGate({ children }) {
-  const { status, error, verify, logout } = useAdminPasscode()
+  const { passcode, status, error, verify, logout } = useAdminPasscode()
   const [input, setInput] = useState('')
 
   if (status === 'checking') {
@@ -27,15 +29,10 @@ export default function PasscodeGate({ children }) {
 
   return (
     <div>
-      <nav className="admin-nav">
-        <a href="/admin/" className="brand">VoltTrack Admin</a>
-        <a href="/admin/">Dashboard</a>
-        <a href="/admin/orders/">Orders</a>
-        <a href="/admin/enquiries/">Enquiries</a>
-        <span style={{ flex: 1 }} />
-        <button onClick={logout} className="logout-btn">Sign out</button>
-      </nav>
-      <div className="admin-body">{children}</div>
+      <AdminNav onSignOut={logout} />
+      <div className="admin-body">
+        <AdminPasscodeProvider passcode={passcode}>{children}</AdminPasscodeProvider>
+      </div>
     </div>
   )
 }

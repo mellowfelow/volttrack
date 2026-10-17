@@ -1,0 +1,174 @@
+/* Public customer pages (/order/payment-details, /order/confirm-payment).
+   Prefixed .pay-* so nothing collides with the site's global styles. */
+.pay-shell {
+  min-height: 60vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 16px 64px;
+  background: #f4f6fb;
+}
+.pay-card {
+  width: 100%;
+  max-width: 520px;
+  background: #fff;
+  border: 1px solid #e5e7ee;
+  border-radius: 16px;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06), 0 12px 32px rgba(15, 23, 42, 0.05);
+  padding: 28px 22px 24px;
+}
+.pay-brand {
+  display: block;
+  text-align: center;
+  font: 700 12px/1 Georgia, 'Times New Roman', serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #1d4ed8;
+  margin-bottom: 10px;
+}
+.pay-card h1 {
+  text-align: center;
+  font-size: 1.5rem;
+  line-height: 1.25;
+  margin: 0 0 18px;
+  color: #0f172a;
+}
+.pay-order { text-align: center; font-size: 14px; color: #475569; margin: 0 0 4px; }
+.pay-order strong { color: #0f172a; font-family: 'SF Mono', Consolas, monospace; }
+.pay-amount {
+  text-align: center;
+  font: 800 2rem/1.1 'SF Mono', Consolas, monospace;
+  color: #1d4ed8;
+  margin: 6px 0 20px;
+}
+.pay-text { font-size: 14px; line-height: 1.65; color: #334155; margin: 0 0 14px; }
+.pay-fields { display: grid; gap: 10px; margin: 0 0 16px; }
+
+.copy-field {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  text-align: left;
+  padding: 12px 14px;
+  background: #f8fafc;
+  border: 1px solid #dbe2ec;
+  border-left: 4px solid #1d4ed8;
+  border-radius: 10px;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  transition: background 0.12s, border-color 0.12s;
+  -webkit-tap-highlight-color: transparent;
+}
+.copy-field:hover { background: #f1f5fb; }
+.copy-field:focus-visible { outline: 2px solid #1d4ed8; outline-offset: 2px; }
+.copy-field.is-copied { background: #f0fdf4; border-color: #86efac; border-left-color: #16a34a; }
+.copy-field-main { display: block; min-width: 0; flex: 1; }
+.copy-field-label {
+  display: block;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #64748b;
+  margin-bottom: 3px;
+}
+.copy-field-value {
+  display: block;
+  font: 600 15px/1.45 'SF Mono', Consolas, 'Liberation Mono', monospace;
+  color: #0f172a;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+.copy-field-action {
+  display: inline-flex;
+  align-items: center;
+  align-self: center;
+  gap: 5px;
+  flex-shrink: 0;
+  font-size: 12px;
+  font-weight: 700;
+  color: #1d4ed8;
+  white-space: nowrap;
+}
+.copy-field.is-copied .copy-field-action { color: #15803d; }
+
+.pay-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 18px;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.2;
+  border-radius: 10px;
+  border: 2px solid #1d4ed8;
+  background: #1d4ed8;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+}
+.pay-btn:hover { background: #1e40af; border-color: #1e40af; }
+.pay-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+.pay-btn.outline { background: #fff; color: #1d4ed8; }
+.pay-btn.outline:hover { background: #eff4ff; }
+.pay-btn:focus-visible { outline: 3px solid #93b4ff; outline-offset: 2px; }
+.pay-actions { display: grid; gap: 10px; margin-top: 18px; }
+
+.pay-note { text-align: center; font-size: 12px; color: #64748b; margin: 20px 0 0; line-height: 1.6; }
+.pay-note a { color: #1d4ed8; }
+.pay-error { text-align: center; color: #b91c1c; font-weight: 600; font-size: 14px; margin: 0 0 14px; }
+.pay-loading { text-align: center; color: #64748b; padding: 16px 0; }
+
+.pay-field { margin: 0 0 16px; }
+.pay-field > label { display: block; font-size: 13px; font-weight: 700; color: #334155; margin-bottom: 6px; }
+.pay-field textarea {
+  width: 100%;
+  padding: 10px 12px;
+  font: inherit;
+  font-size: 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  resize: vertical;
+}
+.pay-field textarea:focus { outline: none; border-color: #1d4ed8; box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.15); }
+
+.pay-drop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 22px 14px;
+  text-align: center;
+  border: 2px dashed #b6c3d8;
+  border-radius: 12px;
+  background: #f8fafc;
+  cursor: pointer;
+  color: #1d4ed8;
+  min-height: 112px;
+  justify-content: center;
+}
+.pay-drop:hover { background: #f1f5fb; }
+.pay-drop svg { width: 24px; height: 24px; }
+.pay-drop .filename { font-weight: 700; color: #0f172a; font-size: 14px; overflow-wrap: anywhere; }
+.pay-drop .hint { font-size: 12px; color: #64748b; }
+.pay-file-input { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.pay-file-input:focus-visible + .pay-drop { outline: 3px solid #93b4ff; outline-offset: 2px; }
+
+.pay-success { text-align: center; padding: 10px 0 4px; }
+.pay-success svg { width: 40px; height: 40px; color: #16a34a; display: block; margin: 0 auto 10px; }
+.pay-success p { margin: 4px 0; font-weight: 700; color: #14532d; }
+.pay-success p.sub { font-weight: 400; color: #475569; font-size: 14px; }
+
+@media (max-width: 420px) {
+  .pay-card { padding: 22px 16px 20px; }
+  .pay-amount { font-size: 1.7rem; }
+  .copy-field { flex-direction: column; gap: 8px; }
+  .copy-field-action { align-self: flex-start; }
+}
