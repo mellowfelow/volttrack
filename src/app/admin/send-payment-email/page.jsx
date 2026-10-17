@@ -4,11 +4,9 @@ import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { SITE } from '@/config/site'
 import { useAdminContextPasscode } from '@/components/admin/AdminPasscodeContext'
-import WhatsAppSendPanel from '@/components/admin/WhatsAppSendPanel'
 import { OrderStatusBadge } from '@/components/admin/StatusBadge'
 import { ArrowLeftIcon, CheckIcon } from '@/components/admin/icons'
 import { money, paymentMethodParts, paymentTermsLines, parsePaymentDetail } from '@/lib/order'
-import { waPaymentDetailsLink, waPaymentDetailsMessage } from '@/lib/whatsapp'
 
 const METHODS = SITE.reply.paymentMethods
 
@@ -70,8 +68,6 @@ function Composer() {
 
   const { opening, closing } = paymentMethodParts(methodId, order.amountDue, order.orderNumber)
   const customerPageHref = `/order/payment-details/?id=${encodeURIComponent(order.orderNumber)}`
-  const waArgs = { orderNumber: order.orderNumber, amountDue: order.amountDue, methodId, fields }
-  const waLink = order.customerPhone && fields.length ? waPaymentDetailsLink(order.customerPhone, waArgs) : ''
 
   async function handleSend(e) {
     e.preventDefault()
@@ -80,7 +76,7 @@ function Composer() {
       return
     }
     if (!order.customerEmail) {
-      setResult({ type: 'error', text: 'This order has no customer email — use the WhatsApp reply below.' })
+      setResult({ type: 'error', text: 'This order has no customer email on file, so it can’t be emailed.' })
       return
     }
     if (!window.confirm(`Send these payment details to ${order.customerEmail}?`)) return
@@ -100,7 +96,7 @@ function Composer() {
         const why = data.reason === 'not-configured'
           ? 'email (SMTP) is not configured on the server'
           : 'the mail server rejected the send'
-        setResult({ type: 'warn', text: `Details saved, but the email was NOT sent — ${why}. Share the WhatsApp message below instead.` })
+        setResult({ type: 'warn', text: `Details saved, but the email was NOT sent — ${why}. Try again in a moment.` })
       } else {
         setResult({ type: 'error', text: data.error || (res.status === 401 ? 'Session expired — sign out and back in.' : 'Failed to send.') })
       }
@@ -195,14 +191,6 @@ function Composer() {
           {sending ? 'Sending…' : order.status === 'payment-sent' || result?.type === 'sent' ? 'Resend payment email' : 'Send payment email'}
         </button>
       </form>
-
-      <div style={{ marginTop: 28 }}>
-        <WhatsAppSendPanel
-          phone={order.customerPhone}
-          link={waLink}
-          messageLines={waPaymentDetailsMessage(waArgs)}
-        />
-      </div>
 
       <div className="item-list" style={{ marginTop: 28 }}>
         <h2 className="section-title">Order items</h2>
