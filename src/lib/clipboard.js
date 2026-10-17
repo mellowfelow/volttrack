@@ -1,30 +1,46 @@
 'use client'
-// Copy text to the clipboard. navigator.clipboard needs a secure context and
-// can be blocked in some in-app browsers; fall back to a hidden textarea +
-// execCommand so a tap-to-copy button never silently does nothing.
+// Copy text to the clipboard from inside a tap/click handler.
+//
+// 1) Synchronous textarea + execCommand('copy') first — it runs inside the user
+//    gesture, which is what iOS Safari and in-app browsers require, and it never
+//    hangs. 2) Fall back to the async Clipboard API, raced against a timeout so a
+//    never-settling promise (unfocused document, blocked permission) can't leave
+//    the button with no feedback. Returns true/false so the UI can say so.
+function legacyCopy(value) {
+  let ta
+  const prevFocus = document.activeElement
+  try {
+    ta = document.createElement('textarea')
+    ta.value = value
+    ta.setAttribute('readonly', '')
+    ta.setAttribute('aria-hidden', 'true')
+    ta.style.cssText = 'position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;font-size:16px;pointer-events:none'
+    document.body.appendChild(ta)
+    ta.focus({ preventScroll: true })
+    ta.select()
+    ta.setSelectionRange(0, value.length)
+    return document.execCommand('copy')
+  } catch {
+    return false
+  } finally {
+    if (ta && ta.parentNode) ta.parentNode.removeChild(ta)
+    try { if (prevFocus && prevFocus.focus) prevFocus.focus({ preventScroll: true }) } catch { /* ignore */ }
+  }
+}
+
 export async function copyText(text) {
   const value = String(text == null ? '' : text)
+  if (legacyCopy(value)) return true
   try {
     if (navigator.clipboard && window.isSecureContext) {
-      await navigator.clipboard.writeText(value)
+      await Promise.race([
+        navigator.clipboard.writeText(value),
+        new Promise((_, reject) => setTimeout(() => reject(new Error('clipboard timeout')), 1500)),
+      ])
       return true
     }
   } catch {
-    /* fall through to the legacy path */
+    /* fall through */
   }
-  try {
-    const ta = document.createElement('textarea')
-    ta.value = value
-    ta.setAttribute('readonly', '')
-    ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0;pointer-events:none'
-    document.body.appendChild(ta)
-    ta.focus()
-    ta.select()
-    ta.setSelectionRange(0, value.length)
-    const ok = document.execCommand('copy')
-    document.body.removeChild(ta)
-    return ok
-  } catch {
-    return false
-  }
+  return false
 }

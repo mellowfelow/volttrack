@@ -127,7 +127,7 @@
 .pay-loading { text-align: center; color: #64748b; padding: 16px 0; }
 
 .pay-field { margin: 0 0 16px; }
-.pay-field > label { display: block; font-size: 13px; font-weight: 700; color: #334155; margin-bottom: 6px; }
+.pay-field > label:not(.pay-drop) { display: block; font-size: 13px; font-weight: 700; color: #334155; margin-bottom: 6px; }
 .pay-field textarea {
   width: 100%;
   padding: 10px 12px;
