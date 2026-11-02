@@ -21,9 +21,9 @@ dirt bikes themselves and gives advice based on experience, not commission.
 - Support: Mon–Sat 9am–6pm ET · Currency: USD · Region: US (Lower 48)
 
 ## Forms & chat
-- Forms: Web3Forms (provider), real access key set (`FORMS.web3formsKey`) — live, no domain
-  verification needed. `/api/submit` (Resend route) is unused while this is the provider; kept
-  as a fallback for when a Resend-verified sending domain exists.
+- Forms: `smtp` provider — `/api/contact` saves to the Upstash Redis reply-portal store (admin
+  dashboard at `/admin/`) and emails via nodemailer. Web3Forms code path + `web3formsKey` are an
+  inert fallback; `/api/submit` (Resend route) is unused.
 - Chat hub: Tawk.to widget (live) + email + phone link channels.
 
 ## Deploy target rationale
@@ -121,3 +121,40 @@ Still open (all off-page or client decisions):
 - 152 `/parts/[slug]/` pages: the ~33 with no `compat[]` are `noindex,follow`; all 152 are now
   out of the sitemap (2026-09-09) but still crawlable via links.
 - Domain is new (rebuild shipped 2026-07-22); slow initial indexation is expected for the age.
+
+## Full SEO / technical audit — 2026-11-02 (GSC + Bing + Semrush + live crawl)
+Facts at audit time (volttrackhub.com only — an earlier GSC view and the Bing home page showed a
+different property, volttrail.org, and were discarded):
+- GSC Jul 24–Oct 31: 320 clicks / 29.6K impressions, CTR 1.1%, avg pos 17.3; US = 248 clicks.
+  Almost all clicks carry the product-snippet appearance. Top pages: a parts page (77), Razor MX500
+  (59), Razor MX125 (30 clicks / 5.4K impressions), the 12/13/14-year-old guides. Demand is kids/teen
+  bikes + Razor + batteries/parts, not the "electric dirt bikes USA" primary keyword.
+- Indexing: 80 indexed / 66 not (55 "Discovered – currently not indexed": brand hubs, /faq/, compare,
+  the street-legal checker, several posts). Sitemap 127 URLs read OK by Google (Nov 1) and Bing (Oct 30).
+  No manual actions. Core Web Vitals: not enough field data.
+- Backlinks: GSC 88 external links / 74 domains (was 0 on 2026-09-09); Semrush 336 referring domains,
+  83% authority 0–10, network graph "Dangerous", anchors read as link-vendor spam ("link velocity",
+  "tiered", "link insertions", "syair sydney"); Bing 13 domains incl. seoorbit.us. Provenance
+  UNKNOWN — confirm nobody was paid to build them. Do not disavow until that is answered.
+- Bing (volttrackhub.com, 3 months): 16 clicks / 1.5K impressions.
+
+Fixed in code (not yet pushed when written):
+- Sitemap `<lastmod>`: was the build timestamp on 105 URLs; now real post dates, `g.updated||g.date`
+  for guides, `SITE.catalogUpdated` for the rest.
+- Product titles: `titleFor()` adds a qualifier ("— Price & Specs", youth bikes "— Ages 7–10, Price &
+  Specs", enquiry-only "— Specs & Availability"), kept ≤60 with the " | VoltTrack" suffix.
+- `/blog/` and the street-legal checker titles trimmed to ≤60; privacy/terms descriptions lengthened.
+- `vercel.json` (generated): `/images/*` and `/og/*` now `Cache-Control: max-age=604800, swr=86400`
+  (was max-age=0); CSP no longer repeats `'self'` in connect-src.
+- robots.txt: dropped retired `Claude-Web`; added `Claude-User`, `Claude-SearchBot`, `OAI-SearchBot`,
+  `Perplexity-User`, `MistralAI-User`, `Meta-WebIndexer`.
+- Product JSON-LD: `sku` (catalogue slug) + `itemCondition: NewCondition`.
+- `/parts/[slug]/`: 19 variant parts (Front/Rear, Adult/Youth, battery sizes) shared one `<title>`;
+  `titleFor()` now falls back to the full variant name when a stored title is shared. No duplicate
+  titles remain on indexable pages.
+- CLAUDE.md / README / PROJECT.md corrected: forms run on SMTP + Upstash, not Web3Forms.
+
+Still open: spam backlink decision; 55 uncrawled revenue pages (request indexing in GSC, earn real
+links); Lighthouse/PSI + Rich Results runs; enquiry-only products carry no Offer (no price to
+publish) so they are not product-snippet eligible; `Content-Signal: ai-train=yes` client sign-off;
+Vercel env vars (SMTP/Upstash/ADMIN_PASSCODE) unverified.

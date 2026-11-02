@@ -4,7 +4,7 @@ import Breadcrumbs from '@/components/Breadcrumbs'
 import { buildMetadata } from '@/lib/seo'
 
 export const metadata = buildMetadata({
-  title: 'Electric Dirt Bike Blog — Reviews, Comparisons & News',
+  title: 'Electric Dirt Bike Blog — Reviews & Comparisons',
   description: 'Electric dirt bike reviews, brand comparisons, US legal updates and ownership tips from VoltTrack — Sur-Ron, Talaria, Stark, KTM and more.',
   path: '/blog/',
 })

@@ -18,10 +18,27 @@ export function generateStaticParams() {
   return [...PRODUCTS, ...DISCONTINUED].map((p) => ({ slug: p.slug }))
 }
 
-// Title format: [Model Name] | VoltTrack  (the "| VoltTrack" suffix comes from
-// the layout title template, so this returns just the model name). Uses the full
-// product name for clarity — all names sit within the ≤60-char rule once suffixed.
-const titleFor = (p) => p.name
+// Title format: [Model Name] — [qualifier] | VoltTrack. The "| VoltTrack" suffix comes
+// from the layout title template (12 chars), so the part built here must stay ≤48 chars
+// to keep the full title ≤60. A bare model name gave 33 product titles under 30 chars
+// with no search modifier; the qualifier adds the intent people actually search
+// ("price", "specs", rider age for youth bikes). The longest candidate that fits wins.
+const TITLE_BUDGET = 60 - ' | VoltTrack'.length
+const titleFor = (p) => {
+  const names = [...new Set([p.name, p.titleName].filter(Boolean))]
+  const youthAge = p.category === 'youth-electric-dirt-bikes' && p.specs && p.specs.age
+  const qualifiers = p.enquire
+    ? [' — Specs & Availability', ' — Specs']
+    : [
+        ...(youthAge ? [` — Ages ${youthAge}, Price & Specs`, ` — Ages ${youthAge}`] : []),
+        ' — Price & Specs',
+        ' — Specs',
+      ]
+  for (const q of qualifiers) {
+    for (const n of names) if ((n + q).length <= TITLE_BUDGET) return n + q
+  }
+  return names[names.length - 1]
+}
 
 export function generateMetadata({ params }) {
   const d = discontinuedBySlug(params.slug)
@@ -89,6 +106,7 @@ export default function ProductPage({ params }) {
     price,
     priceValidUntil,
     availability: 'https://schema.org/InStock',
+    itemCondition: 'https://schema.org/NewCondition',
     url: url(`/product/${p.slug}/`),
     seller: { '@type': 'Organization', name: SITE.name },
     shippingDetails,
@@ -99,6 +117,8 @@ export default function ProductPage({ params }) {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: p.name,
+    // Merchant-defined SKU (our own catalogue slug) — Merchant listings expect one.
+    sku: p.slug,
     description: p.description,
     image: p.images && p.images.length ? p.images.map((f) => url(`/images/${f}`)) : [url(img)],
     brand: { '@type': 'Brand', name: brandName(p.brand) },

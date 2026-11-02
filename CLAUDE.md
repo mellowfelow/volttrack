@@ -44,16 +44,21 @@ and verify every href resolves. Backlog + rules: `docs/VOLTTRACK-BLOG-CONTENT-TR
 `blog-post-seo-ruleset.md`. Homepage shows 6 newest; `/blog/` shows all newest-first.
 
 ## Live placeholders (what breaks while unset)
-- Forms provider is **`web3forms`** (real access key set in `FORMS.web3formsKey`) — submits
-  directly from the browser to api.web3forms.com, no backend or domain verification needed.
-  `/api/submit` (Resend) is dead code while this is the provider — kept only in case the client
-  later wants first-party sending once a domain is Resend-verified (switch `FORMS.provider` back
-  and set `RESEND_API_KEY` in Vercel).
+- Forms provider is **`smtp`** (`FORMS.provider`) — forms POST to our own `/api/contact` route,
+  which saves orders/enquiries to the Upstash Redis reply-portal store and sends branded emails
+  via nodemailer. Needs `SMTP_*`/`EMAIL_*`, `ADMIN_PASSCODE` and the Upstash vars set in Vercel;
+  without them submissions are accepted but not emailed/stored. The `web3forms` branch in
+  `WebForm.jsx`/`CheckoutClient.jsx` and `FORMS.web3formsKey` are an inert fallback; `/api/submit`
+  (Resend) is dead code unless `FORMS.provider` is switched.
 - GSC + Yandex verification and the Tawk chat widget are all live (real values set) — nothing
   pending there.
-- `SITE.sameAs` is still `[]` — **this is the #1 open item.** The site has 0 external backlinks
-  (GSC + Bing confirm). Add real social/GBP URLs the moment the client supplies them and wire into
-  the Organization schema. No on-page work moves indexation/rank until this is done.
+- `SITE.sameAs` is still `[]` — **open item.** Add real social/GBP URLs the moment the client
+  supplies them and wire into the Organization schema. Note (2026-11-02): GSC now shows 88
+  external links / Semrush 336 referring domains, but they are low-quality spam-network links
+  (exact-match anchors, generic `.us`/`.xyz` domains) — NOT earned authority. Real, relevant
+  links (dealer locators, GBP, social, niche forums) are still needed. See PROJECT.md.
+- `SITE.catalogUpdated` feeds sitemap `<lastmod>` for undated pages — bump it when catalog/page
+  copy changes. Never set it to the build date.
 - `robots.txt` sets `Content-Signal: ai-train=yes` — confirm the client actually consents to
   AI-training use (search/citation is separate, via `ai-input=yes`). Change in `gen-agent-files.mjs`.
 - Guides have no `datePublished` — the `Article` schema supports `g.date`/`g.updated`; add real

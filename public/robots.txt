@@ -22,10 +22,22 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
-User-agent: Claude-Web
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: OAI-SearchBot
 Allow: /
 
 User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: MistralAI-User
 Allow: /
 
 User-agent: Applebot
@@ -44,6 +56,9 @@ User-agent: Google-Extended
 Allow: /
 
 User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: Meta-WebIndexer
 Allow: /
 
 User-agent: cohere-ai

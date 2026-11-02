@@ -32,7 +32,7 @@ Set `SITE.domain` in `src/config/site.js`, rebuild, push. Never find-and-replace
 ## Placeholders to set before launch
 | Placeholder | File | Effect until set |
 |---|---|---|
-| `FORMS.web3formsKey` | `src/config/site.js` | Contact form redirects to thank-you but emails nowhere |
+| `SMTP_*` / `EMAIL_*`, `ADMIN_PASSCODE`, Upstash Redis vars | Vercel env | Forms are accepted but not emailed/stored; `/admin/` dashboard is empty |
 | `CHAT` tawk `PROPERTY_ID/WIDGET_ID` | `src/config/site.js` | Tawk widget not injected (email link still works) |
 | `SITE.gscVerification` | `src/config/site.js` | No Google Search Console meta tag |
 

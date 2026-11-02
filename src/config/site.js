@@ -23,6 +23,10 @@ export const SITE = {
   entityStatement:
     "VoltTrack is a US-based electric dirt bike retailer and authorized dealer established in 2025, offering genuine expert advice and manufacturer-warrantied electric dirt bikes for adult, youth and kids riders. VoltTrack ships across the Lower 48 US states and specializes in Sur-Ron, Stark Future, Talaria, STACYC, KTM and Razor electric motorcycles. What makes VoltTrack different: the team rides electric dirt bikes themselves and gives advice based on experience, not commission.",
   foundingYear: '2025',
+  // Date the catalog / page copy last genuinely changed. Feeds sitemap <lastmod> for
+  // pages with no date of their own. Bump it (YYYY-MM-DD) whenever products, prices or
+  // page copy change — never set it to the build date, or Google learns to ignore lastmod.
+  catalogUpdated: '2026-11-02',
   foundingLocation: 'United States',
   region: 'United States',
   areaServed: 'US (Lower 48 states)',

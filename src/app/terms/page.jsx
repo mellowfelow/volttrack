@@ -4,7 +4,7 @@ import { buildMetadata } from '@/lib/seo'
 
 export const metadata = buildMetadata({
   title: 'Terms & Conditions',
-  description: 'The terms and conditions governing use of the VoltTrack website and purchases of electric dirt bikes.',
+  description: 'The terms and conditions governing use of the VoltTrack website and purchases of electric dirt bikes, parts and accessories from our US store.',
   path: '/terms/',
 })
 

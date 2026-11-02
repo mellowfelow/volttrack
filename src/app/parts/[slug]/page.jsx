@@ -19,11 +19,17 @@ export function generateStaticParams() {
   return PARTS.map((p) => ({ slug: p.slug }))
 }
 
+// Variant parts (Front/Rear, Adult/Youth, battery sizes) share one stored title, which gave
+// 19 pages duplicate <title>s. When a stored title is shared, fall back to the full name —
+// which carries the variant — so every title is unique.
+const TITLE_COUNT = PARTS.reduce((m, x) => m.set(x.title, (m.get(x.title) || 0) + 1), new Map())
+const titleFor = (p) => (TITLE_COUNT.get(p.title) > 1 ? `${p.name} | VoltTrack Parts` : p.title)
+
 export function generateMetadata({ params }) {
   const p = partBySlug(params.slug)
   if (!p) return {}
   return buildMetadata({
-    absoluteTitle: p.title, // already ends "... | VoltTrack Parts"
+    absoluteTitle: titleFor(p), // always ends "... | VoltTrack Parts"
     description: p.metaDesc,
     path: `/parts/${p.slug}/`,
     type: 'product',

@@ -3,7 +3,7 @@ import { buildMetadata } from '@/lib/seo'
 
 export const metadata = buildMetadata({
   title: 'Privacy Policy',
-  description: 'How VoltTrack collects, uses and protects your personal information.',
+  description: 'How VoltTrack collects, uses and protects your personal information when you browse the site, place an order or contact our team.',
   path: '/privacy/',
 })
 

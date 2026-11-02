@@ -8,7 +8,8 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 const root = resolve(__dirname, '..')
 const cfg = await import(pathToFileURL(resolve(root, 'src/config/site.js')).href)
 const { SITE, FORMS, CHAT, CATEGORIES, PRODUCTS, BRANDS, REDIRECTS } = cfg
-const FORMS_CONNECT = FORMS.provider === 'web3forms' ? 'https://api.web3forms.com' : "'self'"
+// Leading space included so the CSP never repeats 'self' when no extra origin is needed.
+const FORMS_CONNECT = FORMS.provider === 'web3forms' ? ' https://api.web3forms.com' : ''
 
 const D = SITE.domain
 const base = `https://${D}`
@@ -56,10 +57,22 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
-User-agent: Claude-Web
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: OAI-SearchBot
 Allow: /
 
 User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: MistralAI-User
 Allow: /
 
 User-agent: Applebot
@@ -78,6 +91,9 @@ User-agent: Google-Extended
 Allow: /
 
 User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: Meta-WebIndexer
 Allow: /
 
 User-agent: cohere-ai
@@ -414,7 +430,7 @@ const CSP =
   "style-src 'self' 'unsafe-inline' https://embed.tawk.to https://*.tawk.to; " +
   "font-src 'self' https://embed.tawk.to https://*.tawk.to; " +
   "img-src 'self' data: https:; " +
-  `connect-src 'self' ${FORMS_CONNECT} https://*.tawk.to wss://*.tawk.to https://tawk.to; ` +
+  `connect-src 'self'${FORMS_CONNECT} https://*.tawk.to wss://*.tawk.to https://tawk.to; ` +
   "frame-src https://*.tawk.to https://tawk.to; " +
   "media-src https://*.tawk.to; " +
   "base-uri 'self'; form-action 'self'"
@@ -450,7 +466,9 @@ if (isStatic) {
   }
   headers += `/auth.md\n  Content-Type: text/markdown; charset=utf-8\n  Cache-Control: public, max-age=3600\n  Access-Control-Allow-Origin: *\n\n`
   headers += `/llms.txt\n  Content-Type: text/plain; charset=utf-8\n  Cache-Control: public, max-age=3600\n  Access-Control-Allow-Origin: *\n\n`
-  headers += `/*.md\n  Content-Type: text/markdown; charset=utf-8\n  Cache-Control: public, max-age=3600\n`
+  headers += `/*.md\n  Content-Type: text/markdown; charset=utf-8\n  Cache-Control: public, max-age=3600\n\n`
+  headers += `/images/*\n  Cache-Control: public, max-age=604800, stale-while-revalidate=86400\n\n`
+  headers += `/og/*\n  Cache-Control: public, max-age=604800, stale-while-revalidate=86400\n`
   w('_headers', headers)
   w('_redirects', `https://www.${D}/*  https://${D}/:splat  301!
 http://${D}/*  https://${D}/:splat  301!
@@ -492,6 +510,14 @@ http://${D}/*  https://${D}/:splat  301!
       })),
       { source: '/auth.md', headers: [{ key: 'Content-Type', value: 'text/markdown; charset=utf-8' }, { key: 'Access-Control-Allow-Origin', value: '*' }] },
       { source: '/llms.txt', headers: [{ key: 'Content-Type', value: 'text/plain; charset=utf-8' }, { key: 'Access-Control-Allow-Origin', value: '*' }] },
+      // Static assets from /public are not content-hashed, so they were served with
+      // max-age=0 + must-revalidate (every repeat view re-checked ~15 images). A week
+      // of browser/CDN caching with a day of stale-while-revalidate keeps repeat views
+      // instant while a replaced image still propagates within days.
+      ...['/images/(.*)', '/og/(.*)'].map((source) => ({
+        source,
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=604800, stale-while-revalidate=86400' }],
+      })),
     ],
   }
   writeFileSync(resolve(root, 'vercel.json'), JSON.stringify(vercel, null, 2) + '\n')
