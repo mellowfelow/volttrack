@@ -81,6 +81,7 @@ export const SITE = {
         opening: 'Please send the crypto-discounted total of {amount} to the wallet below.',
         closing: 'Send the transaction hash or a screenshot once paid and we will confirm straight away.',
         discount: { percent: 10, label: 'crypto' },
+        noReference: true, // BTC/USDT transfers have no memo field for an order reference
       },
       {
         id: 'zelle',
@@ -134,6 +135,21 @@ export const FORMS = {
   contactEmail: 'info@volttrackhub.com',
   orderEmail: 'info@volttrackhub.com',
 }
+
+// ----------------------------------------------------------------------------
+// CRYPTO_WALLETS — the business's receiving addresses for BTC / USDT checkout.
+// Single source of truth: the checkout success panel, the customer confirmation
+// email and the public /order/payment-details/ page all read this list.
+// USDT runs on three networks with three DIFFERENT addresses — sending to the
+// wrong network loses funds, so never collapse them into one "USDT" entry.
+// Addresses are checked by scripts/crosscheck.mjs (shape per network + unique).
+// ----------------------------------------------------------------------------
+export const CRYPTO_WALLETS = [
+  { id: 'BTC', coin: 'BTC', name: 'Bitcoin', network: 'Bitcoin', label: 'Bitcoin (BTC)', address: 'bc1q95huj62jcxq4pvsa09herj0ssh4aeanc3v8jn2' },
+  { id: 'USDT-TRC20', coin: 'USDT', name: 'USDT', network: 'TRC-20 (Tron)', label: 'USDT — TRC-20 (Tron)', address: 'TReykodL93PS3mtobzHEz3nZdtimDhWFVB' },
+  { id: 'USDT-ERC20', coin: 'USDT', name: 'USDT', network: 'ERC-20 (Ethereum)', label: 'USDT — ERC-20 (Ethereum)', address: '0x3819109CAdeE74becf86F5Ddff8e8A57681ACd04' },
+  { id: 'USDT-SOL', coin: 'USDT', name: 'USDT', network: 'Solana', label: 'USDT — Solana', address: '3ZeKxzf8ao7DRiK74KxRmQE5wHBnsTRMH7Q2x88VHoA4' },
+]
 
 export const CHAT = {
   channels: [

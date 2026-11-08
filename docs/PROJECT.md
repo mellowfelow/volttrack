@@ -158,3 +158,19 @@ Still open: spam backlink decision; 55 uncrawled revenue pages (request indexing
 links); Lighthouse/PSI + Rich Results runs; enquiry-only products carry no Offer (no price to
 publish) so they are not product-snippet eligible; `Content-Signal: ai-train=yes` client sign-off;
 Vercel env vars (SMTP/Upstash/ADMIN_PASSCODE) unverified.
+
+## Crypto checkout — 2026-11-02 (replicated from agedandamber)
+- Wallets (client-supplied, identical to agedandamber's `CRYPTO_WALLETS`): BTC `bc1q95huj6…3v8jn2`,
+  USDT TRC-20 `TReykodL…dtimDhWFVB`, USDT ERC-20 `0x381910…57681ACd04`, USDT Solana `3ZeKxzf8…2x88VHoA4`.
+  Full values only in `CRYPTO_WALLETS` in `src/config/site.js`. Verified: BTC bech32 checksum, TRON
+  base58check, Solana 32-byte key, ERC-20 shape (EIP-55 checksum not checked — needs keccak).
+- Flow: checkout "Crypto (BTC / USDT)" (10% off) → `/api/order` stores the order with
+  `paymentDetails` = the four wallets, `status: payment-sent`, `amountDueNow` (first instalment on
+  Pay in 4) → `/thank-you-order/` shows `CryptoPaymentPanel` (coin/network picker, QR, tap-to-copy,
+  wrong-network warning, "I've paid — upload confirmation") → customer email carries the same wallets
+  + buttons → `/order/payment-details/?id=` works immediately → screenshot upload flips the order to
+  `payment-confirmed`. Admin email says nothing to send; verify on-chain, then dispatch.
+- QR = address only (BIP21 amounts are in BTC; no live price feed to convert USD). `qrcode` npm
+  package, loaded on demand in the panel only.
+- Needs Upstash + SMTP env vars in Vercel for the store/email parts; the thank-you panel works
+  without them.

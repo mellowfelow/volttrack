@@ -32,7 +32,9 @@ export async function GET(request) {
     {
       ok: true,
       orderNumber: order.orderNumber,
-      amountDue: order.amountDue,
+      // Crypto Pay-in-4 orders owe only the first instalment now (amountDueNow);
+      // everything else owes the full amount.
+      amountDue: order.amountDueNow != null ? order.amountDueNow : order.amountDue,
       status: order.status || 'pending',
       paymentDetails: { fields: pd.fields, opening: pd.opening || '', closing: pd.closing || '' },
       terms: paymentTermsLines(order.orderNumber, pd.methodId),

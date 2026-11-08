@@ -33,6 +33,8 @@ export default function CheckoutClient() {
   const t = totals(items, isCrypto)
   const payIn4 = plan === 'pay-in-4'
   const installment = Math.round(t.total / 4)
+  // What the customer owes right now: the whole total, or just the first Pay in 4 instalment.
+  const dueNow = payIn4 ? installment : t.total
   const selectedPlan = SITE.paymentPlans.find((p) => p.id === plan) || {}
 
   // Line format includes the variant name, e.g.
@@ -63,6 +65,10 @@ export default function CheckoutClient() {
           paymentMethod: selected.label || method,
           paymentPlan: selectedPlan.label || plan,
           installment: payIn4 ? installment : null,
+          // Crypto orders pay immediately on the thank-you page (wallets + QR).
+          crypto: isCrypto,
+          dueNow,
+          payIn4,
         }))
       } catch { /* sessionStorage unavailable (private mode etc.) — thank-you page falls back */ }
       clearCart()
@@ -130,6 +136,7 @@ export default function CheckoutClient() {
           <input type="hidden" name="bundle_discount_usd" value={t.bundleDiscount} />
           <input type="hidden" name="crypto_discount_usd" value={t.discount} />
           <input type="hidden" name="total_usd" value={t.total} />
+          <input type="hidden" name="amount_due_now_usd" value={dueNow} />
           <input type="checkbox" name="botcheck" className="hp" tabIndex={-1} autoComplete="off" />
 
           <div className="grid cols-2" style={{ alignItems: 'start' }}>
@@ -170,6 +177,14 @@ export default function CheckoutClient() {
                   </label>
                 ))}
               </div>
+
+              {isCrypto ? (
+                <p className="form-note" style={{ marginTop: 8 }}>
+                  After you place your order you’ll see the Bitcoin and USDT wallet addresses
+                  (with QR codes) straight away, and they’re emailed to you too — so you can pay
+                  immediately.
+                </p>
+              ) : null}
 
               <h2 style={{ fontSize: '1.2rem', marginTop: 18 }}>Finance — Pay in 4</h2>
               <p className="form-note" style={{ marginTop: 0 }}>
@@ -231,7 +246,7 @@ export default function CheckoutClient() {
               {error ? <p style={{ color: '#b91c1c', fontWeight: 600 }}>{error}</p> : null}
               <button type="submit" className="btn" style={{ width: '100%' }}>Place order</button>
               <p className="form-note">
-                {SITE.financing}. We confirm stock, final pricing and payment details by email —
+                {SITE.financing}. {isCrypto ? 'Crypto orders show wallet details immediately; we confirm stock and final pricing once your payment is verified' : 'We confirm stock, final pricing and payment details by email'} —
                 no card is charged online. Prices are estimates and may change due to import tariffs.
               </p>
             </div>

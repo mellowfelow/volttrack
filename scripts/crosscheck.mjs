@@ -237,6 +237,55 @@ else pass('41 design: consistent centered section pattern')
 if (/(?<!\.js-anim )\.reveal\{[^}]*opacity:\s*0/.test(css)) fail('41 design: ungated .reveal hides content without JS')
 else pass('41 design: motion gated (.js-anim), CLS-safe')
 
+// ---- Crypto checkout wallets (CRYPTO_WALLETS in site.js) ---------------------------
+// A mistyped receiving address sends a customer's money nowhere, so verify each one
+// properly: BTC bech32 checksum, TRON base58check, Solana 32-byte key, ETH shape.
+{
+  const { createHash } = await import('node:crypto')
+  const W = cfg.CRYPTO_WALLETS || []
+  const want = ['BTC', 'USDT-TRC20', 'USDT-ERC20', 'USDT-SOL']
+  if (want.join() !== W.map((w) => w.id).join()) fail('crypto: CRYPTO_WALLETS must be exactly ' + want.join(', '))
+  else pass('crypto: four wallets present (BTC + USDT on 3 networks)')
+  const B58 = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz'
+  const b58 = (str) => {
+    let n = 0n
+    for (const c of str) { const i = B58.indexOf(c); if (i < 0) return null; n = n * 58n + BigInt(i) }
+    let hex = n.toString(16); if (hex.length % 2) hex = '0' + hex
+    return Buffer.concat([Buffer.alloc((str.match(/^1*/) || [''])[0].length), Buffer.from(hex, 'hex')])
+  }
+  const sha = (b) => createHash('sha256').update(b).digest()
+  const CH = 'qpzry9x8gf2tvdw0s3jn54khce6mua7l'
+  const bech32 = (a) => {
+    const x = a.toLowerCase(); const p = x.lastIndexOf('1'); const d = [...x.slice(p + 1)].map((c) => CH.indexOf(c))
+    if (p < 1 || d.includes(-1)) return false
+    const hrp = x.slice(0, p)
+    const v = [...hrp].map((c) => c.charCodeAt(0) >> 5).concat([0], [...hrp].map((c) => c.charCodeAt(0) & 31), d)
+    const G = [0x3b6a57b2, 0x26508e6d, 0x1ea119fa, 0x3d4233dd, 0x2a1462b3]
+    let chk = 1
+    for (const k of v) { const b = chk >>> 25; chk = ((chk & 0x1ffffff) << 5) ^ k; for (let i = 0; i < 5; i++) if ((b >>> i) & 1) chk ^= G[i] }
+    return (chk >>> 0) === 1
+  }
+  const checks = {
+    BTC: (a) => a.startsWith('bc1q') && a.length === 42 && bech32(a),
+    'USDT-TRC20': (a) => { const d = b58(a); return !!d && d.length === 25 && d[0] === 0x41 && sha(sha(d.subarray(0, 21))).subarray(0, 4).equals(d.subarray(21)) },
+    'USDT-ERC20': (a) => /^0x[0-9a-fA-F]{40}$/.test(a),
+    'USDT-SOL': (a) => { const d = b58(a); return !!d && d.length === 32 },
+  }
+  const seen = new Set()
+  for (const w of W) {
+    if (!w.address || !checks[w.id] || !checks[w.id](w.address)) fail(`crypto: ${w.id} address failed its network checksum/shape check`)
+    else pass(`crypto: ${w.id} address valid`)
+    if (seen.has(w.address)) fail('crypto: duplicate wallet address ' + w.id)
+    seen.add(w.address)
+  }
+  // The checkout must actually surface them: panel on the thank-you page + the order route.
+  const ty = read(resolve(root, 'src/components/OrderThankYou.jsx'))
+  const rt = read(resolve(root, 'src/app/api/order/route.js'))
+  if (!ty.includes('CryptoPaymentPanel')) fail('crypto: OrderThankYou does not render CryptoPaymentPanel')
+  else if (!rt.includes('isCryptoMethod') || !rt.includes('cryptoPaymentDetails')) fail('crypto: /api/order does not handle crypto orders')
+  else pass('crypto: thank-you panel + order route wired')
+}
+
 console.log(`\ncrosscheck: ${passes} passed, ${fails} failed`)
 if (fails > 0) { console.error('CROSSCHECK FAILED'); process.exit(1) }
 console.log('CROSSCHECK PASSED')

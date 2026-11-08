@@ -57,6 +57,11 @@ and verify every href resolves. Backlog + rules: `docs/VOLTTRACK-BLOG-CONTENT-TR
   external links / Semrush 336 referring domains, but they are low-quality spam-network links
   (exact-match anchors, generic `.us`/`.xyz` domains) — NOT earned authority. Real, relevant
   links (dealer locators, GBP, social, niche forums) are still needed. See PROJECT.md.
+- Crypto checkout: the receiving wallets live ONLY in `CRYPTO_WALLETS` (`src/config/site.js`) —
+  BTC + USDT on TRC-20 / ERC-20 / Solana. Crypto orders see the wallets + QR on `/thank-you-order/`
+  and in the confirmation email at once (deliberate exception to "payment details come later" —
+  wallets are static, other methods still go through the admin composer). Crosscheck verifies each
+  address's checksum. Never change an address without the client confirming it in writing.
 - `SITE.catalogUpdated` feeds sitemap `<lastmod>` for undated pages — bump it when catalog/page
   copy changes. Never set it to the build date.
 - `robots.txt` sets `Content-Signal: ai-train=yes` — confirm the client actually consents to

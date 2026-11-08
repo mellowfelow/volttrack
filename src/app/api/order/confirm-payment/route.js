@@ -48,6 +48,9 @@ export async function POST(request) {
     rows: [
       { label: 'Customer', value: order.customerName || '—' },
       { label: 'Email', value: order.customerEmail || '—' },
+      ...(order.amountDueNow != null && order.amountDueNow !== order.amountDue
+        ? [{ label: 'Due now (first instalment)', value: money(order.amountDueNow) }]
+        : []),
       { label: 'Amount due', value: money(order.amountDue), highlight: true },
       ...(note ? [{ label: 'Customer note', heading: true }, { label: 'Note', value: note, block: true }] : []),
     ],

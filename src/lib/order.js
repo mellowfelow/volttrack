@@ -32,10 +32,10 @@ export function paymentMethodParts(methodId, amount, ref) {
 export function paymentTermsLines(ref, methodId) {
   const r = SITE.reply
   const method = findMethod(methodId)
-  const lines = [
-    `Complete payment within ${r.deadlineHours}h to confirm this order.`,
-    `Use your order number — ${ref} — as the payment reference.`,
-  ]
+  const lines = [`Complete payment within ${r.deadlineHours}h to confirm this order.`]
+  // Crypto transfers (BTC, USDT) carry no reference/memo field, so that line would be
+  // an instruction the customer cannot follow — methods opt out with noReference.
+  if (!(method && method.noReference)) lines.push(`Use your order number — ${ref} — as the payment reference.`)
   if (method && method.instantRailNote) lines.push(method.instantRailNote)
   if (r.dispatchLine) lines.push(r.dispatchLine)
   const wa = r.channels.whatsapp

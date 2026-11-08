@@ -19,22 +19,36 @@ import {
 } from '@/lib/order'
 import { isWhatsAppConfigured, waPaymentConfirmationLink } from '@/lib/whatsapp'
 
-export function paymentDetailsEmail({ order, methodId, detail }) {
+// Optional overrides let other callers (e.g. the crypto checkout, whose wallet
+// fields are static config rather than an admin-pasted blob) reuse this exact
+// layout: `fields`/`opening`/`closing` replace the parsed + registry values,
+// `dueNow` the headline amount, `itemRows` adds the order lines above it, and
+// `title`/`intro`/`subject`/`preheader` reword the email.
+export function paymentDetailsEmail({
+  order, methodId, detail, fields: givenFields, opening: givenOpening, closing: givenClosing,
+  dueNow, itemRows, title, intro, subject, preheader,
+}) {
   const ref = order.orderNumber
   const method = methodId || order.paymentMethod
-  const fields = parsePaymentDetail(detail)
-  const { opening, closing } = paymentMethodParts(method, order.amountDue, ref)
+  const fields = givenFields || parsePaymentDetail(detail)
+  const parts = paymentMethodParts(method, order.amountDue, ref)
+  const opening = givenOpening != null ? givenOpening : parts.opening
+  const closing = givenClosing != null ? givenClosing : parts.closing
+  const headline = dueNow != null ? dueNow : order.amountDue
   const viewUrl = paymentDetailsUrl(ref)
   const confirmUrl = confirmPaymentUrl(ref)
   const waConfirm = isWhatsAppConfigured() ? waPaymentConfirmationLink(ref) : ''
   const replyTo = `mailto:${SITE.reply.channels.email}?subject=${encodeURIComponent(`Re: Payment for ${ref}`)}`
 
   const html = buildEmailHtml({
-    title: 'Payment details',
+    title: title || 'Payment details',
     refBadge: ref,
-    preheader: `Payment details for ${ref} — ${money(order.amountDue)} due`,
-    intro: `Hi ${order.customerName || 'there'} — here are the payment details for your order.`,
-    rows: [{ label: 'Amount due', value: money(order.amountDue), highlight: true }],
+    preheader: preheader || `Payment details for ${ref} — ${money(headline)} due`,
+    intro: intro || `Hi ${order.customerName || 'there'} — here are the payment details for your order.`,
+    rows: [
+      ...(itemRows && itemRows.length ? [{ label: 'Items', heading: true }, ...itemRows] : []),
+      { label: itemRows && itemRows.length ? 'Due now' : 'Amount due', value: money(headline), highlight: true },
+    ],
     afterRows: [
       `<div style="padding-top:14px">${emailParagraphHtml(opening)}</div>`,
       paymentDetailsCardHtml(fields),
@@ -49,8 +63,9 @@ export function paymentDetailsEmail({ order, methodId, detail }) {
   })
 
   const text =
-    `PAYMENT DETAILS — ${ref}\n\n` +
-    `Amount due: ${money(order.amountDue)}\n\n` +
+    `${title ? title.toUpperCase() : 'PAYMENT DETAILS'} — ${ref}\n\n` +
+    (intro ? `${intro}\n\n` : '') +
+    `${itemRows && itemRows.length ? 'Due now' : 'Amount due'}: ${money(headline)}\n\n` +
     (opening ? `${opening}\n\n` : '') +
     fields.map((f) => `${f.label}: ${f.value}`).join('\n') +
     (closing ? `\n\n${closing}` : '') +
@@ -61,7 +76,7 @@ export function paymentDetailsEmail({ order, methodId, detail }) {
     `Questions? Reply to this email or write to ${SITE.reply.channels.email}.\n\n— ${SITE.name}\n`
 
   return {
-    subject: `Payment details — ${ref} — ${money(order.amountDue)} — ${SITE.name}`,
+    subject: subject || `Payment details — ${ref} — ${money(headline)} — ${SITE.name}`,
     html,
     text,
     fields,

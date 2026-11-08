@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { SITE } from '@/config/site'
+import CryptoPaymentPanel from '@/components/CryptoPaymentPanel'
 
 const ORDER_KEY = 'vt-last-order'
 
@@ -41,13 +42,29 @@ export default function OrderThankYou() {
   return (
     <section className="section" style={{ paddingTop: 40 }}>
       <div className="container prose" style={{ textAlign: 'center' }}>
-        <h1>Order received</h1>
-        <p className="lead">
-          Thanks — we&rsquo;ve got your order. We&rsquo;ll confirm stock, shipping and payment
-          details by email shortly.
-        </p>
+        <h1>{order.crypto ? 'Order received — pay now' : 'Order received'}</h1>
+        {order.crypto ? (
+          <p className="lead">
+            Thanks — your order is logged. Pay with the crypto details below, then upload your
+            payment confirmation. The same details are in your confirmation email.
+          </p>
+        ) : (
+          <p className="lead">
+            Thanks — we&rsquo;ve got your order. We&rsquo;ll confirm stock, shipping and payment
+            details by email shortly.
+          </p>
+        )}
         <p className="form-note">Order reference: <strong>{order.orderNumber}</strong></p>
       </div>
+      {order.crypto ? (
+        <div className="container" style={{ margin: '8px auto 24px' }}>
+          <CryptoPaymentPanel
+            amount={order.dueNow != null ? order.dueNow : order.total}
+            orderNumber={order.orderNumber}
+            payIn4={!!order.payIn4}
+          />
+        </div>
+      ) : null}
       <div className="container" style={{ maxWidth: 480, margin: '24px auto 0' }}>
         <div className="order-summary">
           {order.items.map((i) => (
