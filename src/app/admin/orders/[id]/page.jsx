@@ -78,6 +78,7 @@ export default function OrderDetailPage() {
           <div style={{ fontWeight: 600, marginBottom: 4 }}>{order.paymentMethod || '—'}</div>
           <div style={{ marginBottom: 4 }}>{order.paymentPlan || 'Pay in full'}</div>
           <div style={{ fontSize: 24, fontWeight: 800, marginTop: 8 }}>{money(order.amountDue)}</div>
+          {order.amountDueNow != null && Number(order.amountDueNow) !== Number(order.amountDue) ? <div style={{ fontSize: 13, fontWeight: 700, color: '#1d4ed8' }}>Due now (first instalment): {money(order.amountDueNow)}</div> : null}
           {order.subtotal != null && Number(order.subtotal) !== Number(order.amountDue) ? <div style={{ fontSize: 13, color: '#888' }}>Subtotal: {money(order.subtotal)}</div> : null}
         </div>
       </div>
@@ -111,7 +112,11 @@ export default function OrderDetailPage() {
 
       {sentDetails?.fields?.length ? (
         <div className="paid-details">
-          <h2 className="section-title">Payment details sent ({findMethod(sentDetails.methodId)?.label || 'method'})</h2>
+          <h2 className="section-title">
+            {sentDetails.auto
+              ? 'Crypto wallets shown to the customer at checkout (and emailed)'
+              : `Payment details sent (${findMethod(sentDetails.methodId)?.label || 'method'})`}
+          </h2>
           <dl className="pay-preview">
             {sentDetails.fields.map((f, i) => (
               <div key={`${f.label}-${i}`} className="pay-preview-row">
