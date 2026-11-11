@@ -257,7 +257,7 @@ export const CATEGORY_CONTENT = {
       {
         h2: 'Charging, batteries and accessories',
         paras: [
-          'Charging equipment varies by model, so contact us before you order and we will confirm what ships with your quad and what you need to add, such as a charging cable. Dedicated quad batteries, chargers, tires and winches are available on request.',
+          'Charging equipment varies by model, so contact us before you order and we will confirm what ships with your quad and what you need to add, such as a charging cable. For the Razor ride-on there is a [24V charger](/parts/razor-dirt-quad-24v-charger/) and a [replacement battery pack](/parts/razor-dirt-quad-24v-battery/); other quad batteries, chargers, tires and winches are available on request.',
           'Much of our existing gear works with quads too: [helmets and protection](/parts-accessories/helmets-protection/), [riding gear and boots](/parts-accessories/riding-gear/), and [transport and storage](/parts-accessories/transport-storage/) items such as tie-down straps and waterproof covers. [Contact us](/contact/) for quad-specific parts.',
         ],
       },
@@ -278,6 +278,7 @@ export const CATEGORY_CONTENT = {
     related: [
       ['Electric ATVs for adults', '/shop/adult-electric-quads/'],
       ['Kids electric 4 wheelers and quads', '/shop/kids-electric-quads/'],
+      ['Electric UTVs and side-by-sides', '/shop/electric-utvs/'],
       ['Can-Am Outlander Electric ATV', '/product/can-am-outlander-electric/'],
       ['Are electric dirt bikes street legal?', '/guides/are-electric-dirt-bikes-street-legal/'],
     ],
@@ -317,7 +318,7 @@ export const CATEGORY_CONTENT = {
       {
         h2: 'Choosing a kids electric 4 wheeler',
         paras: [
-          'The [Razor Dirt Quad](/product/razor-dirt-quad/) is a 24V electric 4 wheeler for children aged 8 and up, with a 120 lb maximum rider weight, two speeds (5 and 8 mph) and a reverse switch. Razor states that it is not an ATV and is intended for flat, smooth surfaces only, so treat it as a supervised play vehicle rather than a trail machine.',
+          'The [Razor Dirt Quad](/product/razor-dirt-quad/) is a 24V electric 4 wheeler for children aged 8 and up, with a 120 lb maximum rider weight, two speeds (5 and 8 mph) and a reverse switch. Razor states that it is not an ATV and is intended for flat, smooth surfaces only, so treat it as a supervised play vehicle rather than a trail machine. Spares: [24V charger](/parts/razor-dirt-quad-24v-charger/) and [replacement battery pack](/parts/razor-dirt-quad-24v-battery/).',
           'For riders who want to head off-road, see our [youth electric dirt bikes](/shop/youth-electric-dirt-bikes/) — including the STACYC, KTM SX-E and Razor Dirt Rocket ranges — with adjustable power and ride modes.',
         ],
       },
@@ -340,6 +341,42 @@ export const CATEGORY_CONTENT = {
       ['Best electric dirt bikes for kids', '/guides/best-electric-dirt-bikes-for-kids/'],
       ['Electric ATVs and quad bikes — overview', '/shop/electric-quad-bikes/'],
       ['Helmets and protection', '/parts-accessories/helmets-protection/'],
+    ],
+  },
+
+  'electric-utvs': {
+    guide: [
+      {
+        h2: 'What is an electric UTV?',
+        paras: [
+          'An electric UTV — a utility terrain vehicle, also called an electric side-by-side or electric SxS — is a battery-powered work vehicle with side-by-side seating and a cargo bed. Compared with a quad it carries more and offers a steering wheel and seat, and compared with a gas UTV it is silent, has no fuel and no exhaust, and needs far less maintenance.',
+          'Our range starts with the [DRR EV Pathfinder 4x4](/product/drr-ev-pathfinder/): 2WD, 4WD and 4WL drive with a differential lock, 10 inches of ground clearance, a dump bed and tow hook, up to 50 miles of range and a 25 mph limited top speed. If you would rather have a single-rider machine, see our [electric ATVs and quad bikes](/shop/electric-quad-bikes/).',
+        ],
+      },
+      {
+        h2: 'Where an electric UTV makes sense',
+        paras: [
+          'Quiet, fuel-free power suits farms, ranches, hunting land, campgrounds and large properties where engine noise or fumes are a problem. The trade-offs are range, charging time and price, so check your daily distance and charging access before you buy. Figures from the manufacturer are estimates under typical conditions.',
+          'Electric UTVs are for off-road, private-land and OHV use only — not public roads. California riders follow Vehicle Code Section 436.1 and OHV registration requirements; read our [street-legal guide](/guides/are-electric-dirt-bikes-street-legal/) first.',
+        ],
+      },
+      {
+        h2: 'Delivery',
+        paras: [
+          'UTVs are large and heavy, so they ship by freight. Delivery and preparation costs are quoted before you pay, and manufacturer prices exclude tax, title, registration and fees. See our [shipping information](/shipping/).',
+        ],
+      },
+    ],
+    faqs: [
+      { q: 'What is the difference between a UTV and an ATV?', a: 'A UTV (side-by-side) seats two or more people side by side, usually has a steering wheel, roll structure and cargo bed, and is built for work. An ATV (quad) is a straddle-seat vehicle for one rider, steered with handlebars.' },
+      { q: 'How much does an electric UTV cost?', a: 'The electric UTV in our range, the DRR EV Pathfinder 4x4, is about $18,999. Prices are estimates and may change due to import tariff conditions.' },
+      { q: 'Are electric UTVs street legal?', a: 'No. They are off-road vehicles for private land and designated OHV areas.' },
+    ],
+    related: [
+      ['DRR EV Pathfinder 4x4', '/product/drr-ev-pathfinder/'],
+      ['Electric ATVs and quad bikes', '/shop/electric-quad-bikes/'],
+      ['DRR USA brand page', '/brands/drr-usa/'],
+      ['Shipping information', '/shipping/'],
     ],
   },
 }

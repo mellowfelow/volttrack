@@ -7,8 +7,10 @@
 // 152 individual accessory products at /parts/[slug]/ live in parts-data.js
 // (auto-generated from the product + keyword docs). Re-exported here so the rest
 // of the app keeps importing everything from site.js.
-import { PARTS } from './parts-data.js'
-export { PARTS }
+import { PARTS as BASE_PARTS } from './parts-data.js'
+import { QUAD_PARTS } from './parts-quads.js'
+// parts-data.js is auto-generated; quad parts live in parts-quads.js.
+export const PARTS = [...BASE_PARTS, ...QUAD_PARTS]
 import { CATEGORY_CONTENT } from './category-content.js'
 export { CATEGORY_CONTENT }
 import { GUIDES_EXTRA } from './guides-extra.js'
@@ -457,6 +459,7 @@ export const BRANDS = [
     faqs: [
       { q: 'Which Razor electric dirt bike is best for my child?', a: 'Match it to age and size: the MX125 for ages 7–10 (8 mph), MX350 for 10–13 (14 mph), MX500 for 13–16 (15 mph, dual suspension) and MX650 for 16+ (17 mph, 220 lb limit). The MX350 is the most popular for a reason — it fits the widest range of kids.' },
       { q: 'How long does a Razor MX650 battery last?', a: 'Expect around 40 minutes of continuous ride time from the 36V sealed lead-acid pack, less with heavier riders or hilly terrain. Charge it fully after every ride and never store it flat — SLA batteries are damaged by sitting discharged.' },
+      { q: 'Does Razor make an electric 4 wheeler or quad?', a: 'Yes — the Razor Dirt Quad is a 24V electric 4 wheeler for ages 8 and up, with two speeds (5 and 8 mph), a reverse switch and a 120 lb rider limit. Razor states it is not an ATV and is for flat, smooth surfaces only. Replacement 24V chargers and battery packs are in our batteries and chargers range.' },
       { q: 'Is there a difference between the Razor MX350 and MX400?', a: 'They are effectively the same bike. The MX400 is a colour and trim variation on the MX350 platform with the same 24V system and performance, so we list the MX350 and can source the MX400 finish on request.' },
     ],
   },
@@ -1046,6 +1049,8 @@ export const ACCESSORY_CATEGORIES = [
           { name: 'Razor MX650 36V Replacement Battery', fits: 'MX650', price: '~$69' },
           { name: 'Razor MX350 OEM Charger', fits: 'MX350', price: '~$29' },
           { name: 'Razor MX650 OEM Charger', fits: 'MX650', price: '~$35' },
+          { name: 'Razor Dirt Quad 24V Charger (1.5A)', fits: 'Razor Dirt Quad (24V)', price: '~$29' },
+          { name: 'Razor Dirt Quad 24V Replacement Battery Pack', fits: 'Razor Dirt Quad (24V)', price: '~$59' },
         ],
       },
       {

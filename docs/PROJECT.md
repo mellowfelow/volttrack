@@ -192,3 +192,9 @@ surron storm bee (8.1K, pos 31), stark future (4.4K, pos 26). Crawl: all 200, ti
   Dirt Quad. Images sourced from maker pages (manifest: Desktop/volt track/website images/product images/electric-quads/manifest.md).
   Open items: MAX image is 661px (reshoot), DRR photos have backgrounds, no quad accessories/parts yet (need supplier prices),
   Denago/MotoTec/Envo deliberately NOT listed (CPSC/availability unverified). Quad SEO/keywords deferred by client.
+
+## Changes 2026-11-11 (quad follow-ups)
+- Keyword map applied to quad pages; CPSC ATV Action Plan check (Can-Am/BRP + DRR listed; Denago/MotoTec not) — see `docs/quad-keyword-map.md`.
+- New: Razor Dirt Quad 24V charger + battery parts (`parts-quads.js`, prices are estimates), `/shop/electric-utvs/` with the DRR EV Pathfinder.
+- Not listed on purpose: Razor Dirt Quad 500 (discontinued), youth electric ATVs (no compliant current product found), Polaris/Deere electric UTVs (unverified).
+- OPEN: confirm DRR prices (their pages disagree), Razor part prices, image permissions (Can-Am, DRR, Razor).

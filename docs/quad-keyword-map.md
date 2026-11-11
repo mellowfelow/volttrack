@@ -144,3 +144,24 @@ Source: CPSC *ATV Action Plan List* (37 active, 32 terminated), fetched 2026-11-
 | Tao Motor / Coleman / Hisun (active) | Yes | no electric youth quad found (gas only) |
 Result: **no compliant, current, non-recalled youth electric ATV was found to add.** The kids page keeps the Razor ride-on and now
 explains the rule, so the `electric atv for kids` intent is answered honestly. Re-check the list before adding any youth ATV.
+
+## 9. Batch update (parts)
+Built `/parts/razor-dirt-quad-24v-charger/` (primary `razor 4 wheeler charger`) and `/parts/razor-dirt-quad-24v-battery/`
+(primary `razor 24v quad battery replacement`) from `src/config/parts-quads.js`. **Prices are estimates** ($29 charger = our existing Razor
+24V charger price; $59 battery in line with $60-66 market listings) — confirm both with the supplier. Fitment: Razor part W13112099014 is listed
+for the Dirt Quad by parts cross-references; the pack is two 12V SLA with harness; neither fits the 36V Dirt Quad 500.
+
+## 10. Batch update (Razor Dirt Quad 500 + brand)
+- **Razor Dirt Quad 500 (36V): NOT added.** razor.com lists only the current 24V Dirt Quad ($849.99); the 500 is marked unavailable at
+  retailers (Adorama) and is not in Razor's current range. Its ~3K/mo searches (`razor quad 500` 1,300, `razor dirt quad 500` 880) are
+  for a discontinued product — answer them with the product-page FAQ ("not the Dirt Quad 500; no longer listed") rather than a new page.
+- **Razor brand hub strengthened** for the `razor 4 wheeler` / `razor quad` searches: new FAQ "Does Razor make an electric 4 wheeler or quad?".
+
+## 11. Batch update (electric UTV category)
+Built `/shop/electric-utvs/` (primary `electric utv` 5,400/KD23; secondaries electric side by side 4,400/KD9, electric utv 4x4 1,000/KD24,
+electric sxs 880/KD11, electric side by side utv 880/KD22) with one product, the **DRR EV Pathfinder 4x4** ($18,999, from DRR's own product page).
+- **DRR's pages disagree on price:** Pathfinder $18,999 (product page) vs $17,999 (reservation page); EV Adventure $13,999 (product page) vs $9,499
+  (reservation page); EV Stealth $9,299 vs $7,499. We used the product pages. **Confirm all DRR prices with DRR (330-220-3102).**
+- **Not listed:** Polaris Ranger XP Kinetic, John Deere Gator GX electric — official pages blocked/unfetchable and only third-party prices found
+  (Kinetic ~$37,499, Gator GX from $17,499 per press). Add them only with dealer-confirmed specs and an actual supply route.
+- Image: DRR press photo (cropped 4:3, smoothed to fit the 145 KB budget); tile = DRR field shot. Manifest in Desktop/volt track/website images/product images/electric-utvs/.

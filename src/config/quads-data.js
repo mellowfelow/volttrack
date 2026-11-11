@@ -24,6 +24,18 @@ export const QUAD_CATEGORIES = [
     image: 'quad-bikes.webp',
   },
   {
+    slug: 'electric-utvs',
+    name: 'Electric UTVs & Side-by-Sides',
+    h1: 'Electric UTVs & Side-by-Sides',
+    metaDesc:
+      'Electric UTVs and side-by-sides for sale — the DRR EV Pathfinder 4x4 with 2WD/4WD, diff lock and dump bed. Silent, fuel-free. Off-road use only.',
+    short: 'Electric UTVs and side-by-sides for farm, trail and property work.',
+    description:
+      'An electric UTV (utility terrain vehicle, or side-by-side) is a battery-powered two-seat work vehicle with a cargo bed — silent, fuel-free and low-maintenance. Off-road, private-land and OHV use only.',
+    keyword: 'electric utv',
+    image: 'utv-electric.webp',
+  },
+  {
     slug: 'adult-electric-quads',
     parent: 'electric-quad-bikes',
     name: 'Electric ATVs for Adults',
@@ -73,10 +85,11 @@ export const QUAD_BRANDS = [
     metaDesc:
       'DRR USA electric ATVs — EV Safari 4x4, EV Adventure and EV Lightning sport quad. Quiet, fuel-free four-wheelers for work and trail. Estimated prices.',
     intro:
-      'DRR USA sells a range of fully electric ATVs aimed at work, trail and recreation: the EV Safari 4x4 with selectable 2WD/4WD and differential locks, the EV Adventure with a 10 kW motor and up to 65 miles of range, and the EV Lightning sport quad. Speeds are electronically limited. Figures are those published by the manufacturer.',
+      'DRR USA sells a range of fully electric ATVs aimed at work, trail and recreation: the EV Safari 4x4 with selectable 2WD/4WD and differential locks, the EV Adventure with a 10 kW motor and up to 65 miles of range, the EV Lightning sport quad, and the EV Pathfinder 4x4 electric UTV. Speeds are electronically limited. Figures are those published by the manufacturer.',
     faqs: [
       { q: 'How fast are DRR electric ATVs?', a: 'DRR limits speed for rider safety: the EV Safari 4x4 to 35 mph, and the EV Adventure and EV Lightning to 40 mph.' },
       { q: 'Are DRR ATVs street legal?', a: 'No. They are off-road ATVs for private land and designated OHV areas. California riders follow Vehicle Code Section 436.1 and OHV registration rules.' },
+      { q: 'Does DRR make an electric UTV?', a: 'Yes — the EV Pathfinder 4x4 electric UTV, with 2WD, 4WD and a differential lock, up to 50 miles of range and a 25 mph limited top speed. See our electric UTVs page.' },
       { q: 'Does DRR meet US ATV safety rules?', a: 'L & R Racing, Inc. d/b/a DRR appears on the CPSC\'s list of companies with an active ATV action plan (checked 11 November 2026). Every ATV sold in the US must be covered by one.' },
       { q: 'What is the difference between the EV Safari, Adventure and Lightning?', a: 'The Safari 4x4 is the most capable, with 2WD/4WD and locking differentials. The Adventure is a 2x4 with a 10 kW motor, the longest range and an included hitch. The Lightning is a lighter 2x4 sport quad.' },
     ],
@@ -196,8 +209,28 @@ export const QUAD_PRODUCTS = [
       { q: 'How fast does it go?', a: 'Razor lists 5 mph on the low setting and 8 mph on the high setting, with a forward/reverse switch.' },
       { q: 'How long does the battery last?', a: 'About 80 minutes of continuous use on low speed and about 40 minutes on high speed from the 24V sealed lead-acid battery. Recharge fully after each ride.' },
       { q: 'Can it be ridden off-road?', a: 'Razor states it is intended for flat, smooth surfaces only and is not an ATV. For older riders see our youth electric dirt bikes.' },
-      { q: 'Is this the same as the Razor Dirt Quad 500?', a: 'No. This is the 24V Dirt Quad for ages 8+ (5 and 8 mph). The Dirt Quad 500 is a larger 36V model for ages 14+. Ask us if you want the 500.' },
-      { q: 'What battery and charger does the Razor 24V quad use?', a: 'It runs on two 12V sealed lead-acid batteries (24V) and a charger is included. Contact us for a replacement 24V quad battery or charger.' },
+      { q: 'Is this the same as the Razor Dirt Quad 500?', a: 'No. This is the current 24V Dirt Quad for ages 8+ (5 and 8 mph). The older 36V Dirt Quad 500 is no longer listed by Razor, so we do not sell it.' },
+      { q: 'What battery and charger does the Razor 24V quad use?', a: 'It runs on two 12V sealed lead-acid batteries (24V) and a charger is included. Replacement 24V quad batteries and chargers are in our batteries and chargers range; they do not fit the 36V Dirt Quad 500.' },
+    ],
+  },
+
+  // ---- DRR USA UTV ----
+  {
+    slug: 'drr-ev-pathfinder', vehicle: 'utv', freight: true,
+    name: 'DRR EV Pathfinder 4x4', titleName: 'DRR EV Pathfinder', h1: 'DRR EV Pathfinder 4x4 Electric UTV',
+    price: 18999, brand: 'drr-usa', category: 'electric-utvs',
+    badge: 'Electric UTV', images: ['drr-ev-pathfinder.webp'],
+    specs: { power: '21.5 hp (manufacturer-stated)', battery: 'Not published', topSpeed: '25 mph (limited)', range: 'Up to 50 mi', weight: 'Not published', modes: '2WD / 4WD / 4WL, diff lock', roadLegal: OFFROAD, age: 'Adult operators' },
+    metaDesc: 'Buy the DRR EV Pathfinder 4x4 electric UTV from about $18,999. 2WD/4WD with diff lock, 10 in clearance, dump bed, up to 50 miles. Off-road use only.',
+    short: 'DRR\'s 4x4 electric UTV — dump bed, tow hook, diff lock and up to 50 miles of range.',
+    description: 'The DRR EV Pathfinder 4x4 is a fully battery-powered utility terrain vehicle (UTV, or side-by-side) with a dump bed, tow hook, selectable 2WD, 4WD and 4WL drive with a differential lock, and 10 inches of ground clearance. DRR quotes up to 50 miles of range and limits top speed to 25 mph for rider safety. Silent, with no fuel and no harmful emissions. Off-road, private-land and OHV use only.',
+    availNote: `Manufacturer MSRP excludes tax, title, registration and fees. DRR takes these through dealer reservations, so ${LEAD.charAt(0).toLowerCase()}${LEAD.slice(1)}`,
+    footnote: 'Seating, battery capacity, payload, towing and warranty are not published by DRR — contact us and we will confirm them with the manufacturer.',
+    faqs: [
+      { q: 'How much does the DRR EV Pathfinder cost?', a: 'DRR lists the EV Pathfinder 4x4 at about $18,999, excluding tax, title, registration and other fees. Prices are estimates and may change due to import tariff conditions.' },
+      { q: 'How fast is it, and how far does it go?', a: 'DRR limits top speed to 25 mph for rider safety and quotes up to 50 miles of range under typical use. Load, terrain and climbs reduce range.' },
+      { q: 'Does it have four-wheel drive?', a: 'Yes — selectable 2WD, 4WD and 4WL, with a differential lock and 10 inches of ground clearance.' },
+      { q: 'Is it street legal?', a: 'No. It is for private land and designated OHV areas only. California riders follow Vehicle Code Section 436.1 and OHV registration rules.' },
     ],
   },
 ]
