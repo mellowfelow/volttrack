@@ -21,6 +21,7 @@ export default function ShippingPage() {
           <h2>Delivery timing</h2>
           <p>Most in-stock bikes ship within a few business days. Larger machines ship by freight and delivery timing depends on your location. We&rsquo;ll confirm an estimate when you order.</p>
           <h2>Freight &amp; inspection</h2>
+          <p>Electric quads and ATVs are heavy and ship by freight. The free-shipping offer does not apply to them: delivery and preparation costs are quoted before you pay.</p>
           <p>Bikes are shipped securely crated. Inspect your delivery on arrival and report any transit damage immediately so we can help resolve it with the carrier.</p>
           <p>Questions? <a href="/contact/">Contact us</a> — support {SITE.supportHours}.</p>
         </div>

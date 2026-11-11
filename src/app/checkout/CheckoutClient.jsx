@@ -223,7 +223,7 @@ export default function CheckoutClient() {
                   <span>−{SITE.currencySymbol}{t.bundleDiscount.toLocaleString('en-US')}</span>
                 </div>
               ) : null}
-              <div className="order-row muted"><span>Shipping</span><span>{SITE.freeShippingText}</span></div>
+              <div className="order-row muted"><span>Shipping</span><span>{items.some((i) => i.freight) ? 'Freight quoted before you pay' : SITE.freeShippingText}</span></div>
               {isCrypto ? (
                 <div className="order-row discount">
                   <span>Crypto discount ({Math.round(t.rate * 100)}%)</span>

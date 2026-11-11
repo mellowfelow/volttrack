@@ -17,7 +17,7 @@ export default function Nav() {
             <div className="nav-item">
               <Link href="/shop/">Shop</Link>
               <div className="nav-menu" role="menu" aria-label="Shop by category">
-                {CATEGORIES.map((c) => (
+                {CATEGORIES.filter((c) => !c.parent).map((c) => (
                   <Link key={c.slug} href={`/shop/${c.slug}/`} role="menuitem">{c.name}</Link>
                 ))}
                 <Link href="/shop/" className="nav-menu-all" role="menuitem">All bikes →</Link>
@@ -50,7 +50,7 @@ export default function Nav() {
         </nav>
         <div className={`mobile-menu${open ? ' open' : ''}`}>
           <Link href="/shop/" onClick={() => setOpen(false)}>Shop All Bikes</Link>
-          {CATEGORIES.map((c) => (
+          {CATEGORIES.filter((c) => !c.parent).map((c) => (
             <Link key={c.slug} href={`/shop/${c.slug}/`} onClick={() => setOpen(false)}>
               {c.name}
             </Link>

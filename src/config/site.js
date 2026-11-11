@@ -9,6 +9,10 @@
 // of the app keeps importing everything from site.js.
 import { PARTS } from './parts-data.js'
 export { PARTS }
+import { CATEGORY_CONTENT } from './category-content.js'
+export { CATEGORY_CONTENT }
+import { GUIDES_EXTRA } from './guides-extra.js'
+import { QUAD_CATEGORIES, QUAD_BRANDS, QUAD_PRODUCTS } from './quads-data.js'
 
 export const SITE = {
   // Canonical host = what Vercel serves (apex 308→www). Keeps canonicals,
@@ -26,7 +30,7 @@ export const SITE = {
   // Date the catalog / page copy last genuinely changed. Feeds sitemap <lastmod> for
   // pages with no date of their own. Bump it (YYYY-MM-DD) whenever products, prices or
   // page copy change — never set it to the build date, or Google learns to ignore lastmod.
-  catalogUpdated: '2026-11-02',
+  catalogUpdated: '2026-11-11',
   foundingLocation: 'United States',
   region: 'United States',
   areaServed: 'US (Lower 48 states)',
@@ -170,6 +174,8 @@ export const REDIRECTS = [
   // (keyword cannibalization fix, 2026-08-06) — both targeted "are electric
   // dirt bikes street legal" with near-identical titles/meta.
   { source: '/blog/are-electric-dirt-bikes-street-legal-usa/', destination: '/guides/are-electric-dirt-bikes-street-legal/', permanent: true },
+  // /parts/ has no index page of its own (only /parts/[slug]/); the hub is /parts-accessories/.
+  { source: '/parts/', destination: '/parts-accessories/', permanent: true },
 ]
 
 // ----------------------------------------------------------------------------
@@ -310,6 +316,8 @@ export const CATEGORIES = [
     keyword: 'street legal electric dirt bike for sale',
     image: 'enduro.webp',
   },
+  // Electric quad / ATV section (hub + adult + kids) lives in quads-data.js.
+  ...QUAD_CATEGORIES,
 ]
 
 // ----------------------------------------------------------------------------
@@ -465,6 +473,7 @@ export const BRANDS = [
       { q: 'How does the MC-E 5 compare to the KTM SX-E 5?', a: 'Very closely — same group, same core engineering, same 5 kW water-cooled platform and the same $5,449 price. The meaningful differences are bodywork, graphics and colour. Buy whichever has better availability when you order, or whichever your rider prefers.' },
     ],
   },
+  ...QUAD_BRANDS,
 ]
 
 // ----------------------------------------------------------------------------
@@ -901,6 +910,8 @@ export const PRODUCTS = [
       { q: 'Is the Zero FXE a dirt bike?', a: 'Not really. The FXE is supermoto and street oriented, so if you mainly ride off-road the FX, XE or XB will serve you far better. We list it on enquiry because it comes up, not because we think it suits most of our customers.' },
       { q: 'How much is the Zero FXE?', a: 'Estimated around $12,495, but Zero pricing moves with import tariff conditions and we would rather quote you directly than publish a figure that changes. Contact us for the current price and availability.' },
     ] },
+  // ---- ELECTRIC QUADS / ATVs (quads-data.js) ----
+  ...QUAD_PRODUCTS,
 ]
 
 // ----------------------------------------------------------------------------
@@ -2570,6 +2581,8 @@ export const GUIDES = [
     ],
     related: ['sur-ron-light-bee-x', 'sur-ron-ultra-bee-hp'],
   },
+  // Rich guides kept in their own file (guides-extra.js) to keep this one navigable.
+  ...GUIDES_EXTRA,
 ]
 
 // ----------------------------------------------------------------------------

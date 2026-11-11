@@ -6,6 +6,11 @@
       "source": "/blog/are-electric-dirt-bikes-street-legal-usa/",
       "destination": "/guides/are-electric-dirt-bikes-street-legal/",
       "permanent": true
+    },
+    {
+      "source": "/parts/",
+      "destination": "/parts-accessories/",
+      "permanent": true
     }
   ],
   "headers": [

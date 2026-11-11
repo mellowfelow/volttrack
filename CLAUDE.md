@@ -17,8 +17,9 @@ public/auth.md, public/.well-known/*, public/js/webmcp.js, public/og/default.png
 public/images/logo.png, vercel.json) — edit the config and let `prebuild` regenerate them
 (`scripts/gen-og.mjs` then `scripts/gen-agent-files.mjs`).
 
-Sitemap: `/parts/[slug]/` pages are deliberately excluded from `src/app/sitemap.js` (still
-crawlable via links) to concentrate crawl budget on the ~117 revenue pages — see PROJECT.md.
+Sitemap: bike-specific `/parts/[slug]/` pages (non-empty `compat[]`) ARE in `src/app/sitemap.js` (changed 2026-11-11 —
+GSC showed 55 parts URLs stuck at "Discovered – currently not indexed" while parts pages earn top clicks). Generic parts with
+no fitment are `noindex` and stay out. Submit to Bing/Yandex after deploys with `npm run indexnow`.
 Images: `npm run images` emits `<slug>.{webp,avif}` (1600px) + `<slug>-sm.{webp,avif}` (800px);
 `SmartImage` builds a `<picture>` srcset from both. `next/image` is NOT used (Vercel's optimiser
 is a paid add-on — `/_next/image` returns 402), so `next.config.mjs` keeps `images:{unoptimized:true}`.
@@ -27,6 +28,12 @@ The domain lives ONLY in `SITE.domain`. To connect/change a domain: edit that on
 
 Removing or merging a page? Add a 301 to `REDIRECTS` in `src/config/site.js` (generated into
 `vercel.json` by the same script) — never leave a dead URL that used to be indexed.
+
+## Electric quads (added 2026-11-11)
+`src/config/quads-data.js` holds the quad categories/brands/products (hub `electric-quad-bikes` + `adult-electric-quads`
++ `kids-electric-quads`). Quads carry `vehicle:'quad'` + `freight:true`: heavy freight items — never show the free-shipping
+line or a 30-day free-return schema for them. Specs/prices come from the maker's own US page (estimates). Only list youth
+quads that are sold as children's ride-ons or show CPSC compliance (CPSC has issued stop-use warnings on electric youth ATVs).
 
 ## Rules
 - `npm run build && npm run crosscheck` must pass before every push.
@@ -71,6 +78,6 @@ and verify every href resolves. Backlog + rules: `docs/VOLTTRACK-BLOG-CONTENT-TR
 
 ## Brand facts (only these are true — never invent more)
 - US-based authorized dealer, founded 2025, ships Lower 48.
-- Authorized brands: Sur-Ron, Stark Future, Talaria, STACYC, KTM (and carries Razor, Segway, Zero, Altis, E-Ride Pro).
+- Authorized brands: Sur-Ron, Stark Future, Talaria, STACYC, KTM (and carries Razor, Segway, Zero, Altis, E-Ride Pro), plus Can-Am and DRR USA for electric quads — never call those authorized).
 - Financing: Pay-in-4. Payment: bank transfer, crypto (BTC/USDT), financing.
 - No invented statistics, awards, press, named clients, or partnerships. Ever.

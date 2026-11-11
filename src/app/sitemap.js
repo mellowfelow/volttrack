@@ -1,4 +1,4 @@
-import { SITE, CATEGORIES, BRANDS, PRODUCTS, POSTS, GUIDES, COMPARISONS, ACCESSORY_CATEGORIES } from '@/config/site'
+import { SITE, CATEGORIES, BRANDS, PRODUCTS, PARTS, POSTS, GUIDES, COMPARISONS, ACCESSORY_CATEGORIES } from '@/config/site'
 import { url } from '@/lib/seo'
 
 // Note: <image:image> sitemap entries need Next 15's `images` field (or a custom
@@ -19,13 +19,12 @@ export default function sitemap() {
   ]
   // Deliberately NOT in the sitemap:
   //  - DISCONTINUED slugs — they 301 to their successor.
-  //  - The 152 /parts/[slug]/ pages — on a young, low-authority domain a sitemap
-  //    that is >50% thin accessory pages suppresses crawl demand for the core
-  //    catalogue (GSC: 200 URLs "Discovered – currently not indexed"). Parts stay
-  //    fully crawlable via on-page links from the /parts-accessories/ hubs and
-  //    each product page. Re-add them here once the core set is fully indexed.
-  //    (2026-11-02: a few parts pages now earn the site's top clicks without being
-  //    in the sitemap, so they are indexing fine via links; the exclusion still stands.)
+  //  - Parts with no bike-specific fitment (empty compat[]) — those pages are noindex
+  //    (see src/app/parts/[slug]/page.jsx), so listing them would contradict the tag.
+  // Bike-specific parts ARE in the sitemap (2026-11-11): GSC showed 55 URLs stuck at
+  // "Discovered – currently not indexed" while parts pages were already earning 3 of
+  // the top 6 pages by clicks (E-Ride Pro battery 77 clicks), so the old exclusion
+  // was holding back the pages that convert.
   const entries = [
     ...staticPaths.map((p) => ({ url: url(p), lastModified: catalog, priority: p === '/' ? 1 : 0.7 })),
     ...CATEGORIES.map((c) => ({ url: url(`/shop/${c.slug}/`), lastModified: catalog, priority: 0.8 })),
@@ -35,6 +34,7 @@ export default function sitemap() {
     ...GUIDES.map((g) => ({ url: url(`/guides/${g.slug}/`), lastModified: g.updated || g.date || catalog, priority: 0.6 })),
     ...COMPARISONS.map((c) => ({ url: url(`/compare/${c.slug}/`), lastModified: catalog, priority: 0.6 })),
     ...ACCESSORY_CATEGORIES.map((a) => ({ url: url(`/parts-accessories/${a.slug}/`), lastModified: catalog, priority: 0.6 })),
+    ...PARTS.filter((p) => p.compat && p.compat.length).map((p) => ({ url: url(`/parts/${p.slug}/`), lastModified: catalog, priority: 0.5 })),
   ]
   return entries
 }

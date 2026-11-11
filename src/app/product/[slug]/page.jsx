@@ -105,12 +105,14 @@ export default function ProductPage({ params }) {
     priceCurrency: SITE.currency,
     price,
     priceValidUntil,
-    availability: 'https://schema.org/InStock',
+    // Freight / confirm-at-order items are not asserted as in stock.
+    availability: p.freight ? 'https://schema.org/LimitedAvailability' : 'https://schema.org/InStock',
     itemCondition: 'https://schema.org/NewCondition',
     url: url(`/product/${p.slug}/`),
     seller: { '@type': 'Organization', name: SITE.name },
-    shippingDetails,
-    hasMerchantReturnPolicy: returnPolicy,
+    // Heavy freight items have no flat shipping rate to publish.
+    ...(p.freight ? {} : { shippingDetails }),
+    ...(p.freight ? {} : { hasMerchantReturnPolicy: returnPolicy }),
   })
 
   const ld = {
@@ -169,7 +171,7 @@ export default function ProductPage({ params }) {
         <div className="container">
           <div className="grid cols-2" style={{ alignItems: 'start' }}>
             <div className="product-frame" style={{ borderRadius: 'var(--radius)', border: '1px solid var(--line)' }}>
-              <SmartImage src={img} alt={`${p.name} electric dirt bike`} width={1600} height={1200} loading="eager" sizes="(max-width:900px) 100vw, 600px" />
+              <SmartImage src={img} alt={`${p.name} ${p.vehicle === 'quad' ? 'electric quad' : 'electric dirt bike'}`} width={1600} height={1200} loading="eager" sizes="(max-width:900px) 100vw, 600px" />
             </div>
             <div>
               {p.badge ? <span className="badge">{p.badge}</span> : null}
@@ -185,7 +187,7 @@ export default function ProductPage({ params }) {
                 <Link href="/contact/" className="btn btn-ghost">Ask an expert</Link>
               </p>
               <p className="form-note" style={{ marginTop: 16 }}>
-                {SITE.financing}. {SITE.freeShippingText}. Off-road use only unless a street-legal
+                {SITE.financing}. {p.freight ? 'Freight delivery to the Lower 48 is quoted before you pay' : SITE.freeShippingText}. Off-road use only unless a street-legal
                 path is stated on this listing.
               </p>
             </div>
@@ -213,7 +215,9 @@ export default function ProductPage({ params }) {
               Browse the full{' '}
               {brand ? <Link href={`/brands/${brand.slug}/`}>{brand.name} range</Link> : brandName(p.brand)}
               {cat ? <> , or compare it against every <Link href={`/shop/${cat.slug}/`}>{cat.name.toLowerCase()}</Link> we stock</> : null}.
-              Not sure which model fits your rider? <Link href="/contact/">Ask us</Link> — we ride these bikes ourselves.
+              {p.vehicle === 'quad'
+                ? <>Not sure which model fits? <Link href="/contact/">Ask us</Link> and we will help you choose.</>
+                : <>Not sure which model fits your rider? <Link href="/contact/">Ask us</Link> — we ride these bikes ourselves.</>}
             </p>
             <p className="form-note" style={{ marginBottom: 0 }}>{PRICE_DISCLAIMER}</p>
           </div>

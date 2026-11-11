@@ -104,7 +104,7 @@ export default function Home() {
           </div>
           <Reveal>
             <div className="cat-grid">
-              {CATEGORIES.map((c) => (
+              {CATEGORIES.filter((c) => !c.parent).map((c) => (
                 <Link key={c.slug} href={`/shop/${c.slug}/`} className="tile">
                   <SmartImage
                     src={c.image ? `/images/${c.image}` : '/images/placeholder-bike.svg'}

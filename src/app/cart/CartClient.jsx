@@ -59,7 +59,7 @@ export default function CartClient() {
                 <div className="order-row discount"><span>Accessory bundle (−{bundlePct}%)</span><span>−{money(t.bundleDiscount)}</span></div>
               ) : null}
               <div className="order-row discount"><span>Crypto discount (at checkout)</span><span>−{money(cryptoSaving)}</span></div>
-              <div className="order-row muted"><span>Shipping</span><span>{SITE.freeShippingText}</span></div>
+              <div className="order-row muted"><span>Shipping</span><span>{items.some((i) => i.freight) ? 'Freight quoted before you pay' : SITE.freeShippingText}</span></div>
               <div className="order-row total"><span>Total</span><span>{money(t.afterBundle)}</span></div>
               <p className="form-note">
                 {t.bundleDiscount > 0 ? `Includes ${bundlePct}% off accessories bundled with your bike. ` : ''}

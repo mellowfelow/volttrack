@@ -16,6 +16,7 @@ export default function ReturnsPage() {
           <h1>Returns &amp; Warranty</h1>
           <h2>30-day returns</h2>
           <p>Unused bikes in original condition and packaging may be returned within 30 days of delivery. Return shipping and any restocking terms are confirmed at the time of return. Contact us first to start a return.</p>
+          <p>Electric quads and ATVs ship by freight. Delivery, preparation and return terms for freight items are confirmed with you before you pay.</p>
           <h2>Manufacturer warranty</h2>
           <p>Every bike we sell carries a genuine US manufacturer warranty. As an authorized dealer, we help you claim warranty support directly rather than leaving you to deal with a gray-market importer.</p>
           <h2>Damaged or faulty items</h2>

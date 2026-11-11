@@ -20,7 +20,7 @@ export default function ProductCard({ p, eager = false, part = false }) {
         <div className="product-frame">
           <SmartImage
             src={img}
-            alt={`${p.name}${part ? '' : ' electric dirt bike'}`}
+            alt={`${p.name}${part ? '' : (p.vehicle === 'quad' ? ' electric quad' : ' electric dirt bike')}`}
             width={1600}
             height={1200}
             loading={eager ? 'eager' : 'lazy'}

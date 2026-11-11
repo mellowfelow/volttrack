@@ -45,6 +45,8 @@ export function addToCart(product, qty = 1, variant = null, opts = {}) {
       price: variant ? variant.price : product.price,
       image: (product.images && product.images[0]) || '',
       part: isPart,
+      // Heavy freight items (electric quads) — shipping is quoted, not free.
+      freight: !!product.freight,
       qty,
     })
   }

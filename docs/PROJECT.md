@@ -118,8 +118,11 @@ Still open (all off-page or client decisions):
 
 ## Known issues / open items (earlier)
 - No analytics existed until 2026-08-06 — `@vercel/analytics` now in `layout.jsx`.
-- 152 `/parts/[slug]/` pages: the ~33 with no `compat[]` are `noindex,follow`; all 152 are now
-  out of the sitemap (2026-09-09) but still crawlable via links.
+- 152 `/parts/[slug]/` pages: the ~33 with no `compat[]` are `noindex,follow` and stay out of the
+  sitemap. **2026-11-11:** the 119 bike-specific parts pages were put BACK in the sitemap (246 URLs
+  total) — GSC had 55 parts URLs stuck at "Discovered – currently not indexed" while parts pages
+  were 3 of the top 6 pages by clicks. `/parts/` 301s to `/parts-accessories/`. `npm run indexnow`
+  submits the live sitemap to IndexNow (Bing recommended it).
 - Domain is new (rebuild shipped 2026-07-22); slow initial indexation is expected for the age.
 
 ## Full SEO / technical audit — 2026-11-02 (GSC + Bing + Semrush + live crawl)
@@ -174,3 +177,18 @@ Vercel env vars (SMTP/Upstash/ADMIN_PASSCODE) unverified.
   package, loaded on demand in the panel only.
 - Needs Upstash + SMTP env vars in Vercel for the store/email parts; the thank-you panel works
   without them.
+
+## Audit 2026-11-11 (GSC + Bing + Semrush + 279-page crawl)
+GSC 90d: 354 clicks / 32.1K impr / 1.1% CTR / pos 16.4; 82 indexed, 66 not (55 discovered-not-indexed).
+Core shop categories + `/shop/` get ~0 clicks (pos 45-60); clicks come from parts, Razor products and
+the 12/13/14-year-old guides. Semrush: AS 8, 884 US kw, big-volume gaps = pit bike (14.8K, pos 30),
+surron storm bee (8.1K, pos 31), stark future (4.4K, pos 26). Crawl: all 200, titles/desc/H1/canonical/JSON-LD clean.
+
+## Changes 2026-11-11 (post-audit build)
+- Sitemap: 119 bike-specific parts pages re-added; `/parts/` 301 → `/parts-accessories/`; `npm run indexnow` script.
+- Shop category pages now have buying guides + FAQs + related links (`src/config/category-content.js`); `/shop/` and brand hubs
+  gained link sections; 7 new guides (`guides-extra.js`): ages 8/9/11/15/16, best electric pit bikes, Stark Varg MX vs EX vs SM.
+- **Electric quad section** (`quads-data.js`): Can-Am Outlander Electric + MAX, DRR EV Safari 4x4 / Adventure / Lightning, Razor
+  Dirt Quad. Images sourced from maker pages (manifest: Desktop/volt track/website images/product images/electric-quads/manifest.md).
+  Open items: MAX image is 661px (reshoot), DRR photos have backgrounds, no quad accessories/parts yet (need supplier prices),
+  Denago/MotoTec/Envo deliberately NOT listed (CPSC/availability unverified). Quad SEO/keywords deferred by client.

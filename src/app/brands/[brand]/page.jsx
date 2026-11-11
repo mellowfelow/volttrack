@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import {
-  BRANDS, brandBySlug, productsForBrand, categoryBySlug, priceRange, PRICE_DISCLAIMER,
+  BRANDS, POSTS, GUIDES, brandBySlug, productsForBrand, categoryBySlug, priceRange, PRICE_DISCLAIMER,
 } from '@/config/site'
 import ProductCard from '@/components/ProductCard'
 import Breadcrumbs from '@/components/Breadcrumbs'
@@ -62,6 +62,13 @@ export default function BrandPage({ params }) {
     })),
   } : null
 
+  // Reviews, comparisons and guides that mention this brand — real internal links from the hub.
+  const keys = [b.slug, b.slug.replace(/-/g, ''), b.slug.split('-')[0]].filter((k) => k.length >= 4)
+  const reads = [
+    ...POSTS.map((x) => ({ href: `/blog/${x.slug}/`, title: x.title, slug: x.slug })),
+    ...GUIDES.map((x) => ({ href: `/guides/${x.slug}/`, title: x.title, slug: x.slug })),
+  ].filter((x) => keys.some((k) => x.slug.includes(k))).slice(0, 8)
+
   const faqLd = b.faqs && b.faqs.length ? {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
@@ -113,6 +120,17 @@ export default function BrandPage({ params }) {
             <div style={{ marginTop: 48 }}>
               <h2>{b.name} — Frequently Asked Questions</h2>
               <FaqAccordion items={b.faqs} />
+            </div>
+          ) : null}
+
+          {reads.length ? (
+            <div style={{ marginTop: 48 }}>
+              <h2>{b.name} reviews and guides</h2>
+              <ul>
+                {reads.map((r) => (
+                  <li key={r.href}><Link href={r.href}>{r.title}</Link></li>
+                ))}
+              </ul>
             </div>
           ) : null}
 
