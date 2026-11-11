@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { SITE } from '@/config/site'
 import Breadcrumbs from '@/components/Breadcrumbs'
 import FaqAccordion from '@/components/FaqAccordion'
+import CryptoWallets from '@/components/CryptoWallets'
 import { buildMetadata, JsonLd, url } from '@/lib/seo'
 
 const FAQS = [
@@ -55,6 +56,14 @@ export default function FinancePage() {
               <li key={m.id}>{m.label}{m.crypto ? ` — save ${Math.round(SITE.cryptoDiscount * 100)}% at checkout` : ''}</li>
             ))}
           </ul>
+          <h2>Pay with crypto — save {Math.round(SITE.cryptoDiscount * 100)}%</h2>
+          <p>
+            Pay with Bitcoin or USDT and the {Math.round(SITE.cryptoDiscount * 100)}% discount is applied
+            automatically at checkout. These are our receiving wallets — you will also see them, with QR codes,
+            as soon as you place a crypto order.
+          </p>
+          <CryptoWallets />
+
           <p className="form-note">
             Prices are estimates and may change due to import tariff conditions. We confirm final
             pricing and payment details with you before any order is processed — no card is charged

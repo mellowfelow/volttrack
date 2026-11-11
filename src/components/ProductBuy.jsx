@@ -40,6 +40,10 @@ export default function ProductBuy({ product }) {
       <p className="price" style={{ fontSize: '2rem', margin: '0 0 4px' }} aria-live="polite">
         {money(price)}
       </p>
+      <p className="crypto-tag" style={{ margin: '0 0 6px' }}>
+        <span aria-hidden="true">₿</span> Pay {money(Math.round(price * (1 - SITE.cryptoDiscount)))} with crypto ({Math.round(SITE.cryptoDiscount * 100)}% off)
+        {' '}— <Link href="/finance/">wallet details</Link>
+      </p>
       <p className="form-note" style={{ marginTop: 0 }}>{PRICE_DISCLAIMER}</p>
 
       {variants.length ? (

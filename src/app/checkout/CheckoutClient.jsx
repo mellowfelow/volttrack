@@ -1,4 +1,5 @@
 'use client'
+import CryptoWallets from '@/components/CryptoWallets'
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { SITE, FORMS } from '@/config/site'
@@ -179,11 +180,13 @@ export default function CheckoutClient() {
               </div>
 
               {isCrypto ? (
-                <p className="form-note" style={{ marginTop: 8 }}>
-                  After you place your order you’ll see the Bitcoin and USDT wallet addresses
-                  (with QR codes) straight away, and they’re emailed to you too — so you can pay
-                  immediately.
-                </p>
+                <div style={{ marginTop: 8 }}>
+                  <p className="form-note" style={{ marginTop: 0 }}>
+                    Our wallet addresses are below. After you place your order you’ll also see them
+                    with QR codes straight away, and they’re emailed to you — so you can pay immediately.
+                  </p>
+                  <CryptoWallets />
+                </div>
               ) : null}
 
               <h2 style={{ fontSize: '1.2rem', marginTop: 18 }}>Finance — Pay in 4</h2>
