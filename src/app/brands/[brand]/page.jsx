@@ -16,7 +16,7 @@ export function generateMetadata({ params }) {
   const b = brandBySlug(params.brand)
   if (!b) return {}
   return buildMetadata({
-    title: `${b.name} Electric Dirt Bikes`,
+    title: `${b.name} ${b.noun || 'Electric Dirt Bikes'}`,
     description: b.metaDesc
       || `Shop ${b.name} electric dirt bikes at VoltTrack — expert advice, financing and fast shipping to the Lower 48.`,
     path: `/brands/${b.slug}/`,
@@ -52,7 +52,7 @@ export default function BrandPage({ params }) {
   const listLd = items.length ? {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    name: `${b.name} electric dirt bikes`,
+    name: `${b.name} ${(b.noun || 'Electric Dirt Bikes').toLowerCase()}`,
     numberOfItems: items.length,
     itemListElement: items.map((p, i) => ({
       '@type': 'ListItem',
@@ -87,7 +87,7 @@ export default function BrandPage({ params }) {
       <section className="section" style={{ paddingTop: 8 }}>
         <div className="container">
           {/* H1 is the brand's primary keyword (config `h1`). */}
-          <h1>{b.h1 || `${b.name} Electric Dirt Bikes`}</h1>
+          <h1>{b.h1 || `${b.name} ${b.noun || 'Electric Dirt Bikes'}`}</h1>
           <p className="lead">{b.intro}</p>
           <p className="muted">
             {/* Only the five brands in SITE.authorizedBrands may claim authorized status. */}

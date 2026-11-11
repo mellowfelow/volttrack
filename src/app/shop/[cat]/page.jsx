@@ -17,7 +17,7 @@ export function generateMetadata({ params }) {
   const c = categoryBySlug(params.cat)
   if (!c) return {}
   return buildMetadata({
-    title: `${c.name} for Sale`,
+    title: c.metaTitle || `${c.name} for Sale`,
     description: c.metaDesc || c.description,
     path: `/shop/${c.slug}/`,
   })

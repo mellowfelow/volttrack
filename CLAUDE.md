@@ -33,7 +33,10 @@ Removing or merging a page? Add a 301 to `REDIRECTS` in `src/config/site.js` (ge
 `src/config/quads-data.js` holds the quad categories/brands/products (hub `electric-quad-bikes` + `adult-electric-quads`
 + `kids-electric-quads`). Quads carry `vehicle:'quad'` + `freight:true`: heavy freight items — never show the free-shipping
 line or a 30-day free-return schema for them. Specs/prices come from the maker's own US page (estimates). Only list youth
-quads that are sold as children's ride-ons or show CPSC compliance (CPSC has issued stop-use warnings on electric youth ATVs).
+quads that are sold as children's ride-ons, or whose maker is on the CPSC ATV Action Plan List
+(https://www.cpsc.gov/Business--Manufacturing/Business-Education/Business-Guidance/ATV/ATV-Action-Plan-List) AND the product is
+current and not recalled. Checked 2026-11-11: Bombardier Recreational Products (Can-Am) and L & R Racing, Inc. d/b/a DRR are
+listed; Denago, MotoTec, Razor (ride-ons, not ATVs) are not — so no Denago/MotoTec youth ATVs. Re-check before adding any ATV.
 
 ## Rules
 - `npm run build && npm run crosscheck` must pass before every push.

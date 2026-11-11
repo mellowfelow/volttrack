@@ -234,10 +234,10 @@ export const CATEGORY_CONTENT = {
   'electric-quad-bikes': {
     guide: [
       {
-        h2: 'Electric quad or ATV: what you are buying',
+        h2: 'What is an electric ATV?',
         paras: [
-          'An electric quad (or electric ATV) swaps the engine and fuel tank for a battery and motor. You get instant torque, almost no noise and no oil changes or fuel, which suits farm and ranch work, hunting and trail riding where engine noise is a problem. The trade-offs are range, charging time and a higher purchase price than a comparable gas ATV.',
-          'Our range splits into [adult electric quads and ATVs](/shop/adult-electric-quads/) — utility and 4x4 models such as the [Can-Am Outlander Electric](/product/can-am-outlander-electric/) and [DRR EV Safari 4x4](/product/drr-ev-safari-4x4/) — and [kids electric quads](/shop/kids-electric-quads/) such as the [Razor Dirt Quad](/product/razor-dirt-quad/).',
+          'An electric ATV — also called an electric quad, electric four wheeler or e-ATV — swaps the engine and fuel tank for a battery and motor. You get instant torque, almost no noise and no oil changes or fuel, which suits farm and ranch work, hunting and trail riding where engine noise is a problem. The trade-offs are range, charging time and a higher purchase price than a comparable gas ATV.',
+          'Our range splits into [electric ATVs for adults](/shop/adult-electric-quads/) — utility and 4x4 models such as the [Can-Am Outlander Electric ATV](/product/can-am-outlander-electric/) and [DRR EV Safari 4x4](/product/drr-ev-safari-4x4/) — and [kids electric 4 wheelers and quads](/shop/kids-electric-quads/) such as the [Razor Dirt Quad](/product/razor-dirt-quad/).',
         ],
       },
       {
@@ -250,8 +250,8 @@ export const CATEGORY_CONTENT = {
       {
         h2: 'Safety, age and where you can ride',
         paras: [
-          'Electric quads are for off-road, private-land and designated OHV use only — not public roads. Federal safety guidance recommends that riders under 16 do not operate adult-size ATVs, and we only list kids quads that are sold as children\'s ride-ons. Always wear a helmet, goggles, gloves and boots, and follow your state\'s OHV rules; California riders follow Vehicle Code Section 436.1 and OHV registration requirements.',
-          'Read our [street-legal guide](/guides/are-electric-dirt-bikes-street-legal/) and the [California Section 436.1 guide](/guides/electric-dirt-bikes-california-legal-guide/), and see our [helmets and protection](/parts-accessories/helmets-protection/).',
+          'Electric ATVs are for off-road, private-land and designated OHV use only — not public roads. Every ATV sold in the US must be covered by an approved CPSC ATV action plan. We checked the CPSC list on 11 November 2026: Bombardier Recreational Products (Can-Am) and L & R Racing, Inc. d/b/a DRR both appear as active. Federal guidance recommends that riders under 16 do not operate adult-size ATVs.',
+          'Always wear a helmet, goggles, gloves and boots, and follow your state\'s OHV rules; California riders follow Vehicle Code Section 436.1 and OHV registration requirements. Read our [street-legal guide](/guides/are-electric-dirt-bikes-street-legal/) and the [California Section 436.1 guide](/guides/electric-dirt-bikes-california-legal-guide/), and see our [helmets and protection](/parts-accessories/helmets-protection/).',
         ],
       },
       {
@@ -264,20 +264,21 @@ export const CATEGORY_CONTENT = {
       {
         h2: 'Delivery',
         paras: [
-          'Electric quads are heavy — the Outlander Electric is about 875 lb dry — so they ship by freight rather than as a parcel. Delivery and preparation costs are quoted before you pay, and manufacturer prices usually exclude transport and preparation. See our [shipping information](/shipping/).',
+          'Electric ATVs are heavy — the Outlander Electric is about 875 lb dry — so they ship by freight rather than as a parcel. Delivery and preparation costs are quoted before you pay, and manufacturer prices usually exclude transport and preparation. See our [shipping information](/shipping/).',
         ],
       },
     ],
     faqs: [
-      { q: 'How much does an electric quad cost?', a: 'Adult electric ATVs in our range run from roughly $9,000 to $14,500, depending on motor, range and drive system. A kids ride-on quad is around $850. Prices are estimates and may change due to import tariff conditions.' },
+      { q: 'How much does an electric ATV cost?', a: 'Adult electric ATVs in our range run from roughly $9,000 to $14,500, depending on motor, range and drive system. A kids ride-on 4 wheeler is around $850. Prices are estimates and may change due to import tariff conditions.' },
       { q: 'How far can an electric quad go?', a: 'Manufacturers quote up to 50 miles for the Can-Am Outlander Electric, DRR EV Safari 4x4 and EV Lightning, and up to 65 miles for the DRR EV Adventure. Real range depends on load, terrain and speed.' },
-      { q: 'Are electric quads street legal?', a: 'No. They are off-road vehicles for private land and designated OHV areas. We never describe an off-road vehicle as street legal.' },
-      { q: 'Do electric quads ship free?', a: 'No — they ship by freight. Delivery is quoted before you pay, and the free-shipping offer on our bikes does not apply to quads.' },
+      { q: 'Are electric quads and ATVs street legal?', a: 'No. They are off-road vehicles for private land and designated OHV areas. We never describe an off-road vehicle as street legal.' },
+      { q: 'Are the ATVs you sell compliant with US safety rules?', a: 'The adult ATVs we list come from Can-Am (Bombardier Recreational Products) and DRR (L & R Racing, Inc.), both on the CPSC\'s list of active ATV action plans as of 11 November 2026. We do not list youth ATVs from makers that are not on that list.' },
+      { q: 'Do electric ATVs ship free?', a: 'No — they ship by freight. Delivery is quoted before you pay, and the free-shipping offer on our bikes does not apply to quads.' },
     ],
     related: [
-      ['Adult electric quads and ATVs', '/shop/adult-electric-quads/'],
-      ['Kids electric quads', '/shop/kids-electric-quads/'],
-      ['Can-Am Outlander Electric', '/product/can-am-outlander-electric/'],
+      ['Electric ATVs for adults', '/shop/adult-electric-quads/'],
+      ['Kids electric 4 wheelers and quads', '/shop/kids-electric-quads/'],
+      ['Can-Am Outlander Electric ATV', '/product/can-am-outlander-electric/'],
       ['Are electric dirt bikes street legal?', '/guides/are-electric-dirt-bikes-street-legal/'],
     ],
   },
@@ -285,26 +286,26 @@ export const CATEGORY_CONTENT = {
   'adult-electric-quads': {
     guide: [
       {
-        h2: 'Comparing our adult electric quads',
+        h2: 'Choosing an electric ATV for adults',
         paras: [
-          'The [Can-Am Outlander Electric](/product/can-am-outlander-electric/) (about $13,249) and the two-seat [Outlander MAX Electric](/product/can-am-outlander-max-electric/) (about $14,549) are full-size utility ATVs with a 47 hp motor, 8.9 kWh battery and 1,830 lb towing capacity. They are the most powerful electric ATVs in our range.',
+          'An adult electric quad is a full-size electric ATV with enough power and chassis to carry a rider, a load or a tow. The [Can-Am Outlander Electric ATV](/product/can-am-outlander-electric/) (about $13,249) and the two-seat [Outlander MAX Electric ATV](/product/can-am-outlander-max-electric/) (about $14,549) have a 47 hp motor, 8.9 kWh battery and 1,830 lb towing capacity, the most powerful in our range.',
           'DRR offers three alternatives: the [EV Safari 4x4](/product/drr-ev-safari-4x4/) (about $14,999, 11 kW, 2WD/4WD with locks), the [EV Adventure](/product/drr-ev-adventure/) (about $13,999, 10 kW, up to 65 miles) and the lighter [EV Lightning](/product/drr-ev-lightning/) (about $8,999, 5 kW). Browse the [Can-Am](/brands/can-am/) and [DRR USA](/brands/drr-usa/) pages for more.',
         ],
       },
       {
         h2: 'Before you buy',
         paras: [
-          'Check that the quad matches your work: towing, payload, range and charging access all matter more than top speed. Ask about delivery — these are freight items — and confirm lead times with us, because availability is confirmed when you order. All prices are manufacturer-based estimates.',
+          'Check that the electric ATV matches your work: towing, payload, range and charging access all matter more than top speed. Ask about delivery — these are freight items — and confirm lead times with us, because availability is confirmed when you order. Both makers appear on the CPSC list of active ATV action plans (checked 11 November 2026). All prices are manufacturer-based estimates.',
         ],
       },
     ],
     faqs: [
-      { q: 'Which adult electric quad has the longest range?', a: 'The DRR EV Adventure quotes up to 65 miles. The Can-Am Outlander Electric, DRR EV Safari 4x4 and EV Lightning quote up to 50 miles.' },
+      { q: 'Which electric ATV for adults has the longest range?', a: 'The DRR EV Adventure quotes up to 65 miles. The Can-Am Outlander Electric, DRR EV Safari 4x4 and EV Lightning quote up to 50 miles.' },
       { q: 'Which adult electric quad can tow the most?', a: 'The Can-Am Outlander Electric and Outlander MAX Electric list a 1,830 lb towing capacity. DRR does not publish towing figures — contact us before towing with a DRR quad.' },
-      { q: 'What age do you need to be?', a: 'DRR states operators must be 18 or older. Can-Am lists the Outlander as an adult-size ATV (16+). Follow your state\'s rules for minimum rider age.' },
+      { q: 'What age do you need to be to ride an adult electric ATV?', a: 'DRR states operators must be 18 or older. Can-Am lists the Outlander as an adult-size ATV (16+). Follow your state\'s rules for minimum rider age.' },
     ],
     related: [
-      ['Electric quad bikes — overview', '/shop/electric-quad-bikes/'],
+      ['Electric ATVs and quad bikes — overview', '/shop/electric-quad-bikes/'],
       ['Can-Am brand page', '/brands/can-am/'],
       ['DRR USA brand page', '/brands/drr-usa/'],
       ['Shipping information', '/shipping/'],
@@ -314,28 +315,30 @@ export const CATEGORY_CONTENT = {
   'kids-electric-quads': {
     guide: [
       {
-        h2: 'Choosing a kids electric quad',
+        h2: 'Choosing a kids electric 4 wheeler',
         paras: [
-          'The [Razor Dirt Quad](/product/razor-dirt-quad/) is a 24V electric ride-on for children aged 8 and up, with a 120 lb maximum rider weight, two speeds (5 and 8 mph) and a reverse switch. Razor states that it is not an ATV and is intended for flat, smooth surfaces only, so treat it as a supervised play vehicle rather than a trail machine.',
+          'The [Razor Dirt Quad](/product/razor-dirt-quad/) is a 24V electric 4 wheeler for children aged 8 and up, with a 120 lb maximum rider weight, two speeds (5 and 8 mph) and a reverse switch. Razor states that it is not an ATV and is intended for flat, smooth surfaces only, so treat it as a supervised play vehicle rather than a trail machine.',
           'For riders who want to head off-road, see our [youth electric dirt bikes](/shop/youth-electric-dirt-bikes/) — including the STACYC, KTM SX-E and Razor Dirt Rocket ranges — with adjustable power and ride modes.',
         ],
       },
       {
-        h2: 'Why we list so few kids quads',
+        h2: 'Are electric ATVs for kids legal and safe?',
         paras: [
-          'Federal regulators have repeatedly issued stop-use warnings for electric youth ATVs that do not meet the mandatory ATV safety rules. To stay safe, we only list kids quads from established makers that are sold as children\'s ride-ons, and we do not list unverified youth ATVs. Always supervise young riders and fit a helmet and protective gear — see our [helmets and protection](/parts-accessories/helmets-protection/).',
+          'Federal law requires every ATV, including youth ATVs, to be covered by an approved CPSC ATV action plan and to meet the mandatory ATV standard. The CPSC has repeatedly issued stop-use warnings for electric youth ATVs sold without one, and has terminated action plans for companies that broke the rules.',
+          'We checked the CPSC list of active ATV action plans on 11 November 2026. The makers of the youth electric ATVs we looked at are not on it, so we do not list them. We will add a kids electric ATV only when its maker is on that list and the product is current and not under a recall. Always supervise young riders and fit a helmet and protective gear — see our [helmets and protection](/parts-accessories/helmets-protection/).',
         ],
       },
     ],
     faqs: [
-      { q: 'What is the best electric quad for a kid?', a: 'For ages 8 and up on flat, smooth ground, the Razor Dirt Quad is a well-known ride-on with a hard speed limit. For off-road riding, a youth electric dirt bike with adjustable power is a better choice.' },
+      { q: 'What is the best electric 4 wheeler for kids?', a: 'For ages 8 and up on flat, smooth ground, the Razor Dirt Quad is a well-known ride-on with a hard speed limit. For off-road riding, a youth electric dirt bike with adjustable power is a better choice.' },
+      { q: 'Is there a safe electric ATV for kids?', a: 'Any youth ATV must come from a maker with an approved CPSC ATV action plan. We only list one when its maker is on the CPSC list and the product is current; today our kids range is the Razor ride-on and our youth electric dirt bikes.' },
       { q: 'Can a child ride an adult electric ATV?', a: 'No. Federal safety guidance recommends that riders under 16 do not operate adult-size ATVs.' },
-      { q: 'Is the Razor Dirt Quad for off-road use?', a: 'Razor states it is not an ATV and is intended for flat, smooth surfaces only.' },
+      { q: 'Is the Razor Dirt Quad for off-road use?', a: 'Razor states it is intended for flat, smooth surfaces only and is not an ATV.' },
     ],
     related: [
       ['Youth electric dirt bikes', '/shop/youth-electric-dirt-bikes/'],
       ['Best electric dirt bikes for kids', '/guides/best-electric-dirt-bikes-for-kids/'],
-      ['Electric quad bikes — overview', '/shop/electric-quad-bikes/'],
+      ['Electric ATVs and quad bikes — overview', '/shop/electric-quad-bikes/'],
       ['Helmets and protection', '/parts-accessories/helmets-protection/'],
     ],
   },

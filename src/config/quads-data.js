@@ -13,60 +13,62 @@
 export const QUAD_CATEGORIES = [
   {
     slug: 'electric-quad-bikes',
-    name: 'Electric Quad Bikes',
-    h1: 'Electric Quad Bikes & ATVs',
+    name: 'Electric ATVs & Quad Bikes',
+    h1: 'Electric ATVs & Quad Bikes',
     metaDesc:
-      'Electric quad bikes and ATVs — Can-Am Outlander Electric, DRR EV Safari and Lightning, plus a Razor kids quad. Off-road use only. US dealer, estimated prices.',
-    short: 'Electric quad bikes and ATVs for work, trail and yard.',
+      'Electric ATVs and quad bikes for sale — Can-Am Outlander Electric, DRR EV Safari and Lightning, plus a Razor kids quad. Off-road use only. Estimated prices.',
+    short: 'Electric ATVs and quad bikes for work, trail and yard.',
     description:
-      'Electric quad bikes and ATVs — silent, fuel-free four-wheelers for farm and ranch work, trail riding and private land. From the Can-Am Outlander Electric to DRR sport and 4x4 quads, plus a Razor ride-on for kids. Off-road use only.',
-    keyword: 'electric quad bikes',
+      'An electric ATV (also called an electric quad, electric four wheeler or e-ATV) is a battery-powered four-wheeler with no fuel, no exhaust and almost no noise. Shop the Can-Am Outlander Electric, DRR 4x4 and sport quads, plus a Razor ride-on for kids. Off-road use only.',
+    keyword: 'electric atv',
     image: 'quad-bikes.webp',
   },
   {
     slug: 'adult-electric-quads',
     parent: 'electric-quad-bikes',
-    name: 'Adult Electric Quads & ATVs',
-    h1: 'Adult Electric Quads & ATVs',
+    name: 'Electric ATVs for Adults',
+    metaTitle: 'Electric ATVs for Adults — Quads for Sale',
+    h1: 'Electric ATVs for Adults',
     metaDesc:
-      'Adult electric quads and ATVs — Can-Am Outlander Electric and MAX, DRR EV Safari 4x4, EV Adventure and EV Lightning. Off-road / OHV use only. US dealer.',
+      'Electric ATVs for adults — Can-Am Outlander Electric and MAX, DRR EV Safari 4x4, EV Adventure and EV Lightning adult electric quads. Off-road / OHV use only.',
     short: 'Full-size electric ATVs for adults — utility, 4x4 and sport.',
     description:
-      'Full-size electric quads for adult riders, from utility-class 4x4 ATVs with towing capability to lighter sport quads. Off-road, private-land and OHV use only.',
-    keyword: 'adult electric quad',
+      'Full-size electric ATVs and adult electric quads, from utility-class 4x4 models with towing capability to lighter sport quads. Off-road, private-land and OHV use only.',
+    keyword: 'electric atv for adults',
     image: 'quad-adult.webp',
   },
   {
     slug: 'kids-electric-quads',
     parent: 'electric-quad-bikes',
-    name: 'Kids Electric Quads',
-    h1: 'Kids Electric Quads',
+    name: 'Kids Electric 4 Wheelers & Quads',
+    h1: 'Kids Electric 4 Wheelers & Quads',
     metaDesc:
-      'Kids electric quads for ages 8 and up — the Razor Dirt Quad ride-on with two speeds and reverse. Supervised riding on flat ground. Ships to the Lower 48.',
-    short: 'Electric ride-on quads for younger riders.',
+      'Kids electric 4 wheelers and quads for ages 8+ — the Razor Dirt Quad ride-on with two speeds and reverse. Supervised play on flat ground. Ships Lower 48.',
+    short: 'Electric ride-on four wheelers and quads for kids.',
     description:
-      'Electric ride-on quads for children, built for supervised play on flat, smooth ground. We only list kids quads from established makers that are sold as children\'s ride-ons.',
-    keyword: 'kids electric quad',
+      'Electric four wheelers and quads for kids, built for supervised play on flat, smooth ground. Federal law requires youth ATVs to come from makers with an approved CPSC ATV action plan, so we only list kids quads that are sold as children\'s ride-ons.',
+    keyword: 'electric 4 wheeler for kids',
     image: 'quad-kids.webp',
   },
 ]
 
 export const QUAD_BRANDS = [
   {
-    slug: 'can-am', name: 'Can-Am', officialSite: 'https://can-am.brp.com', audience: 'adult', authorized: false,
+    slug: 'can-am', name: 'Can-Am', noun: 'Electric ATVs', officialSite: 'https://can-am.brp.com', audience: 'adult', authorized: false,
     h1: 'Can-Am Electric ATV — Outlander Electric',
     metaDesc:
-      'Can-Am Outlander Electric and Outlander MAX Electric — 47 hp ROTAX E-POWER, 8.9 kWh battery, 1,830 lb towing. Off-road use. Estimated prices, US dealer.',
+      'Can-Am electric ATV: Outlander Electric and Outlander MAX Electric — 47 hp ROTAX E-POWER, 8.9 kWh battery, 1,830 lb towing. Off-road use. Estimated prices.',
     intro:
       'Can-Am is BRP\'s off-road brand. The Outlander Electric is its full-size electric ATV: a liquid-cooled ROTAX E-POWER motor rated at 47 hp and 53 lb-ft, an 8.9 kWh battery, selectable 2WD/4WD and a 1,830 lb towing capacity. It comes as the single-seat Outlander Electric and the two-seat Outlander MAX Electric. Figures are manufacturer-published for the 2027 model year.',
     faqs: [
       { q: 'How far does the Can-Am Outlander Electric go on a charge?', a: 'Can-Am quotes up to 50 miles of range, with an average utility range of about 31 miles. Real-world range depends on load, terrain, speed and which power mode you use.' },
       { q: 'Is the Can-Am Outlander Electric street legal?', a: 'No. It is an off-road ATV for private land and designated OHV areas, and is not street legal. California riders follow Vehicle Code Section 436.1 and OHV registration rules.' },
+      { q: 'Does Can-Am meet US ATV safety rules?', a: 'Bombardier Recreational Products, Can-Am\'s maker, appears on the CPSC\'s list of companies with an active ATV action plan (checked 11 November 2026). Every ATV sold in the US must be covered by one.' },
       { q: 'What warranty does the Outlander Electric have?', a: 'BRP publishes a 5-year battery warranty (with a mileage limit) and a 1-year warranty on the motor and vehicle. Confirm the current terms before you buy.' },
     ],
   },
   {
-    slug: 'drr-usa', name: 'DRR USA', officialSite: 'https://www.drrusa.com', audience: 'adult', authorized: false,
+    slug: 'drr-usa', name: 'DRR USA', noun: 'Electric ATVs', officialSite: 'https://www.drrusa.com', audience: 'adult', authorized: false,
     h1: 'DRR USA Electric ATVs — EV Safari, Lightning & Adventure',
     metaDesc:
       'DRR USA electric ATVs — EV Safari 4x4, EV Adventure and EV Lightning sport quad. Quiet, fuel-free four-wheelers for work and trail. Estimated prices.',
@@ -75,6 +77,7 @@ export const QUAD_BRANDS = [
     faqs: [
       { q: 'How fast are DRR electric ATVs?', a: 'DRR limits speed for rider safety: the EV Safari 4x4 to 35 mph, and the EV Adventure and EV Lightning to 40 mph.' },
       { q: 'Are DRR ATVs street legal?', a: 'No. They are off-road ATVs for private land and designated OHV areas. California riders follow Vehicle Code Section 436.1 and OHV registration rules.' },
+      { q: 'Does DRR meet US ATV safety rules?', a: 'L & R Racing, Inc. d/b/a DRR appears on the CPSC\'s list of companies with an active ATV action plan (checked 11 November 2026). Every ATV sold in the US must be covered by one.' },
       { q: 'What is the difference between the EV Safari, Adventure and Lightning?', a: 'The Safari 4x4 is the most capable, with 2WD/4WD and locking differentials. The Adventure is a 2x4 with a 10 kW motor, the longest range and an included hitch. The Lightning is a lighter 2x4 sport quad.' },
     ],
   },
@@ -87,13 +90,13 @@ export const QUAD_PRODUCTS = [
   // ---- CAN-AM ----
   {
     slug: 'can-am-outlander-electric', vehicle: 'quad', freight: true,
-    name: 'Can-Am Outlander Electric 2027', titleName: 'Outlander Electric', h1: 'Can-Am Outlander Electric',
+    name: 'Can-Am Outlander Electric ATV', titleName: 'Outlander Electric', h1: 'Can-Am Outlander Electric ATV',
     price: 13249, brand: 'can-am', category: 'adult-electric-quads', tags: ['electric-quad-bikes'],
     badge: 'Utility 4x4', images: ['can-am-outlander-electric.webp'],
     specs: { power: '47 hp / 53 lb-ft (ROTAX E-POWER)', battery: '8.9 kWh, liquid-cooled', topSpeed: 'Speed limiter (Work / Standard / Sport)', range: 'Up to 50 mi (avg. utility ~31 mi)', weight: '~875 lb dry (est.)', modes: 'Work / Standard / Sport', roadLegal: OFFROAD, age: '16+ (adult-size ATV)' },
-    metaDesc: 'Buy the Can-Am Outlander Electric from about $13,249. 47 hp, 8.9 kWh, 2WD/4WD and 1,830 lb towing. Off-road use only. US dealer, estimated price.',
+    metaDesc: 'Buy the Can-Am Outlander Electric ATV from about $13,249. 47 hp, 8.9 kWh, 2WD/4WD and 1,830 lb towing. Off-road use only. US dealer, estimated price.',
     short: 'Can-Am\'s full-size electric ATV — 47 hp, selectable 2WD/4WD and 1,830 lb towing.',
-    description: 'The Can-Am Outlander Electric is a full-size, single-seat electric utility ATV. A liquid-cooled ROTAX E-POWER motor delivers 47 hp and 53 lb-ft from an 8.9 kWh battery, with up to 50 miles of range (about 31 miles of average utility use). Selectable 2WD/4WD with a Visco-Lok QE front differential, Work, Standard and Sport modes, a 1,830 lb towing capacity, a 2-inch hitch receiver and 9 gallons of storage make it a working machine. Off-road, private-land and OHV use only.',
+    description: 'The 2027 Can-Am Outlander Electric is a full-size, single-seat electric ATV for utility work. A liquid-cooled ROTAX E-POWER motor delivers 47 hp and 53 lb-ft from an 8.9 kWh battery, with up to 50 miles of range (about 31 miles of average utility use). Selectable 2WD/4WD with a Visco-Lok QE front differential, Work, Standard and Sport modes, a 1,830 lb towing capacity, a 2-inch hitch receiver and 9 gallons of storage make it a working machine. Off-road, private-land and OHV use only.',
     availNote: `Manufacturer MSRP excludes transport and preparation. ${LEAD}`,
     footnote: 'Specifications are the manufacturer\'s published figures for the 2027 Outlander Electric. Top speed is not published by Can-Am; the power modes include a speed limiter.',
     faqs: [
@@ -105,7 +108,7 @@ export const QUAD_PRODUCTS = [
   },
   {
     slug: 'can-am-outlander-max-electric', vehicle: 'quad', freight: true,
-    name: 'Can-Am Outlander MAX Electric 2027', titleName: 'Outlander MAX Electric', h1: 'Can-Am Outlander MAX Electric',
+    name: 'Can-Am Outlander MAX Electric ATV', titleName: 'Outlander MAX Electric', h1: 'Can-Am Outlander MAX Electric ATV',
     price: 14549, brand: 'can-am', category: 'adult-electric-quads', tags: ['electric-quad-bikes'],
     badge: '2-seat', images: ['can-am-outlander-max-electric.webp'],
     specs: { power: '47 hp / 53 lb-ft (ROTAX E-POWER)', battery: '8.9 kWh, liquid-cooled', topSpeed: 'Speed limiter (Work / Standard / Sport)', range: 'Up to 50 mi (avg. utility ~31 mi)', weight: '~915 lb dry (est.)', modes: 'Work / Standard / Sport', roadLegal: OFFROAD, age: '16+ (adult-size ATV)' },
@@ -179,19 +182,22 @@ export const QUAD_PRODUCTS = [
   // ---- RAZOR (kids ride-on) ----
   {
     slug: 'razor-dirt-quad', vehicle: 'quad', freight: false,
-    name: 'Razor Dirt Quad', titleName: 'Razor Dirt Quad', h1: 'Razor Dirt Quad Electric Ride-On',
+    name: 'Razor Dirt Quad', titleName: 'Razor Dirt Quad', h1: 'Razor Dirt Quad — 24V Electric 4 Wheeler',
     price: 850, brand: 'razor', category: 'kids-electric-quads', tags: ['electric-quad-bikes'],
     badge: 'Ages 8+', images: ['razor-dirt-quad.webp', 'razor-dirt-quad-2.webp'],
     specs: { power: '350 W, chain-driven with reverse', battery: '24V (two 12V) sealed lead-acid', topSpeed: '5 mph low / 8 mph high', range: '~80 min low / ~40 min high', weight: '89.1 lb', modes: '2-speed + forward / reverse', roadLegal: 'No (flat, smooth surfaces only — not an ATV)', age: '8+ (max rider 120 lb)' },
-    metaDesc: 'Buy the Razor Dirt Quad for about $850. 24V electric ride-on for ages 8+, 8 mph, with reverse. Flat, smooth surfaces only. US dealer, estimated price.',
+    metaDesc: 'Buy the Razor Dirt Quad for about $850. 24V electric 4 wheeler for ages 8+, 8 mph, with reverse. Flat, smooth surfaces only. US dealer, estimated price.',
     short: 'Razor\'s electric ride-on quad for ages 8+ — two speeds, reverse and a 120 lb rider limit.',
     description: 'The Razor Dirt Quad is an electric ride-on for children aged 8 and up. A 350 W chain-driven motor runs on a 24V sealed lead-acid battery, with a high/low two-speed switch (5 mph and 8 mph), a forward/reverse switch, 12-inch pneumatic tires and a hand-operated rear disc brake. Maximum rider weight is 120 lb. Razor states it is not an ATV and is intended for flat, smooth surfaces only. Adult supervision required.',
     footnote: 'Specifications are Razor\'s published figures. Some assembly required; a battery charger is included.',
     faqs: [
+      { q: 'Is the Razor Dirt Quad an ATV?', a: 'No. Razor states it is not an ATV: it is an electric ride-on 4 wheeler for flat, smooth surfaces. Real youth ATVs must come from a maker with an approved CPSC ATV action plan.' },
       { q: 'What age is the Razor Dirt Quad for?', a: 'Razor rates it for ages 8 and up, with a maximum rider weight of 120 lb. Adult supervision is required.' },
       { q: 'How fast does it go?', a: 'Razor lists 5 mph on the low setting and 8 mph on the high setting, with a forward/reverse switch.' },
       { q: 'How long does the battery last?', a: 'About 80 minutes of continuous use on low speed and about 40 minutes on high speed from the 24V sealed lead-acid battery. Recharge fully after each ride.' },
       { q: 'Can it be ridden off-road?', a: 'Razor states it is intended for flat, smooth surfaces only and is not an ATV. For older riders see our youth electric dirt bikes.' },
+      { q: 'Is this the same as the Razor Dirt Quad 500?', a: 'No. This is the 24V Dirt Quad for ages 8+ (5 and 8 mph). The Dirt Quad 500 is a larger 36V model for ages 14+. Ask us if you want the 500.' },
+      { q: 'What battery and charger does the Razor 24V quad use?', a: 'It runs on two 12V sealed lead-acid batteries (24V) and a charger is included. Contact us for a replacement 24V quad battery or charger.' },
     ],
   },
 ]
