@@ -175,3 +175,8 @@ product pages**; confirm which is current with DRR before ordering stock.
 | EV Adventure | 10 kW, 40 mph, up to 65 mi | 5 kW, 35 mph, 70 mi, 72V lithium, ages 16+ |
 | EV Pathfinder | 21.5 hp, 25 mph, 50 mi | 5 kW (~21.5 hp), 25 mph, 50 mi, 72V, tow capacity 800 lb, net weight 989 lb, ages 16+ |
 The PDFs also state age 16+ for these (our DRR pages say adult operators / 18+). Do not publish new DRR specs until DRR confirms.
+
+## 13. Prices from Razor's own parts store (2026-11-12) — supersedes section 9 estimates
+parts.razor.com (WooCommerce store API): charger W13112099014 **$34.99** (lists Dirt Quad + MX350/MX400 …), 24V battery W15130412003 **$83.99**
+(lists Dirt Quad + MX350/MX400 V1-32 …). Site prices set to $35 and $84. (For reference Razor also stocks Dirt Quad 500 parts: battery $105.99, 36V charger $38.99.)
+Your existing MX350 parts are priced lower ($49 battery, $29 charger) than Razor's official prices — review.

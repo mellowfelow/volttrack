@@ -1049,8 +1049,8 @@ export const ACCESSORY_CATEGORIES = [
           { name: 'Razor MX650 36V Replacement Battery', fits: 'MX650', price: '~$69' },
           { name: 'Razor MX350 OEM Charger', fits: 'MX350', price: '~$29' },
           { name: 'Razor MX650 OEM Charger', fits: 'MX650', price: '~$35' },
-          { name: 'Razor Dirt Quad 24V Charger (1.5A)', fits: 'Razor Dirt Quad (24V)', price: '~$29' },
-          { name: 'Razor Dirt Quad 24V Replacement Battery Pack', fits: 'Razor Dirt Quad (24V)', price: '~$59' },
+          { name: 'Razor Dirt Quad 24V Charger', fits: 'Razor Dirt Quad (24V)', price: '~$35' },
+          { name: 'Razor Dirt Quad 24V Replacement Battery Pack', fits: 'Razor Dirt Quad (24V)', price: '~$84' },
         ],
       },
       {
