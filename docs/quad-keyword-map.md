@@ -165,3 +165,13 @@ electric sxs 880/KD11, electric side by side utv 880/KD22) with one product, the
 - **Not listed:** Polaris Ranger XP Kinetic, John Deere Gator GX electric — official pages blocked/unfetchable and only third-party prices found
   (Kinetic ~$37,499, Gator GX from $17,499 per press). Add them only with dealer-confirmed specs and an actual supply route.
 - Image: DRR press photo (cropped 4:3, smoothed to fit the 145 KB budget); tile = DRR field shot. Manifest in Desktop/volt track/website images/product images/electric-utvs/.
+
+## 12. DRR spec conflicts (found 2026-11-12 in DRR's own PDF spec sheets)
+DRR's printed spec sheets (drrusa.com/_files/ugd/45c4ba_dfc4585e…pdf, …a391fc26…pdf) disagree with its web product pages. Our listings use the **web
+product pages**; confirm which is current with DRR before ordering stock.
+| Model | Web product page (used) | Spec sheet PDF |
+|---|---|---|
+| EV Safari 4x4 | 11 kW, 35 mph, up to 50 mi | 7.5 kW, 40 mph, 70 mi, 72V lithium, ages 16+ |
+| EV Adventure | 10 kW, 40 mph, up to 65 mi | 5 kW, 35 mph, 70 mi, 72V lithium, ages 16+ |
+| EV Pathfinder | 21.5 hp, 25 mph, 50 mi | 5 kW (~21.5 hp), 25 mph, 50 mi, 72V, tow capacity 800 lb, net weight 989 lb, ages 16+ |
+The PDFs also state age 16+ for these (our DRR pages say adult operators / 18+). Do not publish new DRR specs until DRR confirms.
