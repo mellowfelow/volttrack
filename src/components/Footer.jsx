@@ -1,5 +1,10 @@
 import Link from 'next/link'
-import { SITE, BRANDS } from '@/config/site'
+import { SITE, BRANDS, PRODUCTS } from '@/config/site'
+
+// Site-wide links to core models (internal-link equity for pages GSC lists as discovered-not-indexed)
+const POPULAR = ['talaria-x3-pro', 'talaria-sting-mx3', 'sur-ron-hyper-bee', 'sur-ron-storm-bee', 'sur-ron-ultra-bee-hp', 'stark-varg-mx', 'stark-varg-ex', 'ktm-sx-e-5', 'stacyc-16e', 'zero-fx', 'segway-xyber', 'altis-omega']
+  .map((slug) => PRODUCTS.find((p) => p.slug === slug))
+  .filter(Boolean)
 import { RevealEmail, RevealPhone } from '@/components/ContactReveal'
 
 export default function Footer() {
@@ -36,10 +41,19 @@ export default function Footer() {
             ))}
           </div>
           <div>
+            <h4>Popular Models</h4>
+            {POPULAR.map((p) => (
+              <Link key={p.slug} href={`/product/${p.slug}/`}>{p.titleName || p.name}</Link>
+            ))}
+          </div>
+          <div>
             <h4>Learn &amp; Parts</h4>
             <Link href="/guides/">Buying Guides</Link>
             <Link href="/blog/">Blog</Link>
             <Link href="/faq/">FAQ</Link>
+            <Link href="/compare/sur-ron-vs-talaria/">Sur-Ron vs Talaria</Link>
+            <Link href="/guides/electric-vs-gas-dirt-bike/">Electric vs Gas</Link>
+            <Link href="/guides/best-electric-dirt-bikes-for-adults/">Best for Adults</Link>
             <Link href="/electric-dirt-bike-street-legal-by-state/">Street-Legal Checker</Link>
             <Link href="/parts-accessories/">Parts &amp; Accessories</Link>
             <Link href="/parts-accessories/batteries-chargers/">Batteries &amp; Chargers</Link>

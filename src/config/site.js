@@ -32,7 +32,7 @@ export const SITE = {
   // Date the catalog / page copy last genuinely changed. Feeds sitemap <lastmod> for
   // pages with no date of their own. Bump it (YYYY-MM-DD) whenever products, prices or
   // page copy change — never set it to the build date, or Google learns to ignore lastmod.
-  catalogUpdated: '2026-11-11',
+  catalogUpdated: '2026-11-12',
   foundingLocation: 'United States',
   region: 'United States',
   areaServed: 'US (Lower 48 states)',
@@ -2068,11 +2068,11 @@ export const POSTS = [
   },
   {
     slug: 'sur-ron-hyper-bee-top-speed',
-    metaTitle: 'How Fast Is the Sur-Ron Hyper Bee?',
+    metaTitle: 'Sur-Ron Hyper Bee Top Speed: ~50 mph by Mode',
     title: 'How Fast Does the Sur-Ron Hyper Bee Go?',
     date: '2026-08-28',
     primaryKw: 'surron hyper bee top speed',
-    metaDesc: 'The Sur-Ron Hyper Bee tops out around 50 mph from its 8kW motor and 58V battery. Speed by ride mode, what affects it, and how it compares.',
+    metaDesc: 'Sur-Ron Hyper Bee top speed is around 50 mph (8kW motor, 58V battery). See speed in each ride mode, what changes it, and how it compares to rivals.',
     excerpt: 'The short answer: around 50 mph. The longer answer covers ride modes, rider weight, and how the lightest Sur-Ron stacks up on speed.',
     intro: [
       'The [Sur-Ron Hyper Bee](/product/sur-ron-hyper-bee/) tops out at around 50 mph in its highest ride mode. For the lightest bike in the [Sur-Ron range](/brands/sur-ron/) at just 86 lb, that is quick — quicker than the Light Bee X, in fact — and it is one of the reasons the Hyper Bee has become such a popular first "real" electric dirt bike.',
